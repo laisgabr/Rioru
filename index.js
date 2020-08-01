@@ -7,8 +7,6 @@ const queue = new Map()
 const ytsearch = require('yt-search')
 const ytdl = require('ytdl-core')
 
-const prefix = require('./config.json')
-const token = require('./config.json')
 const config = require('./config.json')
 
 const fs = require('fs')
@@ -47,16 +45,6 @@ bot.on("message", async message => {
 
 const db = require('quick.db')
 
-let prefixo = db.get(`prefix.${message.guild.id}`);
-let prefix;
-
-if(!prefixo) {
-  prefix = "ya!"
-} else {
-  prefix = prefixo
-}
-
-
    const mentionRegex = (`<@!${bot.user.id}`) || (`<@${bot.user.id}>`)
 
    if (message.content.match(mentionRegex)) return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Yuuki Asuna e meu prefixo é ${this.prefixo}`)
@@ -64,7 +52,7 @@ if(!prefixo) {
   let args = message.content.split(" ").slice(1);
  
     let command = message.content.split(" ")[0];
-    command = command.slice(prefixo.length);
+    command = command.slice(config.prefix.length);
 
     if(command === 'customPrefix' || command === 'PrefixoCustomizado') {
       if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply("Você não disse um Prefixo")
@@ -113,7 +101,7 @@ if (authorStatus) {
     }
 
     var handler = require('./EventHandler/handler')
-    return handler.run(client, bot, message, args, queue, command, prefixo)
+    return handler.run(client, bot, message, args, queue, command, config.prefix)
 });
 
 bot.login(config.token)

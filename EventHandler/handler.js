@@ -1,4 +1,4 @@
-module.exports.run = async(client, bot, message, args, queue, command, prefixo) => {
+module.exports.run = async(client, bot, message, args, queue, command, prefix) => {
  
      // Categoria Miscelanea
       // => comando Ajuda 
@@ -20,7 +20,7 @@ module.exports.run = async(client, bot, message, args, queue, command, prefixo) 
        if (command === 'botinfo' || command === 'bi') {
        const us = require('../Commands/Miscelanea/botinfo')
        delete require.cache[require.resolve(`../Commands/Miscelanea/botinfo`)];
-       return us.run(bot, message, args, prefixo)
+       return us.run(bot, message, args, prefix)
     }
     // fetch
     // => comando djs 
