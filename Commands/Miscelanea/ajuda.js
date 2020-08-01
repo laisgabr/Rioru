@@ -4,7 +4,7 @@ cooldown: 4
 exports.run = async(bot, message, args) => {
     const Discord = require('discord.js');
   
-   const duh = message.channel.send("Reaja 💬 para obter Ajuda pelo Chat ou Reaja 🔏 para obter Ajuda pelas Mensagens Diretas")
+   const duh = await message.channel.send("Reaja 💬 para obter Ajuda pelo Chat ou Reaja 🔏 para obter Ajuda pelas Mensagens Diretas")
    await duh.react('💬')
    await duh.react('🔏')
    
@@ -14,7 +14,7 @@ exports.run = async(bot, message, args) => {
    const dm2 = duh.createReactionCollector(dm)
    const chat2 = duh.createReactionCollector(chat)
  
- chat.on('collect', async r => {
+ chat2.on('collect', async r => {
     const embedAjuda = new Discord.MessageEmbed()
     .setTitle(`Olá meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
     .setDescription(`Espere todos os Emojis carregar para reagir`)
@@ -200,7 +200,7 @@ Mod.on('collect', r => {
     await msg3.react('🎉')
     await msg3.react('🌐')
     await msg3.react('➡️')
-    
+
 
  });
     
