@@ -36,7 +36,7 @@ setInterval(() => bot.user.setActivity(`${status[i++ % status.length]}`, {
 });
 
 
-bot.on("message", message => {
+bot.on("message", async message => {
     if (message.author.bot) return;
     
    if (!message.content.startsWith(config.prefix)) return;
