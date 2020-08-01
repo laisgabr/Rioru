@@ -31,7 +31,7 @@ exports.run = async(bot, message, args) => {
     .addField('🌐 Miscelanea', `----------------------------`)
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
-const msg = await message.author.send(embedAjuda)
+const msg = await message.channel.send(embedAjuda)
 await msg.react('⬅️')
 await msg.react('👮‍♂️') 
 await msg.react('📂')
@@ -190,7 +190,7 @@ Mod.on('collect', r => {
     .addField('🎉 Sorteio', `----------------------------`)
     .addField('🌐 Miscelanea', `----------------------------`)
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
-    const msg3 = await message.chanel.send(embedDm)
+    const msg3 = await message.author.send(embedDm)
     await msg3.react('⬅️')
     await msg3.react('👮‍♂️') 
     await msg3.react('📂')
