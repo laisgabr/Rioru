@@ -1,0 +1,33 @@
+{
+  "name": "asuna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MrGamingBR#0001",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "avconv": "^3.1.0",
+    "discord-giveaways": "^4.1.8",
+    "discord.js": "^12.2.0",
+    "ffmpeg": "0.0.4",
+    "firebase": "^7.15.5",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs": "0.0.1-security",
+    "genius-lyrics": "^3.0.0",
+    "googleapis": "^52.1.0",
+    "moment": "^2.27.0",
+    "ms": "^2.1.2",
+    "node-fetch": "^2.6.0",
+    "parse-ms": "^2.1.0",
+    "simple-youtube-api": "^5.2.1",
+    "sqlite": "^4.0.11",
+    "quick.db": "^7.1.1",
+    "yt-search": "^1.1.2",
+    "ytdl-core": "^2.1.7",
+    "ytdl-core-discord": "^1.2.0"
+  }
+}
