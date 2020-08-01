@@ -14,7 +14,7 @@ exports.run = async(bot, message, args) => {
    const dm2 = duh.createReactionCollector(dm)
    const chat2 = duh.createReactionCollector(chat)
  
- chat.on('collect', r => {
+ chat.on('collect', async r => {
     const embedAjuda = new Discord.MessageEmbed()
     .setTitle(`Olá meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
     .setDescription(`Espere todos os Emojis carregar para reagir`)
@@ -42,6 +42,7 @@ await msg.react('🎉')
 await msg.react('🌐')
 await msg.react('➡️')    
  
+const baianorD = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === message.author.id;
 const Moderação = (reaction, user) => reaction.emoji.name === '👮‍♂️' && user.id === message.author.id;
 const Administração = (reaction, user) => reaction.emoji.name === '📂' && user.id === message.author.id;
 const Música = (reaction, user) => reaction.emoji.name === '🎶' && user.id === message.author.id;
@@ -49,7 +50,7 @@ const Diversão = (reaction, user) => reaction.emoji.name === '🎁' && user.id 
 const Economia = (reaction, user) => reaction.emoji.name === '💸' && user.id === message.author.id;
 const Sorteio = (reaction, user) => reaction.emoji.name === '🎉' && user.id === message.author.id;
 const Miscelanea = (reaction, user) => reaction.emoji.name === '🌐' && user.id === message.author.id;
-const baianor = (reaction, user) => reaction.emoji.name === '' && user.id === message.author.id;
+const baianor = (reaction, user) => reaction.emoji.name === '➡️' && user.id === message.author.id;
 
 
 const Mod = msg.createReactionCollector(Moderação)
@@ -59,7 +60,8 @@ const Diver = msg.createReactionCollector(Diversão)
 const Econ = msg.createReactionCollector(Economia)
 const Sorte = msg.createReactionCollector(Sorteio)
 const Miscela = msg.createReactionCollector(Miscelanea)
-const seta
+const setaESQ = msg.createReactionCollector(baianorD)
+const setaDIR = msg.createReactionCollector(baianor)
 
 Mod.on('collect', r => {  
     // organizado
@@ -171,7 +173,7 @@ Mod.on('collect', r => {
  });
 });
 
- dm2.on('collect', r => {
+ dm2.on('collect', async r => {
    message.channel.send(`<@${message.author.id}>**, Enviei meus comandos em seu DM**`)
    const embedDm = new Discord.MessageEmbed()
    .setTitle(`Olá,Meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
@@ -188,7 +190,18 @@ Mod.on('collect', r => {
     .addField('🎉 Sorteio', `----------------------------`)
     .addField('🌐 Miscelanea', `----------------------------`)
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
-   
+    const msg3 = await message.chanel.send(embedDm)
+    await msg3.react('⬅️')
+    await msg3.react('👮‍♂️') 
+    await msg3.react('📂')
+    await msg3.react('🎶')
+    await msg3.react('🎁')
+    await msg3.react('💸')  
+    await msg3.react('🎉')
+    await msg3.react('🌐')
+    await msg3.react('➡️')
+    
+
  });
     
 
