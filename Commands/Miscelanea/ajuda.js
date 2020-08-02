@@ -1,7 +1,7 @@
 const { dc , Discord , bot  } = require("discord.js")
 cooldown: 4
 
-exports.run = async(bot, message, args) => {
+module.exports.run = async(bot, message, args) => {
     const Discord = require('discord.js');
   
    const duh = await message.channel.send("Reaja 💬 para obter Ajuda pelo Chat ou Reaja 🔏 para obter Ajuda pelas Mensagens Diretas")
@@ -35,7 +35,6 @@ exports.run = async(bot, message, args) => {
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 const msg = await message.channel.send(embedAjuda)
-await msg.react('⬅️')
 await msg.react('👮‍♂️') 
 await msg.react('📂')
 await msg.react('🎶')
@@ -43,7 +42,6 @@ await msg.react('🎁')
 await msg.react('💸')  
 await msg.react('🎉')
 await msg.react('🌐')
-await msg.react('➡️')    
  
 const baianorD = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === message.author.id;
 const Moderação = (reaction, user) => reaction.emoji.name === '👮‍♂️' && user.id === message.author.id;
@@ -108,6 +106,7 @@ Mod.on('collect',async r => {
         .addField(`----------------------------`, `Página: 1/9`)
         .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
         msg.edit(embedAjud)
+        msg.reactions.removeAll()
         await msg.react('👮‍♂️') 
         await msg.react('📂')
         await msg.react('🎶')
@@ -161,7 +160,7 @@ Mod.on('collect',async r => {
  
  })
  
- Admin.on('collect',async r => {
+ Admin.on('collect', async r => {
      const EmbedAdmin = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Administração`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
@@ -268,7 +267,7 @@ Mod.on('collect',async r => {
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(MiscelaEmbed)
-     msg.reactions.removeAll()
+     msg.reactions.remove(message.author.id)
      await msg.react('⬅️')
      await msg.react('')
  });
