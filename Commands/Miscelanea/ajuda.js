@@ -72,7 +72,6 @@ Mod.on('collect', r => {
      .addField(`Ban`, `Use o Poder do Martelo do Ban`)
      .addField(`Kick`, `Expulse algum membro do Servidor`)
      .addField(`Mute`, `Mute os bagunceiros do Servidor`)
-     .addField(`Softban ;w;`, `Bane o membro e desbane logo em seguida`)
      .addField(`Unban ;w;`, `Desbane algum usuário`)
      .addField(`Unmute`, `Desmute alguem que foi mutado!!!`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
