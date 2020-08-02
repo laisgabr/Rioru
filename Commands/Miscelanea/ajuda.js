@@ -66,7 +66,7 @@ const Miscela = msg.createReactionCollector(Miscelanea)
 const setaESQ = msg.createReactionCollector(baianorD)
 const setaDIR = msg.createReactionCollector(baianor)
 
-Mod.on('collect', r => {  
+Mod.on('collect',async r => {  
     // organizado
      const embedMod = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Moderação`)
@@ -161,7 +161,7 @@ Mod.on('collect', r => {
  
  })
  
- Admin.on('collect', r => {
+ Admin.on('collect',async r => {
      const EmbedAdmin = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Administração`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
@@ -178,7 +178,7 @@ Mod.on('collect', r => {
      await msg.react('➡️')
  });
  
- Music.on('collect', r => {
+ Music.on('collect',async r => {
      const EmbedMusic = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Música`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
