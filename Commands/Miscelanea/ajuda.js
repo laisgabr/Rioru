@@ -8,6 +8,7 @@ exports.run = async(bot, message, args) => {
    await duh.react('💬')
    await duh.react('🔏')
    
+   
    const dm = (reaction, user) => reaction.emoji.name === '🔏' && user.id === message.author.id;
    const chat = (reaction, user) => reaction.emoji.name === '💬' && user.id === message.author.id;
   
@@ -15,6 +16,7 @@ exports.run = async(bot, message, args) => {
    const chat2 = duh.createReactionCollector(chat)
  
  chat2.on('collect', async r => {
+    duh.delete()
     const embedAjuda = new Discord.MessageEmbed()
     .setTitle(`Olá meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
     .setDescription(`Espere todos os Emojis carregar para reagir`)
@@ -29,6 +31,7 @@ exports.run = async(bot, message, args) => {
     .addField('💸 Economia', `----------------------------`)
     .addField('🎉 Sorteio', `----------------------------`)
     .addField('🌐 Miscelanea', `----------------------------`)
+    .addField(`----------------------------`, `Página: 1/9`)
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 const msg = await message.channel.send(embedAjuda)
@@ -74,9 +77,86 @@ Mod.on('collect', r => {
      .addField(`Mute`, `Mute os bagunceiros do Servidor`)
      .addField(`Unban ;w;`, `Desbane algum usuário`)
      .addField(`Unmute`, `Desmute alguem que foi mutado!!!`)
+     .addField(`----------------------------`, `Página: 2/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
      msg.edit(embedMod)
      msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
+
+     const menu = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === message.author.id;
+     const prox = (reaction, user) => reaction.emoji.name === '➡️' && user.id === message.author.id;
+
+     const menu2 = msg.createReactionCollector(menu)
+     const prox2 = msg.createReactionCollector(prox)
+
+     menu2.on('collect', async r => {
+        const embedAjud = new Discord.MessageEmbed()
+        .setTitle(`Olá meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
+        .setDescription(`Espere todos os Emojis carregar para reagir`)
+        .setColor("BLUE")
+        .setThumbnail(message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        .addField('Reaja aos emojis abaixo para saber sobre tal categoria', `----------------------------`)
+        .addField("Minhas Categorias: ", `----------------------------`)
+        .addField('👮‍♂️ Moderação', `----------------------------`)
+        .addField('📂 Administração', `----------------------------`)
+        .addField('🎶 Música', `----------------------------`)
+        .addField('🎁 Diversão', `----------------------------`)
+        .addField('💸 Economia', `----------------------------`)
+        .addField('🎉 Sorteio', `----------------------------`)
+        .addField('🌐 Miscelanea', `----------------------------`)
+        .addField(`----------------------------`, `Página: 1/9`)
+        .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        msg.edit(embedAjud)
+        await msg.react('👮‍♂️') 
+        await msg.react('📂')
+        await msg.react('🎶')
+        await msg.react('🎁')
+        await msg.react('💸')  
+        await msg.react('🎉')
+        await msg.react('🌐')
+
+     })
+   prox2.on('collect', async r => {
+    const EmbedAdmin = new Discord.MessageEmbed()
+    .setTitle(`Comandos da Aba Administração`)
+    .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
+    .setColor("RANDOM")
+    .addField(`Lock ;w;`, `Trava o canal atual`)
+    .addField(`Unlock ;w;`, `Destrava o canal atual`)
+    .addField('Administração não tem muito comando em breve tem mais...', `:pensive:`)
+    .addField(`----------------------------`, `Página: 3/9`)
+    .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+
+    msg.edit(EmbedAdmin)
+    msg.reactions.removeAll()
+    await msg.react('⬅️')
+    await msg.react('➡️')
+
+    const admVolt = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === message.author.id;
+     const prox56 = (reaction, user) => reaction.emoji.name === '➡️' && user.id === message.author.id;
+
+     const ademiro = msg.createReactionCollector(admVolt)
+     const prox56A = msg.createReactionCollector(prox56)
+     ademiro.on('collect', async r => {
+        const embedMod = new Discord.MessageEmbed()
+        .setTitle(`Comandos da Aba Moderação`)
+        .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
+        .setColor("PURPLE")
+        .addField(`Ban`, `Use o Poder do Martelo do Ban`)
+        .addField(`Kick`, `Expulse algum membro do Servidor`)
+        .addField(`Mute`, `Mute os bagunceiros do Servidor`)
+        .addField(`Unban ;w;`, `Desbane algum usuário`)
+        .addField(`Unmute`, `Desmute alguem que foi mutado!!!`)
+        .addField(`----------------------------`, `Página: 2/9`)
+        .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        msg.edit(embedMod)
+        msg.reactions.removeAll()
+        await msg.react('⬅️')
+        await msg.react('➡️')
+     })
+     
+   })
   
  
  })
@@ -89,9 +169,13 @@ Mod.on('collect', r => {
      .addField(`Lock ;w;`, `Trava o canal atual`)
      .addField(`Unlock ;w;`, `Destrava o canal atual`)
      .addField('Administração não tem muito comando em breve tem mais...', `:pensive:`)
+     .addField(`----------------------------`, `Página: 4/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
-     msg.edit(EmbedAdmin)  
+     msg.edit(EmbedAdmin)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
  });
  
  Music.on('collect', r => {
@@ -106,49 +190,63 @@ Mod.on('collect', r => {
      .addField('Queue ou Q ;w;', `Exiba a lista atual de reprodução`)
      .addField('Np ;w;', `Veja a música que está tocando agora`)
      .addField('Loop ;w;', `Da Loop no Queue ou na Música`)
+     .addField(`----------------------------`, `Página: 5/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(EmbedMusic)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
  });
  
- Diver.on('collect', r => {
+ Diver.on('collect',async r => {
      const DiverEmbed = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Diversão`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
      .setColor("RANDOM")
      .addField(`Kiss ou Beijar`, `De um beijo em algum usuario`)
+     .addField(`----------------------------`, `Página: 6/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(DiverEmbed)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
  });
  
- Econ.on('collect', r => {
+ Econ.on('collect',async r => {
      const EconEmbed = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Economia`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
      .setColor("RANDOM")
      .addField("Estou fazendo a implementação do Mongoose no projeto ainda desculpe")
      .addField("O resto dos comandos ta sendo feito", `Desculpa mas até o fim da beta ta tudo feito`)
+     .addField(`----------------------------`, `Página: 7/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(EconEmbed)
- 
-     r.users.remove(message.author.id)
-     r.users.remove(bot.user.id)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
  });
  
- Sorte.on('collect', r => {
+ Sorte.on('collect',async r => {
      const SorteEmbed = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Sorteio`)
      .setDescription(`Se ao lado do Comando Estiver um ';w;', Quer dizer que não tá Funcionando Corretamente`)
      .setColor("RANDOM")
      .addField("Vishh", `Me desculpa por ser uma merda mas eu to fazendo os comandos todo dia ok ?`)
+     .addField(`----------------------------`, `Página: 8/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(SorteEmbed)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('➡️')
+     
  });
  
- Miscela.on('collect', r => {
+ Miscela.on('collect',async r => {
      // organizado
      const MiscelaEmbed = new Discord.MessageEmbed()
      .setTitle(`Comandos da Aba Miscelanea`)
@@ -166,14 +264,19 @@ Mod.on('collect', r => {
      .addField("SetNick", `Seta um nickname pra voce.Só funciona se o bot for acima de voce e ele tiver a permissão Gerenciar Apelidos`)
      .addField("Uptime", `Mostra meu tempo de Atividade`)
      .addField("Userinfo", `Mostra as suas Informações ou de outros Usuários`)
+     .addField(`----------------------------`, `Página: 9/9`)
      .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
  
      msg.edit(MiscelaEmbed)
+     msg.reactions.removeAll()
+     await msg.react('⬅️')
+     await msg.react('')
  });
 });
 
  dm2.on('collect', async r => {
-   message.channel.send(`<@${message.author.id}>**, Enviei meus comandos em seu DM**`)
+     duh.delete()
+   message.channel.send(`✅ <@${message.author.id}>**, Enviei meus comandos em seu DM**`)
    const embedDm = new Discord.MessageEmbed()
    .setTitle(`Olá,Meu nome é Yuuki Asuna e sou um Bot Discord focado em deixar tudo em Linha e Divertido`)
     .setDescription(`Espere todos os Emojis carregar para reagir... Para melhor uso do comando,Peço que reaja e depois retire a reação pois na dm,Não consigo tirar...`)
@@ -198,7 +301,7 @@ Mod.on('collect', r => {
     await msg3.react('💸')  
     await msg3.react('🎉')
     await msg3.react('🌐')
-    await msg3.react('➡️')
+    
 
 
  });
