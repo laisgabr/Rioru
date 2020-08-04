@@ -22,8 +22,8 @@ module.exports.run = async(bot, message, args) => {
     .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setTitle(":0")
-        .setDescription(`${message.author} Deu um tapa em ${user}`)
-        .setImage(response.body.message)
+        .setDescription(`${message.author} Deu um tapa em ${uuser}`)
+        .setImage(response.body.url)
         .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
         message.channel.send(embed)
     })

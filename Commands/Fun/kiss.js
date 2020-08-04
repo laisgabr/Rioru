@@ -15,7 +15,7 @@ module.exports.run = async(bot, message, args) => {
         const embed = new Discord.MessageEmbed()
         .setTitle(`:heart: O amor está no Ar :heart:`)
         .setDescription(`:heart: ${message.author} Beijou ${user} :heart:`)
-        .setImage(response.body.message)
+        .setImage(response.body.url)
         .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
         message.channel.send(embed)
     })
