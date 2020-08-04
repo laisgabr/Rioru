@@ -12,6 +12,6 @@ module.exports.run = async(bot, message, args) => {
             message.channel.send(embed);
         });
       } else {
-        message.channel.send("This isn't NSFW channel!")
+        message.channel.send("Esse canal não é de NSFW +18")
       }
 }
