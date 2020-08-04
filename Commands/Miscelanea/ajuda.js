@@ -31,6 +31,7 @@ module.exports.run = async(bot, message, args) => {
     .addField('💸 Economia', `----------------------------`)
     .addField('🎉 Sorteio', `----------------------------`)
     .addField('🌐 Miscelanea', `----------------------------`)
+    .addField('🔞 NSFW +18', `----------------------------`)
     .addField(`----------------------------`, `Página: 1/9`)
     .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
@@ -42,6 +43,7 @@ await msg.react('🎁')
 await msg.react('💸')  
 await msg.react('🎉')
 await msg.react('🌐')
+await msg.react('🔞')
  
 const baianorD = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === message.author.id;
 const Moderação = (reaction, user) => reaction.emoji.name === '👮‍♂️' && user.id === message.author.id;

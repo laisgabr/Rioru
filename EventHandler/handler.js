@@ -235,6 +235,21 @@ module.exports.run = async(client, bot, message, args, queue, command, prefix) =
   }
 
 
+  if(command === 'meow' || command === 'gato') {
+    const div3 = require('../Commands/Fun/meow')
+    delete require.cache[require.resolve(`../Commands/Fun/meow`)];
+    return div3.run(bot, message, args)
+  }
+
+
+if(command === 'pat' || command === 'cafune' || command === 'cafuné') {
+  const div4 = require('../Commands/Fun/pat')
+  delete require.cache[require.resolve(`../Commands/Fun/pat`)];
+  return div4.run(bot, message, args)
+}
+
+
+
 
   if(command === 'coins') {
     const eco = require('../Commands/Economia/coins')
@@ -344,7 +359,19 @@ if(command === 'thigh') {
   delete require.cache[require.resolve(`../Commands/Nsfw/thigh`)];
   return nsfw18.run(bot, message, args)
 }
+
+if(command === 'trap') {
+  const nsfw19 = require('../Commands/Nsfw/trap')
+  delete require.cache[require.resolve(`../Commands/Nsfw/trap`)];
+  return nsfw19.run(bot, message, args)
+}
  
+
+if(command === 'yuri') {
+  const nsfw20 = require('../Commands/Nsfw/yuri')
+  delete require.cache[require.resolve(`../Commands/Nsfw/yuri`)];
+  return nsfw20.run(bot, message, args)
+}
 
 } catch (err) {
   console.error("Erro:  " + err)
