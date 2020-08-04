@@ -279,18 +279,66 @@ module.exports.run = async(client, bot, message, args, queue, command, prefix) =
 
  // NSFW
 
+ if(command === '4k') {
+  const nsfw2 = require('../Commands/Nsfw/4k')
+  delete require.cache[require.resolve(`../Commands/Nsfw/4k`)];
+  return nsfw2.run(bot, message, args)
+}
+
+
+if(command === 'anal') {
+ const nsfw32 = require('../Commands/Nsfw/anal')
+ delete require.cache[require.resolve(`../Commands/Nsfw/anal`)];
+ return nsfw32.run(bot, message, args)
+}
+
+
+if(command === 'ass') {
+  const nsfw321 = require('../Commands/Nsfw/ass')
+  delete require.cache[require.resolve(`../Commands/Nsfw/ass`)];
+  return nsfw321.run(bot, message, args)
+}
+
+if(command === 'gif') {
+  const nsfw921 = require('../Commands/Nsfw/gif')
+  delete require.cache[require.resolve(`../Commands/Nsfw/gif`)];
+  return nsfw921.run(bot, message, args)
+}
+
+
  if(command === 'hentai') {
    const nsfw = require('../Commands/Nsfw/hentai')
    delete require.cache[require.resolve(`../Commands/Nsfw/hentai`)];
    return nsfw.run(bot, message, args)
  }
 
- if(command === '4k') {
-   const nsfw2 = require('../Commands/Nsfw/4k')
-   delete require.cache[require.resolve(`../Commands/Nsfw/4k`)];
-   return nsfw2.run(bot, message, args)
+ 
+ if(command === 'holo') {
+  const nsfw123 = require('../Commands/Nsfw/holo')
+  delete require.cache[require.resolve(`../Commands/Nsfw/holo`)];
+  return nsfw123.run(bot, message, args)
  }
 
+
+ if(command === 'lewd') {
+  const nsfw98 = require('../Commands/Nsfw/lewd')
+  delete require.cache[require.resolve(`../Commands/Nsfw/lewd`)];
+  return nsfw98.run(bot, message, args)
+ }
+
+
+ if(command === 'pussy') {
+  const nsgw654 = require('../Commands/Nsfw/pussy')
+  delete require.cache[require.resolve(`../Commands/Nsfw/pussy`)];
+  return nsgw654.run(bot, message, args)
+}
+
+if(command === 'thigh') {
+  const nsfw18 = require('../Commands/Nsfw/thigh')
+  delete require.cache[require.resolve(`../Commands/Nsfw/thigh`)];
+  return nsfw18.run(bot, message, args)
+}
+ 
 
 } catch (err) {
   console.error("Erro:  " + err)

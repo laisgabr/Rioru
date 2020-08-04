@@ -9,7 +9,7 @@ module.exports.run = (bot, message, args) => {
         const embed = new Discord.MessageEmbed()
         .setImage(response.body.message)
         .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
-        message.channel.send(`${response.body.message}`);
+        message.channel.send(embed);
     });
   } else {
     message.channel.send("Esse canal não é de NSFW +18")

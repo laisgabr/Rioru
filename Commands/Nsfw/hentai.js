@@ -6,7 +6,10 @@ exports.run = (bot, message, args) => {
     superagent.get('https://nekobot.xyz/api/image')
     .query({ type: 'hentai_anal'})
     .end((err, response) => {
-      message.channel.send({ file: response.body.message });
+        const embed = new Discord.MessageEmbed()
+        .setImage(response.body.message)
+        .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        message.channel.send(embed);
     });
   } else {
     message.channel.send("Esse canal não é de NSFW +18")
