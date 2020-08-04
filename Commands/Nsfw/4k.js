@@ -6,9 +6,13 @@ module.exports.run = (bot, message, args) => {
     superagent.get('https://nekobot.xyz/api/image')
     .query({ type: '4k'})
     .end((err, response) => {
+        const embed = new Discord.MessageEmbed()
+        .setImage(response.body.message)
+        .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
         message.channel.send(`${response.body.message}`);
     });
   } else {
-    msg.channel.send("Esse canal não é de NSFW +18")
+    message.channel.send("Esse canal não é de NSFW +18")
   }
+       
 };
