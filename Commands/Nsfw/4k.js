@@ -6,7 +6,7 @@ module.exports.run = (bot, message, args) => {
     superagent.get('https://nekobot.xyz/api/image')
     .query({ type: '4k'})
     .end((err, response) => {
-        message.channel.send({ file: response.body.message });
+        message.channel.send("Aqui está" + { file: response.body.message });
     });
   } else {
     msg.channel.send("Esse canal não é de NSFW +18")
