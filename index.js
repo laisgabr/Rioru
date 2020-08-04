@@ -45,13 +45,9 @@ bot.on("message", async message => {
 
 const db = require('quick.db')
 
-   const mentionRegex = (`<@!${bot.user.id}`) || (`<@${bot.user.id}>`)
-
-   if (message.content.match(mentionRegex)) return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Yuuki Asuna e meu prefixo é ${this.prefixo}`)
-
   let args = message.content.split(" ").slice(1);
  
-    let command = message.content.split(" ")[0];
+    let command = message.content.split(" ")[0]
     command = command.slice(config.prefix.length);
 
     if(command === 'customPrefix' || command === 'PrefixoCustomizado') {

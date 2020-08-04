@@ -373,6 +373,14 @@ if(command === 'yuri') {
   return nsfw20.run(bot, message, args)
 }
 
+
+
+if(command === 'start') {
+  const giveaway = require('../Commands/Sorteio/startGiveaway')
+  delete require.cache[require.resolve(`../Commands/Sorteio/startGiveaway`)];
+  return giveaway.run(bot, message, args)
+}
+
 } catch (err) {
   console.error("Erro:  " + err)
   const logs = require('./logs')
