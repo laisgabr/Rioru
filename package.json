@@ -28,6 +28,7 @@
     "quick.db": "^7.1.1",
     "yt-search": "^1.1.2",
     "ytdl-core": "^2.1.7",
-    "ytdl-core-discord": "^1.2.0"
+    "ytdl-core-discord": "^1.2.0",
+    "superagent" :"^5.3.1"
   }
 }
