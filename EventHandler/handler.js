@@ -285,6 +285,11 @@ module.exports.run = async(client, bot, message, args, queue, command, prefix) =
    return nsfw.run(bot, message, args)
  }
 
+ if(command === '4k') {
+   const nsfw2 = require('../Commands/Nsfw/4k')
+   delete require.cache[require.resolve(`../Commands/Nsfw/4k`)];
+   return nsfw2.run(bot, message, args)
+ }
 
 
 } catch (err) {
