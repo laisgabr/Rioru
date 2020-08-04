@@ -277,6 +277,14 @@ module.exports.run = async(client, bot, message, args, queue, command, prefix) =
  }
 
 
+ // NSFW
+
+ if(command === 'hentai') {
+   const nsfw = require('../Commands/Nsfw/hentai')
+   delete require.cache[require.resolve(`../Commands/Nsfw/hentai`)];
+   return nsfw.run(bot, message, args)
+ }
+
 
 
 } catch (err) {
