@@ -10,7 +10,7 @@ module.exports.run = async(bot, message, args) => {
   
     if(user.id === bot.user.id) return message.channel.send("Quero te beijar não")
 
-    superagent.get('https://nekos.life/api/v2/gif/kiss')
+    superagent.get('https://nekos.life/api/v2/img/kiss')
     .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setTitle(`:heart: O amor está no Ar :heart:`)

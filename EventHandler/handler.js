@@ -228,6 +228,12 @@ module.exports.run = async(client, bot, message, args, queue, command, prefix) =
   }
   // fetch category
 
+  if(command === 'slap' || command === 'tapa') {
+    const div2 = require('../Commands/Fun/slap')
+    delete require.cache[require.resolve(`../Commands/Fun/slap`)];
+    return div2.run(bot, message, args)
+  }
+
 
 
   if(command === 'coins') {

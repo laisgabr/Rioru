@@ -7,7 +7,7 @@ module.exports.run = async(bot, message, args) => {
    if(!uuser) return message.reply("Mencione alguém por favor")
 
    if(uuser.id === bot.user.id) {
-    superagent.get('https://nekos.life/api/v2/gif/slap')
+    superagent.get('https://nekos.life/api/v2/img/slap')
     .end((err, response) => {
         const embedA = new Discord.MessageEmbed()
         .setTitle(`Yaaaay`)
@@ -18,7 +18,7 @@ module.exports.run = async(bot, message, args) => {
       })
    }
 
-    superagent.get('https://nekos.life/api/v2/gif/')
+    superagent.get('https://nekos.life/api/v2/img/slap')
     .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setTitle(":0")
