@@ -1,9 +1,9 @@
 const Discord = require('discord.js')
 
 const bot = new Discord.Client()
-const client = new Discord.Client()
 
-const queue = new Map()
+bot.queue = new Map();
+const { queue } = bot.queue
 const ytsearch = require('yt-search')
 const ytdl = require('ytdl-core')
 
@@ -24,12 +24,13 @@ bot.on("ready", () => {
         `Amo todos que usam minha beta diariamente :)`,
         `Estou sendo desenvolvida pelo MrGamingBR#0001 esse lindo :3`,
         `Estou na versão Beta qualquer erro ou bug relate no Suporte`,
-        `Open Source ? Talvez um dia ;_;`,
+        `Open Source ? Sim!`,
         `Deixei de ser Beta mas ainda falta muita coisa .-.`
     ],
     i = 0;
 setInterval(() => bot.user.setActivity(`${status[i++ % status.length]}`, {
-    type: "STREAMING"
+    type: "STREAMING",
+    url: "https://www.twitch.tv/mrgamingbr0001"
 }), 1000 * 60);
 });
 
@@ -43,12 +44,9 @@ bot.on("message", async message => {
  return message.channel.send('Fui programada para não responder no privado!');
 }
 
+ // "quick.db": "^7.1.1",
+/*
 const db = require('quick.db')
-
-  let args = message.content.split(" ").slice(1);
- 
-    let command = message.content.split(" ")[0]
-    command = command.slice(config.prefix.length);
 
     if(command === 'customPrefix' || command === 'PrefixoCustomizado') {
       if (!message.member.hasPermission("MANAGE_GUILD")) return message.reply("Você não disse um Prefixo")
@@ -95,9 +93,15 @@ if (authorStatus) {
        return message.reply("AFK desativado com Sucesso!")
       }
     }
+*/
+
+   let args = message.content.split(" ").slice(1);
+ 
+    let command = message.content.split(" ")[0]
+    command = command.slice(config.prefix.length)
 
     var handler = require('./EventHandler/handler')
-    return handler.run(client, bot, message, args, queue, command, config.prefix)
+    return handler.run(bot, message, args, queue, command, config.prefix)
 });
 
 bot.login(config.token)

@@ -1,4 +1,5 @@
-node_modules/
-package-lock.json/
+node_modules
+package-lock.json
 config.json
-config.json
+Web/index.html
+Web/cores.css
