@@ -207,6 +207,12 @@ module.exports.run = async(bot, message, args, queue, command, prefix) => {
     delete require.cache[require.resolve(`../Commands/Developer/terminal`)];
     return dev4.run(bot, message, args)
   }
+
+  if(command === 'desligar' || command === 'stop') {
+    const dev5 = require('../Commands/Developer/desligar')
+    delete require.cache[require.resolve('../Commands/Developer/desligar')];
+    return dev5.run(bot, message, args)
+  }
   // fetch category
 
 
