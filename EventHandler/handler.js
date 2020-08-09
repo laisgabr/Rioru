@@ -373,6 +373,10 @@ if(command === 'trap') {
   return nsfw19.run(bot, message, args)
 }
  
+       if(command === 'blowJob' || command === 'blowJob') {
+        const nsfw20 = require('../Commands/Nsfw/blowJob')
+        return nsfw20.run(bot, message, args)
+        }
 
 if(command === 'yuri') {
   const nsfw20 = require('../Commands/Nsfw/yuri')
@@ -380,6 +384,7 @@ if(command === 'yuri') {
   return nsfw20.run(bot, message, args)
 }
 
+       
 
 
 if(command === 'start') {
