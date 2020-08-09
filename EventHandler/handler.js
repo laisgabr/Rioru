@@ -374,8 +374,8 @@ if(command === 'trap') {
 }
  
        if(command === 'blowJob' || command === 'blowJob') {
-        const nsfw20 = require('../Commands/Nsfw/blowJob')
-        return nsfw20.run(bot, message, args)
+        const nsfw30 = require('../Commands/Nsfw/blowJob')
+        return nsfw30.run(bot, message, args)
         }
 
 if(command === 'yuri') {
@@ -383,7 +383,11 @@ if(command === 'yuri') {
   delete require.cache[require.resolve(`../Commands/Nsfw/yuri`)];
   return nsfw20.run(bot, message, args)
 }
-
+       if(command === 'boobs') {
+        const nsfw31 = require('../Commands/Nsfw/boobs')
+        return nsfw31.run(bot, message, args)
+        }
+ 
        
 
 
