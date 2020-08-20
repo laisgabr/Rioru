@@ -1,17 +1,25 @@
 const Discord = require('discord.js')
-
 const bot = new Discord.Client()
-
-const ytsearch = require('yt-search')
-const ytdl = require('ytdl-core')
-
 const config = require('./config.json')
-
-const fs = require('fs')
-
-const firebase = require('firebase')
-
+const { ErelaClient } = require('erela.js')
 bot.on("ready", () => {
+  // Lavalink
+  bot.music = new ErelaClient(bot, [
+    {
+        host: "localhost",
+        port: 2333,
+        password: "team"
+    }
+])
+bot.musicPlayers = new Map();
+console.log('Tentando carregar o node do Lavalink');
+bot.music.on("nodeConnect", node => console.log("Node Conectado! yay"));
+bot.music.on("nodeError", (node, error) => console.log(`Node error: ${error.message}`));
+bot.music.on("trackStart", (player, track) => player.textChannel.send(`Tocando agora: ${track.title}`));
+bot.music.on("queueEnd", player => {
+    player.textChannel.send("Lista de reprodução acabou!")
+    bot.music.players.destroy(player.guild.id);
+});
     console.log("Carregando Evento Ready e Message...")
     console.log(`Carregando Comandos...`);
     console.log(`Logada como ${bot.user.tag}`);
@@ -93,12 +101,13 @@ if (authorStatus) {
     }
 */
 
-const args = message.content.slice(prefix.length).split(/ +/);
-
-const command = args.shift().toLowerCase();
+let args = message.content.split(" ").slice(1);
+ 
+    let command = message.content.split(" ")[0]
+    command = command.slice(config.prefix.length)
 
     var handler = require('./EventHandler/Controller/handler')
-    return handler.run(bot, message, args, queue, command, config.prefix)
+    return handler.run(bot, message, args, command, config.prefix)
 });
 
 bot.login(config.token)

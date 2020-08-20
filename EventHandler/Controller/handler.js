@@ -19,12 +19,13 @@ module.exports.run = async(bot, message, args, queue, command, prefix) => {
     delete require.cache[require.resolve(`../Miscelanea`)];
     return Misc.run(bot, message, args, command, queue)
   }
-  if(command) {
-
+  if(command === 'play') {
+    const musica = require('../../Commands/Music/play')
+    return musica.run(bot, message, args)
   }
 } catch (err) {
   console.error("Erro:  " + err)
-  const logs = require('./Logs')
+  const logs = require('./logs')
   const dc = require('discord.js')
   return logs.run(bot, message, args, dc, err)
   }
