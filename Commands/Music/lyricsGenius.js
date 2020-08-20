@@ -1,21 +1,14 @@
 const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 
-module.exports = {
-  name: "lyrics",
-  aliases: ["ly"],
-  description: "<:setav_emoji:730933474911060069> Obter letras da música atualmente sendo reproduzida",
-  async execute(message) {
-    const queue = message.bot.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("Não há nada tocando.").catch(console.error);
-
+module.exports.run = async(bot, message, args) => {
     let lyrics = null;
 
     try {
-      lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `**Nenhuma letra encontrada para ${queue.songs[0].title}.**`;
+      lyrics = await lyricsFinder(message.content.split(' ').slice(1).join(' '), {limit: 1});
+      if (!lyrics) lyrics = `**Nenhuma letra encontrada para ${args.join(" ")}.**`;
     } catch (error) {
-      lyrics = `**Nenhuma letra encontrada para ${queue.songs[0].title}.**`;
+      lyrics = `**Nenhuma letra encontrada para ${args.join(" ")}**`;
     }
 
     let lyricsEmbed = new MessageEmbed()
@@ -28,4 +21,3 @@ module.exports = {
       lyricsEmbed.description = `${lyricsEmbed.description.substr(0, 2045)}...`;
     return message.channel.send(lyricsEmbed).catch(console.error);
   }
-};

@@ -29,21 +29,16 @@ if(command === 'gif') {
   delete require.cache[require.resolve(`../Commands/Nsfw/holo`)];
   return nsfw123.run(bot, message, args)
  }
-
-
  if(command === 'lewd') {
   const nsfw98 = require('../Commands/Nsfw/lewd')
   delete require.cache[require.resolve(`../Commands/Nsfw/lewd`)];
   return nsfw98.run(bot, message, args)
  }
-
-
  if(command === 'pussy') {
   const nsgw654 = require('../Commands/Nsfw/pussy')
   delete require.cache[require.resolve(`../Commands/Nsfw/pussy`)];
   return nsgw654.run(bot, message, args)
 }
-
 if(command === 'thigh') {
   const nsfw18 = require('../Commands/Nsfw/thigh')
   delete require.cache[require.resolve(`../Commands/Nsfw/thigh`)];
@@ -55,19 +50,19 @@ if(command === 'trap') {
   delete require.cache[require.resolve(`../Commands/Nsfw/trap`)];
   return nsfw19.run(bot, message, args)
 }
- 
-       if(command === 'blowJob' || command === 'blowJob') {
-        const nsfw30 = require('../Commands/Nsfw/blowJob')
-        return nsfw30.run(bot, message, args)
-        }
-
+if(command === 'blowJob' || command === 'blowJob') {
+const nsfw30 = require('../Commands/Nsfw/blowJob')
+delete require.cache[require.resolve(`../Commands/Nsfw/blowJob`)]
+return nsfw30.run(bot, message, args)
+}
 if(command === 'yuri') {
-  const nsfw20 = require('../Commands/Nsfw/yuri')
-  delete require.cache[require.resolve(`../Commands/Nsfw/yuri`)];
-  return nsfw20.run(bot, message, args)
+const nsfw20 = require('../Commands/Nsfw/yuri')
+delete require.cache[require.resolve(`../Commands/Nsfw/yuri`)];
+return nsfw20.run(bot, message, args)
 }
-       if(command === 'boobs') {
-        const nsfw31 = require('../Commands/Nsfw/boobs')
-        return nsfw31.run(bot, message, args)
-        }
-}
+if(command === 'boobs') {
+const nsfw31 = require('../Commands/Nsfw/boobs')
+delete require.cache[require.resolve(`../Commands/Nsfw/boobs`)];
+return nsfw31.run(bot, message, args)
+  }
+};

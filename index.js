@@ -2,8 +2,6 @@ const Discord = require('discord.js')
 
 const bot = new Discord.Client()
 
-bot.queue = new Map();
-const { queue } = bot.queue
 const ytsearch = require('yt-search')
 const ytdl = require('ytdl-core')
 
@@ -95,10 +93,9 @@ if (authorStatus) {
     }
 */
 
-   let args = message.content.split(" ").slice(1);
- 
-    let command = message.content.split(" ")[0]
-    command = command.slice(config.prefix.length)
+const args = message.content.slice(prefix.length).split(/ +/);
+
+const command = args.shift().toLowerCase();
 
     var handler = require('./EventHandler/Controller/handler')
     return handler.run(bot, message, args, queue, command, config.prefix)
