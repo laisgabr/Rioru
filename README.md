@@ -1,8 +1,11 @@
-# Asuna-Bot-Discord
+# Yuuki Asuna
+Olá, Este é o Repositório da Yuuki Asuna, Seja bem-vindo(a).
 
-Olá, Este é o Repositório da Yuuki Asuna :3
+# Criadores desse Projeto :
+darkswith#8478 (Colaborador) e MrGamingBR#0001 (Criador e Fundador)
 
-Gostaria de lhe alertar que se for feito um tipo de Plágio do Meu código sem minha Permissão, Automaticamente você será banido de usar a Yuuki Asuna. E ainda ficara sem o seu bot ,w, . Este bot foi feito com muito carinho por Mim(MrGamingBR), Caso use algum código daqui, Por favor coloque os Créditos já que não foi você que fez '-' . 
+# Saiba Mais: 
+Gostariamos de lhe alertar que se for feito um tipo de Plágio Total do nosso(Darks e Mr) código sem nossa Permissão e ainda falar que você que fez esse trabalho espetacular,Automaticamente você será banido de usar a Yuuki Asuna PERMANENTEMENTE . Este bot foi feito com muito carinho por Nós,Caso use algum código daqui por favor coloque os Créditos.
 
-Não irei ajudar em relação dos Códigos.
-
+# Códigos
+Nós(Darks e Mr) não temos obrigação nenhuma de ajudar em relação de Código ou orientar sobre como ligar. Afinal, isso é problema seu né. Boa Sorte para tentar ligar o bot.
