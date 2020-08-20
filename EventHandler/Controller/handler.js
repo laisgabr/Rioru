@@ -1,20 +1,21 @@
 module.exports.run = async(bot, message, args, queue, command, prefix) => {
-// Fun
 const configF = require('../Info/FunDB.json')
-
 const configM = require('../Info/MiscelaneaDB.json')
+const configMod = require('../Info/ModDB.json')
 
 const ac = command
 
+// Fun 
  if(ac === configF.a || ac === configF.aa || ac === configF.b || ac === configF.bb || ac === configF.c || ac === configF.cc || ac === configF.d || ac === configF.dd || ac === configF.e || ac === configF.ee || ac === configF.eee) {
    const Fun = require('../Fun')
    delete require.cache[require.resolve(`../Fun`)];
    return Fun.run(bot, message, args, command, queue)
 }
-
+// Miscelanea
 if(ac === configM.a || ac === configM.aa || ac === configM.b || ac === configM.bb || ac === configM.c || ac === configM.cc || ac === configM.d || ac === configM.dd || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. || ac === configM. ) {
   const Misc = require('../Miscelanea')
-  ret
+  delete require.cache[require.resolve(`../Miscelanea`)];
+  return Misc.run(bot, message, args, command, queue)
 }
  try {
     // Categoria Moderação
