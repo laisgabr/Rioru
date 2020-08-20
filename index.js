@@ -1,3 +1,4 @@
+
 const Discord = require('discord.js')
 const bot = new Discord.Client()
 const config = require('./config.json')
@@ -107,7 +108,9 @@ let args = message.content.split(" ").slice(1);
     command = command.slice(config.prefix.length)
 
     var handler = require('./EventHandler/Controller/handler')
+    console.log("a")
     return handler.run(bot, message, args, command, config.prefix)
+    
 });
 
 bot.login(config.token)
