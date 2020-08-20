@@ -1,0 +1,46 @@
+{
+  "a": "ajuda",
+  "aa": "help",
+  
+  "b": "avatar",
+  "bb": "av",
+
+  "c": "botinfo",
+  "cc": "bi",
+
+  "d": "djs",
+  "dd": "discordjs",
+  "ddd": "discord.js",
+  "dddd": "docs",
+
+  "e": "donate",
+  "ee": "doar",
+  
+  "f": "invite",
+  "ff": "convite",
+
+  "g": "ping",
+  "gg": "latency",
+  "ggg": "latencia",
+  
+  "h": "say",
+  "hh": "falar",
+  
+  "i": "serverinfo",
+  "ii": "si",
+
+  "j": "setAFK",
+  "jj": "setarAFK",
+
+  "k": "setNick",
+  "kk": "setNickname",
+  "kkk": "setarNick",
+  "kkkk": "setarNickname",
+
+
+  "l": "uptime",
+  "ll": "TimeOn",
+
+  "m": "userinfo",
+  "mm": "ui",
+}
