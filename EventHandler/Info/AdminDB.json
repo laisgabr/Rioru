@@ -1,0 +1,12 @@
+{
+    "a": "lock",
+    "aa": "bloqueiar", 
+    "aaa": "travar",
+
+    "b": "unlock",
+    "bb": "desbloqueiar",
+    "bbb": "destravar",
+
+    "c": "clear",
+    "cc": "limpar"
+}
