@@ -100,7 +100,7 @@ if (authorStatus) {
     let command = message.content.split(" ")[0]
     command = command.slice(config.prefix.length)
 
-    var handler = require('./EventHandler/handler')
+    var handler = require('./EventHandler/Controller/handler')
     return handler.run(bot, message, args, queue, command, config.prefix)
 });
 
