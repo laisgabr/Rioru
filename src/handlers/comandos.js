@@ -13,6 +13,6 @@ module.exports = (client) => {
             if (comando.config.aliases) comando.config.aliases.forEach(a => client.aliases.set(a, comando.config.name));
         };
     };
-    ["Ajuda","Ajuda","Developer","Developer","Miscelanea","Miscelanea"].forEach(x => load(x)); 
+    ["Ajuda","Ajuda","Developer","Developer","Miscelanea","Miscelanea","Nsfw","Nsfw"].forEach(x => load(x)); 
     
 }

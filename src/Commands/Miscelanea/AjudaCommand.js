@@ -6,6 +6,6 @@ module.exports = {
 		category: "Miscelanea"
 	},
     run: async (client, message, args) => {
-        
+        message.channel.send("Certo")
     }
 }

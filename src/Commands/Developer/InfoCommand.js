@@ -6,6 +6,6 @@ module.exports = {
 		category: "Developer"
 	},
     run: async (client, message, args) => {
-        
+        const { MessageEmbed } = require('discords')
     }
 }
