@@ -6,26 +6,23 @@ module.exports = {
 		category: "Music"
 	},
     run: async (client, message, args) => {
-		const { voiceChannel } = message.member.voice
+		const { voiceChannel } = message.member;
 		
 		const { Utils } = require("erela.js")
-		const { MessageEmbed } = require("discord.js")
-		
-		if (!voiceChannel) return message.channel.send("Voce precisa estar num canal de voz");
-
-        const permissions = voiceChannel.permissionsFor(bot.user);
-        if (!permissions.has("CONNECT")) return message.channel.send("Eu não consigo Conectar no canal por falta de permissão");
-        if (!permissions.has("SPEAK")) return message.channel.send("Eu não tenho a Permissão Falar");
+        const { MessageEmbed } = require("discord.js")
+        
+        if (!message.guild.me.hasPermission("CONNECT")) return message.channel.send("Eu não consigo Conectar no canal por falta de permissão");
+        if (!message.guild.me.hasPermission("SPEAK")) return message.channel.send("Eu não tenho a Permissão Falar");
 
         if (!args[0]) return message.channel.send("Por favor, Fale o nome da música ou um link");
 
-        const player = bot.music.players.spawn({
+        const player = client.music.players.spawn({
             guild: message.guild,
             textChannel: message.channel,
             voiceChannel
         });
 
-        bot.music.search(args.join(" "), message.author).then(async res => {
+        client.music.search(args.join(" "), message.author).then(async res => {
             switch (res.loadType) {
                 case "TRACK_LOADED":
                     player.queue.add(res.tracks[0]);
