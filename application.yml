@@ -30,7 +30,7 @@ sentry:
 logging:
   file:
     max-history: 30
-    max-size: 1GB
+    max-size: 240MB
   path: ./logs/
 
   level:
