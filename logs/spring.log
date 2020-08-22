@@ -138,3 +138,5 @@
 2020-08-22 03:07:20.654  INFO 2254 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
 2020-08-22 03:07:33.280  INFO 2254 --- [XNIO-1 task-2] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:38694
 2020-08-22 03:07:33.294  INFO 2254 --- [XNIO-1 task-2] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:38694
+2020-08-22 03:28:27.526  INFO 2254 --- [XNIO-1 I/O-2] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:38694 -- CloseStatus[code=1006, reason=]
+2020-08-22 03:28:27.559  INFO 2254 --- [XNIO-1 I/O-2] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
