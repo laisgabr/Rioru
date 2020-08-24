@@ -1,27 +1,35 @@
 module.exports = async client => {
-   const { ErelaClient } = require('erela.js')
-
-    client.music = new ErelaClient(client, [
-        {
-            host: "localhost",
-            port: 2333,
-            password: "team"
-        }
-    ])
     const print = console.log
 
-    client.musicPlayers = new Map();
-    print('Tentando carregar o node baiano do Lavalink');
-    client.music.on("nodeConnect", node => print("Node Conectado! yay"));
-    client.music.on("nodeError", (node, error) => print(`Node error: ${error.message}`));
-    client.music.on("trackStart", (player, track) => player.textChannel.send(`Tocando agora: ${track.title}`));
-    client.music.on("queueEnd", player => {
-        player.textChannel.send("Lista de reprodução acabou!")
-        client.music.players.destroy(player.guild.id);
+    const erela = require("erela.js")
+    const nodes = [
+        {
+          tag: 'Palmeiras', 
+          host: 'localhost',
+          port: 2333,
+          password: 'team'
+        },        
+      ] 
+
+    client.manager = new erela.ErelaClient(client, nodes)
+    
+    .on('nodeConnect', node => print(`Lavalink ligado.`))
+    .on('nodeError', (node, err) => print("Deu erro:" + err.message))
+    .on('trackStart', async (player, track) => {
+            client.channels.cache.get(player.textChannel.id).send(`Tocando agora: ${track.title}...`);
+        })
+    
+    .on('queueEnd', async player => {
+        player.textChannel.send("Acabaram minhas músicas.");
+        await client.manager.players.destroy(player.guild);
+        await player.voiceChannel.leave();
+    })
+    .on('playerMove', (player, currentChannel, newChannel) => {
+        player.voiceChannel = client.channels.cache.get(newChannel)
     });
-        console.log("Carregando Evento Ready e Message...")
-        console.log(`Carregando Comandos...`);
-        console.log(`Logada como ${client.user.tag}`);
+        print("Carregando Evento Ready e Message...")
+        print(`Carregando Comandos...`);
+        print(`Logada como ${client.user.tag}`);
         let status = [
             `Meu prefixo é ya! :D`,
             `Sabia que tenho um sistema de músicas em desenvolvimento ?`,
