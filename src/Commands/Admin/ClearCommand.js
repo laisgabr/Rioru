@@ -2,7 +2,7 @@ module.exports = {
 	config: {
 		name: 'clear',
 		aliases: ['limpar'], 
-        description: "",
+    description: "",
 		category: "Admin"
 	},
     run: async (client, message, args) => {

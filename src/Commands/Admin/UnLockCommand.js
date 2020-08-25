@@ -2,7 +2,7 @@ module.exports = {
 	config: {
 		name: 'unlock',
 		aliases: ['destravar', 'desbloqueiar'], 
-        description: "",
+    description: "",
 		category: "Admin"
 	},
     run: async (client, message, args) => {

@@ -6,20 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "Lavalink",
+    "discord.js",
+    "NodeJS"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "akaneko": "^3.0.2",
     "avconv": "^3.1.0",
     "discloud-status": "^0.1.6",
-    "discord.js": "^12.3.1",
+    "discord.js": "^12.2.0",
     "erela.js": "^1.1.8",
     "ffmpeg": "0.0.4",
     "fs": "0.0.1-security",
     "gorilink": "^1.2.0",
     "jimp": "^0.16.0",
     "moment": "^2.27.0",
+    "mongoose": "^5.10.0",
     "ms": "^2.1.2",
     "parse-ms": "^2.1.0",
     "superagent": "^6.0.0",

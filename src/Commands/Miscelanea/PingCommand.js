@@ -21,7 +21,7 @@ module.exports = {
       .setDescription(`Será que o Ping está bom ?`)
       .setColor("RED")
       .addField(`🏓 Minha Latência é de`, `${m.createdTimestamp - message.createdTimestamp} ms`)
-      .addField(`📡 Latência Da API é de`, `${Math.round(bot.ws.ping)} ms`)
+      .addField(`📡 Latência Da API é de`, `${Math.round(client.ws.ping)} ms`)
       .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
       m.edit(embedB)

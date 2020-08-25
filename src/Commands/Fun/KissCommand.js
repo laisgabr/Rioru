@@ -6,6 +6,8 @@ module.exports = {
 		category: "Fun"
 	},
     run: async (client, message, args) => {
+        const superagent = require('superagent')
+        const Discord = require('discord.js')
         let uuser = message.mentions.users.first() || client.users.cache.get(args[0]) || message.guild.members.cache.find(mem => mem.user.username === args.join(" "))
         if (!uuser) {
             return message.reply("Mencione ou mande um id ou digite um username")

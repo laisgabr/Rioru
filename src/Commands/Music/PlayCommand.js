@@ -11,12 +11,13 @@ module.exports = {
         if(!VoiceCanal) {
             return message.channel.send("Vc n ta em um canal de voz rombado")
         }
-        VoiceCanal.join
+
+        let connection = await message.member.voice.channel.join();
         const player = client.manager.players.spawn({
             guild: message.guild.id,
             textChannel: message.channel.id
         });
-    
+
         const res = await client.manager.search(args.join(" "), message.author);
         if(!res) return message.channel.send("Não encontrei essa música.")
     
@@ -27,7 +28,7 @@ module.exports = {
             message.channel.send('Adicionei a playlist em minha queue!');
            }
            for(const track of tracks) player.queue.add(track);
-           if(!player.playing) player.play();
+           if(!player.playing) connection.player.play();
         } else {
             player.queue.add(res.tracks[0]);
             if(client.manager.players.get(message.guild.id).queue.length !== 0) {
