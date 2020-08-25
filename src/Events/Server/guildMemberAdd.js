@@ -1,5 +1,5 @@
 module.exports = async(membro, client, guild) => {
-    if(guild !== "746434115682828469") {
+    if(guild.id !== "746434115682828469") {
      console.log("Server errado")
     } else {
         const { MessageEmbed } = require('discord.js')

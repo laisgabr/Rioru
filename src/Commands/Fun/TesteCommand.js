@@ -41,7 +41,7 @@ const Discord = require('discord.js')
     const pag5
     */
 
-   message.channel.send(initpage).then(async msg => {
+   const msg = await message.channel.send(initpage)
     
     await msg.react('👑')
     await msg.react('💸')
@@ -64,14 +64,14 @@ const Discord = require('discord.js')
         await msg.edit(pag2)
     })
     
-    Seta.on('collect', async client => {
-        if(msg === initpage) {
-            await msg.edit(pag1)
+    Seta.on('collect', async r => {
+        if(msg = initpage) {
+            msg.edit(pag1)
         }
       })
-    })
-} catch (err) {
-    console.error(err)
-}
+    
+     } catch (err) {
+      console.error(err)
+    }
   }
 }

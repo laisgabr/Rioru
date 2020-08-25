@@ -7,8 +7,11 @@ module.exports = {
 	},
     run: async (client, message, args) => {
 		const dizer = args.join(" ").slice(1)
-		if(!dizer) {
-			return message.channel.send("")
+		if(!args[0]) {
+			return message.channel.send("***O " + message.author + "mandou eu dizer nada ¯\_(ツ)_/¯")
+		}
+		if(message.member.permissions.has("ADMINISTRATOR")) {
+			return message.channel.send(dizer)
 		}
     message.channel.send(`***O <@${message.author.id}> mandou eu dizer..***   ` + dizer)
     }
