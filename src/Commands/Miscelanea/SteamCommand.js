@@ -1,8 +1,8 @@
 module.exports = {
     config: {
-        name: "spotify",
+        name: "steam",
         aliases: [],
-        description: "",
+        description: '',
         category: "Miscelanea"
     },
     run: async(client, message, args) => {

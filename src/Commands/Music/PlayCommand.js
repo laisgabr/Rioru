@@ -6,34 +6,23 @@ module.exports = {
 		category: "Music"
 	},
     run: async (client, message, args) => {
-        const VoiceCanal = message.member.voice
-        console.log(VoiceCanal)
-        if(!VoiceCanal) {
-            return message.channel.send("Vc n ta em um canal de voz rombado")
-        }
+    const memberChannel = message.member.voice.channel.id
+    console.log(message.author.username)
 
-        let connection = await message.member.voice.channel.join();
-        const player = client.manager.players.spawn({
-            guild: message.guild.id,
-            textChannel: message.channel.id
-        });
+    if(!memberChannel) return message.channel.send('Voce não está num canal de voz')
 
-        const res = await client.manager.search(args.join(" "), message.author);
-        if(!res) return message.channel.send("Não encontrei essa música.")
-    
-        if(res.loadType === "PLAYLIST_LOADED") {
-           const tracks = res.playlist.tracks; 
-           
-           if(client.manager.players.get(message.guild.id).queue.length !== 0) {
-            message.channel.send('Adicionei a playlist em minha queue!');
-           }
-           for(const track of tracks) player.queue.add(track);
-           if(!player.playing) connection.player.play();
-        } else {
-            player.queue.add(res.tracks[0]);
-            if(client.manager.players.get(message.guild.id).queue.length !== 0) {
-                message.channel.send('Adicionei a playlist em minha queue!');
-            }
-        }
+    const player = await client.music.join({
+      guild: message.guild.id,
+      voiceChannel: memberChannel,
+      textChannel: message.channel
+    })
+ 
+    const { tracks } = await client.music.fetchTracks(args.join(' '))
+ 
+    player.queue.add(tracks[0])
+ 
+    message.channel.send('Adicionado na Lista de Reprodução: ' + tracks[0].info.title)
+ 
+    if (!player.playing) return player.play()
     }
 }

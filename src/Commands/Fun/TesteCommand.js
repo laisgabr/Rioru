@@ -65,9 +65,9 @@ const Discord = require('discord.js')
     })
     
     Seta.on('collect', async r => {
-        if(msg = initpage) {
+        if(msg !== initpage) {
             msg.edit(pag1)
-        }
+        } 
       })
     
      } catch (err) {
