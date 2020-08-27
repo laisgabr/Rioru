@@ -1,15 +1,20 @@
 module.exports = {
 	config: {
-		name: 'eval', // nome do comando
-		aliases: ['ev'], // se quiser aliases, só colocar:          aliases: ['aliase1', 'aliase2', 'aliase3']  etc.
+		name: 'eval', 
+		aliases: ['ev'], 
         description: "",
-		category: "Developer" // muita atenção com isso! este campo tem que corresponder a um nome de uma das pastas das categorias, dentro da pasta de comandos!
+		category: "Developer"
 	},
 	run: async (client, message, args) => {
-		const { inspect } = require('util')
-		if(message.author.id !== '468817505318862882') return message.channel.send("Você não tem permissão para utilizar esse comando!");
+		const { inspect } = require('util') /* const a = return*/
+        if (!['468817505318862882', '738509296131637378', '330879828683390976', '336946966929866752'].includes(message.author.id)) {
+            return message.channel.send('Some daq');
+    };
+
         const input = args.join(" ");
         try {
+            if(message.content === 'ya!eval client.token') return message.reply(":thumbsup:")
+            if(message.content === 'ya!eval config.token') return message.reply(":thumbsup:")
             let output = eval(input);
 
             if(typeof output !== "string") output = inspect(output);

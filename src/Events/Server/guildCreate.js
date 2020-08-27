@@ -6,6 +6,6 @@ module.exports = async (client, guild) => {
     .setDescription(`Nome do Servidor: ${guild.name}(${guild.id})` )
     .addField(`Dono(a) do Servidor: `, `${guild.owner.user.tag}(${guild.owner.id})`)
     .setThumbnail(guild.iconURL({ dynamic: true }))
-    client.channels.cache.get("747596330162978948").send(embed)
+    client.channels.cache.get("748356411422933004").send(embed)
     
 }

@@ -7,7 +7,9 @@ module.exports = {
 	},
     run: async (client, message, args) => {
     
-    if(message.author.id !== process.env.OWNERS) return message.reply('Sem Permissão')
+    if (!['468817505318862882', '738509296131637378', '330879828683390976', '336946966929866752'].includes(message.author.id)) {
+    return message.channel.send('Some daq');
+    };
     const msg = await message.channel.send('Tem certeza que você quer me desligar ?')
     await msg.react('✅')
     await msg.react('❌')
@@ -21,6 +23,7 @@ module.exports = {
     sim.on('collect', async r => {
     message.delete()
     message.channel.send('Ok, Estou desligando')
+    client.destroy()
     process.exit()
     });
 

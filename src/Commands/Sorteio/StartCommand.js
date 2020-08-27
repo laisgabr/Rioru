@@ -6,6 +6,6 @@ module.exports = {
 		category: "Sorteio"
 	},
     run: async (client, message, args) => {
-        
+        message.channel.send("Comando em construção")
     }
 }

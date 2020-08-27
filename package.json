@@ -2,7 +2,7 @@
   "name": "asuna",
   "version": "1.0.0",
   "description": "",
-  "main": "src/YuukiAsunaClient.js",
+  "main": "YuukiAsunaClient.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
