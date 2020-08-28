@@ -1,16 +1,16 @@
 module.exports = {
     config: {
-        name: "neko",
-        aliases: ['nekogif'],
-        description: "",
-        category: ""
+        name: "kuni",
+        aliases: [],
+        description: '',
+        category: "Nsfw"
     },
-   run: async(client, message, args) => {
-    const Discord = require('discord.js')
+    run: async(client, message, args) => {
+  const Discord = require('discord.js')
   const superagent = require('superagent')
 
  if(message.channel.nsfw === true) {
- superagent.get('https://nekos.life/api/v2/img/nsfw_neko_gif')
+ superagent.get('https://nekos.life/api/v2/img/kuni')
  .end((err, response) => {
      const embed = new Discord.MessageEmbed()
      .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
@@ -20,6 +20,7 @@ module.exports = {
     })
    } else {
        return message.channel.send("Esse canal não é de NSFW +18")
-   }      
    }
+  
+    }
 }

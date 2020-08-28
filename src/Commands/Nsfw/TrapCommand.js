@@ -12,6 +12,7 @@ module.exports = {
 		superagent.get('https://nekos.life/api/v2/img/trap')
 		.end((err, response) => {
 			const embed = new Discord.MessageEmbed()
+			.setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
 			.setImage(response.body.url)
 			.setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 			message.channel.send(embed)

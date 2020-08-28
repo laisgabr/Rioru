@@ -6,10 +6,11 @@ module.exports = {
 		category: "Music"
 	},
     run: async (client, message, args) => {
+      const voiceCanal = message.member.voice
+      if(!voiceCanal) {
+        return message.channel.send("Voce não está num canal de voz")
+      }
     const memberChannel = message.member.voice.channel.id
-    console.log(message.author.username)
-
-    if(!memberChannel) return message.channel.send('Voce não está num canal de voz')
 
     const player = await client.music.join({
       guild: message.guild.id,

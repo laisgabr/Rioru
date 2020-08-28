@@ -14,6 +14,7 @@ module.exports = {
 			.query({ type: 'pgif'})
 			.end((err, response) => {
 				const embed = new Discord.MessageEmbed()
+				.setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.message})`)
 				.setImage(response.body.message)
 				.setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
 				message.channel.send(embed);
