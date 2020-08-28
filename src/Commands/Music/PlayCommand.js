@@ -6,7 +6,7 @@ module.exports = {
 		category: "Music"
 	},
     run: async (client, message, args) => {
-      const voiceCanal = message.member.voice
+      const voiceCanal = message.member.voice.channel
       if(!voiceCanal) {
         return message.channel.send("Voce não está num canal de voz")
       }
