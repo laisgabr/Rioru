@@ -2,13 +2,13 @@ module.exports = {
 	config: {
 		name: 'userinfo',
 		aliases: ['ui'], 
-        description: "",
+    description: "",
 		category: "Miscelanea"
 	},
     run: async (client, message, args) => {
-        const Discord = require('discord.js')
-        const moment = require('moment')
-       moment.locale("pt-BR")
+  const { MessageEmbed } = require('discord.js')
+  const moment = require('moment')
+  moment.locale("pt-BR")
   let permissions = []
   const msg = message 
 
@@ -79,7 +79,7 @@ module.exports = {
       uinfo = msg.mentions.users.first() || client.users.cache.get(args[0]) || msg.author
     }
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
       .setTitle(`${status[uinfo.presence.status].msg} ${uinfo.username}`)
       .setThumbnail(user.displayAvatarURL({ dynamic: true, size: 2048 }))
       .setColor("PURPLE")
@@ -133,7 +133,7 @@ module.exports = {
      const roles = uuser.roles.cache.filter(r => r.id !== message.guild.id).map(r => r).join(", ") || 'Sem Cargos';
 
       Uinfos.on('collect', r2 => {
-        let Uinfos = new Discord.MessageEmbed()
+        let Uinfos = new MessageEmbed()
           .setTitle(`${status[uinfo.presence.status].msg} ${uinfo.username}`)
           .setThumbnail(user.displayAvatarURL({ dynamic: true, size: 2048 }))
           .setColor("PURPLE")

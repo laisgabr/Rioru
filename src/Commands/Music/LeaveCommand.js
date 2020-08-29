@@ -15,9 +15,8 @@ module.exports = {
     
     const player = await client.music.leave({
       guild: message.guild.id,
-      voiceChannel: memberChannel,
-      textChannel: message.channel
     })
-   const entrar = player
+   if(player.playing) return player
+   if(!player.playing) return player
   }
 }

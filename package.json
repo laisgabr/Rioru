@@ -23,12 +23,13 @@
     "fs": "0.0.1-security",
     "gorilink": "^1.2.0",
     "jimp": "^0.16.0",
+    "lyrics-finder": "^21.3.2",
     "moment": "^2.27.0",
     "mongoose": "^5.10.0",
     "ms": "^2.1.2",
     "nekos.life": "^2.0.7",
     "parse-ms": "^2.1.0",
-    "pornhub-api": "0.0.1",
+    "steam-provider": "^0.3.2",
     "superagent": "^6.0.0",
     "util": "^0.12.3"
   }

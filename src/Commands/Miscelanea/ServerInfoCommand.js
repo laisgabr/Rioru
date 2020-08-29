@@ -6,11 +6,11 @@ module.exports = {
 		category: "Miscelanea"
 	},
     run: async (client, message, args) => {
-    const Discord = require('discord.js');
+    const { MessageEmbed } = require('discord.js');
     const moment = require('moment');
     moment.locale("pt-BR")
      
-    const ServerEmb = new Discord.MessageEmbed()
+    const ServerEmb = new MessageEmbed()
     .setTitle(`Informações sobre ${message.guild.name}`)
     .setColor("RED")
     .addField("📝 Nome do Servidor :", `\`${message.guild.name}\`(\`${message.guild.id}\`)`)

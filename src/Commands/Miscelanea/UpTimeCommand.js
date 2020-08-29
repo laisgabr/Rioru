@@ -6,6 +6,8 @@ module.exports = {
 		category: "Miscelanea"
 	},
     run: async (client, message, args) => {
+    const { MessageEmbed } = require('discord.js')
+
     let totalSeconds = bot.uptime / 1000;
     let dias = Math.floor(totalSeconds / 86400);
     let horas = Math.floor(totalSeconds / 3600);
@@ -15,7 +17,7 @@ module.exports = {
 
     let uptime = `🗓️ ${dias.toFixed()} dias\n🗓️ ${horas.toFixed()} horas\n🗓️ ${minuto.toFixed()} minutos\n🗓️ ${segundo.toFixed()} segundos`;
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
     .setTitle(`Tempo de atividade 🕰️`)
     .setThumbnail("https://imgur.com/WZMylbw.gif")
     .setColor("RANDOM")

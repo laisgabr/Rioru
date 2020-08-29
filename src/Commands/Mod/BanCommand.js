@@ -40,7 +40,7 @@ module.exports = {
    const collectorDaMsg = msg.createReactionCollector(sim)
    const collectorNo = msg.createReactionCollector(no)
 
-   collectorDaMsg.on('collect',async r => {
+   collectorDaMsg.on('collect', async r => {
     membro.ban({reason: motivo})
     msg.delete()
     const embed = new Discord.MessageEmbed()

@@ -18,6 +18,6 @@ module.exports = {
       textChannel: message.channel
     })
    const entrar = player 
-   message.channel.send("Entrei no canal de voz!") 
+   message.react("👌") 
   }
 }
