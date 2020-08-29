@@ -1,4 +1,4 @@
-const { readdirSync } = require('fs'); // precisa do fs instalado ( npm i fs )
+const { readdirSync } = require('fs')
 
 module.exports = (client) => {
 
