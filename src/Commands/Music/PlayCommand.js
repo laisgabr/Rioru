@@ -1,12 +1,12 @@
 module.exports = {
 	config: {
-		name: 'play',
-		aliases: ['p'], 
-    description: "",
-		category: "Music"
+	  name: 'play',
+	  aliases: ['p'], 
+          description: "",
+	  category: "Music"
 	},
     run: async (client, message, args) => {
-      
+      /*
       if(!args.join(" ")) {
         return message.channel.send("Voce não forneceu um nome ou um url")
       }
@@ -31,5 +31,7 @@ module.exports = {
     message.channel.send('Adicionado na Lista de Reprodução: ' + tracks[0].info.title)
  
     if (!player.playing) return player.play()
+    */
+message.channel.send("Desativado temporariamente")
     }
 }
