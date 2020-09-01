@@ -6,6 +6,7 @@ module.exports = {
         category: "Music"
     },
     run: async(client, message, args) => {
+/*
    const canalVoz = message.member.voice.channel
    if(!canalVoz) {
         return message.channel.send("Voce não está num canal de voz para fazer isso!")
@@ -19,5 +20,6 @@ module.exports = {
     })
    const entrar = player 
    message.react("👌") 
+*/
   }
 }
