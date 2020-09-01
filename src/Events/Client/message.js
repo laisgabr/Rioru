@@ -1,7 +1,11 @@
 const { prefix } = require("../../../config.json");
+const fs = require("fs")
 
 module.exports = async (client, message) => {
 
+    let bl = require('../../Database/Blacklist.json')
+
+    if (bl[message.author.id] === true) return;
     if (message.author.bot) return; 
     if(message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>' || message.content === '<!@711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu prefixo é \`ya!\`. Use \`ya!ajuda\` ou \`ya!info\` para mais Informações.`)
 

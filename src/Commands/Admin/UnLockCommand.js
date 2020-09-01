@@ -15,17 +15,16 @@ module.exports = {
   return message.reply("Eu não tenho a Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar")
   } else {              
   
-    message.channel.overwritePermissions(message.guild.roles, {
-  SEND_MESSAGES: true,
-  ADD_REACTIONS: true
-  });          
+    await message.channel.updateOverwrite(message.guild.roles.everyone, {
+      SEND_MESSAGES: true
+});
   
   const embedLock = new Discord.MessageEmbed()
-  .setTitle(`<a:verificado_fs:733872377569607773> Canal Desbloqueado com Sucesso!!  Use ya!unlock para Desbloqueiar o canal`)
+  .setTitle(`<a:verificado_fs:733872377569607773> Canal Desbloqueado com Sucesso!!`)
   .setColor("RED")
   const msg = await message.channel.send(embedLock)
   await msg.react('🍪')
-  }           
+   }           
   } catch (err) {
   
     console.error("Erro: " + err)

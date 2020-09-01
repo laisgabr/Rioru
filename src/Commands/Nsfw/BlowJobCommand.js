@@ -10,7 +10,7 @@ module.exports = {
   const superagent = require('superagent')
 
  if(message.channel.nsfw === true) {
- superagent.get('https://nekos.life/api/v2/img/bj')
+ superagent.get('https://love-you.xyz/api/v2/blowjob')
  .end((err, response) => {
      const embed = new Discord.MessageEmbed()
      .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)

@@ -36,5 +36,5 @@ module.exports = async client => {
     setInterval(() => client.user.setActivity(`${status[i++ % status.length]}`, {
         type: "STREAMING",
         url: "https://www.twitch.tv/mrgamingbr0001"
-    }), 1000 * 60);
+    }), 15000);
 };

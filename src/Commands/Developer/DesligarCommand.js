@@ -9,7 +9,8 @@ module.exports = {
     
     if (!['468817505318862882', '738509296131637378', '330879828683390976', '336946966929866752'].includes(message.author.id)) {
     return message.channel.send('Some daq');
-    };
+    }
+    
     const msg = await message.channel.send('Tem certeza que você quer me desligar ?')
     await msg.react('✅')
     await msg.react('❌')

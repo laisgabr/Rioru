@@ -23,6 +23,7 @@
     "fs": "0.0.1-security",
     "gorilink": "^1.2.0",
     "jimp": "^0.16.0",
+    "loveyou-api": "^1.0.8",
     "lyrics-finder": "^21.3.2",
     "moment": "^2.27.0",
     "mongoose": "^5.10.0",
