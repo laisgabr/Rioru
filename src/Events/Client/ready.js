@@ -1,6 +1,6 @@
 module.exports = async client => {
     const print = console.log
-  /*
+  
     const { GorilinkManager } = require('gorilink')
  
     const nodes = [
@@ -19,7 +19,7 @@ module.exports = async client => {
         .on('trackStart', (player, track) => {
           player.textChannel.send(`Tocando agora: \`${track.info.title}\``)
         })
-*/
+
         print("Carregando Evento Ready e Message...")
         print(`Carregando Comandos...`);
         print(`Logada como ${client.user.tag}`);

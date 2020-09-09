@@ -2,7 +2,7 @@ module.exports = {
 	config: {
 		name: 'avatar',
 		aliases: ['av'], 
-        description: "",
+    description: "",
 		category: "Miscelanea"
 	},
     run: async (client, message, args) => {
