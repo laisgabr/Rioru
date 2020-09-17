@@ -4,14 +4,6 @@ const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')
 
-async function tnaiStart () {
-const Tnai = require('tnai')
-const tnai = new Tnai()
-console.log(await tnai.real.traps())
-}
-
-tnaiStart()
-
 module.exports = class Bot extends Client {
   constructor (options = {}) {
     super(options)

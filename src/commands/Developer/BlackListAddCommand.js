@@ -13,13 +13,14 @@ module.exports = class extends Command {
         })
     }
    async run ({ channel, author, args, mentions }) {
-        const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) 
+    let motivoBl = args.slice(1).join(' ')
+    if (!motivoBl) motivoBl = 'Não Definido'
+
+    const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) 
         if (!uuser) {
            return channel.send('Diga um id')
         }
-        let motivoBl = args.slice(1).join(' ')
-        if (!motivoBl) motivoBl = 'Não Definido'
-        
+
         const firebase = require('firebase')
         const database = firebase.database()
 

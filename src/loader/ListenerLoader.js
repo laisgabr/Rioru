@@ -21,8 +21,8 @@ module.exports = class ListenerLoader extends Loader {
     }
   }
 
-  initListeners (dir = 'src/listeners/Discord') {
-    this.log('Carregando Listeners/Eventos', 'listeners')
+  initListeners (dir = 'src/listeners/Client') {
+    this.log('Carregando Listeners/Eventos', 'Listeners')
     return requireDirectory({ dir }, (error, Listener) => {
       if (error) {
         console.error('Erro: ' + error.message, 'erro')

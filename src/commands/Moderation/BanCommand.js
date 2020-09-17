@@ -51,7 +51,7 @@ module.exports = class extends Command {
 
    collectorDaMsg.on('collect', async r => {
     membro.ban({ reason: motivo })
-    msg.delete()
+    msge.delete()
     const embed = new Discord.MessageEmbed()
     .setTitle(":fire:Membro(a) Banido(a)!:fire:")
     .setColor("#bb00ff")
@@ -67,7 +67,7 @@ module.exports = class extends Command {
    })
 
    collectorNo.on('collect', r => {
-     msg.delete()
+     msge.delete()
      })
   }
 }

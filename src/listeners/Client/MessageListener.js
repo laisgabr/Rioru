@@ -16,13 +16,6 @@ module.exports = class MessageListener extends Listener {
   }
 
  async run (message, author) {
-    const { CooldownManager } = require('../../util')
-    const cooldownManager = CooldownManager(1000 * 60)
-
-    if (!cooldownManager.has(message.author.id)) {
-      cooldownManager.add(message.author.id)
-    }
-
     if (message.author.bot || message.channel.type !== 'text') return
       const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
         if (aa.val()) {
@@ -122,10 +115,7 @@ module.exports = class MessageListener extends Listener {
     const cmd = args.shift().toLowerCase()
     const command = this.commands.find(({ name, aliases }) => name === cmd || aliases.includes(cmd))
     
-    const firebase = require('firebase')
-    const database = firebase.database()
-
-    const context = new CommandContext(message, args, cmd, prefix, database)
+    const context = new CommandContext(message, args, cmd, prefix)
 
     if (command) command.preLoad(context)
   }

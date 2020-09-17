@@ -15,12 +15,16 @@ module.exports = class SetNickCommand extends Command {
         })
     }
     run ({ channel, args, guild, author, mentions, member }) {
-    const newnick = args.join(" ")
+    const newnick = args.join(' ')
     
    let uuser = mentions.users.first() || author
 
    if (!member.permissions.has("ADMINISTRATOR")) {
     uuser = author    
+    } else {
+        if (!uuser) {
+            uuser = author
+        }
     }
 
     if (!guild.me.permissions.has("MANAGE_NICKNAMES")) {
@@ -32,7 +36,5 @@ module.exports = class SetNickCommand extends Command {
         console.log(err)
         return channel.send(err)
     })
-
- channel.send("Seu nickname deve ter sido setado")
-    }
+  }
 }
