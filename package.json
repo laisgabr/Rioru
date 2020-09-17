@@ -1,34 +1,37 @@
 {
-  "name": "asuna",
+  "name": "boilerplate",
   "version": "1.0.0",
-  "description": "",
-  "main": "YuukiAsunaClient.js",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r dotenv/config index.js",
+    "dev": "nodemon",
+    "lint": "eslint ."
   },
-  "keywords": [
-    "Lavalink",
-    "discord.js",
-    "NodeJS"
-  ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "akaneko": "^3.0.2",
-    "avconv": "^3.1.0",
+    "discord-giveaways": "^4.2.1",
     "discord.js": "^12.2.0",
-    "erela.js": "^1.1.8",
-    "ffmpeg": "0.0.4",
-    "fs": "0.0.1-security",
-    "gorilink": "^1.2.0",
-    "loveyou-api": "^1.0.8",
-    "lyrics-finder": "^21.3.2",
+    "firebase": "^7.20.0",
+    "firebase-admin": "^9.1.1",
+    "gorilink": "^1.1.9",
+    "jimp": "^0.16.1",
     "moment": "^2.27.0",
     "ms": "^2.1.2",
-    "nekos.life": "^2.0.7",
-    "parse-ms": "^2.1.0",
+    "node-fetch": "^2.6.1",
+    "path": "^0.12.7",
     "steam-provider": "^0.3.2",
-    "superagent": "^6.0.0",
+    "superagent": "^5.2.2",
+    "tnai": "^1.0.3",
     "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.6.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.4"
   }
 }
