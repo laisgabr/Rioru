@@ -4,5 +4,6 @@ module.exports = {
   token: process.env.TOKEN,
   owners: JSON.parse(process.env.OWNERS),
   prefixes: JSON.parse(process.env.PREFIXES),
-  nodes: JSON.parse(process.env.LAVALINK_NODES)
+  nodes: JSON.parse(process.env.LAVALINK_NODES),
+  dbConfig: JSON.parse(process.env.FIREBASE_CONFIG)
 }

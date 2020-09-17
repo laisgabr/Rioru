@@ -3,7 +3,6 @@
 const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')
-const dbconfig = require('../config.json')
 
 async function tnaiStart () {
 const Tnai = require('tnai')
@@ -21,17 +20,17 @@ module.exports = class Bot extends Client {
       owners: options.owners,
       prefixes: options.prefixes,
       nodes: options.nodes,
-      database: options.database
+      dbConfig: options.dbConfig
     }
     var firebaseConfig = {
-      apiKey: dbconfig.apiKey,
-      authDomain: dbconfig.authDomain,
-      databaseURL: dbconfig.databaseURL,
-      projectId: dbconfig.projectId,
-      storageBucket: dbconfig.storageBucket,
-      messagingSenderId: dbconfig.messagingSenderId,
-      appId: dbconfig.appId,
-      measurementId: dbconfig.measurementId
+      apiKey: this.config.dbConfig,
+      authDomain: this.config.dbConfig,
+      databaseURL: 'https://asuna-a3d7a.firebaseio.com',
+      projectId: this.config.dbConfig,
+      storageBucket: this.config.dbConfig,
+      messagingSenderId: this.config.dbConfig,
+      appId: this.config.dbConfig,
+      measurementId: this.config.dbConfig
     }
     firebase.initializeApp(firebaseConfig)
 
