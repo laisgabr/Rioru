@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable quotes */
 /* eslint-disable no-eval */
 /* eslint-disable lines-between-class-members */
@@ -13,13 +14,14 @@ module.exports = class EvalCommand extends Command {
             devOnly: true
         })
     }
-    run ({ channel, content, args, msg }) {
+    run ({ channel, args }) {
         const { inspect } = require('util')
 
         const input = args.join(' ')
         try {
-            if (content === 'ya!ev this.client.token' || content === 'y!ev this.client.token') return msg.reply(":thumbsup:")
-            if (content === 'ya!eval this.client.token' || content === 'y!eval this.client.token') return msg.reply(":thumbsup:")
+            if (args[0] === 'this.client.token') {
+                channel.send('\`:thumbsup:\`')
+            }
             let output = eval(input)
 
             if (typeof output !== "string") output = inspect(output)

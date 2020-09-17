@@ -38,6 +38,14 @@ module.exports = class MessageListener extends Listener {
         `)
         }
   
+    this.database.ref(`Global/Economia/${message.author.id}`).once('value').then(async db => {
+      if (db.val() == null) {
+        this.database.ref(`Global/Economia/${message.author.id}`).set({
+          Coins: 0
+        })
+      }
+    })
+    
     this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
     .once('value').then(async db => {
       if (db.val() == null) {
