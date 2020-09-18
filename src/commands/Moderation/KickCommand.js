@@ -50,10 +50,24 @@ module.exports = class extends Command {
            const collectorNo = msg.createReactionCollector(no)
         
            collectorDaMsg.on('collect', async r => {
-            msg.delete()
+            msge.delete()
+            const embedPv = new Discord.MessageEmbed()
+            .setTitle(":thumbsup: Membro(a) Expulso(a)!")
+            .setColor("RED")
+            .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
+            .addField("👤 Expulso(a) :", membro.user.tag, false)
+            .addField("👮‍♂️ Quem Puniu:", author.tag, false)
+            .addField("📜 Motivo:", motivo, false)
+            .setTimestamp()
+            .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+            membro.send(embedPv).catch(err => {
+              channel.send(`Não foi possivel enviar a Mensagem na DM do Membro expulso devido a ${err}`)
+            })
+
             membro.kick({ reason: motivo })
+
             const embed = new Discord.MessageEmbed()
-            .setTitle(":fire:Membro(a) Expulso(a)!:fire:")
+            .setTitle(":thumbsup: Membro(a) Expulso(a)!")
             .setColor("RED")
             .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
             .addField("👤 Expulso(a) :", membro.user.tag, false)
@@ -64,6 +78,8 @@ module.exports = class extends Command {
         
              const abs = await channel.send(embed)
              await abs.react('🍪')
+
+             channel.send('Alguém mais quer ser expulso ? Hehehe')
            })
         
            collectorNo.on('collect', r => {

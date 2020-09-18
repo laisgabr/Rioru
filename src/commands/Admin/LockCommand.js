@@ -14,22 +14,24 @@ module.exports = class extends Command {
             category: 'Administration'
         })
     }
-   async run ({ channel, member, author, guild }) {
+   async run ({ channel, member, author, guild, mentions, args }) {
         const Discord = require('discord.js')
 
-      if (!member.hasPermission("MANAGE_MESSAGES", "MANAGE_CHANNELS")) {
+        const canal = mentions.channels.first() || guild.channels.cache.get(args[0]) || channel
+
+      if (!member.hasPermission(["MANAGE_MESSAGES", "MANAGE_CHANNELS"])) {
       return channel.send(`<@${author.id}>, Você não tem as Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar!`)
-      } else if (!guild.me.permissions.has("MANAGE_MESSAGES", "MANAGE_CHANNELS")) {
+      } else if (!guild.me.permissions.has(["MANAGE_MESSAGES", "MANAGE_CHANNELS"])) {
         return channel.send("Eu não tenho a Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar")
       } else {
-       await channel.updateOverwrite(guild.roles.everyone, {
+       await canal.updateOverwrite(guild.roles.everyone, {
           SEND_MESSAGES: false
     })
     
        const embedLock = new Discord.MessageEmbed()
        .setTitle(`<a:verificado_fs:733872377569607773>: Canal Bloqueiado com Sucesso!!  Use ya!unlock para Desbloqueiar o canal`)
        .setColor("RED")
-       const msg = await channel.send(embedLock)
+       const msg = await canal.send(embedLock)
        await msg.react('🍪')
       }
     }

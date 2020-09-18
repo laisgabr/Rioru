@@ -50,11 +50,23 @@ module.exports = class extends Command {
    const collectorNo = msge.createReactionCollector(no)
 
    collectorDaMsg.on('collect', async r => {
+    const embedPv = new Discord.MessageEmbed()
+    .setTitle(`:no_entry_sign: Você foi Banido de ${guild.name}(${guild.id})`)
+    .setColor("RED")
+    .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
+    .addField("👤 Banido(a) :", membro.user.tag, false)
+    .addField("👮‍♂️ Quem Puniu:", author.tag, false)
+    .addField("📜 Motivo:", motivo, false)
+    .setTimestamp()
+    membro.send(embedPv).catch(err => {
+      channel.send(`Não foi possivel enviar a mensagem para esse ex membro(a) por causa de ${err}`)
+    })
+
     membro.ban({ reason: motivo })
     msge.delete()
     const embed = new Discord.MessageEmbed()
-    .setTitle(":fire:Membro(a) Banido(a)!:fire:")
-    .setColor("#bb00ff")
+    .setTitle(":fire: Membro(a) Banido(a)! :fire:")
+    .setColor("RED")
     .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
     .addField("👤 Banido(a) :", membro.user.tag, false)
     .addField("👮‍♂️ Quem Puniu:", author.tag, false)
@@ -64,6 +76,7 @@ module.exports = class extends Command {
 
    const messageA = await channel.send(embed)
     await messageA.react('🍪')
+    channel.send('Alguém mais quer ser Banido? Hehehe')
    })
 
    collectorNo.on('collect', r => {

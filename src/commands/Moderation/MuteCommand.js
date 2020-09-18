@@ -18,7 +18,7 @@ module.exports = class extends Command {
             category: 'Moderation'
         })
     }
-   async run ({ channel, guild, mentions, args, author, msg, member }) {
+   async run ({ channel, guild, mentions, args, author, member }) {
         const ms = require("ms")
 
   var mutado = mentions.members.first() || guild.members.cache.get(args[0])
@@ -27,30 +27,46 @@ module.exports = class extends Command {
   if (mutado.id === author.id) return channel.send("Você não pode se mutar :v")
   var cargomute = guild.roles.cache.find(cargo => cargo.name === "Mutado")
   
-  if(!cargomute){
-    try{
-      guild.roles.create({
-    data: {
+  if (!cargomute) {
+  try{
+    guild.roles.create({
+  data: {
     name: "Mutado",
     color: 'RED',
     permissions: []
-    },
-  reason: 'Mute Role',
-  }) 
-   }catch(e){
-      console.log(e.stack)
-    }
-  }
+  },
+   reason: 'Mute Role',
+}) 
+   } catch (e) {
+    console.log(e.stack)
+   }
+}
  
-  var mutetime = args[1]
-  if(!mutetime) return channel.send("Diga um tempo por favor")
+  var time = args[1]
+  if(!time) return channel.send("Diga um tempo por favor")
   
+  time = await time.toString()
+
+        if (time.indexOf('s') !== -1) {
+            var tempoS = await time.replace(/s.*/, '')
+            var tempo = await tempoS * 1000
+        } else if (time.indexOf('m') !== 1) {
+            var tempoM = await time.replace(/m.*/, '')
+            tempo = await tempoM * 60 * 1000
+        } else if (time.indexOf('h') !== -1) {
+            var tempoH = await time.replace(/h.*/, '')
+            tempo = await tempoH * 1000
+        } else if (time.indexOf('d') !== 1) {
+            var tempoD = await time.replace(/d.*/, '')
+            tempo = await tempoD * 60 * 1000
+        }
+
   await (mutado.roles.add(cargomute.id))
    
-  msg.reply(`<@${mutado.user.id}> foi mutado por ${ms(ms(mutetime))}`)
+  channel.send(`<@${mutado.user.id}> foi mutado por ${time}`)
   setTimeout(function(){
     mutado.roles.remove(cargomute.id)
     channel.send(`<@${mutado.id}> foi desmutado!`)
-  }, ms(mutetime))
+  }, ms(tempo))
     }
 }

@@ -6,8 +6,6 @@
 const { Listener, CommandContext } = require('../../structure')
 const { getPrefix } = require('../../util')
 
-const Prefixos = '\`ya!\` e \`y!\`'
-
 module.exports = class MessageListener extends Listener {
   constructor () {
     super({
@@ -104,7 +102,7 @@ module.exports = class MessageListener extends Listener {
     const prefix = getPrefix(message)
     if (!message.content.toLowerCase().startsWith(prefix)) return
 
-    if (message.content === `<@${this.user.id}>` || message.content === `<@!${this.user.id}>`) return message.channel.send(`Olá <@${author.id}>, Meu prefixo é \`${Prefixos}\`. Use \`ya!ajuda\` ou \`ya!info\` para mais Informações.`)
+    if (message.content === `<@${this.user.id}>` || message.content === `<@!${this.user.id}>`) return message.channel.send(`Olá <@${author.id}>, Meu prefixo é \`p\`. Use \`ya!ajuda\` ou \`ya!info\` para mais Informações.`)
 
     if (message.channel.type == 'dm') {
     message.reply('Não respondo via dm ok ?')

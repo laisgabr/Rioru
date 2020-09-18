@@ -11,7 +11,7 @@ module.exports = class extends Command {
             aliases: [],
             usage: '',
             description: '',
-            category: ''
+            category: 'Administration'
         })
     }
    async run ({ channel, member, guild, args }) {
