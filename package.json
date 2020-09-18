@@ -9,11 +9,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "common-tags": "^1.8.0",
     "discord-giveaways": "^4.2.1",
     "discord.js": "^12.2.0",
+    "erela.js": "1.1.8",
     "firebase": "^7.20.0",
     "firebase-admin": "^9.1.1",
-    "gorilink": "^1.1.9",
     "jimp": "^0.16.1",
     "mathjs": "^7.2.0",
     "moment": "^2.27.0",
@@ -28,12 +29,6 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "eslint": "^7.6.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.4"
   }
 }

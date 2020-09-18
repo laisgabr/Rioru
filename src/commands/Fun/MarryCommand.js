@@ -6,7 +6,7 @@ module.exports = class MarryCommand extends Command {
         super(client, {
             name: 'marry',
             aliases: ['casar'],
-            category: 'Miscellaneous'
+            category: 'Fun'
         })
     }
     // eslint-disable-next-line lines-between-class-members

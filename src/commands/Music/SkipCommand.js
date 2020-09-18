@@ -1,6 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class SkipCommand extends Command {
@@ -13,10 +10,13 @@ module.exports = class SkipCommand extends Command {
             category: 'Music'
         })
     }
-   async run ({ channel, guild }) {
-    /*
-    guild.music.stop()
-       channel.send(' | Música pulada com sucesso.')
-    */
+   async run ({ channel, guild, lavalink, member }) {
+    const voiceChannel = member.voice.channel;
+    if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    const player = lavalink.players.get(guild.id);
+
+    if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
+    player.stop();
+    return channel.send("Música Pulada com sucesso!");
   }
 }

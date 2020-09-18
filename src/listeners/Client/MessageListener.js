@@ -4,7 +4,7 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable indent */
 const { Listener, CommandContext } = require('../../structure')
-const { getPrefix } = require('../../util')
+// const { getPrefix } = require('../../util')
 
 module.exports = class MessageListener extends Listener {
   constructor () {
@@ -12,7 +12,8 @@ module.exports = class MessageListener extends Listener {
       name: 'message'
     })
   }
-
+// onde tttá o ini no ????????
+ // eslint-disable-next-line lines-between-class-members
  async run (message, author) {
     if (message.author.bot || message.channel.type !== 'text') return
       const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
@@ -98,16 +99,16 @@ module.exports = class MessageListener extends Listener {
       }
     }
    })
+   
+   const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
+   let prefix = dbbb.val().prefix
+   if (dbbb.val() === null) {
+     prefix = 'y!'
+   }
 
-    const prefix = getPrefix(message)
+   if (message.content === '<@747864108958875648>' || message.content === '<@!747864108958875648>') return message.channel.send(`Olá <@${message.author.id}>, Meu prefixo é ${prefix}, use ${prefix}ajuda ou ${prefix}info para mais Informações.`)
+
     if (!message.content.toLowerCase().startsWith(prefix)) return
-
-    if (message.content === `<@${this.user.id}>` || message.content === `<@!${this.user.id}>`) return message.channel.send(`Olá <@${author.id}>, Meu prefixo é \`p\`. Use \`ya!ajuda\` ou \`ya!info\` para mais Informações.`)
-
-    if (message.channel.type == 'dm') {
-    message.reply('Não respondo via dm ok ?')
-    message.delete({ timeout: 5000 })
-    }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase()

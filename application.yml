@@ -1,6 +1,6 @@
 server: 
-  port: 80
-  address: https://lavalinkasuna.herokuapp.com/
+  port: 2333
+  address: localhost
 lavalink:
   server:
     password: "team"

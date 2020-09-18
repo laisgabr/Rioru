@@ -6,40 +6,20 @@ module.exports = class VolumeCommand extends Command {
         super(client, {
             name: 'volume',
             aliases: [],
-            category: 'Music',
-            voiceChannelOnly: true,
-            queueOnly: true
+            category: 'Music'
         })
     }
-    // eslint-disable-next-line lines-between-class-members
-    run ({ channel, args, guild }) {
-      /*
-      const volume = Number(args[0])
+    run ({ channel, args, lavalink, guild, member }) {
+      const voiceChannel = member.voice.channel;
+      if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
+      
+      const player = lavalink.players.get(guild.id);
+      if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
+      
+      if (!args[0]) return channel.send(`Volume Atual é de: ${player.volume}%`);
+      if (Number(args[0]) <= 0 || Number(args[0]) > 100) return channel.send("Diga um volume que seja de 1 até 100");
 
-    if (isNaN(volume)) {
-      return channel.send(
-        ':x:' +
-          ' | Você não informou o volume ou valor inserido é inválido.'
-      )
-    }
-
-    if (volume > 200) {
-      return channel.sendTempMessage(
-        ':x:' +
-          ' | O volume inserido é superior a `200`.'
-      )
-    }
-
-    const emoji =
-      volume > guild.music.state.volume
-        ? 'aumentei o Volume pra você'
-        : 'Diminui o Volume pra você'
-    const state =
-      volume > guild.music.state.volume ? 'aumentado para: ' : 'reduzido para: '
-    guild.music.volume(volume)
-    return channel.send(
-      emoji + ' | Volume ' + state + '`' + volume + '`.'
-    )
-    */
+      player.setVolume(Number(args[0]));
+      return channel.send(`Agora o volume é: ${args[0]}%`)
     }
 }

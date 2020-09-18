@@ -2,6 +2,8 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable indent */
 const { Command } = require('../../structure')
+const { MessageEmbed } = require('discord.js');
+const { Utils } = require('erela.js');
 
 module.exports = class PlayCommand extends Command {
   constructor (client) {
@@ -10,78 +12,78 @@ module.exports = class PlayCommand extends Command {
       aliases: ['tocar', 'p'],
       usage: '<prefix>play <args>',
       description: 'Ouça músicas em algum canal de voz',
-      category: 'Music',
-      voiceChannelOnly: true
+      category: 'Music'
     })
   }
 
   async run ({ channel, args, member, guild, author, lavalink }) {
-        if (!args.join(' ')) {
-            return channel.send('Você não forneceu um Nome de uma Música ou uma url')
-          }
-    
-        const player = await lavalink.join(
-            {
-              guild,
-              voiceChannel: member.voice.channel,
-              textChannel: channel
-            },
-            { selfDeaf: true }
-          )
-          if (author.id === '468817505318862882') {
-            if (args[0] === 'myQueue') {
-            const trackDono = await lavalink.fetchTracks('No one like you')
-            player.queue.add(trackDono, author)
-            const trackB = await lavalink.fetchTracks('Tease me please me')
-            player.queue.add(trackB, author)
-            const track0 = await lavalink.fetchTracks('Sowing of seeds of love')
-            if (!player.playing) player.play()
-            channel.send(`Tocando suas músicas preferidas ${author}....`)
-            return
-            }
-          }
-      const { tracks, loadType } = await lavalink.fetchTracks(args.join(' '))
    
-    switch (loadType) {
-      case 'NO_MATCHES': {
-        channel.send(`:x: Não foi encontrado nenhuma música com o Nome: \`${args.join(' ')}\` `)
-        break
-      }
+    const voiceChannel = member.voice.channel;
+    if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    if (!guild.me.permissions.has("CONNECT")) return channel.send("Eu não tenho a Permissão `Conectar` para fazer isso");
+    if (!guild.me.permissions.has("SPEAK")) return channel.send("Eu não tenho a Permissão `Falar` para fazer isso");
 
-      case 'PLAYLIST_LOADED': {
-        for (const track of tracks.slice(0, 250)) {
-          if (player.queue.length >= 250) {
-            return channel.send(':x: A Lista de Reprodução está cheia!')
-          }
+    if (!args.join(' ')) return channel.send(":x: | Diga um nome para mim pesquisar ou url");
 
-          player.queue.add(track[0], author)
+    const player = lavalink.players.spawn({
+        guild: guild,
+        textChannel: channel,
+        voiceChannel
+    });
+   lavalink.search(args.join(' '), author).then(async res => {
+        switch (res.loadType) {
+            case "TRACK_LOADED":
+                player.queue.add(res.tracks[0]);
+              channel.send(`Adicionando **${res.tracks[0].title}** \`${Utils.formatTime(res.tracks[0].duration, true)}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+                if (!player.playing) player.play()
+                break;
+            
+            case "SEARCH_RESULT":
+                let index = 1;
+                const tracks = res.tracks.slice(0, 8);
+                const embed = new MessageEmbed()
+                    .setColor('#66dbff')
+                    .setAuthor("Selecione a Música", author.displayAvatarURL({ dynamic: true, size: 2048 }))
+                    .setDescription(tracks.map(video => `**${index++} -** ${video.title}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                    ⠀⠀⠀⠀`))
+                    .setFooter("Seu tempo vai acabar daqui 1 minuto. Use cancel ou cancelar para cancelar a ação.")
+
+                const deleteEmbed = await channel.send(embed)
+
+                const collector = channel.createMessageCollector(m => {
+                    return m.author.id === author.id
+
+                }, { time: 60000, max: 1 });
+
+                collector.on("collect", m => {
+                    if (m.content.toLowerCase() === '1' || m.content.toLowerCase() === '2' || m.content.toLowerCase() === '3' || m.content.toLowerCase() === '4' || m.content.toLowerCase() === '5' || m.content.toLowerCase() === '6' || m.content.toLowerCase() === '7' || m.content.toLowerCase() === '8') {
+                      deleteEmbed.delete({ timeout: 3000 })
+                      m.delete({ timeout: 3000 })
+                      let msg = m.content;
+                    if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('Cancelado');
+
+                    const track = tracks[Number(m.content) - 1];
+                    player.queue.add(track)
+                    channel.send(`Adicionando \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\` a Lista de Reprodução`).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+                    if (!player.playing) player.play();
+                    }
+                });
+
+                collector.on("end", (_, reason) => {
+                    if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada")
+                });
+                break;
+                
+            case "PLAYLIST_LOADED":
+
+                res.playlist.tracks.forEach(track => player.queue.add(track));
+                const duration = Utils.formatTime(res.playlist.tracks.reduce((acc, cur) => ({duration: acc.duration + cur.duration})).duration, true);
+                channel.send(`Adicionando \`${res.playlist.tracks.length}\` \`${duration}\` Músicas na Playlist \`${res.playlist.info.name}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+                if(!player.playing) player.play()
+            break;
+            
         }
-
-        // Tracks Added: tracks.slice(0, 250).length | | Playlist name: playlistInfo.name | | tracksDiscarded: tracks.length - 250,
-
-        channel.send('Playlist carregada :D')
-        if (!player.playing) return player.play()
-        break
-      }
-
-      case 'SEARCH_RESULT':
-      case 'TRACK_LOADED': {
-        if (player.queue.length >= 250) {
-          return channel.send('pqp')
-        }
-
-        player.queue.add(tracks[0], author)
-
-        channel.send(`A música \`${tracks[0].info.title}\` foi adicionada a Lista de Reprodução por <@${author.id}>`)
-
-        if (player.queue.length === 1) {
-          if (!player.playing) player.play()
-        }
-
-        if (!player.playing) player.play()
-
-        break
-      }
-    }
+    
+    }).catch(err => channel.send(err))
   }
 }

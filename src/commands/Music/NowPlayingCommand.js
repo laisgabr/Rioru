@@ -1,35 +1,34 @@
-/* eslint-disable indent */
-/* eslint-disable padded-blocks */
 const { Command } = require('../../structure')
 
-module.exports = class PlayCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'nowplaying',
-      aliases: ['np'],
-      category: 'Music',
-      queueOnly: true
-    })
-  }
-// eslint-disable-next-line lines-between-class-members
-run ({ channel, guild }) {
+module.exports = class extends Command {
+    constructor (client) {
+        super(client, {
+            name: 'nowplaying',
+            aliases: ['np'],
+            category: 'Music'
+        })
+    }
+    run ({ channel, lavalink, guild, member }) {      
+    const voiceChannel = member.voice.channel;
+    if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
 
- const { track, state } = this.guild.music
+    const { MessageEmbed } = require('discord.js')
+    const { Utils } = require('erela.js')
+    const { stripIndents } = require('common-tags')
 
-    const embed = this.embed()
-      .setDescription(`
-         **| Tocando agora:** [${
-          track.info.title
-        }](${track.info.uri})
-       **| Autor:** \`${track.info.author}\`
-       **| Duração:** \`${this.formatTime(
-          state.position
-        )}\` de \`${this.formatTime(track.info.length)}\`
-      `
-      )
-      .setThumbnail(track.info.thumbnail)
-      .setColor(guild.me.displayHexColor)
-
-    channel.send(embed)
-       }
+    const player = lavalink.players.get(guild.id);
+    
+    if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
+    
+    const { title, author, duration, thumbnail } = player.queue[0];
+    
+  const embed = new MessageEmbed()
+  .setColor("#66dbff")
+  .setAuthor("Tocando Agora:")
+  .setThumbnail(thumbnail)
+  .setDescription(stripIndents`
+  ${player.playing ? "▶️" : "⏸️"} **${title}** Do Canal ${author} \`${Utils.formatTime(duration, true)}\` 
+  `); 
+  return channel.send(embed);
+    }
 }

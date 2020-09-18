@@ -14,6 +14,7 @@ module.exports = class Bot extends Client {
       nodes: options.nodes,
       dbConfig: options.dbConfig
     }
+  
     var firebaseConfig = {
       apiKey: this.config.dbConfig,
       authDomain: this.config.dbConfig,
