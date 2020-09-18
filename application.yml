@@ -1,19 +1,6 @@
 server: 
   port: 80
   address: https://lavalinkasuna.herokuapp.com
-lavalink:
-  server:
-    password: "team"
-    sources:
-      youtube: true
-      bandcamp: true
-      soundcloud: true
-      twitch: true
-      vimeo: true
-      mixer: true
-      http: true
-      local: false
-    bufferDurationMs: 400
     youtubePlaylistLoadLimit: 6 # Number of pages at 100 each
     youtubeSearchEnabled: true
     soundcloudSearchEnabled: true
