@@ -1,7 +1,7 @@
 # Yuuki Asuna Repository
 Seja Bem-Vinda(a) ao Repositório da Yuuki Asuna
 
-[!](https://cdn.discordapp.com/avatars/711341613930250330/88b13591644581fe8dd466c6315ff49a.webp?size=2048)
+https://cdn.discordapp.com/avatars/711341613930250330/88b13591644581fe8dd466c6315ff49a.webp?size=2048
 
 # Integrantes do Time:
 <br>
