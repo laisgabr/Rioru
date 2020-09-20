@@ -1,11 +1,3 @@
-/* eslint-disable space-before-blocks */
-/* eslint-disable space-before-function-paren */
-/* eslint-disable comma-dangle */
-/* eslint-disable keyword-spacing */
-/* eslint-disable quotes */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -13,8 +5,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'mute',
             aliases: ['mutar'],
-            usage: '',
-            description: '',
             category: 'Moderation'
         })
     }

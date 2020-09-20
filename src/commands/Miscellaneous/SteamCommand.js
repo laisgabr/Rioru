@@ -21,7 +21,7 @@ module.exports = class SteamCommand extends Command {
         const { MessageEmbed } = require('discord.js')
 
         if (!args.join(" ")) {
-        return channel.send("Voce não disse um jogo da Steam")
+        return channel.send("<:xSweet:756989900661850182> | Você não disse um jogo da Steam")
     }
 
     provider.search(args.join(" ")).then(result => { 

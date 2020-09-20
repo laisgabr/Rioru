@@ -5,7 +5,7 @@ module.exports = class Command {
     this.client = client
 
     this.name = options.name
-    this.aliases = options.aliases || 'Não tem aliases.'
+    this.aliases = options.aliases || []
     this.description = options.description || 'Não tem descrição.'
     this.usage = options.usage || 'Sem Metodo de Usar.'
     this.category = options.category || 'Não Listado'

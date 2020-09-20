@@ -1,6 +1,3 @@
-/* eslint-disable prefer-const */
-/* eslint-disable quotes */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class UptimeCommand extends Command {
@@ -13,7 +10,6 @@ module.exports = class UptimeCommand extends Command {
             category: 'Miscellaneous'
         })
     }
-    // eslint-disable-next-line lines-between-class-members
     run ({ channel, client }) {
     const { MessageEmbed } = require('discord.js')
 

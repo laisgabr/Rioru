@@ -14,7 +14,7 @@ module.exports = class ReadyListener extends Listener {
 
  async run (client) {
   this.lavalink = new erela.ErelaClient(this, this.config.nodes,
-    { autoPlay: true }, { selfDeafen: true } 
+    { autoPlay: true }, { selfDeaf: true } 
     )
     .on('nodeConnect', node => console.log(`${node.options.tag || node.options.host} - Lavalink conectado com Sucesso.`))
     
@@ -37,8 +37,8 @@ module.exports = class ReadyListener extends Listener {
       player.setVolume(100);
     })
     
-    .on('trackError', (player, track) => {
-      player.textChannel.send(`Não foi possivel carregar ou procurar essa Música devido ao erro 429 do YouTube ou essa música tem CopyRight`)
+    .on('trackError', ({ textChannel, err }, { title }) => {
+      textChannel.send('Ocorreu um erro ao carregar ' + title + ' devido a: ' + err)
     });
    
     var status = [

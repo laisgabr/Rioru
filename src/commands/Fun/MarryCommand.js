@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class MarryCommand extends Command {
@@ -9,7 +8,6 @@ module.exports = class MarryCommand extends Command {
             category: 'Fun'
         })
     }
-    // eslint-disable-next-line lines-between-class-members
    async run ({ channel, mentions, args, author }) {
         const moment = require('moment')
         moment.locale('pt-BR')
@@ -24,12 +22,17 @@ module.exports = class MarryCommand extends Command {
 
         if (uuser.id === author.id) {
             return channel.send('Não dá pra se casar consigo mesmo(a)')
-        }
+        } 
+        
 
         const db = await database.ref(`Global/Couples/${author.id}`).once('value')
         const dbb = await database.ref(`Global/Couples/${uuser.id}`).once('value')
+
+        if (db.val().ParID === uuser.id && dbb.val().ParID === author.id) {
+            return channel.send(`Vocês já são casados(as)!`)
+        }
         if (db.val() === null && dbb.val() === null) {
-            channel.send(`${uuser}, O(A) Usuário(a) <@${author.id}> lhe pediu em casamento, Clique em '✅' para aceitar ou Clique em '❌' para Recusar, Boa sorte <@${author.id}>.`).then(async msg => {
+            channel.send(`${uuser}, O (A) Usuário(a) <@${author.id}> lhe pediu em casamento, Clique em ✅ para aceitar ou Clique em ❌ para Recusar.`).then(async msg => {
             msg.react('✅')
             msg.react('❌')
 
@@ -39,6 +42,7 @@ module.exports = class MarryCommand extends Command {
         const collectorNo = msg.createReactionCollector(no)
 
    collectorDaMsg.on('collect', async r => {
+            msg.delete({ timeout: 2000 })
             database.ref(`Global/Couples/${uuser.id}`).set({
                 ParID: author.id,
                 Dia: moment(Date.now()).format('LLL')
@@ -47,11 +51,12 @@ module.exports = class MarryCommand extends Command {
                 ParID: uuser.id,
                 Dia: moment(Date.now()).format('LLL')
             })
-            return channel.send(`${author} e ${uuser}, Vocês estão casados :heart: .`)
+            channel.send(`${author} e ${uuser}, Vocês estão casados(as) :heart: .`)
         })
 
         collectorNo('collect', async r => {
-            return channel.send('Parece que você não encontrou a pessoa certa :sob:')
+            msg.delete({ timeout: 2000 })
+            channel.send('Parece que você não encontrou a pessoa certa :sob:')
         })
     })
         }
@@ -59,11 +64,10 @@ module.exports = class MarryCommand extends Command {
            return channel.send(`O(A) usuário(a) mencionado(a) está casado(a) com <@${dbb.val().ParID}> desde ${dbb.val().Dia - moment(Date.now()).format('LLL')}`)
         }
 
-        if (db.val() === uuser.id) {
         if (!db.val() === null) {
             return channel.send(`Você já é casado(a) com outra pessoa. Peça Divorcio á <@${db.val().ParID}> para poder se casar com ${uuser}`)
         }
-        return channel.send(`Você já é casado(a) com <@${uuser.id}>`)
-    }
+
+       
   }
 }

@@ -9,14 +9,12 @@ module.exports = class extends Command {
         super(client, {
             name: 'clear',
             aliases: [],
-            usage: '',
-            description: '',
             category: 'Administration'
         })
     }
    async run ({ channel, member, guild, args }) {
   if (!member.permissions.has("MANAGE_MESSAGES")) return channel.send("Você precisa da Permissão `Gerenciar Mensagens` para usar esse comando")
-  if (guild.me.permissions.has("MANAGE_MESSAGES")) return channel.send('Não tenho a permissão `Gerenciar Mensagens` para continuar')
+  if (!guild.me.permissions.has("MANAGE_MESSAGES")) return channel.send('Não tenho a permissão `Gerenciar Mensagens` para continuar')
   const deleteCount = parseInt(args[0], 10)
   if (!deleteCount || deleteCount < 1 || deleteCount > 99) return channel.send("Forneça até **99 mensagens** para serem excluídas")
 

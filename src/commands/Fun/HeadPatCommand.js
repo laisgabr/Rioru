@@ -1,6 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -8,8 +5,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'headpat',
             aliases: ['pat', 'cafune', 'cafuné'],
-            usage: '<prefix>',
-            description: '',
             category: 'Fun'
         })
     }
@@ -22,7 +17,6 @@ module.exports = class extends Command {
    if (!uuser) return msg.reply('Mencione alguém por favor')
 
     superagent.get('https://nekos.life/api/v2/img/pat')
-    // eslint-disable-next-line handle-callback-err
     .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setDescription(`${author} fez um Cafuné em ${uuser}`)

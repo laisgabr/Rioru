@@ -34,13 +34,13 @@ module.exports = class PlayCommand extends Command {
         switch (res.loadType) {
             case "TRACK_LOADED":
                 player.queue.add(res.tracks[0]);
-              channel.send(`Adicionando **${res.tracks[0].title}** \`${Utils.formatTime(res.tracks[0].duration, true)}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+              channel.send(`<:musicNoteSweet:757021472077250700> | Adicionando **${res.tracks[0].title}** \`${Utils.formatTime(res.tracks[0].duration, true)}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
                 if (!player.playing) player.play()
                 break;
             
             case "SEARCH_RESULT":
                 let index = 1;
-                const tracks = res.tracks.slice(0, 8);
+                const tracks = res.tracks.slice(0, 10);
                 const embed = new MessageEmbed()
                     .setColor('#66dbff')
                     .setAuthor("Selecione a Música", author.displayAvatarURL({ dynamic: true, size: 2048 }))
@@ -78,7 +78,7 @@ module.exports = class PlayCommand extends Command {
 
                 res.playlist.tracks.forEach(track => player.queue.add(track));
                 const duration = Utils.formatTime(res.playlist.tracks.reduce((acc, cur) => ({duration: acc.duration + cur.duration})).duration, true);
-                channel.send(`Adicionando \`${res.playlist.tracks.length}\` \`${duration}\` Músicas na Playlist \`${res.playlist.info.name}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+                channel.send(`<:musicNoteSweet:757021472077250700> | Adicionando \`${res.playlist.tracks.length}\` \`${duration}\` Músicas na Playlist \`${res.playlist.info.name}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
                 if(!player.playing) player.play()
             break;
             

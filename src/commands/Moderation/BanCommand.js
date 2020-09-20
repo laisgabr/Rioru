@@ -1,8 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable keyword-spacing */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -10,8 +5,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'ban',
             aliases: ['banir'],
-            usage: '',
-            description: '',
             category: 'Moderation'
         })
     }
@@ -42,10 +35,10 @@ module.exports = class extends Command {
  
    const msge = await channel.send(`<@${author.id}>, Você quer mesmo banir ${membro.user.tag}(\`${membro.user.id}\`) permanentemente? Clique em uma das reações abaixo! `)
    await msge.react('✅')
-   await msge.react('❌')
+   await msge.react('756989900661850182')
    
    const sim = (reaction, user) => reaction.emoji.name === '✅' && user.id === author.id
-   const no = (reaction, user) => reaction.emoji.name === '❌' && user.id === author.id
+   const no = (reaction, user) => reaction.emoji.id === '756989900661850182' && user.id === author.id
    const collectorDaMsg = msge.createReactionCollector(sim)
    const collectorNo = msge.createReactionCollector(no)
 
@@ -54,7 +47,6 @@ module.exports = class extends Command {
     .setTitle(`:no_entry_sign: Você foi Banido de ${guild.name}(${guild.id})`)
     .setColor("RED")
     .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
-    .addField("👤 Banido(a) :", membro.user.tag, false)
     .addField("👮‍♂️ Quem Puniu:", author.tag, false)
     .addField("📜 Motivo:", motivo, false)
     .setTimestamp()
@@ -76,7 +68,7 @@ module.exports = class extends Command {
 
    const messageA = await channel.send(embed)
     await messageA.react('🍪')
-    channel.send('Alguém mais quer ser Banido? Hehehe')
+    channel.send('<:checkSweet:757016162633646211> | Alguém mais quer ser Banido? Hehehe')
    })
 
    collectorNo.on('collect', r => {

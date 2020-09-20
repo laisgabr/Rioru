@@ -19,8 +19,6 @@ module.exports = class PingCommand extends Command {
     const { MessageEmbed } = require("discord.js")
       
       const embedB = new MessageEmbed()
-      .setTitle(`Meu Ping :3`)
-      .setDescription(`Será que o Ping está bom ?`)
       .setColor("RED")
       .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 4096 }))
       // .addField(`🏓 Minha Latência é de`, `${m.createdTimestamp - m.createdTimestamp + i} ms`)

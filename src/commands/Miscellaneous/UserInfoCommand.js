@@ -1,15 +1,3 @@
-/* eslint-disable quote-props */
-/* eslint-disable padded-blocks */
-/* eslint-disable no-unused-vars */
-/* eslint-disable quotes */
-/* eslint-disable prefer-const */
-/* eslint-disable comma-dangle */
-/* eslint-disable space-in-parens */
-/* eslint-disable template-curly-spacing */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
-// eslint-disable-next-line quotes
 const { Command } = require("../../structure")
 
 module.exports = class UserinfoCommand extends Command {
@@ -81,9 +69,9 @@ module.exports = class UserinfoCommand extends Command {
         color: '#747f8d'
       },
     }
-    const emojis = {
+    const emojis = { // Ei lara, verifique todos os emojis pq alguns era do server do Nykoh
       'DISCORD_EMPLOYEE': '<:Funcionario:754074239849725984>', 
-      'DISCORD_PARTNER': '<:partner:723568237241040998>',
+      'DISCORD_PARTNER': '<:partner:723568237241040998>', 
       'HYPESQUAD_EVENTS': '<:hypesquad_events:723567460581638194>',
       'BUGHUNTER_LEVEL_1': '<:bughunter1:754075531967856731>',
       'HOUSE_BRAVERY': '<:hypebravely:753979393428422756>',
@@ -93,10 +81,19 @@ module.exports = class UserinfoCommand extends Command {
       'BUGHUNTER_LEVEL_2': '<:bughunter2:754075510128115713>',
       'VERIFIED_DEVELOPER': '<:dev:753244508174680176>'
     }
+ 
 
     const badges = Object.entries(uuser.user.flags.serialize()).filter(f => f[1]).map(f => f[0]).map(f => emojis[f]).join(' ')
     const guildMember = args[0] ? mentions.users.first() || await this.client.users.fetch(args[0]).catch(_ => member) : member
     const user = guildMember.user ? guildMember.user : guildMember
+
+    if (guild.owner.id === user.id) {
+      badges = badges + ' 👑 ' + ' 🤡 '
+    } 
+    
+    if(user.permissions.has("ADMINISTRATOR")) {
+      badges = badges + ' 🤡 '
+    }
 
     if (!user && !guildMember) return channel.send('Membro não encontrado')
 
@@ -176,7 +173,7 @@ module.exports = class UserinfoCommand extends Command {
         c.reactions.removeAll()
         c.edit(Uinfos)
         c.react('754088234295885895').then(() => {})
-        let voltar = (reaction, user, ) => reaction.emoji.id === '754088234295885895' && user.id === author.id
+        let voltar = (reaction, user) => reaction.emoji.id === '754088234295885895' && user.id === author.id
         let voltar2 = c.createReactionCollector(voltar)
 
         voltar2.on('collect', r3 => {

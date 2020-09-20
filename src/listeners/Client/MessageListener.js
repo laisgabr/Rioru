@@ -1,10 +1,4 @@
-/* eslint-disable semi */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-useless-escape */
-/* eslint-disable indent */
 const { Listener, CommandContext } = require('../../structure')
-// const { getPrefix } = require('../../util')
 
 module.exports = class MessageListener extends Listener {
   constructor () {
@@ -12,10 +6,30 @@ module.exports = class MessageListener extends Listener {
       name: 'message'
     })
   }
-// onde tttá o ini no ????????
- // eslint-disable-next-line lines-between-class-members
- async run (message, author) {
-    if (message.author.bot || message.channel.type !== 'text') return
+
+ async run (message) {
+  if (message.author.bot || message.channel.type !== 'text') return
+
+  const { MessageEmbed } = require('discord.js')
+   
+   const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
+
+   if(dbbb === null) {
+   this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
+    prefix: "y!",
+    BemVindoID: "undefined",
+    MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) a {guild.name}`,
+    SaidaID: "undefined",
+    SaidaMensagem: `{member} saiu do Servidor :(`,
+    LogsID: "undefined"
+  })
+}
+
+   let prefix = dbbb.val().prefix
+   if (!prefix) {
+     prefix = 'y!'
+   }
+
       const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
         if (aa.val()) {
         return message.author.send(`Você, ${message.author.tag} (\`${message.author.id}\`) , foi Banido Permanentemente de Usar a **Yuuki Asuna**.
@@ -29,15 +43,35 @@ module.exports = class MessageListener extends Listener {
        > ${aa.val().Motivo}
         `)
         }
+       let mentioned = message.mentions.members.first();
   
-    this.database.ref(`Global/Economia/${message.author.id}`).once('value').then(async db => {
-      if (db.val() == null) {
-        this.database.ref(`Global/Economia/${message.author.id}`).set({
-          Coins: 0
-        })
-      }
-    })
+  if (mentioned) {
+    let status = await this.database.ref(`Global/AFK's/${mentioned.id}`).once('value')
+    if (status.val() === null || status.val().AFK === null) {
+      this.database.ref(`Global/AFK's/${mentioned.id}`).set({
+        AFK: false
+      })
+    } 
     
+    if (status.val().AFK === true) {
+      const embed = new MessageEmbed()
+      .setColor(0xffffff)
+      .setDescription(`Esse usuário (${mentioned.user}) está AFK`)
+      message.channel.send(embed).then(i => i.delete({ timeout: 7000 }));
+    }
+  }
+  
+ const proprioAuthor = await this.database.ref(`Global/AFK's/${message.author.id}`).once('value')
+ if(proprioAuthor.val() === null || proprioAuthor.val().AFK === null) {
+  this.database.ref(`Global/AFK's/${message.author.id}`).set({
+    AFK: false
+  })
+}
+
+ if (proprioAuthor.val().AFK === true) {
+   message.channel.send(`${message.author}, Bem-Vindo(a) de Volta...`)
+ }
+   
     this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
     .once('value').then(async db => {
       if (db.val() == null) {
@@ -53,9 +87,9 @@ module.exports = class MessageListener extends Listener {
             xp: db.val().xp,
             level: db.val().level + 1,
             message: db.val().message + 1,
-            Enviadas: db.val().Enviadas + 1 - 25
+            Enviadas: db.val().Enviadas + 1 - 24
           })
-          message.channel.send(`Parabéns ${message.author}! Você upou para o Level ${db.val().level}`)
+          message.channel.send(`Parabéns ${message.author}! Você upou para o Level ${db.val().level} :) .`)
         }
       } else {
         if (message.content.length > 5) return;
@@ -100,18 +134,13 @@ module.exports = class MessageListener extends Listener {
     }
    })
    
-   const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
-   let prefix = dbbb.val().prefix
-   if (dbbb.val() === null) {
-     prefix = 'y!'
-   }
-
-   if (message.content === '<@747864108958875648>' || message.content === '<@!747864108958875648>') return message.channel.send(`Olá <@${message.author.id}>, Meu prefixo é ${prefix}, use ${prefix}ajuda ou ${prefix}info para mais Informações.`)
+   if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>,Meu nome é Sweet Bot e Meu prefixo é \`${prefix}\`, use \`${prefix}ajuda\` ou \`${prefix}info\` para mais Informações.`)
 
     if (!message.content.toLowerCase().startsWith(prefix)) return
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase()
+
     const command = this.commands.find(({ name, aliases }) => name === cmd || aliases.includes(cmd))
     
     const context = new CommandContext(message, args, cmd, prefix)

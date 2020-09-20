@@ -14,8 +14,8 @@ module.exports = class LembreteCommand extends Command {
         var time = args[0]
         var lembrete = args.splice(1).join(' ')
 
-        if (!time) return channel.send('Diga um tempo!')
-        if (!lembrete) return channel.send('Diga o que eu devo lhe lembrar!')
+        if (!time) return channel.send('<:xSweet:756989900661850182> | Diga um tempo [d/h/m/s]!')
+        if (!lembrete) return channel.send('<:xSweet:756989900661850182> | Diga o que eu devo lhe lembrar!')
 
         time = await time.toString()
 
@@ -35,7 +35,7 @@ module.exports = class LembreteCommand extends Command {
         channel.send(`<@${author.id}>, Eu irei lhe lembrar sobre ${lembrete}, Daqui ${time}`)
 
         setTimeout(function () {
-            member.send(`${lembrete}`)
+            channel.send(`${lembrete}`)
         }, parseInt(tempo))
     }
 }

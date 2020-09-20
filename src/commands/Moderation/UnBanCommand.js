@@ -1,10 +1,3 @@
-/* eslint-disable semi */
-/* eslint-disable object-curly-spacing */
-/* eslint-disable keyword-spacing */
-/* eslint-disable quotes */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -12,8 +5,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'unban',
             aliases: ['desbanir'],
-            usage: '',
-            description: '',
             category: 'Moderation'
         })
     }
@@ -35,7 +26,7 @@ module.exports = class extends Command {
     try {
             await guild.fetchBan(args[0])
         } catch (e) {
-            channel.send('**Esse usuario não esta Banido**')
+            channel.send('**Esse usuario não está Banido**')
             return
         }
 
@@ -46,7 +37,7 @@ module.exports = class extends Command {
     
     try {
         guild.members.unban(bannedMember, {reason: reason})
-        channel.send(`${bannedMember.tag} foi desbanido. Mas estou esperta em Huumm`)
+        channel.send(`${bannedMember.tag} foi desbanido`)
     } catch (e) {
         console.log(e.message)
     }

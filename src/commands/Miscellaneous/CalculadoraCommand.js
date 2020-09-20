@@ -37,16 +37,16 @@ module.exports = class CaclCommand extends Command {
         try {
             result = limitedEvaluate(expr);
         } catch (err) {
-            return channel.send('❌ Expressão inválida!');
+            return channel.send('<:xSweet:756989900661850182> | Eu acho que ' + expr + ' não é uma Expressão Matématica ou Meu criador não me ensinou sobre isso');
         }
         if (result === Infinity || result === -Infinity || result.toString() === 'NaN') result = 'Impossível determinar'; 
-        if (typeof result === 'function') return channel.send('❌ Expressão inválida!'); 
+        if (typeof result === 'function') return channel.send('<:xSweet:756989900661850182> | Expressão inválida!'); 
 
         const embed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('Calculadora')
-            .addField('Expressão Matématica', `\`\`\`${args.join(' ')}\`\`\``)
-            .addField('Resultado', `\`\`\`${result}\`\`\``)
+            .addField('Expressão Matématica:', `\`\`\`${args.join(' ')}\`\`\``)
+            .addField('Resultado:', `\`\`\`${result}\`\`\``)
             
         channel.send(embed)
     }

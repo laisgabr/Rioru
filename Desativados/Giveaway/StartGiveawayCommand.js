@@ -17,34 +17,47 @@ module.exports = class StartGiveawayCommand extends Command {
             category: 'Giveaway'
         })
     } 
-    run ({ channel, member, args, mentions, author, client }) {
+   async run ({ channel, member, args, mentions, author }) {
         if (!member.hasPermission('ADMINISTRATOR') && !member.roles.cache.some((r) => r.name === "Giveaways")) {
             return channel.send(':x: Você não tem permissão de \`Administrador\` para continuar')
         }
-    
         let giveawayChannel = mentions.channels.first()
+       channel.send('Qual canal ?')
        
-        if (!giveawayChannel) {
-            return channel.send(':x: Você precisa mencionar um Canal para Iniciar o Sorteio!')
+       
+
+       const collector = channel.createMessageCollector(m => {
+        return m.author.id === author.id
+
+    }, { time: 60000, max: 1 });
+
+    collector.on("collect", m => {
+        if(m.content === giveawayChannel) { 
+            return channel.send('Ok, Q')
+        } else {
+            channel.send('Mencione um Canal!')
         }
-    
-        let giveawayDuration = args[1]
+
+        let msg = m.content;
+        if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('Cancelado');
+
         
-        if (!giveawayDuration || isNaN(ms(giveawayDuration))) {
-            return channel.send(':x: Você precisa dizer um tempo em MiliSegundos para Continuar!')
-        }
-    
+    })
+       
         let giveawayNumberWinners = args[2]
         
         if (isNaN(giveawayNumberWinners) || (parseInt(giveawayNumberWinners) <= 0)) {
             return channel.send(':x: Você precisa dizer um Numero Válido de Ganhadores')
         }
-        let giveawayPrize = args.slice(3).join(' ')
+        let giveawayPrize = args.slice(1).join(' ')
  
         if (!giveawayPrize) {
             return channel.send(':x: Você tem que dizer um Prêmio!')
         }
     
+        let time = args[3] 
+        time = await time.toString()
+
         this.client.giveawaysManager.start(giveawayChannel, {
             time: ms(giveawayDuration),
             prize: giveawayPrize,

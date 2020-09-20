@@ -15,18 +15,19 @@ module.exports = class extends Command {
         const database = firebase.database()
 
         const prefixo = args[0]
+        if(!prefixo) return channel.send('Você não disse um Prefixo')
 
         const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
-
-        if (db.val() === null) {
-            database.ref(`Servidores/${guild.id}/Configs`).set({
-                prefix: prefixo
+        
+        database.ref(`Servidores/${guild.id}/Configs`).update({
+            BemVindoID: db.val().BemVindoID,
+            MensagemBemVindo: db.val().MensagemBemVindo,
+            SaidaID: db.val().SaidaID,
+            SaidaMensagem: db.val().SaidaMensagem,
+            LogsID: db.val().LogsID,
+            prefix: prefixo
             })
-        } else {
-            database.ref(`Servidores/${guild.id}/Configs`).update({
-                prefix: prefixo
-            })
-        }
-        channel.send(`Agora o Prefixo é \`${prefixo}\``)
+        
+        channel.send(`<:checkSweet:757016162633646211> | O Prefixo agora é \`${prefixo}\``)
     }
 }

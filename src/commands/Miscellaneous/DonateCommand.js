@@ -13,6 +13,6 @@ module.exports = class DonateCommand extends Command {
         })
     }
     run ({ channel }) {
-        channel.send('Comando em construção......')
+        channel.send("A forma de Pagamento é Mercado Pago. Doe qualquer quantia, ")
     }
 }

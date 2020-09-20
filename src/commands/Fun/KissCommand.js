@@ -1,7 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -9,8 +5,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'kiss',
             aliases: ['beijar'],
-            usage: '',
-            description: '',
             category: 'Fun'
         })
     }
@@ -25,7 +19,6 @@ module.exports = class extends Command {
         if (uuser.id === this.client.user.id) return msg.reply("Quero te beijar nah")
     
         superagent.get('https://nekos.life/api/v2/img/kiss')
-        // eslint-disable-next-line handle-callback-err
         .end((err, response) => {
             const embed = new Discord.MessageEmbed()
             .setTitle(`:heart: O amor está no Ar :heart:`)

@@ -1,7 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -24,7 +20,6 @@ module.exports = class extends Command {
 
    if (uuser.id === this.client.user.id) {
     superagent.get('https://nekos.life/api/v2/img/slap')
-    // eslint-disable-next-line handle-callback-err
     .end((err, response) => {
         const embedA = new Discord.MessageEmbed()
         .setTitle(`Toma Otário(a)`)
@@ -35,7 +30,7 @@ module.exports = class extends Command {
       })
    } else {
     superagent.get('https://nekos.life/api/v2/img/slap')
-    .end(response => {
+    .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setDescription(`${author} Deu um tapa em ${uuser}`)
         .setImage(response.body.url)

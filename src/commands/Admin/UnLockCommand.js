@@ -9,8 +9,6 @@ module.exports = class extends Command {
         super(client, {
             name: 'unlock',
             aliases: ['destravar', 'destrancar', 'desbloqueiar'],
-            usage: '',
-            description: '',
             category: 'Administration'
         })
     }

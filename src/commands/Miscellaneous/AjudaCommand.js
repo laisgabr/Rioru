@@ -129,7 +129,7 @@ Mute:
 **Mute algum membro chato e bagunçeiro** 
 
 Exemplo de como usar :
-***ya!mute @MrGamingBR 8600000***
+***ya!mute @MrGamingBR 10h***
 
 
 Unban:  
