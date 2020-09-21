@@ -15,9 +15,9 @@ module.exports = class GuildMemberAddListener extends Listener {
      return database.ref(`Servidores/${guild.id}/Configs`).set({
           prefix: "y!",
           BemVindoID: "undefined",
-          MensagemBemVindo: `Olá ${member}, Seja bem-vindo(a) ao ${guild.name}`,
+          MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) ao {guild.name}`,
           SaidaID: "undefined",
-          SaidaMensagem: `${member} saiu do Servidor :(`,
+          SaidaMensagem: `{member} saiu do Servidor :(`,
           LogsID: "undefined"
       })
   }
