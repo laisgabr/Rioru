@@ -13,9 +13,7 @@ module.exports = class ReadyListener extends Listener {
   }
 
  async run (client) {
-  this.lavalink = new erela.ErelaClient(this, this.config.nodes,
-    { autoPlay: true }, { selfDeaf: true } 
-    )
+  this.lavalink = new erela.ErelaClient(this, this.config.nodes, { autoPlay: true })
     .on('nodeConnect', node => console.log(`${node.options.tag || node.options.host} - Lavalink conectado com Sucesso.`))
     
     .on('nodeError', (node, err) => console.log(`Infelizmente, aconteceu um erro. Erro: ${err}`))

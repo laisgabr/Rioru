@@ -11,8 +11,8 @@
   "dependencies": {
     "common-tags": "^1.8.0",
     "discord-giveaways": "^4.2.1",
-    "discord.js": "^12.2.0",
-    "erela.js": "1.1.8",
+    "discord.js": "12.2.0",
+    "erela.js": "^1.1.8",
     "firebase": "^7.20.0",
     "firebase-admin": "^9.1.1",
     "jimp": "^0.16.1",

@@ -1,5 +1,5 @@
 server: # REST and WS server
-  port: 2333
+  port: 3000
   address: localhost
 lavalink:
   server:

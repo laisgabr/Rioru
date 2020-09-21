@@ -56,7 +56,7 @@ module.exports = class PlayCommand extends Command {
                 }, { time: 60000, max: 1 });
 
                 collector.on("collect", m => {
-                    if (m.content.toLowerCase() === '1' || m.content.toLowerCase() === '2' || m.content.toLowerCase() === '3' || m.content.toLowerCase() === '4' || m.content.toLowerCase() === '5' || m.content.toLowerCase() === '6' || m.content.toLowerCase() === '7' || m.content.toLowerCase() === '8') {
+                    if (m.content.toLowerCase() === '1' || m.content.toLowerCase() === '2' || m.content.toLowerCase() === '3' || m.content.toLowerCase() === '4' || m.content.toLowerCase() === '5' || m.content.toLowerCase() === '6' || m.content.toLowerCase() === '7' || m.content.toLowerCase() === '8' || m.content.toLowerCase() === '9' || m.content.toLowerCase() === '10') {
                       deleteEmbed.delete({ timeout: 3000 })
                       m.delete({ timeout: 3000 })
                       let msg = m.content;
