@@ -1,6 +1,6 @@
 server: # REST and WS server
-  port: 3000
-  address: localhost
+  port: 80
+  address: sweetlavalink.herokuapp.com
 lavalink:
   server:
     password: "team"
