@@ -11,17 +11,17 @@ module.exports = class extends Command {
    async run ({ channel, msg, member, guild, mentions, args, author }) {
     const Discord = require('discord.js')
     if(!member.permissions.has("BAN_MEMBERS")) {
-    return msg.reply("Você não tem a permissão necessária!")
+    return msg.reply("Você não tem a Permissão `Banir Membros`")
   }
 
   if(!guild.me.permissions.has("BAN_MEMBERS")) {
-    return msg.reply("Eu não tenho a permissão necessária!")
+    return msg.reply("Eu não tenho a Permissão `Banir Membros`")
   }
 
   var membro = mentions.members.first() || guild.members.cache.get(args[0])
   if(!membro) return msg.reply("Você precisa mencionar alguem!")
   if(membro.user.id === author.id) {
-    return msg.reply("Você não pode se banir!")
+    return msg.reply(" Você não pode se banir :v")
   }
   if(membro.user.id === this.client.user.id) {
     return msg.reply("Por que você quer me banir?")
