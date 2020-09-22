@@ -56,7 +56,7 @@ module.exports = class NowPlayingTestCommand extends Command {
           }
         }
           m.edit(giveEmbed)
-          }, 4355)
+          }, 4000)
       })
      }
   }

@@ -1,12 +1,11 @@
 {
-  "name": "boilerplate",
-  "version": "1.0.0",
+  "name": "sweetbot",
+  "version": "0.0.9",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "node -r dotenv/config index.js",
-    "dev": "nodemon",
-    "lint": "eslint ."
+    "dev": "nodemon"
   },
   "dependencies": {
     "common-tags": "^1.8.0",
