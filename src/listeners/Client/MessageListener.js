@@ -26,7 +26,7 @@ module.exports = class MessageListener extends Listener {
 }
 
    let prefix = dbbb.val().prefix
-   if (!prefix) {
+   if (prefix === null) {
      prefix = 'y!'
    }
 
