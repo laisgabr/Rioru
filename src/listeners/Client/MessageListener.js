@@ -14,7 +14,7 @@ module.exports = class MessageListener extends Listener {
    
    const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
 
-   if(dbbb === null) {
+   if(dbbb.val() === null) {
    this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
     prefix: "y!",
     BemVindoID: "undefined",
