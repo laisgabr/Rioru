@@ -43,35 +43,7 @@ module.exports = class MessageListener extends Listener {
        > ${aa.val().Motivo}
         `)
         }
-       let mentioned = message.mentions.members.first();
-  
-  if (mentioned) {
-    let status = await this.database.ref(`Global/AFK's/${mentioned.id}`).once('value')
-    if (status.val() === null || status.val().AFK === null) {
-      this.database.ref(`Global/AFK's/${mentioned.id}`).set({
-        AFK: false
-      })
-    } 
-    
-    if (status.val().AFK === true) {
-      const embed = new MessageEmbed()
-      .setColor(0xffffff)
-      .setDescription(`Esse usuário (${mentioned.user}) está AFK`)
-      message.channel.send(embed).then(i => i.delete({ timeout: 7000 }));
-    }
-  }
-  
- const proprioAuthor = await this.database.ref(`Global/AFK's/${message.author.id}`).once('value')
- if(proprioAuthor.val() === null || proprioAuthor.val().AFK === null) {
-  this.database.ref(`Global/AFK's/${message.author.id}`).set({
-    AFK: false
-  })
-}
-
- if (proprioAuthor.val().AFK === true) {
-   message.channel.send(`${message.author}, Bem-Vindo(a) de Volta...`)
- }
-   
+        
     this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
     .once('value').then(async db => {
       if (db.val() == null) {
