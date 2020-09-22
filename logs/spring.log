@@ -489,3 +489,8 @@ java.lang.UnsupportedClassVersionError: lavalink/server/info/AppInfo has been co
 2020-09-21 19:10:09.226  INFO 23375 --- [XNIO-1 task-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
 2020-09-21 19:10:09.327  INFO 23375 --- [XNIO-1 task-1] l.server.io.HandshakeInterceptorImpl     : Incoming connection from /127.0.0.1:56604
 2020-09-21 19:10:10.158  INFO 23375 --- [XNIO-1 task-1] lavalink.server.io.SocketServer          : Connection successfully established from /127.0.0.1:56604
+2020-09-21 19:44:13.976  INFO 23375 --- [XNIO-1 I/O-1] lavalink.server.io.SocketServer          : Connection closed from /127.0.0.1:56604 -- CloseStatus[code=1006, reason=]
+2020-09-21 19:44:13.977  INFO 23375 --- [XNIO-1 I/O-1] lavalink.server.io.SocketContext         : Shutting down 0 playing players.
+2020-09-21 19:44:15.379  INFO 23375 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-21 19:44:15.481  INFO 23375 --- [Thread-1] c.s.d.l.tools.GarbageCollectionMonitor   : GC monitoring disabled.
+2020-09-21 19:44:15.514  INFO 23375 --- [Thread-1] io.undertow.servlet                      : Destroying Spring FrameworkServlet 'dispatcherServlet'

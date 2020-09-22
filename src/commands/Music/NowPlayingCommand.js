@@ -27,7 +27,11 @@ module.exports = class extends Command {
   .setAuthor("Tocando Agora:")
   .setThumbnail(thumbnail)
   .setDescription(stripIndents`
-  ${player.playing ? "▶️" : "⏸️"} **${title}** Do Canal ${author} \`${Utils.formatTime(duration, true)}\` 
+  ${player.playing ? "▶️" : "⏸️"} **${title}** 
+    
+  \`${Utils.formatTime(duration, true)}\`
+  
+  ${author} 
   `); 
   return channel.send(embed);
     }

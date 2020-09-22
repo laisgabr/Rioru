@@ -10,9 +10,11 @@ module.exports = class extends Command {
         })
     }
    // eslint-disable-next-line lines-between-class-members
-   async run ({ channel, args, guild }) {
+   async run ({ channel, args, guild, member }) {
         const firebase = require('firebase')
         const database = firebase.database()
+
+        if(!member.permissions.has("ADMINISTRATOR", "MANAGE_GUILD")) return channel.send('Você precisa das Permissões `Administrador` e `Gerenciar Servidor`')
 
         const prefixo = args[0]
         if(!prefixo) return channel.send('Você não disse um Prefixo')

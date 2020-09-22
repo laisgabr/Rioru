@@ -27,9 +27,23 @@ module.exports = class ReadyListener extends Listener {
       return this.lavalink.players.destroy(player.guild.id)
     })
     
-    .on('trackStart', ({ textChannel }, { title, duration }) => 
-     textChannel.send({ embed: { color: "#66dbff", description: `Tocando Agora: **${title}** | \`${Utils.formatTime(duration, true)}\`` } 
-    }))
+    .on('trackStart', ({ textChannel }, { title, duration, author, thumbnail }) => {
+    const { MessageEmbed } = require('discord.js')
+    const embed = new MessageEmbed()
+      .setColor('#66dbff')
+      .setDescription(`
+      Música: 
+**${title}** 
+
+Duração:      
+\`${Utils.formatTime(duration, true)}\`
+
+Canal/Artista :
+${author}
+`)
+.setThumbnail(thumbnail)
+     textChannel.send(embed)
+    })
     
     .on('trackEnd', (player, track) => {
       player.setVolume(100);
@@ -44,7 +58,7 @@ module.exports = class ReadyListener extends Listener {
       `😛 Sabia que tenho um sistema de músicas em desenvolvimento ? `,
       `😬 Me ajude, Doando para Meus Criadores...`,
       `😢 Estou Hospedada na Heroku mas a minha qualidade fica péssima lá,Me ajude...`,
-      `😎 Sabia que eu sou open-source? | https://github.com/MrGamingBR/Asuna-Bot-Discord`
+      `😎 Sabia que eu sou open-source? | github.com/MrGamingBR/SweetBot`
   ],
    i = 0
    setInterval(() => this.user.setActivity(`${status[i++ % status.length]}`, {
