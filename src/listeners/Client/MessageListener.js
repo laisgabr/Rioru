@@ -10,8 +10,6 @@ module.exports = class MessageListener extends Listener {
  async run (message) {
   if (message.author.bot || message.channel.type !== 'text') return
 
-  const { MessageEmbed } = require('discord.js')
-   
    const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
 
    if(dbbb.val() === null) {
@@ -108,7 +106,13 @@ module.exports = class MessageListener extends Listener {
    
    if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>,Meu nome é Sweet Bot e Meu prefixo é \`${prefix}\`, use \`${prefix}ajuda\` ou \`${prefix}info\` para mais Informações.`)
 
-    if (!message.content.toLowerCase().startsWith(prefix)) return
+    if (!message.content.toLowerCase().startsWith(prefix)) return;
+    
+    if (message.author.id === message.guild.owner.id) {
+   
+    if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send('Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
+    
+   }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase()
