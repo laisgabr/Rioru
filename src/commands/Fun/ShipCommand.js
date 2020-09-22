@@ -11,8 +11,8 @@ module.exports = class ShipCommand extends Command {
     run ({ channel, mentions, args }) {
         const { MessageEmbed } = require('discord.js')
 
-        const user = mentions.users.first() 
-        const user2 = mentions.users.first(1)
+        const user = mentions.users.first(0) || mentions.users.first(1) 
+        const user2 = mentions.users.first(1) || mentions.users.first(2)
 
         if(!user) {
             user = args[0]
@@ -42,7 +42,7 @@ module.exports = class ShipCommand extends Command {
             Casal Mais Perfeito que eu :yum: !
 ${nomeMod}
 
-:heart: ${ship}% :heart        
+:heart: ${ship}% :heart:        
         `)
         channel.send(embed2)
         } else {
@@ -51,7 +51,7 @@ ${nomeMod}
             .setDescription(`
         Só precisa o(a) ${user2} deixar de ser timido(a)
                        
-:heart: ${ship}% :heart    
+:heart: ${ship}% :heart:    
             `)
             channel.send(embed3)
         }
