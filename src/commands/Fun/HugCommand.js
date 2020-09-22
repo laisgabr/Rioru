@@ -9,7 +9,7 @@ module.exports = class extends Command {
         })
     }
     run ({ channel, mentions, author, guild, msg, args }) {
-        const Discord = require('discord.js')
+    const Discord = require('discord.js')
     const superagent = require('superagent')
 
     const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) || guild.members.cache.find(mem => mem.user.username === args.join(' '))
