@@ -9,7 +9,7 @@ module.exports = class EvalCommand extends Command {
             devOnly: true
         })
     }
-    run ({ channel, args }) {
+    run ({ channel, args, guild, member, msg, mentions, author, lavalink, client, config }) {
         const { inspect } = require('util')
 
         const input = args.join(' ')
