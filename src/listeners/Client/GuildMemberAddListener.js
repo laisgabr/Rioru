@@ -6,7 +6,7 @@ module.exports = class GuildMemberAddListener extends Listener {
       name: 'guildMemberAdd'
     })
   }
-  async run (guild, member) {
+  async run (guild) {
     const firebase = require('firebase')
     const database = firebase.database()
     

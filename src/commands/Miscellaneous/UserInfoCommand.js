@@ -87,14 +87,6 @@ module.exports = class UserinfoCommand extends Command {
     const guildMember = args[0] ? mentions.users.first() || await this.client.users.fetch(args[0]).catch(_ => member) : member
     const user = guildMember.user ? guildMember.user : guildMember
 
-    if (guild.owner.id === user.id) {
-      badges = badges + ' 👑 ' + ' 🤡 '
-    } 
-    
-    if(user.permissions.has("ADMINISTRATOR")) {
-      badges = badges + ' 🤡 '
-    }
-
     if (!user && !guildMember) return channel.send('Membro não encontrado')
 
     const customStatus = guildMember.presence.activities.filter(a => a.type === 'CUSTOM_STATUS')
@@ -119,6 +111,11 @@ module.exports = class UserinfoCommand extends Command {
         { // check
           name: '<:id3:733733686335373432> ID',
           value: `\`${user.id}\``,
+          inline: true
+        },
+        {
+          name: 'DISCRIMINADOR',
+          value: `\`${user.discriminator}\``,
           inline: true
         },
         { // check

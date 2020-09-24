@@ -61,7 +61,7 @@ module.exports = class PlayCommand extends Command {
           m.delete({ timeout: 4000 })
 
           let msg = m.content;
-          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('Cancelado');
+          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar' || msg.toUpperCase() === 'CANCELAR' || msg.toUpperCase() === 'CANCEL') return collector.stop('Cancelado');
           
           const track = tracks[Number(m.content) - 1];
           player.queue.add(track)

@@ -1,12 +1,3 @@
-/* eslint-disable no-multiple-empty-lines */
-/* eslint-disable quotes */
-/* eslint-disable spaced-comment */
-/* eslint-disable semi */
-/* eslint-disable object-curly-spacing */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable indent */
-/* eslint-disable no-tabs */
 const { Command } = require('../../structure')
 
 module.exports = class HelpCommand extends Command {

@@ -9,7 +9,6 @@ module.exports = class extends Command {
             category: 'Miscellaneous'
         })
     }
-   // eslint-disable-next-line lines-between-class-members
    async run ({ channel, args, guild, member }) {
         const firebase = require('firebase')
         const database = firebase.database()

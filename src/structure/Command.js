@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-/* eslint-disable quotes */
 module.exports = class Command {
   constructor (client, options) {
     this.client = client
@@ -12,12 +10,11 @@ module.exports = class Command {
     this.devOnly = options.devOnly || false
   }
 
-  preLoad (ctx) {
-   
+  preLoad (ctx) {   
     if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
       return ctx.channel.send('Este comando se encontra disponível apenas para meus donos.')
     }
-   
+    
     try {
       this.run(ctx)
     } catch (error) {

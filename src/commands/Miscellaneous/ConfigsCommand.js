@@ -61,9 +61,6 @@ Clique em <:numero5Sweet:757455795959889990> para Gerenciar o Sistema de Puniç�
 
    })
 
-        collector.on("end", (_, reason) => {
-            if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada")
-        });
     })
   }
 }

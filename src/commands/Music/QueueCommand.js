@@ -21,7 +21,7 @@ module.exports = class QueueCommand extends Command {
     if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
 
     if(player.queue[0]) string += `__**Tocando Agora: **__\n ${player.queue[0].title} - **Música pedida por ${player.queue[0].requester.username}**. \n`;
-    if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 20).map(x => `**${index++})** ${x.title} - **Música pedida por ${x.requester.username}**.`).join("\n")}`;
+    if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 15).map(x => `**${index++})** ${x.title} - **Música pedida por ${x.requester.username}**.`).join("\n")}`;
     
     const embed = new MessageEmbed()
     .setColor("#66dbff")

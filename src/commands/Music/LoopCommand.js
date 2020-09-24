@@ -21,7 +21,8 @@ module.exports = class LoopCommand extends Command {
         if(!player || !player.queue[0]) return channel.send("Não tem nenhuma Música Tocando");
         
    
-        if(!args[0] === 'all' || !args[0] === 'track') return channel.send('Diga <all/track> para eu loopar para você!')
+        if(!args[0] === ['all', 'track']) return channel.send('Diga <all/track> para eu loopar para você!')
+        const { author, title, uri, displayThumbnail } = player.queue[0]
         switch(args[0]) {
             case "all":
             if(player.trackRepeat === true) {
@@ -31,12 +32,13 @@ module.exports = class LoopCommand extends Command {
             if (player.queueRepeat === false){
                 player.setQueueRepeat(true);
                 const embed = new MessageEmbed()
+                /*`https://img.youtube.com/vi/${identifier}/maxresdefault.jpg`*/ 
                 .setAuthor("Repetindo a Lista de Reprodução")
                 return channel.send(embed)
-            } else {
+             } else {
                 player.setQueueRepeat(false);
                 const embeda = new MessageEmbed()
-                .setAuthor("Tirando o Loop")
+                .setAuthor("Tirando o Loop da Lista de Reprodução")
                 return channel.send(embeda)
             } 
 
@@ -45,13 +47,11 @@ module.exports = class LoopCommand extends Command {
                 player.setQueueRepeat(false)
             }
 
-            const { author, title, uri, thumbnail } = player.queue[0]
-
-                if(player.trackRepeat === false){
+            if(player.trackRepeat === false){
                     player.setTrackRepeat(true);
                     const embed = new MessageEmbed()
                     .setAuthor("Repetindo:")
-                    .setThumbnail(thumbnail)
+                    .setThumbnail(displayThumbnail("maxresdefault"))
                     .setDescription(stripIndents`
                     ${player.playing ? "▶️" : "⏸️"} **[${title}](${uri})** \`${Utils.formatTime(duration, true)}\` by ${author}
                     `)
@@ -60,7 +60,7 @@ module.exports = class LoopCommand extends Command {
                     player.setTrackRepeat(false);
                     const embed = new MessageEmbed()
                     .setAuthor("Parando de Repetir:")
-                    .setThumbnail(thumbnail)
+                    .setThumbnail(displayThumbnail("maxresdefault"))
                     .setDescription(stripIndents`
                     ${player.playing ? "▶️" : "⏸️"} **[${title}](${uri})** \`${Utils.formatTime(duration, true)}\` Do Canal/Artista: ${author}
                     `)

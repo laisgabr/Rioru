@@ -1,8 +1,3 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable quotes */
-/* eslint-disable no-eval */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class EvalCommand extends Command {
@@ -19,8 +14,8 @@ module.exports = class EvalCommand extends Command {
 
         const input = args.join(' ')
         try {
-            if (args[0] === 'this.client.token') {
-                channel.send('\`:thumbsup:\`')
+            if (input === 'this.client.token') {
+               return channel.send(':thumbsup:')
             }
             let output = eval(input)
 
@@ -30,7 +25,7 @@ module.exports = class EvalCommand extends Command {
 
             channel.send(`**Saida:**\n\`\`\`js\n${output}\n\`\`\``)
         } catch (error) {
-            channel.send(`**Error:**\n\`${error}\``)
+            channel.send(`**Erro:**\n\`${error}\``)
         }
     }
 }

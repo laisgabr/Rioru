@@ -3,7 +3,7 @@
 /* eslint-disable indent */
 const { Command } = require('../../structure')
 
-module.exports = class extends Command {
+module.exports = class BlacklistRemoveCommand extends Command {
     constructor (client) {
         super(client, {
             name: 'blacklistremove',
@@ -12,28 +12,30 @@ module.exports = class extends Command {
             devOnly: true
         })
     }
-   async run ({ channel, args, mentions, author }) {
-    let motivoBl = args.slice(1).join(' ')
-    if (!motivoBl) motivoBl = 'Não Definido'
-
-    const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) 
-        if (!uuser) {
-           return channel.send('Diga um id')
-        }
+   async run ({ channel, author }) {   
+       channel.send('Desativado...')
+       /* let id = channel.createMessageCollector(m => m.author.id === author.id, { time: 60000, max: 1 })
         
-        const firebase = require('firebase')
-        const database = firebase.database()
+        id.on('collect', () => {
+            channel.send(`O(a) usuário(a) é ${id.collected.first().content}`) 
+            const memberID = id.collected.first().content
 
-       const db = await database.ref(`Global/Blacklist/${uuser.id}`)
-        .once('value')
-        if (db.val() === null) {
-            return channel.send('Esse usuário não está Banido')
-        }
-
-        if (!db.val() == null) {
-            database.ref(`Global/Blacklist/${uuser.id}`).update(null)
-        }
+            const firebase = require('firebase')
+            const database = firebase.database()
+    
+           const db = await database.ref(`Global/Blacklist/${memberID}`)
+            .once('value')
+            if (db.val() === null) {
+                return channel.send('Esse usuário não está Banido')
+            }
+    
+            if (!db.val() == null) {
+                database.ref(`Global/Blacklist/${memberID}`).set(null)
+            }
             
-        channel.send(`${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
+            channel.send(`${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
+            
+        })
+        */
     }
 }

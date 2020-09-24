@@ -1,7 +1,3 @@
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable quotes */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class SetNickCommand extends Command {
@@ -23,7 +19,7 @@ module.exports = class SetNickCommand extends Command {
     uuser = author    
     } else {
         if (!uuser) {
-            uuser = author
+         uuser = author
         }
     }
 

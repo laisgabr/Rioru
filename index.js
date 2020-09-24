@@ -1,5 +1,5 @@
-const Bot = require('./src/Bot.js')
+const Sweet = require('./src/Sweet')
 const config = require('./config.js')
-const client = new Bot(config)
+const client = new Sweet(config)
 
 client.start()

@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-/* eslint-disable quotes */
 const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')

@@ -1,5 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class AvatarCommand extends Command {

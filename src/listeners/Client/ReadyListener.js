@@ -1,8 +1,5 @@
-/* eslint-disable quotes */
-/* eslint-disable indent */
 const { Listener } = require('../../structure')
-const erela = require('erela.js')
-const { Utils } = require('erela.js')
+const { Utils, ErelaClient } = require('erela.js')
 
 module.exports = class ReadyListener extends Listener {
   constructor () {
@@ -13,9 +10,9 @@ module.exports = class ReadyListener extends Listener {
   }
 
  async run (client) {
-  this.lavalink = new erela.ErelaClient(this, this.config.nodes, { autoPlay: true })
+  this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
     .on('nodeConnect', node => console.log(`${node.options.tag || node.options.host} - Lavalink conectado com Sucesso.`))
-    
+
     .on('nodeError', (node, err) => console.log(`Infelizmente, aconteceu um erro. Erro: ${err}`))
     
     .on('nodeReconnect', node => console.log(`${node.options.tag || nodes.options.host} está tentando fazer Reconexão...`))
@@ -24,24 +21,25 @@ module.exports = class ReadyListener extends Listener {
     
     .on('queueEnd', async  player => {
       await player.textChannel.send('⏹ | A fila acabou...')
-      return this.lavalink.players.destroy(player.guild.id)
+      setTimeout(function() {
+        if (player.playing === false) {
+        player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
+        return this.lavalink.players.destroy(player.guild.id)
+      } else {
+        console.log('Baiano')
+      }
+    }, 60000 * 2)
+
     })
     
-    .on('trackStart', ({ textChannel }, { title, duration, author, thumbnail }) => {
+    .on('trackStart', ({ textChannel }, { title, duration, author, displayThumbnail }) => {
     const { MessageEmbed } = require('discord.js')
     const embed = new MessageEmbed()
-      .setColor('#66dbff')
-      .setDescription(`
-      Música: 
-**${title}** 
-
-Duração:      
-\`${Utils.formatTime(duration, true)}\`
-
-Canal/Artista :
-${author}
-`)
-.setThumbnail(thumbnail)
+    .setColor('#66dbff')
+    .addField('Música:', `**${title}**`)
+    .addField(`Duração:`, `\`${Utils.formatTime(duration, true)}\``)
+    .addField(`Artista/Canal:`, `${author}`)
+    .setThumbnail(displayThumbnail("maxresdefault"))
      textChannel.send(embed)
     })
     
@@ -55,20 +53,23 @@ ${author}
    
     var status = [
       `😉 Tenho Custom Prefix, Me mencione para saber mais!`,
-      `😛 Sabia que tenho um sistema de músicas em desenvolvimento ? `,
-      `😬 Me ajude, Doando para Meus Criadores...`,
-      `😢 Estou Hospedada na Heroku mas a minha qualidade fica péssima lá,Me ajude...`,
+      `😛 Sabia que tenho um Sistema de Música ?`,
+      `😢 Estou Hospedada na Heroku mas a minha qualidade fica péssima para tocar, Me ajude por favor...`,
       `😎 Sabia que eu sou open-source? | github.com/MrGamingBR/SweetBot`
   ],
    i = 0
    setInterval(() => this.user.setActivity(`${status[i++ % status.length]}`, {
     type: "STREAMING",
     url: "https://www.twitch.tv/mrgamingbr0001"
-    }), 10000)
+    }), 8000)
 
-   console.log(`${this.user.username} iniciada com:
+   console.log(`
+    ${this.user.username} iniciada com:
+    
     ${this.users.cache.size} Usuários;
+    
     ${this.guilds.cache.size} Guilds;
+    
     ${this.commands.size} Comandos.`)
   }
 }
