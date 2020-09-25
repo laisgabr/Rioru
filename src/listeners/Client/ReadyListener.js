@@ -39,7 +39,7 @@ module.exports = class ReadyListener extends Listener {
     .addField('Música:', `**${title}**`)
     .addField(`Duração:`, `\`${Utils.formatTime(duration, true)}\``)
     .addField(`Artista/Canal:`, `${author}`)
-    .setThumbnail(displayThumbnail("maxresdefault"))
+
      textChannel.send(embed)
     })
     
