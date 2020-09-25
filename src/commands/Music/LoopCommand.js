@@ -10,63 +10,28 @@ module.exports = class LoopCommand extends Command {
     }
     run ({ channel, guild, lavalink, member, args }) {
         const { MessageEmbed } = require('discord.js')
-        
-        const { Utils } = require("erela.js")
-        const { stripIndents } = require("common-tags")
 
-        const voiceChannel = member.voice.channel
-        if (!voiceChannel) return channel.send('Você não está num canal de Voz ou no Mesmo que eu!')
+        const player = lavalink.players.get(guild.id);
+    if (!player || !player.queue[0]) return channel.send("Não tem nada tocando");
 
-        const player = lavalink.players.get(guild.id)
-        if(!player || !player.queue[0]) return channel.send("Não tem nenhuma Música Tocando");
-        
-   
-        if(!args[0] === ['all', 'track']) return channel.send('Diga <all/track> para eu loopar para você!')
-        const { author, title, uri, displayThumbnail } = player.queue[0]
-        switch(args[0]) {
-            case "all":
-            if(player.trackRepeat === true) {
-                player.setTrackRepeat(false)
-            }
+    const  canal  = member.voice.channel;
+    
+    if (!canal) return channel.send("Você precisa estar num canal de voz");
+    
+    if (args.length && /queue/i.test(args[0])) {
+      player.setQueueRepeat(!player.queueRepeat);
+      const queueRepeat = player.queueRepeat ? "Ativando Loop da Lista de Reprodução" : "Desativando Loop da Lista de Reprodução";
+      return channel.send(`${queueRepeat}`)
+    }
 
-            if (player.queueRepeat === false){
-                player.setQueueRepeat(true);
-                const embed = new MessageEmbed()
-                /*`https://img.youtube.com/vi/${identifier}/maxresdefault.jpg`*/ 
-                .setAuthor("Repetindo a Lista de Reprodução")
-                return channel.send(embed)
-             } else {
-                player.setQueueRepeat(false);
-                const embeda = new MessageEmbed()
-                .setAuthor("Tirando o Loop da Lista de Reprodução")
-                return channel.send(embeda)
-            } 
+    player.setTrackRepeat(!player.trackRepeat);
+    const trackRepeat = player.trackRepeat ? "Ativando Loop" : "Desativando Loop";
+    
+    const { title, author } = player.queue[0]
 
-            case "track": 
-            if (player.queueRepeat === true) {
-                player.setQueueRepeat(false)
-            }
-
-            if(player.trackRepeat === false){
-                    player.setTrackRepeat(true);
-                    const embed = new MessageEmbed()
-                    .setAuthor("Repetindo:")
-                    .setThumbnail(displayThumbnail("maxresdefault"))
-                    .setDescription(stripIndents`
-                    ${player.playing ? "▶️" : "⏸️"} **[${title}](${uri})** \`${Utils.formatTime(duration, true)}\` by ${author}
-                    `)
-                    return channel.send(embed)
-                } else {
-                    player.setTrackRepeat(false);
-                    const embed = new MessageEmbed()
-                    .setAuthor("Parando de Repetir:")
-                    .setThumbnail(displayThumbnail("maxresdefault"))
-                    .setDescription(stripIndents`
-                    ${player.playing ? "▶️" : "⏸️"} **[${title}](${uri})** \`${Utils.formatTime(duration, true)}\` Do Canal/Artista: ${author}
-                    `)
-                    return channel.send(embed)
-                }
-             
-        }
+    const embed = new MessageEmbed()
+    
+    .setAuthor(`${trackRepeat} na Música ${title} de ${author}`)
+    channel.send(embed)               
     }
 }
