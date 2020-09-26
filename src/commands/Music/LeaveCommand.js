@@ -9,7 +9,7 @@ module.exports = class LeaveCommand extends Command {
         })
     }
     run ({ lavalink, guild, msg, channel, member }) {
-    if (!member.voice.channel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    if (!member.voice.channel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
     lavalink.players.destroy(guild.id);
     msg.react('👋')
     }

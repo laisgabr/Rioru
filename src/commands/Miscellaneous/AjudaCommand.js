@@ -17,83 +17,24 @@ module.exports = class HelpCommand extends Command {
 		.setTitle(`Comandos de Administração`)
 		.setThumbnail("https://cdn.discordapp.com/attachments/656602609481809941/749604296743583795/emote.png")
 		.setColor("ORANGE")
-		.setDescription(`_
-		Clear:
-		**Chat floodado ? Use esse comandos**
-
-		Exemplo de como usar :
-		***ya!clear 99***
-
-
-		Lock:
-		**Feche o canal que está sendo floodado ou badernado! KKKK**
-
-		Exemplo de como usar :
-		***ya!lock***
-
-
-		Unlock:
-		**Destranca o chat**
-
-		Exemplo de como usar :
-		***ya!unlock***
-
-		`)
+		.setDescription(`\`Clear\`, \`Lock\`, \`Unlock\`.`)
         .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 		const EmbedFun = new MessageEmbed()
 		.setTitle(`Categoria Fun`)
 		.setColor("YELLOW")
-		.setDescription(` _
-		Hug:
-		**De um abraço em alguém!**
-
-		Exemplo de como usar :
-		***ya!hug @MrGamingBR***
-
-
-		Kiss:
-		**De um beijo em alguém!**
-
-		Exemplo de como usar :
-		***ya!kiss @Alguém***
-
-
-		Headpat:
-		**Faça um cafuné em alguém**
-
-		Exemplo de como usar :
-		***ya!headpat @MrGamingBR***
-
-
-		Primeiraspalavras:
-		**Diga as primeiras palavras do bebe**
-
-		Exemplo de como usar :
-		***ya!primeiraspalavras Mãe Chata KKKKKKKKKK***
-
-
-		Slap:
-		**De um tapa em alguém!**
-
-		Exemplo de como usar :
-		***ya!slap @CaraQueTeDeveUmaBalinha***
-
-
-		`)
+		.setDescription(`\`Banido\`, \`Headpat\`, \`Hug\`, Kiss, \`Laranjo\`, \`Marry\`, \`PP\`, \`Ship\`, \`Slap\`.`)
 		.setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 	const EmbedEco = new MessageEmbed()
 	.setTitle("Comandos de Economia")
 	.setColor("GREEN")
-	.setDescription(`Comandos desativados por causa da DB`)
+	.setDescription(`Comandos desativados..`)
 	.setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 		const EmbedMisc = new MessageEmbed()
 		.setTitle("Comandos de Miscelanea")
 		.setColor("CYAN")
-		.setDescription(`_
-		Avatar, Docs, Donate**, Invite, Ping, Say, Serverinfo, SetNick, Steam, Uptime, Userinfo.
-		`)
+		.setDescription(`\`Avatar\`, \`Calculadora\`, \`Configs\`, \`Docs\`, \`Donate\`, \`Info\`, \`Invite\`, \`Lembrete\`, \`Level\`, \`Ping\`, \`Say\`, \`Serverinfo\`, \`SetNick\`, \`SetPrefix\`, \`Steam\`, \`Uptime\`, \`Userinfo\`.`)
 		.setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 
@@ -101,42 +42,7 @@ module.exports = class HelpCommand extends Command {
 		const EmbedMod = new MessageEmbed()
 	   .setTitle(`Comandos de Moderação`)
 	   .setColor("BLUE")
-	   .setDescription(` _
-Ban:
-**Cansado de um membro chato ? Use esse comando!**
-
-Exemplo de como usar :
-***ya!ban 468817505318862882 Chato KKKK***
-
-
-Kick:
-**Expulse alguém do seu Servidor!**
-
-Exemplo de como usar :
-***ya!kick @MrGamingBR Motivo bem aleátorio***
-
-
-Mute:
-**Mute algum membro chato e bagunçeiro**
-
-Exemplo de como usar :
-***ya!mute @MrGamingBR 10h***
-
-
-Unban:
-**Desbane algum usuário pelo id**
-
-Exemplo de como usar :
-***ya!unban 468817505318862882 Não fez nada***
-
-
-Unmute:
-**Desmuta o usuário fornecido,seja mencionando/username/id se ele estiver mutado!**
-
-Exemplo de como usar :
-***ya!unmute @MrGamingBR***
-
-	   `)
+	   .setDescription(`\`Ban\`, \`Kick\`, \`Mute\`, \`Unban\`, \`Unmute\``)
 	   .setThumbnail("https://cdn.discordapp.com/attachments/656602609481809941/749450510645461112/emote.png")
 	   .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
@@ -154,7 +60,7 @@ Exemplo de como usar :
 const EmbedNSFW = new MessageEmbed()
 .setTitle(`Comandos de NSFW +18`)
 .setColor("RED")
-.setDescription(`4k, Ahegao, Anal, Ass, Blowjob, Boobs, Cosplay, Cumsluts, Gay, Gif, Hentaianal, Hentai, Holo, Kuni, Lesbian, Lewd, Maid, Milf, Neko, Pussy, Random, Squirt, Thigh, Trans, Trap, Yuri.`)
+.setDescription(`\`4k\`, \`Anal\`, \`Ass\`, \`Blowjob\`, \`Boobs\`, \`Cosplay\`, \`Cumsluts\`, \`Gif\`, \`Hentaianal\`, \`Hentai\`, \`Holo\`, \`Kuni\`, \`Lesbian\`, \`Neko\`, \`Pussy\`, \`Thigh\`, \`Trans\`, \`Trap\`, \`Yaoi\` ,\`Yuri\`.`)
  .setThumbnail("https://cdn.discordapp.com/attachments/656602609481809941/749573230662254622/emote.png")
  .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
@@ -181,7 +87,7 @@ const EmbedNSFW = new MessageEmbed()
 
 👮‍♂️ Moderação - \`Ban\`, \`Kick\`, \`Mute\`...
 
-🎶 Música - \`Em construção\`.....
+🎶 Música - \`Play\`, \`Skip\`, \`Queue\`...
 
 🔞 NSFW +18 - \`4k\`, \`Hentai\`, \`Gif\`, \`Nekogif\`, \`Anal\`...
 
@@ -203,31 +109,31 @@ const EmbedNSFW = new MessageEmbed()
 // ⬅️ ➡️
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
        const Administrar = (reaction, user) => reaction.emoji.name === '📂' && user.id === author.id;
-       const Adm = msg.createReactionCollector(Administrar, {time: 360000})
+       const Adm = msg.createReactionCollector(Administrar)
 
        const Diver = (reaction, user) => reaction.emoji.name === '🎁' && user.id === author.id;
-	   const Fun = msg.createReactionCollector(Diver, {time: 360000})
+	   const Fun = msg.createReactionCollector(Diver)
 
        const Economia = (reaction, user) => reaction.emoji.name === '💸' && user.id === author.id;
-	   const Eco = msg.createReactionCollector(Economia, {time: 360000})
+	   const Eco = msg.createReactionCollector(Economia)
 
 	   const Miscelanea = (reaction, user) => reaction.emoji.name === '🌐' && user.id === author.id;
-	   const Misc = msg.createReactionCollector(Miscelanea, {time: 360000})
+	   const Misc = msg.createReactionCollector(Miscelanea)
 
 	   const Moderar = (reaction, user) => reaction.emoji.name === '👮‍♂️' && user.id === author.id;
-	   const Mod = msg.createReactionCollector(Moderar, {time: 360000})
+	   const Mod = msg.createReactionCollector(Moderar)
 
 	   const Musica = (reaction, user) => reaction.emoji.name === '🎶' && user.id === author.id;
-	   const Music = msg.createReactionCollector(Musica, {time: 360000})
+	   const Music = msg.createReactionCollector(Musica)
 
 	   const NotSafe = (reaction, user) => reaction.emoji.name === '🔞' && user.id === author.id;
-	   const NSFW = msg.createReactionCollector(NotSafe, {time: 360000})
+	   const NSFW = msg.createReactionCollector(NotSafe)
 
 	   const Giveaway = (reaction, user) => reaction.emoji.name === '🎉' && user.id === author.id;
-	   const Sorte = msg.createReactionCollector(Giveaway, {time: 360000})
+	   const Sorte = msg.createReactionCollector(Giveaway)
 
 	   const Seta = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === author.id;
-	   const Voltar = msg.createReactionCollector(Seta, {time: 360000})
+	   const Voltar = msg.createReactionCollector(Seta)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
     Adm.on('collect', async r => {
 		msg.reactions.removeAll()

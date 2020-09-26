@@ -13,7 +13,7 @@ module.exports = class NowPlayingTestCommand extends Command {
     const { MessageEmbed } = require("discord.js")
 
     const player = lavalink.players.get(guild.id);
-    if (!player) return channel.send("Não tem nenhuma música tocando!");
+    if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nenhuma música tocando nesse Servidor!");
     if (player.position > 5000){
       getnowplaying()
     }
@@ -24,7 +24,7 @@ module.exports = class NowPlayingTestCommand extends Command {
           }
 
           function getnowplaying(){
-          let { title, duration, displayThumbnail, requester } = player.queue[0];
+          let { title, duration, requester } = player.queue[0];
           let amount = `00:${Utils.formatTime(player.position, true)}`
           const part = Math.floor((player.position / duration) * 10);
           const giveEmbed = new MessageEmbed()

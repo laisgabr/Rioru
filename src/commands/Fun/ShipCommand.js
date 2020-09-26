@@ -9,10 +9,11 @@ module.exports = class ShipCommand extends Command {
         })
     }
     run ({ channel, mentions, args }) {
-        const { MessageEmbed } = require('discord.js')
+      /*
+      const { MessageEmbed } = require('discord.js')
 
-        const user = mentions.users.first(0) || mentions.users.first(1) 
-        const user2 = mentions.users.first(1) || mentions.users.first(2)
+        let user = mentions.users.first(1)
+       let user2 = mentions.users.first(2)
 
         if(!user) {
             user = args[0]
@@ -31,7 +32,7 @@ module.exports = class ShipCommand extends Command {
             .setColor("RED")
             .setDescription(`
         Eu acho que ${user} e ${user2} não vai dar Certo!
-:broken_heart: ${ship}% :broken_heart:            
+:broken_heart: ${ship}% :broken_heart:
         `)
         channel.send(embed1)
         } else if (ship === 100) {
@@ -42,7 +43,7 @@ module.exports = class ShipCommand extends Command {
             Casal Mais Perfeito que eu :yum: !
 ${nomeMod}
 
-:heart: ${ship}% :heart:        
+:heart: ${ship}% :heart:
         `)
         channel.send(embed2)
         } else {
@@ -50,12 +51,12 @@ ${nomeMod}
             .setColor("AQUA")
             .setDescription(`
         Só precisa o(a) ${user2} deixar de ser timido(a)
-                       
-:heart: ${ship}% :heart:    
+
+:heart: ${ship}% :heart:
             `)
             channel.send(embed3)
         }
-
-
-    } 
+    */
+  channel.send('Desativado.....')
+    }
 }

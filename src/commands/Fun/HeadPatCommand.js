@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
    const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) || guild.members.cache.find(mem => mem.user.username === args.join(' '))
 
-   if (!uuser) return msg.reply('Mencione alguém por favor')
+   if (!uuser) return channel.send('<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!')
 
     superagent.get('https://nekos.life/api/v2/img/pat')
     .end((err, response) => {

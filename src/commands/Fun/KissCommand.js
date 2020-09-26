@@ -13,11 +13,11 @@ module.exports = class extends Command {
         const Discord = require('discord.js')
         var uuser = mentions.users.first() || this.client.users.cache.get(args[0]) || guild.members.cache.find(mem => mem.user.username === args.join(" "))
         if (!uuser) {
-            return msg.reply("Mencione ou mande um id ou digite um username")
+            return channel.send("<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!")
         }
-      
+
         if (uuser.id === this.client.user.id) return msg.reply("Quero te beijar nah")
-    
+
         superagent.get('https://nekos.life/api/v2/img/kiss')
         .end((err, response) => {
             const embed = new Discord.MessageEmbed()

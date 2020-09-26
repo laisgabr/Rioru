@@ -17,13 +17,13 @@ module.exports = class PlayCommand extends Command {
   }
 
   async run ({ channel, args, member, guild, author, lavalink }) {
-   
-    const voiceChannel = member.voice.channel;
-    if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
-    if (!guild.me.permissions.has("CONNECT")) return channel.send("Eu não tenho a Permissão `Conectar` para fazer isso");
-    if (!guild.me.permissions.has("SPEAK")) return channel.send("Eu não tenho a Permissão `Falar` para fazer isso");
 
-    if (!args.join(' ')) return channel.send(":x: | Diga um nome para mim pesquisar ou url");
+    const voiceChannel = member.voice.channel;
+    if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    if (!guild.me.permissions.has("CONNECT")) return channel.send("<:xSweet:756989900661850182> | Eu não tenho a Permissão `Conectar` para fazer isso");
+    if (!guild.me.permissions.has("SPEAK")) return channel.send("<:xSweet:756989900661850182> | Eu não tenho a Permissão `Falar` para fazer isso");
+
+    if (!args.join(' ')) return channel.send("<:xSweet:756989900661850182> | Diga um nome para mim pesquisar ou url!");
 
     const player = lavalink.players.spawn({
         guild: guild,
@@ -37,7 +37,7 @@ module.exports = class PlayCommand extends Command {
               channel.send(`<:musicNoteSweet:757021472077250700> | Adicionando **${res.tracks[0].title}** \`${Utils.formatTime(res.tracks[0].duration, true)}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
                 if (!player.playing) player.play()
                 break;
-            
+
             case "SEARCH_RESULT":
                 let index = 1;
                 const tracks = res.tracks.slice(0, 10);
@@ -62,10 +62,10 @@ module.exports = class PlayCommand extends Command {
 
           let msg = m.content;
           if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar' || msg.toUpperCase() === 'CANCELAR' || msg.toUpperCase() === 'CANCEL') return collector.stop('Cancelado');
-          
+
           const track = tracks[Number(m.content) - 1];
           player.queue.add(track)
-          
+
           channel.send(`Adicionando \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\` a Lista de Reprodução`).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
           if (!player.playing) player.play();
         }
@@ -75,16 +75,16 @@ module.exports = class PlayCommand extends Command {
         if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada")
       });
       break;
-                
+
       case "PLAYLIST_LOADED":
         res.playlist.tracks.forEach(track => player.queue.add(track));
         const duration = Utils.formatTime(res.playlist.tracks.reduce((acc, cur) => ({duration: acc.duration + cur.duration})).duration, true);
         channel.send(`<:musicNoteSweet:757021472077250700> | Adicionando \`${res.playlist.tracks.length}\` \`${duration}\` Músicas na Playlist \`${res.playlist.info.name}\``).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
         if(!player.playing) player.play()
         break;
-            
+
     }
-    
+
   }).catch(err => {
     channel.send(err)
   })

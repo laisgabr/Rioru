@@ -12,11 +12,11 @@ module.exports = class LoopCommand extends Command {
         const { MessageEmbed } = require('discord.js')
 
         const player = lavalink.players.get(guild.id);
-    if (!player) return channel.send("Não tem nada tocando");
+    if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor");
 
     const  canal  = member.voice.channel;
 
-    if (!canal) return channel.send("Você precisa estar num canal de voz");
+    if (!canal) return channel.send("<:xSweet:756989900661850182> | Você precisa estar num canal de voz para executar essa ação!");
 
     if (args.length && /queue/i.test(args[0])) {
       player.setQueueRepeat(!player.queueRepeat);
