@@ -9,20 +9,23 @@ module.exports = class GuildMemberAddListener extends Listener {
   async run (guild) {
     const firebase = require('firebase')
     const database = firebase.database()
-    
+
   const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
   if (db.val() === null) {
      return database.ref(`Servidores/${guild.id}/Configs`).set({
           prefix: "y!",
           BemVindoID: "undefined",
-          MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) ao {guild.name}`,
+          MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) a {guild.name}`,
           SaidaID: "undefined",
           SaidaMensagem: `{member} saiu do Servidor :(`,
           LogsID: "undefined"
       })
   }
   if (db.val().BemVindoID === "undefined") return;
- 
+
+  const mensagem = db.val().MensagemBemVindo
+    mensagem.replace('{member}', '${member}' || '{guild}', '${guild.name}')
+
   this.client.channels.cache.get(`${db.val().BemVindoID}`).send(`${db.val().MensagemBemVindo}`).catch(async err => {
     console.log(err)
   })
