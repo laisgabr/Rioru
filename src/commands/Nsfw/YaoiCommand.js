@@ -20,10 +20,11 @@ module.exports = class extends Command {
             const embed = new MessageEmbed()
             .setDescription(`Não consegue ver a imagem ou o gif ? [Clique aqui](${response.body.url})`)
             .setImage(response.body.url)
+              .setColor('RANDOM')
             channel.send(embed)
         })
     } else {
-        channel.send('Não posso fazer isso nesse canal, Desculpe')
+        channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
     }
     }
 }

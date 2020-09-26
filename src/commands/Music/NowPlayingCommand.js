@@ -11,9 +11,9 @@ module.exports = class NowPlayingTestCommand extends Command {
   run ({ channel, guild, lavalink }) {
     const { Utils } = require("erela.js")
     const { MessageEmbed } = require("discord.js")
-        
+
     const player = lavalink.players.get(guild.id);
-    if (!player || !player.queue[0]) return channel.send("Não tem nenhuma música tocando!");
+    if (!player) return channel.send("Não tem nenhuma música tocando!");
     if (player.position > 5000){
       getnowplaying()
     }
@@ -22,14 +22,13 @@ module.exports = class NowPlayingTestCommand extends Command {
             getnowplaying()
             }, 3000)
           }
-          
+
           function getnowplaying(){
           let { title, duration, displayThumbnail, requester } = player.queue[0];
           let amount = `00:${Utils.formatTime(player.position, true)}`
           const part = Math.floor((player.position / duration) * 10);
           const giveEmbed = new MessageEmbed()
             .setColor("AQUA")
-            .setThumbnail(displayThumbnail("maxresdefault"))
             .setDescription(`${player.playing ? "▶️" : "⏸️"} Tocando Agora: ${title}\n${"▬".repeat(part) + "🔘" + "▬".repeat(10 - part)}[${amount} / ${Utils.formatTime(duration, true)}]\n Pedido por: ${requester.tag}`)
 
         channel.send({embed: giveEmbed}).then(m => {

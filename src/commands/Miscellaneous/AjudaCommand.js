@@ -4,7 +4,7 @@ module.exports = class HelpCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'ajuda',
-	  aliases: ['help'],
+	    aliases: ['help'],
       description: 'Lista todos os meus comandos',
       usage: '<prefix>ajuda',
       category: 'Miscellaneous'
@@ -18,68 +18,68 @@ module.exports = class HelpCommand extends Command {
 		.setThumbnail("https://cdn.discordapp.com/attachments/656602609481809941/749604296743583795/emote.png")
 		.setColor("ORANGE")
 		.setDescription(`_
-		Clear: 
-		**Chat floodado ? Use esse comandos** 
-		
+		Clear:
+		**Chat floodado ? Use esse comandos**
+
 		Exemplo de como usar :
 		***ya!clear 99***
-		
-		
+
+
 		Lock:
 		**Feche o canal que está sendo floodado ou badernado! KKKK**
-		
+
 		Exemplo de como usar :
 		***ya!lock***
-		
-	
-		Unlock: 
-		**Destranca o chat** 
-		
+
+
+		Unlock:
+		**Destranca o chat**
+
 		Exemplo de como usar :
 		***ya!unlock***
-		
+
 		`)
         .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-	   
+
 		const EmbedFun = new MessageEmbed()
 		.setTitle(`Categoria Fun`)
 		.setColor("YELLOW")
 		.setDescription(` _
-		Hug: 
-		**De um abraço em alguém!** 
-		
+		Hug:
+		**De um abraço em alguém!**
+
 		Exemplo de como usar :
 		***ya!hug @MrGamingBR***
-		
-		
+
+
 		Kiss:
 		**De um beijo em alguém!**
-		
+
 		Exemplo de como usar :
 		***ya!kiss @Alguém***
-		
-		
-		Headpat: 
-		**Faça um cafuné em alguém** 
-		
+
+
+		Headpat:
+		**Faça um cafuné em alguém**
+
 		Exemplo de como usar :
 		***ya!headpat @MrGamingBR***
-		
-		
-		Primeiraspalavras:  
+
+
+		Primeiraspalavras:
 		**Diga as primeiras palavras do bebe**
-		
+
 		Exemplo de como usar :
 		***ya!primeiraspalavras Mãe Chata KKKKKKKKKK***
-		
-		
+
+
 		Slap:
 		**De um tapa em alguém!**
-		
+
 		Exemplo de como usar :
 		***ya!slap @CaraQueTeDeveUmaBalinha***
-		
-		
+
+
 		`)
 		.setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 	const EmbedEco = new MessageEmbed()
@@ -87,7 +87,7 @@ module.exports = class HelpCommand extends Command {
 	.setColor("GREEN")
 	.setDescription(`Comandos desativados por causa da DB`)
 	.setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-		
+
 		const EmbedMisc = new MessageEmbed()
 		.setTitle("Comandos de Miscelanea")
 		.setColor("CYAN")
@@ -102,8 +102,8 @@ module.exports = class HelpCommand extends Command {
 	   .setTitle(`Comandos de Moderação`)
 	   .setColor("BLUE")
 	   .setDescription(` _
-Ban: 
-**Cansado de um membro chato ? Use esse comando!** 
+Ban:
+**Cansado de um membro chato ? Use esse comando!**
 
 Exemplo de como usar :
 ***ya!ban 468817505318862882 Chato KKKK***
@@ -116,14 +116,14 @@ Exemplo de como usar :
 ***ya!kick @MrGamingBR Motivo bem aleátorio***
 
 
-Mute: 
-**Mute algum membro chato e bagunçeiro** 
+Mute:
+**Mute algum membro chato e bagunçeiro**
 
 Exemplo de como usar :
 ***ya!mute @MrGamingBR 10h***
 
 
-Unban:  
+Unban:
 **Desbane algum usuário pelo id**
 
 Exemplo de como usar :
@@ -143,20 +143,18 @@ Exemplo de como usar :
 
 
 	const EmbedMusic = new MessageEmbed()
-	.setTitle("Comandos de Música")
-	.setDescription("O MrGamingBR tá fazendo tudo sozinho né, então dá uma esperada ai bro")
+	  .setTitle("Comandos de Música")
+    .setColor('RANDOM')
+    .setDescription(`\`Bassboost\`, \`Join\`, \`Leave\`, \`Loop\`, \`Now Playing\`, \`Pause\`, \`Play\`, \`Queue\`, \`Resume\`, \`Skip\`, \`Volume\``)
     .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 
-	
+
 // embed nsfw
 const EmbedNSFW = new MessageEmbed()
 .setTitle(`Comandos de NSFW +18`)
 .setColor("RED")
-.setDescription(` Como esses Comandos são Not Safe For Work +18, Vai ser apenas a Listagem dos Comandos de A-Z!
-
-4k, Ahegao, Anal, Ass, Blowjob, Boobs, Cosplay, Cumsluts, Gay, Gif, Hentaianal, Hentai, Holo, Kuni, Lesbian, Lewd, Maid, Milf, Neko, Pussy, Random, Squirt, Thigh, Trans, Trap, Yuri.
-`)
+.setDescription(`4k, Ahegao, Anal, Ass, Blowjob, Boobs, Cosplay, Cumsluts, Gay, Gif, Hentaianal, Hentai, Holo, Kuni, Lesbian, Lewd, Maid, Milf, Neko, Pussy, Random, Squirt, Thigh, Trans, Trap, Yuri.`)
  .setThumbnail("https://cdn.discordapp.com/attachments/656602609481809941/749573230662254622/emote.png")
  .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
@@ -164,7 +162,7 @@ const EmbedNSFW = new MessageEmbed()
  const EmbedSorte = new MessageEmbed()
  .setTitle("Categoria Sorteio")
  .setColor("RED")
- .setDescription("Em construção :pensive:")
+ .setDescription("Desativado por conta da Host Lixo :pensive: :fist:")
  .setFooter(author.username, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 
 
@@ -185,7 +183,7 @@ const EmbedNSFW = new MessageEmbed()
 
 🎶 Música - \`Em construção\`.....
 
-🔞 NSFW +18 - \`4k\`, \`Hentai\`, \`Gif\`, \`Nekogif\`, \`Anal\`... 
+🔞 NSFW +18 - \`4k\`, \`Hentai\`, \`Gif\`, \`Nekogif\`, \`Anal\`...
 
 🎉 Sorteio - \`Em construção\`...
 `)
@@ -195,27 +193,27 @@ const EmbedNSFW = new MessageEmbed()
 	   msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
        msg.react('🎉')
 	   ///////////////
-	   
+
 // ⬅️ ➡️
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
        const Administrar = (reaction, user) => reaction.emoji.name === '📂' && user.id === author.id;
        const Adm = msg.createReactionCollector(Administrar, {time: 360000})
- 
+
        const Diver = (reaction, user) => reaction.emoji.name === '🎁' && user.id === author.id;
 	   const Fun = msg.createReactionCollector(Diver, {time: 360000})
 
        const Economia = (reaction, user) => reaction.emoji.name === '💸' && user.id === author.id;
-	   const Eco = msg.createReactionCollector(Economia, {time: 360000})  
-	   
+	   const Eco = msg.createReactionCollector(Economia, {time: 360000})
+
 	   const Miscelanea = (reaction, user) => reaction.emoji.name === '🌐' && user.id === author.id;
 	   const Misc = msg.createReactionCollector(Miscelanea, {time: 360000})
-	 
+
 	   const Moderar = (reaction, user) => reaction.emoji.name === '👮‍♂️' && user.id === author.id;
 	   const Mod = msg.createReactionCollector(Moderar, {time: 360000})
 
@@ -230,7 +228,7 @@ const EmbedNSFW = new MessageEmbed()
 
 	   const Seta = (reaction, user) => reaction.emoji.name === '⬅️' && user.id === author.id;
 	   const Voltar = msg.createReactionCollector(Seta, {time: 360000})
-////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
     Adm.on('collect', async r => {
 		msg.reactions.removeAll()
 		msg.edit(EmbedAdm)
@@ -239,11 +237,11 @@ const EmbedNSFW = new MessageEmbed()
 		Voltar.on('collect', async rr => {
 			msg.reactions.removeAll()
 			msg.edit(EmbedAjuda)
-			
+
 			msg.react('📂')
 	        msg.react('🎁')
 	        msg.react('💸')
-	        msg.react('🌐')  
+	        msg.react('🌐')
 	        msg.react('👮‍♂️')
 	        msg.react('🎶')
 	        msg.react('🔞')
@@ -262,14 +260,14 @@ const EmbedNSFW = new MessageEmbed()
 	   msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
        msg.react('🎉')
 		})
 	})
-	
+
 	Eco.on('collect', async r => {
 		msg.edit(EmbedEco)
 		msg.reactions.removeAll()
@@ -281,14 +279,14 @@ const EmbedNSFW = new MessageEmbed()
 			msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
        msg.react('🎉')
 		})
 	})
-	
+
 	Misc.on('collect', async r => {
 		msg.reactions.removeAll()
 		msg.edit(EmbedMisc)
@@ -300,14 +298,14 @@ const EmbedNSFW = new MessageEmbed()
 			msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
        msg.react('🎉')
 		})
 	})
-	  
+
 	Mod.on('collect', async r => {
 		msg.edit(EmbedMod)
 		msg.reactions.removeAll()
@@ -319,14 +317,14 @@ const EmbedNSFW = new MessageEmbed()
 	    msg.react('📂')
 	    msg.react('🎁')
 	    msg.react('💸')
-	    msg.react('🌐')  
+	    msg.react('🌐')
 	    msg.react('👮‍♂️')
 	    msg.react('🎶')
 	    msg.react('🔞')
         msg.react('🎉')
 		})
 	})
-	   
+
 	Music.on('collect', async r => {
 		msg.reactions.removeAll()
 		msg.edit(EmbedMusic)
@@ -338,7 +336,7 @@ const EmbedNSFW = new MessageEmbed()
 			msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
@@ -357,7 +355,7 @@ const EmbedNSFW = new MessageEmbed()
 			msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
@@ -376,7 +374,7 @@ const EmbedNSFW = new MessageEmbed()
 			msg.react('📂')
 	   msg.react('🎁')
 	   msg.react('💸')
-	   msg.react('🌐')  
+	   msg.react('🌐')
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')

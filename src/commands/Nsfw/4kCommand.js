@@ -23,12 +23,13 @@ module.exports = class extends Command {
 			.end((err, response) => {
 				const embed = new Discord.MessageEmbed()
 				.setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.message})`)
-				.setImage(response.body.message)
+          .setColor('RANDOM')
+          .setImage(response.body.message)
 				.setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 				channel.send(embed)
 	})
   } else {
-  channel.send("Esse canal não é de NSFW +18")
+      channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
  }
     }
 }

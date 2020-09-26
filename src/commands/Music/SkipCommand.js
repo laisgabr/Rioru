@@ -15,7 +15,7 @@ module.exports = class SkipCommand extends Command {
     if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
     const player = lavalink.players.get(guild.id);
 
-    if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
+    if(!player) return channel.send('Não tem músicas tocando')
     player.stop();
     return channel.send("Música Pulada com sucesso!");
   }

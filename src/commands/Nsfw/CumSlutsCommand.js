@@ -17,16 +17,17 @@ module.exports = class extends Command {
   const superagent = require('superagent')
 
  if (channel.nsfw === true) {
- superagent.get('https://nekos.life/api/v2/img/cum')
+ superagent.get('https://love-you.xyz/api/v2/cumshots')
  .end((err, response) => {
      const embed = new Discord.MessageEmbed()
      .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
      .setImage(response.body.url)
+       .setColor('RANDOM')
      .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
      channel.send(embed)
     })
    } else {
-       return channel.send('Esse canal não é de NSFW +18')
+   channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
    }
     }
 }

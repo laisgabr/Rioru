@@ -1,7 +1,3 @@
-/* eslint-disable handle-callback-err */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -21,13 +17,14 @@ module.exports = class extends Command {
  .end((err, response) => {
      const embed = new Discord.MessageEmbed()
      .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
+       .setColor('RANDOM')
      .setImage(response.body.url)
      .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
      channel.send(embed)
     })
    } else {
        // eslint-disable-next-line quotes
-       return channel.send("Esse canal não é de NSFW +18")
+   channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
    }
     }
 }

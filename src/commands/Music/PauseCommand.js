@@ -14,8 +14,8 @@ module.exports = class StopCommand extends Command {
       const voiceChannel = member.voice.channel;
     if (!voiceChannel) return channel.send(':x: | Você precisa estar em um canal de voz ou no mesmo que eu.')
       const player = lavalink.players.get(guild.id);
-      if(!player.queue[0] || !player) return channel.send('Não tem músicas tocando')
-      
+      if(!player) return channel.send('Não tem músicas tocando')
+
       player.pause(true);
       return channel.send('⏸️ | Pausado');
     }
