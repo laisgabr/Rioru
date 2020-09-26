@@ -13,7 +13,8 @@ module.exports = class CommandInfoCommand extends Command {
     if(!argument) return channel.send('<:xSweet:756989900661850182> | Você não disse um comando')
 
     const command = this.commands.find(({ name, aliases }) => name === argument || aliases.includes(argument))
-   if(!command) return channel.send('<:xSweet:756989900661850182> | Não achei um comando com o nome de ' + argument)
+   console.log(this.commands)
+    if(!command) return channel.send('<:xSweet:756989900661850182> | Não achei um comando com o nome de ' + argument)
 
     const { MessageEmbed } = require('discord.js')
     const embed = new MessageEmbed()
