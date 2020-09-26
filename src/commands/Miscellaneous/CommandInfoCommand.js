@@ -12,9 +12,7 @@ module.exports = class CommandInfoCommand extends Command {
     const argument = args[0].toLowerCase()
     if(!argument) return channel.send('<:xSweet:756989900661850182> | Você não disse um comando')
 
-    console.log(this.commands)
-   const command = await this.client.commands.get(comando => comando.name, comando.aliases, comando.category, comando.usage)
- //    const a = await this.client.commands.filter(comando => comando.name.toLowerCase() === `${argument}`)
+   const a = await this.client.commands.filter(comando => comando.name.toLowerCase() === `${argument}`, comando.aliases, comando.usage, comando.category)
 
     if(!command) return channel.send('<:xSweet:756989900661850182> | Não achei um comando com o nome de ' + argument)
 
