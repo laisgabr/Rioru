@@ -41,10 +41,6 @@ module.exports = class HelpCommand extends Command {
         name: `🎵 | Música [${commandPerCategory('Music').size}]`,
         value: commandPerCategory('Music').map(mapCommand).join(', ')
       },
-        {
-          name: `🔞 | NSFW [${commandPerCategory('NSFW +18').size}]`,
-          value: commandPerCategory('NSFW +18').map(mapCommand).join(', ')
-        },
       {
         name: `🛠️ | Utilitários [${commandPerCategory('Miscellaneous').size}]`,
         value: commandPerCategory('Miscellaneous').map(mapCommand).join(', ')
