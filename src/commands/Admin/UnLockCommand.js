@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super(client, {
         name: 'unlock',
         aliases: ['destravar', 'destrancar', 'desbloqueiar'],
-        category: 'Administration'
+        category: 'Admin'
     })
   }
   async run ({ channel, guild, member, author, mentions, args }) {

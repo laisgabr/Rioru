@@ -1,7 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -9,7 +5,7 @@ module.exports = class extends Command {
         super(client, {
             name: 'lock',
             aliases: ['travar', 'bloqueiar', 'trancar'],
-            category: 'Administration'
+            category: 'Admin'
         })
     }
    async run ({ channel, member, author, guild, mentions, args }) {

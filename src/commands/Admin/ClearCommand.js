@@ -9,7 +9,7 @@ module.exports = class extends Command {
         super(client, {
             name: 'clear',
             aliases: [],
-            category: 'Administration'
+            category: 'Admin'
         })
     }
    async run ({ channel, member, guild, args, author }) {
