@@ -26,14 +26,14 @@ module.exports = class extends Command {
 
       sim.on('collect', () => {
         msg.delete()
-        channel.send('Ok, Estou desligando')
+        channel.send('<:checkSweet:757016162633646211> | Ok, Estou desligando')
         this.client.destroy()
         process.exit()
       })
 
       nao.on('collect', () => {
         msg.delete()
-        channel.send('Obrigada! :3')
+        channel.send('<:checkSweet:757016162633646211> | Obrigada! :3')
       })
     })
   }

@@ -73,7 +73,7 @@ const EmbedNSFW = new MessageEmbed()
 
 
 		const EmbedAjuda = new MessageEmbed()
-		 .setTitle(`Olá meu nome é Yuuki Asuna e sou um Bot focado em deixar tudo em Linha e Divertido`)
+		 .setTitle(`Olá meu nome é SweetBot e sou um Bot que faz tudo para você em seu Servidor.`)
 		 .setColor("BLUE")
 		 .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
 		 .setDescription(`

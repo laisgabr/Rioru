@@ -16,9 +16,9 @@ module.exports = class extends Command {
     let motivoBl = args.slice(1).join(' ')
     if (!motivoBl) motivoBl = 'Não Definido'
 
-    const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) 
+    const uuser = mentions.users.first() || this.client.users.cache.get(args[0])
         if (!uuser) {
-           return channel.send('Diga um id')
+           return channel.send('<:xSweet:756989900661850182> | Diga um id')
         }
 
         const firebase = require('firebase')
@@ -30,7 +30,7 @@ module.exports = class extends Command {
                 database.ref(`Global/Blacklist/${uuser.id}`).set({
                     Blacklisted: true,
                     Motivo: motivoBl,
-                    QuemPuniu: author.tag, 
+                    QuemPuniu: author.tag,
                     IdStaff: author.id
                   })
             }
@@ -40,11 +40,11 @@ module.exports = class extends Command {
                 database.ref(`Global/Blacklist/${uuser.id}`).update({
                     blacklisted: true,
                     Motivo: motivoBl,
-                    QuemPuniu: author.tag, 
+                    QuemPuniu: author.tag,
                     IdStaff: author.id
                 })
             }
-        
-        channel.send(`${author}, Usuário banido com sucesso, Quem mandou quebrar as regras!`)
+
+        channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário banido com sucesso, Quem mandou quebrar as regras!`)
     }
 }

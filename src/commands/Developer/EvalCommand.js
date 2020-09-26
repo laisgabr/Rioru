@@ -25,7 +25,7 @@ module.exports = class EvalCommand extends Command {
 
             channel.send(`**Saida:**\n\`\`\`js\n${output}\n\`\`\``)
         } catch (error) {
-            channel.send(`**Erro:**\n\`${error}\``)
+            channel.send(`<:xSweet:756989900661850182> | **Erro:**\n\`${error}\``)
         }
     }
 }
