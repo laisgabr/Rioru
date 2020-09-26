@@ -27,7 +27,11 @@ module.exports = class HelpCommand extends Command {
       👥 | Administração [${commandPerCategory('Admin').size}]
       ${commandPerCategory('Admin').map(mapCommand).join(', ')}
 
-      😂 | Diversão [${commandPerCategory('Fun').size}]
+      `)
+		 .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+	   channel.send(EmbedAjuda)
+  }
+  /*  😂 | Diversão [${commandPerCategory('Fun').size}]
       ${commandPerCategory('Fun').map(mapCommand).join(', ')}
 
       👮‍♂️| Moderação [${commandPerCategory('Moderation').size}]
@@ -41,8 +45,6 @@ module.exports = class HelpCommand extends Command {
 
       🛠️ | Utilitários [${commandPerCategory('Miscellaneous').size}]
       ${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
-      `)
-		 .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-	   channel.send(EmbedAjuda)
-  }
+
+   */
 }
