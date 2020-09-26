@@ -15,7 +15,6 @@ module.exports = class extends Command {
 		if (channel.nsfw === true) {
 			superagent.get('https://nekobot.xyz/api/image')
 			.query({ type: 'pussy' })
-			// eslint-disable-next-line handle-callback-err
 			.end((err, response) => {
 				const embed = new Discord.MessageEmbed()
 				.setDescription(`Não consegue ver? [Clique aqui](${response.body.message})`)
@@ -26,7 +25,6 @@ module.exports = class extends Command {
 				channel.send(embed)
 			})
 		  } else {
-			// eslint-disable-next-line quotes
       channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
 		  }
     }
