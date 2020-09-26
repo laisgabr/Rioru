@@ -16,9 +16,10 @@ module.exports = class extends Command {
             // eslint-disable-next-line handle-callback-err
             .end((err, response) => {
                 const embed = new Discord.MessageEmbed()
-                .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
+                .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
                 .setImage(response.body.url)
                   .setColor('RANDOM')
+                  .setThumbnail(author.displayAvatarURL({ dynamic: true }))
                 .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
                 channel.send(embed)
                })

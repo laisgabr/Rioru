@@ -16,9 +16,10 @@ module.exports = class extends Command {
  superagent.get('https://love-you.xyz/api/v2/boobs')
  .end((err, response) => {
      const embed = new Discord.MessageEmbed()
-     .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.url})`)
+     .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
        .setColor('RANDOM')
      .setImage(response.body.url)
+       .setThumbnail(author.displayAvatarURL({ dynamic: true }))
      .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
      channel.send(embed)
     })

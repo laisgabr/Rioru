@@ -1,8 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable no-tabs */
-/* eslint-disable handle-callback-err */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -22,10 +17,11 @@ module.exports = class extends Command {
 			.query({ type: '4k' })
 			.end((err, response) => {
 				const embed = new Discord.MessageEmbed()
-				.setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.message})`)
+				.setDescription(`Não consegue ver? [Clique aqui](${response.body.message})`)
           .setColor('RANDOM')
+          .setThumbnail(author.displayAvatarURL({ dynamic: true }))
           .setImage(response.body.message)
-				.setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+          .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 				channel.send(embed)
 	})
   } else {

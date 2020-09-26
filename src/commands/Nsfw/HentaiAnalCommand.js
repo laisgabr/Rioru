@@ -1,7 +1,3 @@
-/* eslint-disable no-tabs */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -22,9 +18,10 @@ module.exports = class extends Command {
 			// eslint-disable-next-line handle-callback-err
 			.end((err, response) => {
                 const embed = new Discord.MessageEmbed()
-                .setDescription(`Não consegue Ver o(a) Gif/Img? [Clique aqui](${response.body.message})`)
+                .setDescription(`Não consegue ver? [Clique aqui](${response.body.message})`)
 				.setImage(response.body.message)
                   .setColor('RANDOM')
+                  .setThumbnail(author.displayAvatarURL({ dynamic: true }))
 				.setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 				channel.send(embed)
 			})

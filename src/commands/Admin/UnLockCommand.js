@@ -14,9 +14,9 @@ module.exports = class extends Command {
   const canal = mentions.channels.first() || guild.channels.cache.get(args[0]) || channel
 
   if (!member.hasPermission(["MANAGE_MESSAGES", "MANAGE_CHANNELS"])) {
-  return channel.send(`<@${author.id}>, Você não tem as Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar!`)
+  return channel.send(`<:xSweet:756989900661850182> | Você não tem as Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar!`)
   } else if (!guild.me.permissions.has(["MANAGE_MESSAGES", "MANAGE_CHANNELS"])) {
-  return channel.send("Eu não tenho a Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar")
+  return channel.send("<:xSweet:756989900661850182> | Eu não tenho a Permissões ``Gerenciar Mensagens e Gerenciar Canais`` para continuar")
   } else {
   await canal.updateOverwrite(guild.roles.everyone, {
   SEND_MESSAGES: true

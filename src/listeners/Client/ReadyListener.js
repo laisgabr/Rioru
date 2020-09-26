@@ -30,11 +30,11 @@ module.exports = class ReadyListener extends Listener {
 
     })
 
-    .on('trackStart', ({ textChannel }, { title, duration, author }) => {
-    const { MessageEmbed } = require('discord.js')
-    const embed = new MessageEmbed()
-    .setColor('#66dbff')
-      .setDescription(`
+    .on('trackStart', async ({ textChannel }, { title, duration, author }) => {
+      const {MessageEmbed} = require('discord.js')
+      const embed = new MessageEmbed()
+        .setColor('#66dbff')
+        .setDescription(`
       <a:discoSweet:759199892169687061> | → Música:
 ${title}
 
@@ -44,16 +44,18 @@ ${Utils.formatTime(duration, true)}
 <a:discoSweet:759199892169687061> | → Artista/Canal:
 ${author}
 `)
-   textChannel.send(embed)
-  })
+     const msg = await textChannel.send(embed)
 
-    .on('trackEnd', (player) => {
-      player.setVolume(100);
+
+        this.lavalink.on('trackEnd', (player) => {
+          player.setVolume(100)
+          msg.delete({ timeout: 1000 })
+        })
     })
 
     .on('trackError', ({ textChannel }, { title }) => {
       textChannel.send('Ocorreu um erro ao carregar ' + title)
-    });
+    })
 
     var status = [
       `😉 Tenho Custom Prefix, Me mencione para saber mais!`,
