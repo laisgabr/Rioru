@@ -21,12 +21,9 @@ module.exports = class extends Command {
 
             const player = lavalink.players.get(guild.id);
             if (!player) return channel.send("Não tem nada tocando");
+            
+             player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 0.25 })));
 
-            let level = "none";
-            if (args.length && args[0].toLowerCase() in levels) level = args[0].toLowerCase();
-
-            player.setEQ(...new Array(3).fill(null).map((_, i) => ({ band: i, gain: levels[level] })));
-
-            return channel.send(`Nivel do bassboost agora é de ${level}`);
+            return channel.send(`Bassbost ativado!`);
     }
 }
