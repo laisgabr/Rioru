@@ -12,27 +12,25 @@ module.exports = class CommandInfoCommand extends Command {
     const argument = args[0].toLowerCase()
     if(!argument) return channel.send('<:xSweet:756989900661850182> | Você não disse um comando')
 
+   const commands = this.client.commands.filter(({ hide, Developer }) => !hide && !Developer)
 
-   const command = await this.client.commands.filter(comando => comando.name.toLowerCase() === `${argument}` && comando.aliases && comando.usage && comando.category)
+   const mapCommand = (command) => `
+    Nome:
+    \`${command.name}\`,
 
-    if(!command) return channel.send('<:xSweet:756989900661850182> | Não achei um comando com o nome de ' + argument)
+    Outras formas de usar(aliases):
+    \`${command.aliases}\`,
+
+    Forma de Usar:
+    \`${command.usage}\`,
+
+    Categoria:
+    \`${command.category}`
 
     const { MessageEmbed } = require('discord.js')
     const embed = new MessageEmbed()
       .setTitle('Comando ' + command.name)
-      .setDescription(`
-      Aliases (Outra forma de usar):
-      ${command.aliases},
-
-      Descrição:
-      ${command.description},
-
-      Forma de Usar:
-      ${command.usage},
-
-      Categoria:
-      ${command.category}
-      `)
+      .setDescription(`${mapCommand}`)
     channel.send(embed)
   }
 }
