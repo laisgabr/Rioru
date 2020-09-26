@@ -16,6 +16,8 @@ module.exports = class StopCommand extends Command {
       const player = lavalink.players.get(guild.id);
       if(!player) return channel.send('<:xSweet:756989900661850182> | Não tem músicas tocando nesse Servidor!')
 
+      if(!player.playing) return channel.send('Já está pausado')
+
       player.pause(true);
       return channel.send('⏸️ | Pausado');
     }

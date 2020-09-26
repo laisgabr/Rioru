@@ -103,11 +103,8 @@ const EmbedNSFW = new MessageEmbed()
 	   msg.react('👮‍♂️')
 	   msg.react('🎶')
 	   msg.react('🔞')
-       msg.react('🎉')
-	   ///////////////
+     msg.react('🎉')
 
-// ⬅️ ➡️
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
        const Administrar = (reaction, user) => reaction.emoji.name === '📂' && user.id === author.id;
        const Adm = msg.createReactionCollector(Administrar)
 
