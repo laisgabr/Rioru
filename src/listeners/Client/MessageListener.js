@@ -1,4 +1,5 @@
 const { Listener, CommandContext } = require('../../structure')
+const { Collection } = require('discord.js')
 
 module.exports = class MessageListener extends Listener {
   constructor () {
@@ -31,17 +32,17 @@ module.exports = class MessageListener extends Listener {
       const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
         if (aa.val()) {
         return message.author.send(`Você, ${message.author.tag} (\`${message.author.id}\`) , foi Banido Permanentemente de Usar a **Yuuki Asuna**.
-        
+
         Se foi injusto o banimento (Duvido que foi injusto rs) ,Comunique os Staffs do Bot e espere a resposta deles. Se você foi banido do Servidor de Suporte, O problema não é meu
 
         Staff do Bot que lhe Baniu:
        > ${aa.val().QuemPuniu} (\`${aa.val().IdStaff})\`)
 
-        Motivo: 
+        Motivo:
        > ${aa.val().Motivo}
         `)
         }
-        
+
     this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
     .once('value').then(async db => {
       if (db.val() == null) {
@@ -103,22 +104,42 @@ module.exports = class MessageListener extends Listener {
       }
     }
    })
-   
+
    if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>,Meu nome é Sweet Bot e Meu prefixo é \`${prefix}\`, use \`${prefix}ajuda\` ou \`${prefix}info\` para mais Informações.`)
 
     if (!message.content.toLowerCase().startsWith(prefix)) return;
-    
+   const cooldowns = new Collection();
+
+   if (!cooldowns.has(this.commands.name)) {
+     cooldowns.set(this.commands.name, new Collection());
+   }
+
+   const now = Date.now();
+   const timestamps = cooldowns.get(this.commands.name);
+   const cooldownAmount = (this.commands.cooldown || 3) * 1000;
+
+   if (timestamps.has(message.author.id)) {
+     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+     if (now < expirationTime) {
+       const timeLeft = (expirationTime - now) / 1000;
+       return message.channel.send(`Calma ai, espere ${timeLeft.toFixed(1)} segundo(s)`);
+     }
+   }
+   timestamps.set(message.author.id, now);
+   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
     if (message.author.id === message.guild.owner.id) {
-   
+
     if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send('Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
-    
+
    }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const cmd = args.shift().toLowerCase()
 
     const command = this.commands.find(({ name, aliases }) => name === cmd || aliases.includes(cmd))
-    
+
     const context = new CommandContext(message, args, cmd, prefix)
 
     if (command) command.preLoad(context)
