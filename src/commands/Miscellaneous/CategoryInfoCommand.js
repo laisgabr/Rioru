@@ -20,21 +20,17 @@ module.exports = class CategoryInfoCommand extends Command {
 
     Outra forma de usar(aliases):
     \`${command.aliases}\`
-
-    Forma de Usar:
-    \`${command.usage}\`
-
-
-   `
+    `
     const argument = args.join(' ').toLowerCase()
 
     if(argument === 'admin' || argument === 'administração') {
       const embedAdm = new MessageEmbed()
         .setTitle(`👥 | Administração`)
+        .setColor('BLACK')
         .setDescription(`
         Total de Comandos[${commandPerCategory('Admin').size}]:
 
-      ${commandPerCategory('Admin').map(mapCommand).join(', ')}
+      ${commandPerCategory('Admin').map(mapCommand).join(' ')}
         `)
       return channel.send(embedAdm)
     }
@@ -45,9 +41,18 @@ module.exports = class CategoryInfoCommand extends Command {
         .setDescription(`
         Total de Comandos[${commandPerCategory('Fun').size}]:
 
-      ${commandPerCategory('Fun').map(mapCommand).join(', ')}
+      ${commandPerCategory('Fun').map(mapCommand).join(' ')}
+        `);
+
+      const embedFun2 = new MessageEmbed()
+        .setTitle(`😂 | Diversão Parte 2`)
+        .setDescription(`
+        Total de Comandos[${commandPerCategory('Fun').size}]:
+
+      ${commandPerCategory('Fun').map(mapCommand).join(' ')}
         `)
-      return channel.send(embedFun)
+      channel.send(embedFun).then(msg => msg.delete({ timeout: 1800000 }))
+    return channel.send(embedFun2).then(msg => msg.delete({ timeout: 1800000 }))
     }
 
   if (argument === 'utilitarios' || argument === 'utilitários' || argument === 'miscellaneous') {
@@ -56,9 +61,10 @@ module.exports = class CategoryInfoCommand extends Command {
       .setDescription(`
         Total de Comandos[${commandPerCategory('Miscellaneous').size}]:
 
-      ${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
-        `)
+      ${commandPerCategory('Miscellaneous').map(mapCommand).join(' ')}
+        `);
     return channel.send(embedMisc)
+
   }
 
     if (argument === 'moderação' || argument === 'mod') {
@@ -67,7 +73,7 @@ module.exports = class CategoryInfoCommand extends Command {
         .setDescription(`
         Total de Comandos[${commandPerCategory('Moderation').size}]:
 
-      ${commandPerCategory('Moderation').map(mapCommand).join(', ')}
+      ${commandPerCategory('Moderation').map(mapCommand).join(' ')}
        `)
       return channel.send(embedMod)
     }
@@ -78,7 +84,7 @@ module.exports = class CategoryInfoCommand extends Command {
         .setDescription(`
         Total de Comandos[${commandPerCategory('Music').size}]:
 
-      ${commandPerCategory('Music').map(mapCommand).join(', ')}
+      ${commandPerCategory('Music').map(mapCommand).join(' ')}
         `)
       return channel.send(embedMusic)
     }
@@ -89,7 +95,7 @@ module.exports = class CategoryInfoCommand extends Command {
        .setDescription(`
        Total de Comandos[${commandPerCategory('NSFW +18').size}]:
 
-      ${commandPerCategory('NSFW +18').map(mapCommand).join(', ')}
+      ${commandPerCategory('NSFW +18').map(mapCommand).join(' ')}
        `)
       return channel.send(embedNSFW)
     }

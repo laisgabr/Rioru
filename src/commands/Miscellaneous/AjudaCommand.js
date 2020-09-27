@@ -20,9 +20,9 @@ module.exports = class HelpCommand extends Command {
 
 
     const EmbedAjuda = new MessageEmbed()
-		 .setTitle(`Olá meu nome é SweetBot e sou um bot feito para lhe ajudar em tudo!`)
-		 .setColor("BLUE")
-		 .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
+      .setTitle(`Olá meu nome é SweetBot e sou um bot feito para lhe ajudar em tudo!`)
+      .setColor("BLUE")
+      .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
       .setDescription(`
       👥 | Administração [${commandPerCategory('Admin').size}]
       ${commandPerCategory('Admin').map(mapCommand).join(', ')}
@@ -43,9 +43,7 @@ module.exports = class HelpCommand extends Command {
       ${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
 
       `)
-		 .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-	   channel.send(EmbedAjuda)
+      .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+      channel.send(EmbedAjuda)
   }
-  /*
-   */
 }
