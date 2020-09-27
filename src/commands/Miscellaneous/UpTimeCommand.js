@@ -7,7 +7,8 @@ module.exports = class UptimeCommand extends Command {
             aliases: ['timeon'],
             description: 'Mostra meu tempo de Atividade',
             usage: '<prefix>uptime',
-            category: 'Miscellaneous'
+            category: 'Miscellaneous',
+            cooldown: 3
         })
     }
     run ({ channel, client }) {
