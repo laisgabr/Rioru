@@ -11,12 +11,12 @@ module.exports = class SetNickCommand extends Command {
         })
     }
     run ({ channel, args, guild, author, mentions, member }) {
-    const newnick = args.join(' ')
-    
-   let uuser = mentions.users.first() || author
+   let uuser = mentions.users.first() || guild.members.cache.get(args[0]) || author
 
-   if (!member.permissions.has("ADMINISTRATOR")) {
-    uuser = author    
+      const newnick = args.slice(1).join(' ')
+
+      if (!member.permissions.has("ADMINISTRATOR")) {
+    uuser = author
     } else {
         if (!uuser) {
          uuser = author

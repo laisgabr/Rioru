@@ -9,7 +9,7 @@ module.exports = class GuildMemberRemoveListener extends Listener {
    async run (guild) {
         const firebase = require('firebase')
         const database = firebase.database()
-        
+
       const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
       if (db.val() === null) {
          return database.ref(`Servidores/${guild.id}/Configs`).set({
@@ -22,8 +22,12 @@ module.exports = class GuildMemberRemoveListener extends Listener {
           })
       }
       if (db.val().SaidaID === "undefined") return;
-     
-      this.client.channels.cache.get(`${db.val().SaidaID}`).send(`${db.val().SaidaMensagem}`).catch(async err => {
+      const mensagem = db.val().SaidaMensagem
+      mensagem.replace('{member}', '${member.user}')
+
+     mensagem.replace('{guild.name}', '${guild.name}')
+
+      this.client.channels.cache.get(`${db.val().SaidaID}`).send(`${mensagem}`).catch(async err => {
         console.log(err)
       })
     }

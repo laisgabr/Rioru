@@ -19,20 +19,21 @@ Me adicione em seu Servidor [Clicando Aqui](https://discord.com/api/oauth2/autho
 
 [Servidor de Suporte](https://discord.gg/8eYxh49)
 
-Minha Linguagem é JavaScript. 
+Minha Linguagem é JavaScript.
 
+[Firebase]()
 [GitHub](https://github.com/MrGamingBR/SweetBot)
-               
+
 
 Total de Servidores : \`${this.client.guilds.cache.size} Servidores\`
-    
+
 Total de usuários: \`${this.client.users.cache.size} Usuários\`
 
 Total de Canais: \`${this.client.channels.cache.size} Canais\`
 
 Versão do Node: \`${process.version}\`
 
-Versão do discord.js: \`v12.3.1\`
+Versão do discord.js: \`v12.2.0\`
 
 Latencia da API: \`${Math.round(this.client.ws.ping)}\`
 

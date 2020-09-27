@@ -5,7 +5,7 @@ module.exports = class LembreteCommand extends Command {
     constructor (client) {
         super(client, {
             name: 'lembrete',
-            aliases: ['remindme'],
+            aliases: ['remindme', 'lembrar'],
             category: 'Miscellaneous'
         })
     }

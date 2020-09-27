@@ -1,0 +1,39 @@
+.on('nodeConnect', node => console.log(`${node.options.tag || node.options.host} - Lavalink conectado com Sucesso.`))
+
+    .on('nodeError', (node, err) => console.log(`Infelizmente, aconteceu um erro. ${err}`))
+
+    .on('nodeReconnect', node => console.log(`${node.options.tag || nodes.options.host} está tentando fazer Reconexão...`))
+
+    .on('nodeClose', () => console.log(`A instancia do Lavalink foi fechada ou não está ligada`))
+
+    .on('queueEnd', async  player => {
+      await player.textChannel.send('⏹ | A fila acabou...')
+      setTimeout(function() {
+        if (player.playing === false) {
+        player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
+        return this.lavalink.players.destroy(player.guild.id)
+      }
+    }, 60000 * 2)
+
+    })
+
+    .on('trackStart', async ({ textChannel }, { title, duration, author }) => {
+      const { MessageEmbed } = require('discord.js')
+      const embed = new MessageEmbed()
+        .setColor('#66dbff')
+        .setDescription(`
+      <a:discoSweet:759199892169687061> → Música:
+${title}
+
+<a:discoSweet:759199892169687061> → Duração:
+${Utils.formatTime(duration, true)}
+
+<a:discoSweet:759199892169687061> → Artista/Canal:
+${author}
+`)
+      textChannel.send(embed)
+    })
+
+    .on('trackError', ({ textChannel }, { title }) => {
+      textChannel.send('Ocorreu um erro ao carregar ' + title)
+    })

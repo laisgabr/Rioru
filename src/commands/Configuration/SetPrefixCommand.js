@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super(client, {
             name: 'setprefix',
             aliases: [],
-            category: 'Miscellaneous'
+            category: 'Configuration'
         })
     }
    async run ({ channel, args, guild, member }) {

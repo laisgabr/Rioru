@@ -6,7 +6,7 @@ module.exports = class GuildMemberAddListener extends Listener {
       name: 'guildMemberAdd'
     })
   }
-  async run (guild) {
+  async run (guild, member) {
     const firebase = require('firebase')
     const database = firebase.database()
 
@@ -24,9 +24,10 @@ module.exports = class GuildMemberAddListener extends Listener {
   if (db.val().BemVindoID === "undefined") return;
 
   const mensagem = db.val().MensagemBemVindo
-    mensagem.replace('{member}', '${member}' || '{guild}', '${guild.name}')
+    mensagem.replace('{member}', '${member}')
+    mensagem.replace('{guild}', '${guild.name}')
 
-  this.client.channels.cache.get(`${db.val().BemVindoID}`).send(`${db.val().MensagemBemVindo}`).catch(async err => {
+  this.client.channels.cache.get(`${db.val().BemVindoID}`).send(`${mensagem}`).catch(async err => {
     console.log(err)
   })
   }
