@@ -1,5 +1,5 @@
 const { Listener } = require('../../structure')
-const { LavalinkLoader } = require('../../util')
+const { LavalinkLoader } = require('../../loader')
 const { ErelaClient } = require('erela.js')
 
 module.exports = class ReadyListener extends Listener {
@@ -12,7 +12,7 @@ module.exports = class ReadyListener extends Listener {
 
  async run () {
   this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
-    await LavalinkLoader(this.lavalink).load()
+    await new LavalinkLoader(this.lavalink).load()
 
     var status = [
       `😉 Tenho Custom Prefix, Me mencione para saber mais!`,
