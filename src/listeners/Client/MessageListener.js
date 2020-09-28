@@ -8,6 +8,8 @@ module.exports = class MessageListener extends Listener {
   }
 
  async run (message) {
+    let cooldown = new Set()
+
   if (message.author.bot || message.channel.type !== 'text') return
 
    const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
@@ -83,6 +85,11 @@ module.exports = class MessageListener extends Listener {
    if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Sweet Bot e meu prefixo em ${message.guild.name} é \`${prefix}\`, use \`${prefix}ajuda\`  para saber meus Comandos.`)
 
     if (!message.content.toLowerCase().startsWith(prefix)) return;
+    if(cooldown.has(message.author.id)) {
+      return message.channel.send('Calma ai!')
+    }
+    cooldown.add(message.author.id)
+
 
     if (message.author.id === message.guild.owner.id) {
       if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send(' Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
@@ -96,5 +103,8 @@ module.exports = class MessageListener extends Listener {
     const context = new CommandContext(message, args, cmd, prefix)
 
    if (command) command.preLoad(context)
+   setTimeout(() =>{
+     cooldown.delete(message.author.id)
+   }, 5 * 1000)
   }
 }
