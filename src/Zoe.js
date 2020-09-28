@@ -2,7 +2,7 @@ const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')
 
-module.exports = class Sweet extends Client {
+module.exports = class Zoe extends Client {
   constructor (options = {}) {
     super(options)
     this.token = options.token
@@ -12,7 +12,7 @@ module.exports = class Sweet extends Client {
       nodes: options.nodes,
       dbConfig: options.dbConfig
     }
-  
+
     var firebaseConfig = {
       apiKey: this.config.dbConfig,
       authDomain: this.config.dbConfig,

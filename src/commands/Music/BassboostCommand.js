@@ -16,8 +16,8 @@ module.exports = class extends Command {
             const player = lavalink.players.get(guild.id);
             if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nada tocando no Servidor!");
 
-             player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 0.25 })));
-
-            return channel.send(`Bassbost ativado!`);
+             player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 0.75 })));
+             
+      return channel.send(`Bassbost ativado!`);
     }
 }
