@@ -1,6 +1,6 @@
-const Sweet = require('./src/Sweet')
+const Zoe = require('./src/Zoe')
 const config = require('./config.js')
-const client = new Sweet(config)
+const zoe = new Zoe(config)
 console.log('Meu .env foi configurado aguarde.....')
 
-client.start()
+zoe.start()

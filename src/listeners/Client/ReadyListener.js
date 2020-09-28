@@ -18,7 +18,7 @@ module.exports = class ReadyListener extends Listener {
       `😉 Tenho Custom Prefix, Me mencione para saber mais!`,
       `😛 Sabia que tenho um Sistema de Música ?`,
       `😢 Estou Hospedada na Heroku mas a minha qualidade fica péssima para tocar, Me ajude por favor...`,
-      `😎 Sabia que eu sou open-source? | github.com/MrGamingBR/SweetBot`
+      `😎 Sabia que eu sou open-source? | github.com/MrGamingBR/Zoe`
   ],
    i = 0
    setInterval(() => this.user.setActivity(`${status[i++ % status.length]}`, {

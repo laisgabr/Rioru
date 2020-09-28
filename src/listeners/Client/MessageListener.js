@@ -13,7 +13,7 @@ module.exports = class MessageListener extends Listener {
    const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
    if(dbbb.val() === null) {
    this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
-    prefix: "y!",
+    prefix: "z!",
     BemVindoID: "undefined",
     MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) a {guild.name}`,
     SaidaID: "undefined",
@@ -23,7 +23,7 @@ module.exports = class MessageListener extends Listener {
 }
    let prefix = dbbb.val().prefix
    if (prefix === null) {
-     prefix = 'y!'
+     prefix = 'z!'
    }
       const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
         if (aa.val()) {
@@ -85,7 +85,7 @@ module.exports = class MessageListener extends Listener {
     if (!message.content.toLowerCase().startsWith(prefix)) return;
 
     if (message.author.id === message.guild.owner.id) {
-      if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send('Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
+      if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send(' Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
     }
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g)

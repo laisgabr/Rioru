@@ -8,8 +8,9 @@
     "dev": "nodemon"
   },
   "dependencies": {
+    "@vitalets/google-translate-api": "^4.0.0",
     "common-tags": "^1.8.0",
-    "discord.js": "12.2.0",
+    "discord.js": "^12.2.0",
     "erela.js": "^1.1.8",
     "firebase": "^7.20.0",
     "jimp": "^0.16.1",

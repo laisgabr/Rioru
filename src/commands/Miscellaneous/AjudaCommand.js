@@ -20,30 +20,30 @@ module.exports = class HelpCommand extends Command {
 
 
     const EmbedAjuda = new MessageEmbed()
-      .setTitle(`Olá meu nome é SweetBot e sou focado em lhe ajudar!`)
+      .setTitle(`Olá meu nome é Zoe™ e sou feita em JavaScript`)
       .setColor("PINK")
-      .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
+      .setThumbnail(client.user.displayAvatarURL({ format: "png", dynamic: true }))
       .setDescription(`
     👥 | Administração [${commandPerCategory('Admin').size}]
     ${commandPerCategory('Admin').map(mapCommand).join(', ')}
 
-⚜ | Configuração [${commandPerCategory('Configuration').size}]
-${commandPerCategory('Configuration').map(mapCommand).join(', ')}
+  ⚜ | Configuração [${commandPerCategory('Configuration').size}]
+  ${commandPerCategory('Configuration').map(mapCommand).join(', ')}
 
-😂 | Diversão [${commandPerCategory('Fun').size}]
-${commandPerCategory('Fun').map(mapCommand).join(', ')}
+  😂 | Diversão [${commandPerCategory('Fun').size}]
+  ${commandPerCategory('Fun').map(mapCommand).join(', ')}
 
-👮‍♂️| Moderação [${commandPerCategory('Moderation').size}]
-${commandPerCategory('Moderation').map(mapCommand).join(', ')}
+  👮‍♂️| Moderação [${commandPerCategory('Moderation').size}]
+  ${commandPerCategory('Moderation').map(mapCommand).join(', ')}
 
-🎵 | Música [${commandPerCategory('Music').size}]
-${commandPerCategory('Music').map(mapCommand).join(', ')}
+  🎵 | Música [${commandPerCategory('Music').size}]
+  ${commandPerCategory('Music').map(mapCommand).join(', ')}
 
-🔞 | Nsfw [${commandPerCategory('NSFW +18').size}]
-${commandPerCategory('NSFW +18').map(mapCommand).join(', ')}
+  🔞 | Nsfw [${commandPerCategory('NSFW +18').size}]
+  ${commandPerCategory('NSFW +18').map(mapCommand).join(', ')}
 
-🛠️ | Utilitários [${commandPerCategory('Miscellaneous').size}]
-${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
+  🛠️ | Utilitários [${commandPerCategory('Miscellaneous').size}]
+  ${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
 `)
       .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
       channel.send(EmbedAjuda)

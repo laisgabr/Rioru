@@ -3,7 +3,5 @@ node_modules/
 .idea/*
 Lavalink.jar
 .env
-yarn.lock
 giveaways.json
 logs/
-config.json

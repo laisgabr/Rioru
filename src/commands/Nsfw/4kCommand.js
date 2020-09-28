@@ -4,7 +4,7 @@ module.exports = class extends Command {
     constructor (client) {
         super(client, {
             name: '4k',
-            aliases: [],
+            aliases: ['p4k'],
             category: 'NSFW +18'
         })
     }

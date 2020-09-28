@@ -8,7 +8,9 @@ module.exports = class SystemConfigCommand extends Command {
       category: 'Configuration'
     })
   }
-  run ({ channel }) {
-    channel.send('Em construção..')
+  run ({ channel, member }) {
+    if(!member.permissions.has(["MANAGE_GUILD", "ADMINISTRATOR"])) {
+      return channel.send('<:xSweet:756989900661850182> | Você não tem as permissões `Gerenciar Servidor` e `Administrador` para continuar')
+    }
   }
 }

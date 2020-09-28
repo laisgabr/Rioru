@@ -1,5 +1,4 @@
-/* eslint-disable quotes */
-/* eslint-disable indent */
+
 const { Command } = require('../../structure')
 
 module.exports = class LevelCommand extends Command {
@@ -27,10 +26,10 @@ module.exports = class LevelCommand extends Command {
      const embedAuthor = new MessageEmbed()
      .setDescription(`
      ${author}, Você tem...
-     
+
      **XP:**
      ${xp}
-     
+
      **LEVEL:**
      ${level}
 
@@ -43,10 +42,10 @@ module.exports = class LevelCommand extends Command {
  const embed = new MessageEmbed()
  .setDescription(`
  ${author}, Mostrando dados de ${uuser}....
-     
+
  **XP:**
  ${xp}
- 
+
  **LEVEL:**
  ${level}
 

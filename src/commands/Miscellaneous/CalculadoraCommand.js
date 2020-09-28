@@ -15,12 +15,12 @@ module.exports = class CaclCommand extends Command {
     run ({ channel, args }) {
         const { create, all } = require('mathjs')
         const { MessageEmbed } = require('discord.js')
-        
+
         if (!args.length) return channel.send('**Use:** <prefix>calc <Expressão Matemática>')
-        
+
         const math = create(all);
         const limitedEvaluate = math.evaluate;
-        
+
         math.import({
             import: function () { throw new Error('A função import está desativada') },
             createUnit: function () { throw new Error('A função createUnit está desativada') },
@@ -30,24 +30,29 @@ module.exports = class CaclCommand extends Command {
             derivative: function () { throw new Error('A função derivative está desativada') },
             format: function () { throw new Error('A função format está desativada') }
         }, { override: true });
-        
+
         const expr = args.join(' ').toLowerCase()
-        
+
         let result;
         try {
             result = limitedEvaluate(expr);
         } catch (err) {
-            return channel.send('<:xSweet:756989900661850182> | Eu acho que ' + expr + ' não é uma Expressão Matématica ou Meu criador não me ensinou sobre isso');
+            return channel.send('<:xSweet:756989900661850182> | Eu acho que ' + expr + ' não é um calculo ou meu criador não me ensinou sobre isso');
         }
-        if (result === Infinity || result === -Infinity || result.toString() === 'NaN') result = 'Impossível determinar'; 
-        if (typeof result === 'function') return channel.send('<:xSweet:756989900661850182> | Expressão inválida!'); 
+        if (result === Infinity || result === -Infinity || result.toString() === 'NaN') result = 'Impossível determinar';
+        if (typeof result === 'function') return channel.send('<:xSweet:756989900661850182> | Expressão inválida!');
 
         const embed = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle('Calculadora')
-            .addField('Expressão Matématica:', `\`\`\`${args.join(' ')}\`\`\``)
-            .addField('Resultado:', `\`\`\`${result}\`\`\``)
-            
+          .setDescription(`
+          Calculo:
+    \`\`\`${args.join(' ')}\`\`\`
+
+   Resultado:
+   \`\`\`${result}\`\`\`
+          `)
+
         channel.send(embed)
     }
 }

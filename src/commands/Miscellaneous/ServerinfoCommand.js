@@ -1,7 +1,3 @@
-/* eslint-disable quotes */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class ServerinfoCommand extends Command {
@@ -18,7 +14,7 @@ module.exports = class ServerinfoCommand extends Command {
         const { MessageEmbed } = require('discord.js')
     const moment = require('moment')
     moment.locale("pt-BR")
-     
+
     const ServerEmb = new MessageEmbed()
     .setTitle(`Informações sobre ${guild.name}`)
     .setColor("RED")
@@ -30,7 +26,7 @@ module.exports = class ServerinfoCommand extends Command {
     .addField("Eu entrei aqui em :", `\`${moment(client.joinedAt).format("LLL")}\``)
     .addField("👥 Total de Membros do Servidor :", `${guild.memberCount}`)
     .setThumbnail(guild.iconURL({ dynamic: true }), true)
-    .setTimestamp() 
+    .setTimestamp()
     .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
     channel.send(ServerEmb)
     }
