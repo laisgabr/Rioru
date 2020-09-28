@@ -16,7 +16,7 @@ module.exports = class AvatarCommand extends Command {
   const user = args[0] ? mentions.users.first() || await client.users.fetch(args[0]).catch(_ => author) : author
   let avatar = user.displayAvatarURL({ dynamic: true, size: 4096 })
 
-   if (user.avatar.starsWith('a_')) avatar = avatar.replace('.webp', '.gif');
+   if (user.avatar.startsWith('a_')) avatar = avatar.replace('.webp', '.gif');
    if(!user.avatar.startsWith('a_')) avatar = avatar.replace('.webp', '.png')
 
    const embed = new MessageEmbed()
