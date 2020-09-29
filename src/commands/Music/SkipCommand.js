@@ -21,7 +21,7 @@ module.exports = class SkipCommand extends Command {
        player.setTrackRepeat(false)
        player.stop();
        player.setTrackRepeat(true)
-       return channel.send('')
+       return channel.send('Música Pulada com sucesso!')
      }
 
      player.stop();

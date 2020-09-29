@@ -45,5 +45,5 @@ Para Gerenciar o Sistema de Logs, Reaja com
 ${statusInvite}
 Clique em
       `)
-  }
+  }/* */
 }
