@@ -31,7 +31,7 @@ Para Gerenciar o Sistema de Anti Caps-Lock Excessivo, Reaja com <:numero2Sweet:7
 
 Para Gerenciar o Sistema de Anti Links, Reaja com <:numero3Sweet:757455488089587812> .
 
-Para Gerenciar o Sistema de Level, Reaja com 
+Para Gerenciar o Sistema de Level, Reaja com
 
 Para Gerenciar o Sistema de Entrada, Reaja com
 
