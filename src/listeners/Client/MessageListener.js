@@ -103,7 +103,9 @@ module.exports = class MessageListener extends Listener {
       })
 
       if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Zoe e meu prefixo em ${message.guild.name} é \`${prefix}\`, use \`${prefix}ajuda\`  para saber meus Comandos.`)
-
+      if(message.content.includes === 'z!') {
+        message.channel.send('Acabei de registrar esse servidor em meu banco de dados!')
+      }
       if (!message.content.toLowerCase().startsWith(prefix)) return;
 
       if (message.author.id === message.guild.owner.id) {
