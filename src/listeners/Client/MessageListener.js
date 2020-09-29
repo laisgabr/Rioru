@@ -8,20 +8,37 @@ module.exports = class MessageListener extends Listener {
   }
 
  async run (message) {
-    let cooldown = new Set()
-
   if (message.author.bot || message.channel.type !== 'text') return
 
    const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
    if(dbbb.val() === null) {
    this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
     prefix: "z!",
+    systemAntiInvite: false,
+    systemAntiCapsLock: false,
+    systemAntiLinks: false,
+    BemVindoStatus: false,
     BemVindoID: "undefined",
     MensagemBemVindo: `Olá {member}, Seja bem-vindo(a) a {guild.name}`,
+    SaidaStatus: false,
     SaidaID: "undefined",
     SaidaMensagem: `{member} saiu do Servidor :(`,
     LogsID: "undefined"
   })
+}
+if(dbbb.val().systemAntiLinks === true) {
+
+  if(message.content.includes('https://') || message.content.includes('http://') || message.content.includes('www.')) {
+    message.delete({ timeout: 1000 })
+    message.channel.send('Você não pode enviar links aqui!').then(async msg => { msg.delete({ timeout: 8000 }) })
+  }
+}
+if(dbbb.val().systemAntiCapsLock === true) {
+ const reg = /[A-Z]{6,}/g
+  if(message.content.match(reg)) {
+    message.delete({ timeout: 2000 })
+    message.channel.send('Excesso de Caps Lock!').then(msg => msg.delete({ timeout: 8000 }))
+  }
 }
    let prefix = dbbb.val().prefix
    if (prefix === null) {
@@ -43,7 +60,7 @@ module.exports = class MessageListener extends Listener {
     this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
     .once('value').then(async db => {
       if (db.val() == null) {
-        if (message.content.length > 5) return console.log('a');
+        if (message.content.length > 5) return;
         this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`).set({
           xp: 0,
           level: 1,
@@ -82,14 +99,9 @@ module.exports = class MessageListener extends Listener {
     }
    })
 
-   if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Sweet Bot e meu prefixo em ${message.guild.name} é \`${prefix}\`, use \`${prefix}ajuda\`  para saber meus Comandos.`)
+   if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Zoe e meu prefixo em ${message.guild.name} é \`${prefix}\`, use \`${prefix}ajuda\`  para saber meus Comandos.`)
 
     if (!message.content.toLowerCase().startsWith(prefix)) return;
-    if(cooldown.has(message.author.id)) {
-      return message.channel.send('Calma ai!')
-    }
-    cooldown.add(message.author.id)
-
 
     if (message.author.id === message.guild.owner.id) {
       if (!message.guild.me.permissions.has("ADMINISTRATOR")) message.channel.send(' Por favor, me dê a Permissão `Administrador` para usar Todas as Minhas Funcionalidades!')
@@ -103,8 +115,5 @@ module.exports = class MessageListener extends Listener {
     const context = new CommandContext(message, args, cmd, prefix)
 
    if (command) command.preLoad(context)
-   setTimeout(() =>{
-     cooldown.delete(message.author.id)
-   }, 5 * 1000)
   }
 }
