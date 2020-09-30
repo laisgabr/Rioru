@@ -27,7 +27,7 @@ module.exports = class DivulgationCommand extends Command {
     const embed = new MessageEmbed()
       .setThumbnail(user.displayAvatarURL({ dynamic: true }))
       .setColor("AQUA")
-      .setTitle("Nick: " + user)
+      .setTitle("Nick: " + user.username)
       .setDescription(`
         Membros Convidados por ${user}:
 ${invitesUses} Membros
