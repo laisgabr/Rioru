@@ -32,7 +32,7 @@ module.exports = class extends Command {
    }
 }
 
-  let time = args.slice(1).join(' ')
+  let time = args[1]
   if(!time) return channel.send("<:xSweet:756989900661850182> | Diga um tempo por favor")
 
   time = await time.toString()
@@ -57,6 +57,6 @@ module.exports = class extends Command {
   setTimeout(function(){
     mutado.roles.remove(cargomute.id)
     channel.send(`<@${mutado.id}> foi desmutado!`)
-  }, ms(tempo))
+  }, parseInt(tempo))
     }
 }
