@@ -27,7 +27,7 @@ module.exports = class extends Command {
             return channel.send("<:xSweet:756989900661850182> | Por que você quer me Expulsar ?")
           }
           if(!membro.bannable) {
-            return msg.reply("<:xSweet:756989900661850182> | Eu não posso Expulsar este Membro,Ele pode ter um cargo maior ou igual ao meu")
+            return channel.send("<:xSweet:756989900661850182> | Eu não posso Expulsar este Membro,Ele pode ter um cargo maior ou igual ao meu")
           }
 
           let motivo = args.slice(1).join(" ")

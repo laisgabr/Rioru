@@ -23,6 +23,7 @@ module.exports = class GuildMemberRemoveListener extends Listener {
            SaidaStatus: false,
            SaidaID: "undefined",
            SaidaMensagem: `{member} saiu do Servidor :(`,
+           LogsStatus: false,
            LogsID: "undefined"
           })
       }

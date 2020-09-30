@@ -36,7 +36,7 @@ module.exports = class extends Command {
     if(!guild.me.hasPermission(["BAN_MEMBERS", "ADMINISTRATOR"])) return channel.send("<:xSweet:756989900661850182> | **Não posso fazer isso sem a Permissão `Banir Membros` e `Administrador` **")
 
     try {
-        guild.members.unban(bannedMember, {reason: reason})
+        guild.members.unban(bannedMember, { reason: reason })
         channel.send(`${bannedMember.tag} foi desbanido`)
     } catch (e) {
         console.log(e.message)

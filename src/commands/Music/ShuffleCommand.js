@@ -17,5 +17,6 @@ module.exports = class ShuffleCommand extends Command {
       return channel.send(' | Não tem nada tocando nesse Servidor')
     }
     player.queue.shuffle()
+    return channel.send('Embaralhando a Lista de Reprodução!')
   }
 }

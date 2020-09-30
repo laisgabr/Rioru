@@ -14,6 +14,7 @@ module.exports = class ResumeCommand extends Command {
 
         const player = lavalink.players.get(guild.id)
         if(!player) return channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
+        if(player.playing) return channel.send('<:xSweet:756989900661850182> | O player desse Servidor não está pausado')
 
         player.pause(false);
     }

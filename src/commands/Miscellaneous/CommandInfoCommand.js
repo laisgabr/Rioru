@@ -1,9 +1,9 @@
 const { Command } = require('../../structure')
 
-module.exports = class CategoryInfoCommand extends Command {
+module.exports = class CommandInfoCommand extends Command {
   constructor(client) {
     super(client, {
-      name: 'categoryinfo',
+      name: 'commandinfo',
       aliases: [],
       category: 'Miscellaneous'
     })

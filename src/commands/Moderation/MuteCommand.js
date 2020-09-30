@@ -9,7 +9,7 @@ module.exports = class extends Command {
         })
     }
    async run ({ channel, guild, mentions, args, author, member }) {
-        const ms = require("ms")
+    const ms = require("ms")
 
   var mutado = mentions.members.first() || guild.members.cache.get(args[0])
   if(!mutado) return channel.send("<:xSweet:756989900661850182> | Por favor diga quem você quer mutar!")
@@ -32,7 +32,7 @@ module.exports = class extends Command {
    }
 }
 
-  var time = args[1]
+  let time = args.slice(1).join(' ')
   if(!time) return channel.send("<:xSweet:756989900661850182> | Diga um tempo por favor")
 
   time = await time.toString()

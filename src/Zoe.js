@@ -2,7 +2,7 @@ const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')
 
-module.exports = class Zoe extends Client {
+module.exports = class ZoeClient extends Client {
   constructor (options = {}) {
     super(options)
     this.token = options.token

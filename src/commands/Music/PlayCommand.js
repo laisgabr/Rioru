@@ -44,8 +44,8 @@ module.exports = class PlayCommand extends Command {
                 const embed = new MessageEmbed()
                     .setColor('#66dbff')
                     .setAuthor("Selecione a Música", author.displayAvatarURL({ dynamic: true, size: 2048 }))
-                    .setDescription(tracks.map(video => `**${index++} -** ${video.title}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-                    ⠀⠀⠀⠀`))
+                    .setDescription(tracks.map(video => `**${index++} -** \`${video.title}\`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+                 `))
                     .setFooter("Seu tempo vai acabar daqui 1 minuto. Use cancel ou cancelar para cancelar a ação.")
 
                 const deleteEmbed = await channel.send(embed)
@@ -61,7 +61,7 @@ module.exports = class PlayCommand extends Command {
           m.delete({ timeout: 4000 })
 
           let msg = m.content;
-          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar' || msg.toUpperCase() === 'CANCELAR' || msg.toUpperCase() === 'CANCEL') return collector.stop('Cancelado');
+          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('Cancelado');
 
           const track = tracks[Number(m.content) - 1];
           player.queue.add(track)
@@ -72,7 +72,7 @@ module.exports = class PlayCommand extends Command {
       });
 
       collector.on("end", (_, reason) => {
-        if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada")
+        if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada!")
       });
       break;
 

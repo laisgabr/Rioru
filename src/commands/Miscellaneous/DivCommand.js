@@ -3,8 +3,8 @@ const { Command } = require('../../structure')
 module.exports = class DivulgationCommand extends Command {
   constructor(client) {
     super(client, {
-      name: 'invitesDiv',
-      aliases: ['invites'],
+      name: 'div',
+      aliases: ['invites', 'divstats'],
       category: 'Miscellaneous'
     })
   }
