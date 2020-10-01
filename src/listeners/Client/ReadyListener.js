@@ -17,7 +17,7 @@ module.exports = class ReadyListener extends Listener {
       setTimeout(function () {
         if (!player.playing) {
           player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
-          this.lavalink.players.destroy(player.guild.id)
+          return this.lavalink.players.get(player.guild.id).destroy()
         }
         return;
       }, 60000 * 2)
