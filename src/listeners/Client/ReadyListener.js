@@ -12,6 +12,16 @@ module.exports = class ReadyListener extends Listener {
 
  async run () {
   this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
+    .on("queueEnd", async player => {
+      player.textChannel.send('⏹ | A fila acabou...')
+      setTimeout(function () {
+        if (!player.playing) {
+          player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
+          this.lavalink.players.destroy(player.guild.id)
+        }
+        return;
+      }, 60000 * 2)
+    })
     await new LavalinkLoader(this.lavalink).load()
 
    const { GiveawaysManager } = require('discord-giveaways')
