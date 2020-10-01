@@ -9,10 +9,9 @@ module.exports = class LembreteCommand extends Command {
             category: 'Miscellaneous'
         })
     }
-    // eslint-disable-next-line lines-between-class-members
    async run ({ channel, args, member, author }) {
         var time = args[0]
-        var lembrete = args.splice(1).join(' ')
+        var lembrete = args.slice(1).join(' ')
 
         if (!time) return channel.send('<:xSweet:756989900661850182> | Diga um tempo [d/h/m/s]!')
         if (!lembrete) return channel.send('<:xSweet:756989900661850182> | Diga o que eu devo lhe lembrar!')

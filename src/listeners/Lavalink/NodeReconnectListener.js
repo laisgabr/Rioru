@@ -7,6 +7,6 @@ module.exports = class NodeReconnectListener extends Listener {
     })
   }
   run(node) {
-    console.log(`${node.options.tag || node.options.host} está tentando fazer Reconexão...`)
+    console.log(`${node.options.tag || node.options.host} está tentando fazer Reconexão com o Servidor do Lavalink...`)
   }
 }

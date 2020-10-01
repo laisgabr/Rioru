@@ -1,6 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class BlacklistRemoveCommand extends Command {
@@ -12,16 +9,12 @@ module.exports = class BlacklistRemoveCommand extends Command {
             devOnly: true
         })
     }
-   async run ({ channel, author }) {
-       channel.send('Desativado...')
-       /* let id = channel.createMessageCollector(m => m.author.id === author.id, { time: 60000, max: 1 })
-
-        id.on('collect', () => {
-            channel.send(`O(a) usuário(a) é ${id.collected.first().content}`)
-            const memberID = id.collected.first().content
-
+   async run ({ channel, author, args }) {
+            const memberID = this.client.users.cache.get(args[0])
             const firebase = require('firebase')
             const database = firebase.database()
+
+           if(!memberID) return channel.send('Me diga um id!')
 
            const db = await database.ref(`Global/Blacklist/${memberID}`)
             .once('value')
@@ -34,8 +27,6 @@ module.exports = class BlacklistRemoveCommand extends Command {
             }
 
             channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
-
         })
-        */
     }
 }

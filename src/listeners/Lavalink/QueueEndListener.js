@@ -9,10 +9,11 @@ module.exports = class QueueEndListener extends Listener {
   run(player) {
     player.textChannel.send('⏹ | A fila acabou...')
     setTimeout(function() {
-      if (player.playing === false) {
+      if (!player.playing) {
         player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
-        return this.lavalink.players.destroy(player.guild.id)
+        this.lavalink.players.destroy(player.guild.id)
       }
+      return;
     }, 60000 * 2)
   }
 }

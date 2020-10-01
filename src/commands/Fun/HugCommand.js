@@ -20,6 +20,7 @@ module.exports = class extends Command {
     .end((err, response) => {
     const embed = new Discord.MessageEmbed()
     .setDescription(`${author} Abraçou ${uuser} :3 | Own X3`)
+      .setColor('RANDOM')
     .setImage(response.body.url)
     .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
     channel.send(embed)

@@ -25,7 +25,7 @@ module.exports = class extends Command {
     })
    } else {
        // eslint-disable-next-line quotes
-   channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
+   channel.send(`Por favor, Faça os passos do Gif caso queira usar esse comando!`,{ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
    }
     }
 }

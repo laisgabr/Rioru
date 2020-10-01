@@ -9,7 +9,6 @@ module.exports = class LevelCommand extends Command {
             category: 'Miscellaneous'
         })
     }
-    // eslint-disable-next-line lines-between-class-members
    async run ({ channel, author, guild, args, mentions }) {
  const { MessageEmbed } = require('discord.js')
  const firebase = require('firebase')

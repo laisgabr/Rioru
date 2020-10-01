@@ -7,6 +7,6 @@ module.exports = class NodeCloseListener extends Listener {
       })
     }
     run () {
-      console.log(`A instancia do Lavalink foi fechada ou não está ligada`)
+      console.log(`A instância do PalmeirasSemMundial foi fechada`)
     }
 }

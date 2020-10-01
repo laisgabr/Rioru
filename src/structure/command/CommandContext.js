@@ -5,8 +5,6 @@ module.exports = class CommandContext {
     this.cmd = cmd
     this.prefix = prefix
 
-    this.message = context.message
-    this.msg = context.msg
     this.content = context.content
     this.guild = context.guild
     this.member = context.member

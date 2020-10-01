@@ -24,11 +24,8 @@ module.exports = class HelpCommand extends Command {
       .setColor("PINK")
       .setThumbnail(client.user.displayAvatarURL({ format: "png", dynamic: true }))
       .setDescription(`
-    👥 | Administração [${commandPerCategory('Admin').size}]
-    ${commandPerCategory('Admin').map(mapCommand).join(', ')}
-
-  ⚜ | Configuração [${commandPerCategory('Configuration').size}]
-  ${commandPerCategory('Configuration').map(mapCommand).join(', ')}
+   👥 | Administração [${commandPerCategory('Admin').size}]
+   ${commandPerCategory('Admin').map(mapCommand).join(', ')}
 
   😂 | Diversão [${commandPerCategory('Fun').size}]
   ${commandPerCategory('Fun').map(mapCommand).join(', ')}

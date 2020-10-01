@@ -24,6 +24,7 @@ module.exports = class extends Command {
             .setTitle(`:heart: O amor está no Ar :heart:`)
             .setDescription(`:heart: ${author} Beijou ${uuser} :heart:`)
             .setImage(response.body.url)
+              .setColor('RANDOM')
             .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
             channel.send(embed)
         })

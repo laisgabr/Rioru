@@ -9,9 +9,12 @@ module.exports = class TrackStartListener extends Listener {
   }
   run({ textChannel }, { title, duration, author, uri, identifier }) {
     const { MessageEmbed } = require('discord.js')
+
+    const urlThumb = `http://i.ytimg.com/vi/${identifier}/maxresdefault.jpg`
+
     const embed = new MessageEmbed()
       .setColor('#66dbff')
-      .setThumbnail(`http://i.ytimg.com/vi/${identifier}/maxresdefault.jpg`)
+      .setThumbnail(urlThumb)
       .setDescription(`
       <a:discoSweet:759199892169687061> → Música:
 [${title}](${uri})

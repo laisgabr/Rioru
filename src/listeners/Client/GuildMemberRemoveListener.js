@@ -30,10 +30,10 @@ module.exports = class GuildMemberRemoveListener extends Listener {
       if(db.val().SaidaStatus === false) return;
       if (db.val().SaidaID === "undefined") return;
 
-      const mensagem = db.val().SaidaMensagem
+      let mensagem = db.val().SaidaMensagem
       mensagem.replace('{member}', '${member.user}')
 
-     mensagem.replace('{guild.name}', '${guild.name}')
+      mensagem.replace('{guild.name}', '${guild.name}')
 
       this.client.channels.cache.get(`${db.val().SaidaID}`).send(`${mensagem}`).catch(async err => {
         console.log(err)

@@ -120,6 +120,7 @@ module.exports = class MessageListener extends Listener {
 
       if (command) command.preLoad(context)
     } catch (err) {
+      console.log(err)
       if(err.message === "TypeError: Cannot read property 'systemAntiLinks' of null") return message.channel.send('Acabei de registrar esse servidor em meu banco de dados!')
     }
   }

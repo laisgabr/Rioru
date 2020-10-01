@@ -1,6 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -16,7 +13,6 @@ module.exports = class extends Command {
     const superagent = require('superagent')
     if (channel.nsfw === true) {
     superagent.get('http://tnai.herokuapp.com/r/lesbians')
-    // eslint-disable-next-line handle-callback-err
     .end((err, response) => {
         const embed = new Discord.MessageEmbed()
         .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
@@ -27,8 +23,7 @@ module.exports = class extends Command {
         channel.send(embed)
        })
      } else {
-         // eslint-disable-next-line quotes
-      channel.send({ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
+         channel.send(`Por favor, Faça os passos do Gif caso queira usar esse comando!`,{ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
      }
     }
 }

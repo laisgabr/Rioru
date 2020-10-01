@@ -30,7 +30,7 @@ module.exports = class GuildMemberAddListener extends Listener {
   if(db.val().BemVindoStatus === false) return;
   if (db.val().BemVindoID === "undefined") return;
 
-  const mensagem = db.val().MensagemBemVindo
+  let mensagem = db.val().MensagemBemVindo
     mensagem.replace('{member}', '${member.user}')
     mensagem.replace('{guild}', '${guild.name}')
 

@@ -5,7 +5,7 @@ module.exports = class SystemConfigCommand extends Command {
     super(client, {
       name: 'systemconfig',
       aliases: [],
-      category: 'Configuration'
+      category: 'Admin'
     })
   }
  async run ({ channel, member, guild, author }) {
@@ -19,7 +19,17 @@ module.exports = class SystemConfigCommand extends Command {
     if(db.val().systemAntiInvite === true) statusInvite = '<:ativadoSweet:760564086135717898> | Ativado'
     if(db.val().systemAntiInvite === false) statusInvite = '<:desativadoSweet:760564236693798954> | Desativado'
 
-    const { MessageEmbed } = require('discord.js')
+   /*
+    let filter = (user) => user.author.id === author.id;
+    let collector = new MessageCollector(channel, filter, { max: 1, time: 200000 })
+
+    collector.on('collect', r => {
+
+      channel.send(r.content)
+    })
+   */
+
+    const { MessageEmbed, MessageCollector } = require('discord.js')
    const embedInicio = new MessageEmbed()
      .setColor('PINK')
      .setThumbnail(this.client.user.displayAvatarURL({ format: "png" }))

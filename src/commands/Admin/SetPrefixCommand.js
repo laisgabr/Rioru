@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -6,7 +5,7 @@ module.exports = class extends Command {
         super(client, {
             name: 'setprefix',
             aliases: [],
-            category: 'Configuration'
+            category: 'Admin'
         })
     }
    async run ({ channel, args, guild, member }) {

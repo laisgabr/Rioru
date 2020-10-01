@@ -9,6 +9,6 @@ module.exports = class BanidoCommand extends Command {
         })
     }
     run ({ channel }) {
-        channel.send({ files: [{ attachment: './Assets/Banido.mp4', name: 'Banido.mp4' }] })
+        channel.send(`Banido.`, { files: [{ attachment: './Assets/Banido.mp4', name: 'Banido.mp4' }] })
     }
 }

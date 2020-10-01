@@ -1,6 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class extends Command {
@@ -19,6 +16,10 @@ module.exports = class extends Command {
     const uuser = mentions.users.first() || this.client.users.cache.get(args[0])
         if (!uuser) {
            return channel.send('<:xSweet:756989900661850182> | Diga um id')
+        }
+
+        if(uuser.id === this.client.config.owners.includes(author.id)) {
+          return channel.send('Ta com problema? Vai arrumar outra coisa pra fazer')
         }
 
         const firebase = require('firebase')
