@@ -10,7 +10,8 @@ module.exports = class BlacklistRemoveCommand extends Command {
         })
     }
    async run ({ channel, author, args }) {
-            const memberID = this.client.users.cache.get(args[0])
+          channel.send('desativado....')
+            /* const memberID = this.client.users.cache.get(args[0])
             const firebase = require('firebase')
             const database = firebase.database()
 
@@ -27,6 +28,8 @@ module.exports = class BlacklistRemoveCommand extends Command {
             }
 
             channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
+
         })
+        */
     }
 }
