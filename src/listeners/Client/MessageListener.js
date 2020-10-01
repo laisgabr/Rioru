@@ -9,7 +9,7 @@ module.exports = class MessageListener extends Listener {
 
  async run (message) {
     try {
-      if (message.author.bot || message.channel.type !== 'text') return
+      if (message.channel.type !== 'text') return;
 
       const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
       if (dbbb.val() === null) {
@@ -28,6 +28,7 @@ module.exports = class MessageListener extends Listener {
           LogsID: "undefined"
         })
       }
+      if(message.author.bot) return;
       if (dbbb.val().systemAntiLinks === true) {
 
         if (message.content.includes('https://') || message.content.includes('http://') || message.content.includes('www.')) {
