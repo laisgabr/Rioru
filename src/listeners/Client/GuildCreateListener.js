@@ -1,6 +1,6 @@
-const { Command } = require('../../structure')
+const { Listener } = require('../../structure')
 
-module.exports = class GuildCreateListener extends Command {
+module.exports = class GuildCreateListener extends Listener {
     constructor () {
         super({
             name: 'guildCreate'
