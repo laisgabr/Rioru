@@ -27,6 +27,22 @@ module.exports = class GuildCreateListener extends Listener {
             LogsID: "undefined"
           })
        }
-       if(!db.val() === null) return;
+       const { MessageEmbed } = require('discord.js')
+
+       const embed = new MessageEmbed()
+       .setDescription(`
+       Fui Adicionada em ${guild.name}(\`${guild.id}\`)
+
+       Dono(a):
+       ${guild.owner.user.tag}(\`${guild.owner.user.id}\`)
+
+       Número de Membros:
+       ${guild.memberCount}
+
+       Agora temos ${this.client.guilds.cache.size} Servidores!
+       `)
+       .setColor('GREEN')
+       .setThumbnail(guild.iconURL({ dynamic: true }))
+       this.client.channels.cache.get("761378501130584074").send(embed)
    }
 }
