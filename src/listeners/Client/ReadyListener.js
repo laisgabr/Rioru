@@ -14,13 +14,6 @@ module.exports = class ReadyListener extends Listener {
   this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
     .on("queueEnd", async player => {
       player.textChannel.send('⏹ | A fila acabou...')
-      setTimeout(function () {
-        if (!player.playing) {
-          player.textChannel.send(':sleeping: | Saindo por causa da Inatividade....')
-          return this.lavalink.players.get(player.guild.id).destroy()
-        }
-        return;
-      }, 60000 * 2)
     })
     await new LavalinkLoader(this.lavalink).load()
 

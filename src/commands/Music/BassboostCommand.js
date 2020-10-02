@@ -19,7 +19,7 @@ module.exports = class extends Command {
             const off = args[0]
              if(!off) return  channel.send("<:xSweet:756989900661850182> | Diga [on/off] para continuar")
 
-      if(!off.includes('off', 'on')) return channel.send('<:xSweet:756989900661850182> | Diga [on/off] para continuar')
+      if(!off.includes(['off', 'on'])) return channel.send('<:xSweet:756989900661850182> | Diga [on/off] para continuar')
 
       if(off === 'on') {
         player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 1.50 })));

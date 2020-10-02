@@ -22,7 +22,7 @@ module.exports = class extends Command {
     limit: deleteCount + 1
   })
   channel.bulkDelete(fetched)
-  channel.send(`<:checkSweet:757016162633646211> | ${args[0]} Mensagens foram apagadar por ${author} `).then(msg => msg.delete({ timeout: 5000 }))
+  channel.send(`<:checkSweet:757016162633646211> | ${args[0]} Mensagens foram apagadas por ${author} `).then(msg => msg.delete({ timeout: 5000 }))
     .catch(error =>
       console.log(`<:xSweet:756989900661850182> | Não foi possível deletar mensagens devido a: ${error}`)
     )

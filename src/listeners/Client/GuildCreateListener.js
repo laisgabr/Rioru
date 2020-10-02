@@ -9,7 +9,7 @@ module.exports = class GuildCreateListener extends Listener {
     }
    async run (guild) {
        const database = require('firebase').database()
-       const db = await database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
+       const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
 
        if(db.val() === null) {
           database.ref(`Servidores/${message.guild.id}/Configs`).set({
