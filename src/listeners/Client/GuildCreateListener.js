@@ -12,7 +12,7 @@ module.exports = class GuildCreateListener extends Listener {
        const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
 
        if(db.val() === null) {
-          database.ref(`Servidores/${message.guild.id}/Configs`).set({
+          database.ref(`Servidores/${guild.id}/Configs`).set({
             prefix: "z!",
             systemAntiInvite: false,
             systemAntiCapsLock: false,
