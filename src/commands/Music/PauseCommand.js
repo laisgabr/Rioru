@@ -1,5 +1,3 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class StopCommand extends Command {

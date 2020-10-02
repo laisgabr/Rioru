@@ -74,12 +74,12 @@ module.exports = class UserinfoCommand extends Command {
       'DISCORD_PARTNER': '<:partner:723568237241040998>', 
       'HYPESQUAD_EVENTS': '<:hypesquad_events:723567460581638194>',
       'BUGHUNTER_LEVEL_1': '<:bughunter1:754075531967856731>',
-      'HOUSE_BRAVERY': '<:hypebravely:753979393428422756>',
-      'HOUSE_BRILLIANCE': '<:hypebrilliance:753979410142462032>',
-      'HOUSE_BALANCE': '<:hypebalance:753979367360692274>',
-      'EARLY_SUPPORTER': '<:earlysup:753981995259789352>',
+      'HOUSE_BRAVERY': '<:housebravery:756940696044175492>',
+      'HOUSE_BRILLIANCE': '<:housebrillance:756940656659791953>',
+      'HOUSE_BALANCE': '<:houseballance:756940619598921839>',
+      'EARLY_SUPPORTER': '<:earlysupporter:756940725286862948>',
       'BUGHUNTER_LEVEL_2': '<:bughunter2:754075510128115713>',
-      'VERIFIED_DEVELOPER': '<:dev:753244508174680176>'
+      'VERIFIED_DEVELOPER': '<:badge_dev:756940761370722334>'
     }
  
 

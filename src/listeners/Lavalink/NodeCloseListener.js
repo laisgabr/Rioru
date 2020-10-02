@@ -7,6 +7,6 @@ module.exports = class NodeCloseListener extends Listener {
       })
     }
     run () {
-      console.log(`A instância do PalmeirasSemMundial foi fechada`)
+      console.log(`A instância do PalmeirasSemMundial/CachorroRebaixado foi fechada`)
     }
 }

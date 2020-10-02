@@ -20,7 +20,7 @@ module.exports = class HelpCommand extends Command {
 
 
     const EmbedAjuda = new MessageEmbed()
-      .setTitle(`Olá meu nome é Zoe™ e sou feita em JavaScript`)
+      .setTitle(`Olá meu nome é Zoe™ e sou feita para lhe ajudar!`)
       .setColor("PINK")
       .setThumbnail(client.user.displayAvatarURL({ format: "png", dynamic: true }))
       .setDescription(`

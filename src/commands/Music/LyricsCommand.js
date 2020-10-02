@@ -9,7 +9,7 @@ module.exports = class LyricsCommand extends Command {
     })
   }
   run ({ channel, args }) {
-    const ftl = require('findthelyrics')
+   /* const ftl = require('findthelyrics')
 
     const musica = args.join(' ')
     if(!musica) return channel.send('Diga o nome de uma música!')
@@ -50,6 +50,7 @@ channel.send(embed1)
     }
 
     })
+    */ 
 
   }
 

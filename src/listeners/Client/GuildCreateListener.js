@@ -39,7 +39,7 @@ module.exports = class GuildCreateListener extends Listener {
        Número de Membros:
        ${guild.memberCount}
 
-       Agora temos ${this.guilds.cache.size} Servidores!
+       Agora temos ${this.guilds.cache.size} Servidores e ${this.users.cache.size}!
        `)
        .setColor('GREEN')
        .setThumbnail(guild.iconURL({ dynamic: true }))

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 const { Command } = require('../../structure')
 
 module.exports = class VolumeCommand extends Command {

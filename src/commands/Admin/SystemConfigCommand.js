@@ -38,9 +38,9 @@ module.exports = class SystemConfigCommand extends Command {
 
 Para Gerenciar o Sistema de Anti Invite, Reaja com  .
 
-Para Gerenciar o Sistema de Anti Caps-Lock Excessivo, Reaja com <:numero2Sweet:757455416920637550> .
+Para Gerenciar o Sistema de Anti Caps-Lock Excessivo, Reaja com  .
 
-Para Gerenciar o Sistema de Anti Links, Reaja com <:numero3Sweet:757455488089587812> .
+Para Gerenciar o Sistema de Anti Links, Reaja com  .
 
 Para Gerenciar o Sistema de Entrada, Reaja com
 
@@ -49,7 +49,7 @@ Para Gerenciar o Sistema de Saida, Reaja com
 Para Gerenciar o Sistema de Logs, Reaja com
      `)
    channel.send(embedInicio).then(msg => {
-     msg.react('')
+    /* msg.react('')
      msg.react('')
      msg.react('')
 
@@ -57,8 +57,9 @@ Para Gerenciar o Sistema de Logs, Reaja com
 
      const invite = msg.createReactionCollector(collectorConvite)
      const teste = msg.createReactionCollector()
-
-     let stringInvite = ""
+    */
+    
+    let stringInvite = ""
      if(db.val().systemAntiInvite === true) stringInvite = 'Clique em .... para Desativar o Sistema Anti-Invites'
      if(db.val().systemAntiInvite === false) statusInvite = 'Clique em .... para Ativar o Sistema Anti-Invites'
      const embedInvite = new MessageEmbed()

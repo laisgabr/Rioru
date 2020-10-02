@@ -23,7 +23,7 @@ module.exports = class ServerinfoCommand extends Command {
     .addField("🏳 Região do Servidor :", `\`${guild.region}\``)
     .addField("📆 Servidor criado em :", `\`${moment(guild.createdAt).format("LLL")}\``)
     .addField("Você entrou aqui em :", `\`${moment(member.joinedAt).format("LLL")}\``)
-    .addField("Eu entrei aqui em :", `\`${moment(client.joinedAt).format("LLL")}\``)
+    .addField("Eu entrei aqui em :", `\`${moment(this.client.joinedAt).format("LLL")}\``)
     .addField("👥 Total de Membros do Servidor :", `${guild.memberCount}`)
     .setThumbnail(guild.iconURL({ dynamic: true }), true)
     .setTimestamp()

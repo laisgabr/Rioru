@@ -20,11 +20,9 @@ module.exports = class UptimeCommand extends Command {
     let minuto = Math.floor(totalSeconds / 60)
     let segundo = totalSeconds % 60
 
-    let uptime = `🗓️ ${dias.toFixed()} dias\n🗓️ ${horas.toFixed()} horas\n🗓️ ${minuto.toFixed()} minutos\n🗓️ ${segundo.toFixed()} segundos`
+    let uptime = `🗓️ ${dias.toFixed()}D \n🗓️ ${horas.toFixed()}H \n🗓️ ${minuto.toFixed()}M \n🗓️ ${segundo.toFixed()}S `
 
     const embed = new MessageEmbed()
-    .setTitle(`Tempo de atividade 🕰️`)
-    .setThumbnail("https://imgur.com/WZMylbw.gif")
     .setColor("RANDOM")
     .setDescription(`**Estou online há:**\n${uptime}`)
 

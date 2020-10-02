@@ -29,8 +29,10 @@ module.exports = class DivulgationCommand extends Command {
       .setColor("AQUA")
       .setTitle("Nick: " + user.username)
       .setDescription(`
-        Membros Convidados por ${user}:
+      Membros Convidados por ${user}:
 ${invitesUses} Membros
+
+T
         `)
     channel.send(embed)
   }

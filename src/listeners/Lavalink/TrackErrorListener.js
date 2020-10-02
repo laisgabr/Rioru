@@ -6,7 +6,7 @@ module.exports = class TrackErrorListener extends Listener {
       name: 'trackError'
     })
   }
-  run({ textChannel }, { title }) {
-    textChannel.send('Ocorreu um erro ao carregar ' + title + " , Eu acho que essa música tem copyright ou de alguma forma eu fui banida mas é meio impossível.")
+  run({ textChannel }) {
+    textChannel.send("Eu acho que essa música tem copyright ou de alguma forma eu fui banida mas é meio impossível.")
   }
 }
