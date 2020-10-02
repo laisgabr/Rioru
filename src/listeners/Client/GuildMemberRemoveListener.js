@@ -6,13 +6,13 @@ module.exports = class GuildMemberRemoveListener extends Listener {
             name: 'guildMemberRemove'
         })
     }
-   async run (guild) {
+   async run (member) {
         const firebase = require('firebase')
         const database = firebase.database()
 
-      const db = await database.ref(`Servidores/${guild.id}/Configs`).once('value')
+      const db = await database.ref(`Servidores/${member.guild.id}/Configs`).once('value')
       if (db.val() === null) {
-         return database.ref(`Servidores/${guild.id}/Configs`).set({
+         return database.ref(`Servidores/${member.guild.id}/Configs`).set({
            prefix: "z!",
            systemAntiInvite: false,
            systemAntiCapsLock: false,
