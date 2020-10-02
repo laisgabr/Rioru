@@ -32,7 +32,7 @@ module.exports = class GuildMemberRemoveListener extends Listener {
 
       let mensagem = db.val().SaidaMensagem
 
-   const msg = await mensagem.replace('{guild.name}', '${guild.name}').replace('{member}', '${member.user}')
+   const msg = await mensagem.replace('{guild.name}', `${member.guild.name}`).replace('{member}', `<@${member.user.id}>`)
 
       this.channels.cache.get(`${db.val().SaidaID}`).send(`${msg}`).catch(async err => {
         console.log(err)
