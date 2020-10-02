@@ -16,6 +16,8 @@ module.exports = class LoopCommand extends Command {
 
     const  canal  = member.voice.channel;
 
+    if(!player.playing) return channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
+
     if (!canal) return channel.send("<:xSweet:756989900661850182> | Você precisa estar num canal de voz para executar essa ação!");
 
     if (args.length && /queue/i.test(args[0])) {

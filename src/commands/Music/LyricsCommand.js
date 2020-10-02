@@ -3,7 +3,7 @@ const { Command } = require('../../structure')
 module.exports = class LyricsCommand extends Command {
   constructor(client) {
     super(client, {
-      name: '',
+      name: 'lyrics',
       aliases: [],
       category: ''
     })
@@ -12,6 +12,7 @@ module.exports = class LyricsCommand extends Command {
     const ftl = require('findthelyrics')
 
     const musica = args.join(' ')
+    if(!musica) return channel.send('Diga o nome de uma música!')
 
     ftl.find(' ', `${musica}`, function(err, resp) {
       const { MessageEmbed } = require('discord.js')
@@ -33,8 +34,16 @@ module.exports = class LyricsCommand extends Command {
         \n${resp.slice(1960)}\n
 
         `)
-      channel.send(embed2)
+     return channel.send(embed2)
     }
+    const embed1 = new MessageEmbed()
+    .setDescription(`
+    Música ${musica}
+
+ Letra:
+ \n${resp.slice(1960)}\n
+`)
+channel.send(embed1)
       if(err) {
       console.log(err)
       return channel.send('Erro:' + err)

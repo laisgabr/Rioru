@@ -36,7 +36,7 @@ module.exports = class SystemConfigCommand extends Command {
      .setDescription(`
    Sistemas Disponíveis:
 
-Para Gerenciar o Sistema de Anti Invite, Reaja com <:numero1Sweet:757455325405118526> .
+Para Gerenciar o Sistema de Anti Invite, Reaja com  .
 
 Para Gerenciar o Sistema de Anti Caps-Lock Excessivo, Reaja com <:numero2Sweet:757455416920637550> .
 
