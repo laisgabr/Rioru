@@ -35,7 +35,7 @@ module.exports = class GuildMemberRemoveListener extends Listener {
 
       mensagem.replace('{guild.name}', '${guild.name}')
 
-      this.client.channels.cache.get(`${db.val().SaidaID}`).send(`${mensagem}`).catch(async err => {
+      this.channels.cache.get(`${db.val().SaidaID}`).send(`${mensagem}`).catch(async err => {
         console.log(err)
       })
     }

@@ -33,7 +33,7 @@ module.exports = class GuildMemberAddListener extends Listener {
    let mensagem = db.val().MensagemBemVindo
    const msg = await  mensagem.replace('{member}', '${member.user}').replace('{guild}', '${guild.name}')
 
-  this.client.channels.cache.get(`${db.val().BemVindoID}`).send(`${msg}`).catch(async err => {
+  this.channels.cache.get(`${db.val().BemVindoID}`).send(`${msg}`).catch(async err => {
     console.log(err)
   })
   }

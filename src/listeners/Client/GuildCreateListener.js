@@ -43,6 +43,6 @@ module.exports = class GuildCreateListener extends Listener {
        `)
        .setColor('GREEN')
        .setThumbnail(guild.iconURL({ dynamic: true }))
-       this.client.channels.cache.get("761378501130584074").send(embed)
+       this.channels.cache.get("761378501130584074").send(embed)
    }
 }
