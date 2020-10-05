@@ -82,7 +82,7 @@ module.exports = class PlayCommand extends Command {
         break;
 
     }
-    setTimeout(function () {
+    setTimeout(async function () {
     const setI = await setInterval(function() {
      if(!player.playing) {
        lavalink.players.destroy(guild.id)
