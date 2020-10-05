@@ -29,6 +29,7 @@ module.exports = class MessageListener extends Listener {
         })
       }
       if(message.author.bot) return;
+      
       if (dbbb.val().systemAntiLinks === true) {
 
         if (message.content.includes('https://') || message.content.includes('http://') || message.content.includes('www.')) {
@@ -45,6 +46,10 @@ module.exports = class MessageListener extends Listener {
           message.channel.send('Excesso de Caps Lock!').then(msg => msg.delete({timeout: 8000}))
         }
       }
+
+      const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
+      if(aa.val()) return;
+      
       let prefix = dbbb.val().prefix
       if (prefix === null) {
         prefix = 'z!'
@@ -96,7 +101,6 @@ module.exports = class MessageListener extends Listener {
 
       if (!message.content.toLowerCase().startsWith(prefix)) return;
       
-        const aa = await this.database.ref(`Global/Blacklist/${message.author.id}`).once('value');
       if (aa.val()) {
         return message.author.send(`Você, ${message.author.tag} (\`${message.author.id}\`) , foi Banido Permanentemente de Usar a **Zoe**.
 

@@ -25,7 +25,8 @@ module.exports = class PlayCommand extends Command {
     const player = lavalink.players.spawn({
         guild: guild,
         textChannel: channel,
-        voiceChannel
+        voiceChannel,
+        self_deaf: true
     });
    lavalink.search(args.join(' '), author).then(async res => {
         switch (res.loadType) {
@@ -54,22 +55,22 @@ module.exports = class PlayCommand extends Command {
 
         collector.on("collect", m => {
           if (m.content.toLowerCase() === '1' || m.content.toLowerCase() === '2' || m.content.toLowerCase() === '3' || m.content.toLowerCase() === '4' || m.content.toLowerCase() === '5' || m.content.toLowerCase() === '6' || m.content.toLowerCase() === '7' || m.content.toLowerCase() === '8' || m.content.toLowerCase() === '9' || m.content.toLowerCase() === '10') {
-          deleteEmbed.delete({ timeout: 4000 })
-          m.delete({ timeout: 4000 })
+          deleteEmbed.delete({ timeout: 2000 })
+          m.delete({ timeout: 2000 })
 
           let msg = m.content;
-          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('Cancelado');
+          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('cancel');
 
           const track = tracks[Number(m.content) - 1];
           player.queue.add(track)
 
-          channel.send(`Adicionando \`${track.title}\` \`${Utils.formatTime(track.duration, true)}\` a Lista de Reprodução`).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
+          channel.send(`Adicionando \`${track.title}\` com a Duração de \`${Utils.formatTime(track.duration, true)}\` a Lista de Reprodução`).then(msg => { if (msg.deletable) msg.delete({ timeout: 5000 }) });
           if (!player.playing) player.play();
         }
       });
 
       collector.on("end", (_, reason) => {
-        if (["time", "Cancelado"].includes(reason)) return channel.send("Seleção de Música cancelada!")
+        if (["time", "canceled"].includes(reason)) return channel.send("Seleção de Música cancelada!")
       });
       break;
 
@@ -81,7 +82,15 @@ module.exports = class PlayCommand extends Command {
         break;
 
     }
-
+      setInterval(async function () {
+        const player2 = lavalink.players.get(guild.id)
+        if(!player2) return;
+      const membros = await this.channels.cache.get(player2.voiceChannel).members.size
+      if(membros < 2) {
+        channel.send(':sleeping: | Saindo por que não havia ninguém no Canal de Voz')
+        return lavalink.players.destroy(guild.id)
+      }
+      }, 15 * 1000)
   }).catch(err => {
     channel.send(err)
   })

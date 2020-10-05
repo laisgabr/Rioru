@@ -10,14 +10,14 @@ module.exports = class UserinfoCommand extends Command {
             category: 'Miscellaneous'
         })
     }
-   async run ({ channel, member, author, guild, args, client, mentions }) {
+   async run ({ channel, member, author, guild, client, args, mentions }) {
   const { MessageEmbed } = require('discord.js')
   const moment = require('moment')
   moment.locale("pt-BR")
   
   let permissions = []
 
-    const uuser = args[0] ? mentions.members.first() || guild.members.cache.get(args[0]) : member
+    const uuser = args[0] ? mentions.members.first() || await client.users.fetch(args[0]) : member
 
     if (uuser.hasPermission('ADMINISTRATOR')) permissions.push('`Administrador`')
     if (uuser.hasPermission('VIEW_AUDIT_LOG')) permissions.push('`Ver o registro de auditoria`')
@@ -51,25 +51,7 @@ module.exports = class UserinfoCommand extends Command {
     if (uuser.hasPermission('PRIORITY_SPEAKER')) permissions.push('`Voz Prioritária`')
     if (permissions.length === 0) permissions.push('Sem permissões')
 
-    let status = {
-      online: {
-        msg: '<:online:723542242429501560>',
-        color: '#43b581'
-      },
-      idle: {
-        msg: '<:idle:723561325829029898>',
-        color: '#faa61a'
-      },
-      dnd: {
-        msg: '<:dnd:723561233982160957>',
-        color: '#f04747'
-      },
-      offline: {
-        msg: '<:offline:723561421761282118>',
-        color: '#747f8d'
-      },
-    }
-    const emojis = { // Ei lara, verifique todos os emojis pq alguns era do server do Nykoh
+    const emojis = { 
       'DISCORD_EMPLOYEE': '<:Funcionario:754074239849725984>', 
       'DISCORD_PARTNER': '<:partner:723568237241040998>', 
       'HYPESQUAD_EVENTS': '<:hypesquad_events:723567460581638194>',
@@ -99,7 +81,7 @@ module.exports = class UserinfoCommand extends Command {
     }
 
     const embed = new MessageEmbed()
-      .setTitle(`${badges} ${status[uinfo.presence.status].msg} ${uinfo.username}`)
+      .setTitle(`${badges} ${uinfo.username}`)
       .setThumbnail(user.displayAvatarURL({ dynamic: true, size: 2048 }))
       .setColor("PURPLE")
       .addFields([

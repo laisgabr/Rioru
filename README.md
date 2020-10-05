@@ -12,11 +12,11 @@ Meu nome é Zoe e sou uma Bot Discord feita em JavaScript
 [Servidor de Suporte](https://discord.gg/VdnPu5B) <br><br>
 
 # Integrantes do Time:
-Lra (Divulgadora e Responsividade)<br><br>
-Polar (Divulgador)<br><br>
-MrGamingBR (VPS, Programação, Design)<br><br>
-Thay7 (Design, Responsividade, Programação)
-
+! み 'Lra#0001 (Divulgadora e Responsividade)<br><br>
+polar#0002 (Divulgador)<br><br>
+</ Fria e Calculista 😎 >#0001 (Não é Travequinho Amigo) (VPS, Programação, Design)<br><br>
+神 Thay7ム#3272 (Design, Responsividade, Programação)
+blue.#2020 (Programador, Responsividade)
 
 # Códigos:
 Independente da Situação,<b> Não iremos ajudar com código da Zoe então por favor, não insista.</b>

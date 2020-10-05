@@ -18,6 +18,7 @@ module.exports = class SetNickCommand extends Command {
       if (!member.permissions.has("ADMINISTRATOR")) {
     uuser = author
     } else {
+        uuser = mentions.users.first() || author
         if (!uuser) {
          uuser = author
         }
@@ -27,7 +28,7 @@ module.exports = class SetNickCommand extends Command {
     return channel.send("<:xSweet:756989900661850182> | Não tenho a Permissão ``Gerenciar Apelidos`` para fazer isso!")
     }
 
-    if (!newnick) return channel.send("<:xSweet:756989900661850182> | Use <prefix>setnick <novoNome>")
+    if (!newnick) return channel.send("<:xSweet:756989900661850182> | Use <prefix>setnick (Menção/Se n tiver vai ser o seu) <novoNome>")
     guild.members.cache.get(uuser.id).setNickname(newnick).catch(err => {
         console.log(err)
         return channel.send(err)

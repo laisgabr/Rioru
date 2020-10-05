@@ -1,5 +1,4 @@
-const { Loader } = require('../structure')
-const { requireDirectory } = require('../util')
+const { Loader, requireDirectory } = require('../structure')
 
 module.exports = class CommandLoader extends Loader {
   constructor (client) {

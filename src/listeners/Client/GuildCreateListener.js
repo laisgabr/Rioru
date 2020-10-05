@@ -31,7 +31,10 @@ module.exports = class GuildCreateListener extends Listener {
 
        const embed = new MessageEmbed()
        .setDescription(`
-       Fui Adicionada em ${guild.name}(\`${guild.id}\`)
+       Fui Adicionada em um Servidor......
+       
+       Nome:
+       ${guild.name}(\`${guild.id}\`)
 
        Dono(a):
        ${guild.owner.user.tag}(\`${guild.owner.user.id}\`)
@@ -39,7 +42,7 @@ module.exports = class GuildCreateListener extends Listener {
        Número de Membros:
        ${guild.memberCount}
 
-       Agora temos ${this.guilds.cache.size} Servidores e ${this.users.cache.size}!
+       Agora temos ${this.guilds.cache.size} Servidores e ${this.users.cache.size} Usuários!
        `)
        .setColor('GREEN')
        .setThumbnail(guild.iconURL({ dynamic: true }))

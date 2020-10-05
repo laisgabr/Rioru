@@ -11,10 +11,13 @@ module.exports = class StopCommand extends Command {
     run ({ channel, guild, lavalink, member }) {
       const voiceChannel = member.voice.channel;
     if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
-      const player = lavalink.players.get(guild.id);
+      
+    const player = lavalink.players.get(guild.id);
       if(!player) return channel.send('<:xSweet:756989900661850182> | Não tem músicas tocando nesse Servidor!')
 
       if(!player.playing) return channel.send('Já está pausado')
+
+      
 
       player.pause(true);
       return channel.send('⏸️ | Pausado');

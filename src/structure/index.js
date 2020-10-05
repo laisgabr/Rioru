@@ -2,5 +2,6 @@ module.exports = {
   Command: require('./Command.js'),
   CommandContext: require('./command/CommandContext.js'),
   Listener: require('./Listener.js'),
-  Loader: require('./Loader.js')
+  Loader: require('./Loader.js'),
+  requireDirectory: require('./requireDirectory.js')
 }

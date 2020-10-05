@@ -1,7 +1,4 @@
 package-lock.json
 node_modules/
 .idea/*
-Lavalink.jar
 .env
-giveaways.json
-logs/

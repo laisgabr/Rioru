@@ -10,12 +10,10 @@
   "dependencies": {
     "@vitalets/google-translate-api": "4.0.0",
     "common-tags": "1.8.0",
-    "discord-giveaways": "^4.2.1",
     "discord.js": "12.2.0",
     "erela.js": "1.1.8",
     "firebase": "^7.20.0",
     "jimp": "0.16.1",
-    "mathjs": "^7.2.0",
     "moment": "^2.27.0",
     "ms": "2.1.2",
     "node-fetch": "2.6.1",
@@ -27,6 +25,6 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4" 
   }
 }

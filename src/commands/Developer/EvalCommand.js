@@ -18,6 +18,11 @@ module.exports = class EvalCommand extends Command {
             if (input === 'this.client.token') {
                return channel.send(':thumbsup:')
             }
+
+            if(input === 'process.env.TOKEN') {
+                return channel.send(':thumbsup:')
+            }
+
             let output = eval(input)
 
             if (typeof output !== "string") output = inspect(output)
@@ -26,7 +31,7 @@ module.exports = class EvalCommand extends Command {
 
             channel.send(`**Saida:**\n\`\`\`js\n${output}\n\`\`\``)
         } catch (error) {
-            channel.send(`<:xSweet:756989900661850182> | **Erro:**\n\`${error}\``)
+            channel.send(`<:xSweet:756989900661850182> **Erro:**\n\`${error}\``)
         }
     }
 }

@@ -10,10 +10,10 @@ module.exports = class BlacklistRemoveCommand extends Command {
         })
     }
    async run ({ channel, author, args }) {
-          channel.send('desativado....')
-            /* const memberID = this.client.users.cache.get(args[0])
-            const firebase = require('firebase')
+           const firebase = require('firebase')
             const database = firebase.database()
+
+            const memberID = args[0]
 
            if(!memberID) return channel.send('Me diga um id!')
 
@@ -23,13 +23,10 @@ module.exports = class BlacklistRemoveCommand extends Command {
                 return channel.send('Esse usuário não está Banido')
             }
 
-            if (!db.val() == null) {
-                database.ref(`Global/Blacklist/${memberID}`).set(null)
-            }
+        database.ref(`Global/Blacklist/${memberID}`).set(null)
+            
 
-            channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
-
-        })
-        */
+        channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário desbanido com sucesso, Tomará que não quebre as regras novamente.`)
+        
     }
 }

@@ -1,6 +1,6 @@
 const { Command } = require('../../structure')
 
-module.exports = class NowPlayingTestCommand extends Command {
+module.exports = class NowPlayingCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'nowplaying',

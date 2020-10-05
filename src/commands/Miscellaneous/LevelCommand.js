@@ -35,6 +35,7 @@ module.exports = class LevelCommand extends Command {
      **MENSAGENS ENVIADAS NESSE SERVIDOR:**
      ${messages} Mensagens
      `)
+     .setThumbnail(author.displayAvatarURL({ dynamic: true }))
      return channel.send(embedAuthor)
  }
 

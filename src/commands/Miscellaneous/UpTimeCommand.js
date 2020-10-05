@@ -20,11 +20,11 @@ module.exports = class UptimeCommand extends Command {
     let minuto = Math.floor(totalSeconds / 60)
     let segundo = totalSeconds % 60
 
-    let uptime = `🗓️ ${dias.toFixed()}D \n🗓️ ${horas.toFixed()}H \n🗓️ ${minuto.toFixed()}M \n🗓️ ${segundo.toFixed()}S `
+    let uptime = `🗓️ ${dias.toFixed()}D | ${horas.toFixed()}H | ${minuto.toFixed()}M | ${segundo.toFixed()}S `
 
     const embed = new MessageEmbed()
     .setColor("RANDOM")
-    .setDescription(`**Estou online há:**\n${uptime}`)
+    .setDescription(`**Estou online há:**${uptime}`)
 
     channel.send(embed)
     }
