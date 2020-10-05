@@ -13,7 +13,7 @@ module.exports = class PlayCommand extends Command {
     })
   }
 
-  async run ({ channel, args, member, guild, author, lavalink }) {
+  async run ({ channel, args, member, guild, author, lavalink, client }) {
 
     const voiceChannel = member.voice.channel;
     if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
@@ -85,7 +85,7 @@ module.exports = class PlayCommand extends Command {
       setInterval(async function () {
         const player2 = lavalink.players.get(guild.id)
         if(!player2) return;
-      const membros = await this.channels.cache.get(player2.voiceChannel).members.size
+      const membros = await client.channels.cache.get(player2.voiceChannel).members.size
       if(membros < 2) {
         channel.send(':sleeping: | Saindo por que não havia ninguém no Canal de Voz')
         return lavalink.players.destroy(guild.id)
