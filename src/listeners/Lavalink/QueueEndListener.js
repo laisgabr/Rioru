@@ -12,7 +12,7 @@ module.exports = class QueueEndListener extends Listener {
         if(!player.playing) { 
           player.textChannel.send(':sleeping: | Saindo do canal por Inatividade') 
          // this.lavalink.players.destroy(player.guild.id).catch(err => console.log(err))
-          this.lavalink.players.destroy(player.guild.id).catch(err => console.log(err))
+          player.destroy(player.guild.id).catch(err => console.log(err))
         }
       }, 1300 * 60 )
   }
