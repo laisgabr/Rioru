@@ -12,7 +12,7 @@ module.exports = class ReadyListener extends Listener {
 
  async run () {
   this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
-  await new LavalinkLoader(this.lavalink).load()
+  await new LavalinkLoader(this.lavalink).load(this)
 
     var status = [
       `😉 Tenho Custom Prefix, Me mencione para saber mais!`,
