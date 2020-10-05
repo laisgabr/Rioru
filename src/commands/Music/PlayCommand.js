@@ -82,6 +82,15 @@ module.exports = class PlayCommand extends Command {
         break;
 
     }
+    setTimeout(function () {
+    const setI = await setInterval(function() {
+     if(!player.playing) {
+       lavalink.players.destroy(guild.id)
+       channel.send(':sleeping: | Saindo por inatividade.....')
+       clearInterval()
+     }
+   }, 7000)
+  }, 10000)
   }).catch(err => {
     channel.send(err)
   })
