@@ -8,12 +8,7 @@ module.exports = class QueueEndListener extends Listener {
   }
   run (player) {
     player.textChannel.send('⏹ | A fila acabou...')
-      setTimeout(function () {
-        if(!player.playing) { 
-          player.textChannel.send(':sleeping: | Saindo do canal por Inatividade') 
-         // this.lavalink.players.destroy(player.guild.id).catch(err => console.log(err))
-          player.destroy(player.guild.id).catch(err => console.log(err))
-        }
-      }, 1300 * 60 )
+  //  player.textChannel.send(':sleeping: | Saindo do canal por Inatividade') 
+        
   }
 }
