@@ -32,25 +32,6 @@ module.exports = class MessageListener extends Listener {
         })
       }
 
-      if(dbbb.val().LevelSystem === true || dbbb.val().LevelSystem === false) {
-        this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
-          prefix: dbbb.val().prefix,
-          systemAntiInvite: dbbb.val().systemAntiInvite,
-          systemAntiCapsLock: dbbb.val().systemAntiCapsLock,
-          systemAntiLinks: dbbb.val().systemAntiLinks,
-          BemVindoStatus: dbbb.val().BemVindoStatus,
-          BemVindoID: dbbb.val().BemVindoID,
-          MensagemBemVindo: dbbb.val().MensagemBemVindo,
-          SaidaStatus: dbbb.val().SaidaStatus,
-          SaidaID: dbbb.val().SaidaID,
-          SaidaMensagem: dbbb.val().SaidaMensagem,
-          LogsStatus: dbbb.val().LogsStatus,
-          LogsID: dbbb.val().LogsID,
-          LevelSystem: dbbb.val(),
-          LevelUpMessage: dbbb.val().LevelUpMessage
-        })
-      }
-
       if (dbbb.val() === null) {
         this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
           prefix: "z!",
