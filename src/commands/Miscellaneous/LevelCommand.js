@@ -10,12 +10,14 @@ module.exports = class LevelCommand extends Command {
         })
     }
    async run ({ channel, author, guild, args, mentions }) {
- const { MessageEmbed } = require('discord.js')
+/* const { MessageEmbed } = require('discord.js')
  const firebase = require('firebase')
  const database = firebase.database()
 
  const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) || author
-
+*/
+ return channel.send('Calma ai.........')
+/*
  const db = await database.ref(`Servidores/${guild.id}/Levels/${uuser.id}`).once('value')
  const level = db.val().level
  const xp = db.val().xp
@@ -53,5 +55,6 @@ module.exports = class LevelCommand extends Command {
  ${messages} Mensagens
  `)
  channel.send(embed)
+ */
     }
 }

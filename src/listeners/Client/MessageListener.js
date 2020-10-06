@@ -12,6 +12,45 @@ module.exports = class MessageListener extends Listener {
       if (message.channel.type !== 'text') return;
 
       const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
+      
+      if(dbbb.val().LevelSystem === null || dbbb.val().LevelSystem === undefined) {
+        this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
+          prefix: db.val().prefix,
+          systemAntiInvite: db.val().systemAntiInvite,
+          systemAntiCapsLock: db.val().systemAntiCapsLock,
+          systemAntiLinks: db.val().systemAntiLinks,
+          BemVindoStatus: db.val().BemVindoStatus,
+          BemVindoID: db.val().BemVindoID,
+          MensagemBemVindo: db.val().MensagemBemVindo,
+          SaidaStatus: db.val().SaidaStatus,
+          SaidaID: db.val().SaidaID,
+          SaidaMensagem: db.val().SaidaMensagem,
+          LogsStatus: db.val().LogsStatus,
+          LogsID: db.val().LogsID,
+          LevelSystem: db.val(),
+          LevelUpMessage: db.val().LevelUpMessage
+        })
+      }
+
+      if(dbbb.val().LevelSystem === true || dbbb.val().LevelSystem === false) {
+        this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
+          prefix: db.val().prefix,
+          systemAntiInvite: db.val().systemAntiInvite,
+          systemAntiCapsLock: db.val().systemAntiCapsLock,
+          systemAntiLinks: db.val().systemAntiLinks,
+          BemVindoStatus: db.val().BemVindoStatus,
+          BemVindoID: db.val().BemVindoID,
+          MensagemBemVindo: db.val().MensagemBemVindo,
+          SaidaStatus: db.val().SaidaStatus,
+          SaidaID: db.val().SaidaID,
+          SaidaMensagem: db.val().SaidaMensagem,
+          LogsStatus: db.val().LogsStatus,
+          LogsID: db.val().LogsID,
+          LevelSystem: db.val(),
+          LevelUpMessage: db.val().LevelUpMessage
+        })
+      }
+
       if (dbbb.val() === null) {
         this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
           prefix: "z!",
@@ -25,7 +64,9 @@ module.exports = class MessageListener extends Listener {
           SaidaID: "undefined",
           SaidaMensagem: `{member} saiu do Servidor :(`,
           LogsStatus: false,
-          LogsID: "undefined"
+          LogsID: "undefined",
+          LevelSystem: false,
+          LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
         })
       }
       if(message.author.bot) return;
@@ -54,7 +95,8 @@ module.exports = class MessageListener extends Listener {
       if (prefix === null) {
         prefix = 'z!'
       }
-    
+      
+      if(db.val().LevelStatus === true) {
       this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
         .once('value').then(async db => {
         if (db.val() == null) {
@@ -96,6 +138,7 @@ module.exports = class MessageListener extends Listener {
           }
         }
       })
+    }
 
       if (message.content === `<@747864108958875648>` || message.content === `<@!747864108958875648>` || message.content === '<@711341613930250330>' || message.content === '<@!711341613930250330>') return message.channel.send(`Olá <@${message.author.id}>, Meu nome é Zoe e meu prefixo em ${message.guild.name} é \`${prefix}\`, use \`${prefix}ajuda\`  para saber meus Comandos.`)
 

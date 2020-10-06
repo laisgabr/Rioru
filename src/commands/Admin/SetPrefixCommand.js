@@ -31,7 +31,9 @@ module.exports = class extends Command {
           SaidaID: db.val().SaidaID,
           SaidaMensagem: db.val().SaidaMensagem,
           LogsStatus: db.val().LogsStatus,
-          LogsID: db.val().LogsID
+          LogsID: db.val().LogsID,
+          LevelSystem: db.val().LevelSystem,
+          LevelUpMessage: db.val().LevelUpMessage
         })
         channel.send(`<:checkSweet:757016162633646211> | O Prefixo de ${guild.name} agora é \`${prefixo}\` .`)
     }

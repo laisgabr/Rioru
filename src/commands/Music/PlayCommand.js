@@ -89,7 +89,7 @@ module.exports = class PlayCommand extends Command {
        channel.send(':sleeping: | Saindo por inatividade.....')
       return clearInterval(setI)
      }
-   }, 10000)
+   }, 60 * 1000 * 2)
   }, 10000)
   }).catch(err => {
     channel.send(err)

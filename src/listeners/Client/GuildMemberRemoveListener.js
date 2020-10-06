@@ -24,7 +24,9 @@ module.exports = class GuildMemberRemoveListener extends Listener {
            SaidaID: "undefined",
            SaidaMensagem: `{member} saiu do Servidor :(`,
            LogsStatus: false,
-           LogsID: "undefined"
+           LogsID: "undefined",
+           LevelSystem: false,
+           LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
           })
       }
       if(db.val().SaidaStatus === false) return;
