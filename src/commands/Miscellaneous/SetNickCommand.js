@@ -13,15 +13,13 @@ module.exports = class SetNickCommand extends Command {
     run ({ channel, args, guild, author, mentions, member }) {
    let uuser = mentions.users.first() || guild.members.cache.get(args[0]) || author
 
-      const newnick = args.slice(1).join(' ')
+      let newnick = args.slice(1).join(' ')
 
-      if (!member.permissions.has("ADMINISTRATOR")) {
-    uuser = author
+    if (!member.permissions.has("ADMINISTRATOR")) {
+      uuser = author
+      if(!uuser === author) newnick = args.join(" ") 
     } else {
-        uuser = mentions.users.first() || author
-        if (!uuser) {
-         uuser = author
-        }
+      uuser = mentions.users.first() || author
     }
 
     if (!guild.me.permissions.has("MANAGE_NICKNAMES")) {
@@ -33,5 +31,6 @@ module.exports = class SetNickCommand extends Command {
         console.log(err)
         return channel.send(err)
     })
+    channel.send('Nickname alterado com sucesso!')
   }
 }

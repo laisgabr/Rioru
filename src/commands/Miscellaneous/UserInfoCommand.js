@@ -136,7 +136,7 @@ module.exports = class UserinfoCommand extends Command {
 
       Uinfos.on('collect', r2 => {
         let Uinfos = new MessageEmbed()
-          .setTitle(`${status[uinfo.presence.status].msg} ${uinfo.username}`)
+          .setTitle(`${badges} ${uinfo.username}`)
           .setThumbnail(user.displayAvatarURL({ dynamic: true, size: 2048 }))
           .setColor("PURPLE")
           .addFields([
