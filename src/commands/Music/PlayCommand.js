@@ -59,7 +59,7 @@ module.exports = class PlayCommand extends Command {
           m.delete({ timeout: 2000 })
 
           let msg = m.content;
-          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('cancel');
+          if (msg.toLowerCase() === 'cancel' || msg.toLowerCase() === 'cancelar') return collector.stop('canceled');
 
           const track = tracks[Number(m.content) - 1];
           player.queue.add(track)
@@ -84,9 +84,10 @@ module.exports = class PlayCommand extends Command {
     }
     setTimeout(async function () {
     const setI = await setInterval(function() {
-     if(!player.playing) {
-       lavalink.players.destroy(guild.id)
-       channel.send(':sleeping: | Saindo por inatividade.....')
+      if(!player) return; 
+      if(!player.playing) {
+      lavalink.players.destroy(guild.id)
+      channel.send(':sleeping: | Saindo do canal.....')
       return clearInterval(setI)
      }
    }, 60 * 1000 * 2)
