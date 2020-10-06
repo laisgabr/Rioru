@@ -26,7 +26,7 @@ module.exports = class QueueCommand extends Command {
     const embed = new MessageEmbed()
     .setColor("#66dbff")
     .setAuthor(`Lista de Reprodução de ${guild.name}`, guild.iconURL({ dynamic: true, size: 2048 }))
-    .setThumbnail(`http://i.ytimg.com/vi/${player.queue[0].identifier}/hq720.jpg`)
+    .setThumbnail(`http://i.ytimg.com/vi/${player.queue[0].identifier}/hqdefault.jpg`)
     .setDescription(string);
 
     return channel.send(embed)
