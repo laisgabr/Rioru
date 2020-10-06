@@ -96,7 +96,7 @@ module.exports = class MessageListener extends Listener {
         prefix = 'z!'
       }
       
-      if(db.val().LevelStatus === true) {
+      if(dbbb.val().LevelStatus === true) {
       this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
         .once('value').then(async db => {
         if (db.val() == null) {
