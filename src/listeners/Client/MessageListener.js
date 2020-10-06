@@ -15,39 +15,39 @@ module.exports = class MessageListener extends Listener {
       
       if(dbbb.val().LevelSystem === null || dbbb.val().LevelSystem === undefined) {
         this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
-          prefix: db.val().prefix,
-          systemAntiInvite: db.val().systemAntiInvite,
-          systemAntiCapsLock: db.val().systemAntiCapsLock,
-          systemAntiLinks: db.val().systemAntiLinks,
-          BemVindoStatus: db.val().BemVindoStatus,
-          BemVindoID: db.val().BemVindoID,
-          MensagemBemVindo: db.val().MensagemBemVindo,
-          SaidaStatus: db.val().SaidaStatus,
-          SaidaID: db.val().SaidaID,
-          SaidaMensagem: db.val().SaidaMensagem,
-          LogsStatus: db.val().LogsStatus,
-          LogsID: db.val().LogsID,
-          LevelSystem: db.val(),
-          LevelUpMessage: db.val().LevelUpMessage
+          prefix: dbbb.val().prefix,
+          systemAntiInvite: dbbb.val().systemAntiInvite,
+          systemAntiCapsLock: dbbb.val().systemAntiCapsLock,
+          systemAntiLinks: dbbb.val().systemAntiLinks,
+          BemVindoStatus: dbbb.val().BemVindoStatus,
+          BemVindoID: dbbb.val().BemVindoID,
+          MensagemBemVindo: dbbb.val().MensagemBemVindo,
+          SaidaStatus: dbbb.val().SaidaStatus,
+          SaidaID: dbbb.val().SaidaID,
+          SaidaMensagem: dbbb.val().SaidaMensagem,
+          LogsStatus: dbbb.val().LogsStatus,
+          LogsID: dbbb.val().LogsID,
+          LevelSystem: false,
+          LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
         })
       }
 
       if(dbbb.val().LevelSystem === true || dbbb.val().LevelSystem === false) {
         this.database.ref(`Servidores/${message.guild.id}/Configs`).set({
-          prefix: db.val().prefix,
-          systemAntiInvite: db.val().systemAntiInvite,
-          systemAntiCapsLock: db.val().systemAntiCapsLock,
-          systemAntiLinks: db.val().systemAntiLinks,
-          BemVindoStatus: db.val().BemVindoStatus,
-          BemVindoID: db.val().BemVindoID,
-          MensagemBemVindo: db.val().MensagemBemVindo,
-          SaidaStatus: db.val().SaidaStatus,
-          SaidaID: db.val().SaidaID,
-          SaidaMensagem: db.val().SaidaMensagem,
-          LogsStatus: db.val().LogsStatus,
-          LogsID: db.val().LogsID,
-          LevelSystem: db.val(),
-          LevelUpMessage: db.val().LevelUpMessage
+          prefix: dbbb.val().prefix,
+          systemAntiInvite: dbbb.val().systemAntiInvite,
+          systemAntiCapsLock: dbbb.val().systemAntiCapsLock,
+          systemAntiLinks: dbbb.val().systemAntiLinks,
+          BemVindoStatus: dbbb.val().BemVindoStatus,
+          BemVindoID: dbbb.val().BemVindoID,
+          MensagemBemVindo: dbbb.val().MensagemBemVindo,
+          SaidaStatus: dbbb.val().SaidaStatus,
+          SaidaID: dbbb.val().SaidaID,
+          SaidaMensagem: dbbb.val().SaidaMensagem,
+          LogsStatus: dbbb.val().LogsStatus,
+          LogsID: dbbb.val().LogsID,
+          LevelSystem: dbbb.val(),
+          LevelUpMessage: dbbb.val().LevelUpMessage
         })
       }
 
