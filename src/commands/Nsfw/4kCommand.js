@@ -5,7 +5,8 @@ module.exports = class extends Command {
         super(client, {
             name: '4k',
             aliases: ['p4k'],
-            category: 'NSFW +18'
+            category: 'NSFW +18',
+            nsfwChannelOnly: true
         })
     }
     run ({ channel, author }) {

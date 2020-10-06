@@ -11,7 +11,9 @@ module.exports = class Command {
 
     this.voiceChannelOnly = options.voiceChannelOnly || false,
     this.playerOnly = options.playerOnly || false,
-    this.playingOnly = options.playingOnly || false
+    this.playingOnly = options.playingOnly || false,
+
+    this.nsfwChannelOnly = options.nsfwChannelOnly || false
   }
 
   preLoad (ctx) {   
@@ -30,6 +32,10 @@ module.exports = class Command {
 
     if(this.voiceChannelOnly && !ctx.member.voice.channel) {
      return ctx.channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    }
+
+    if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
+      return ctx.channel.send('aaa')
     }
     
     try {
