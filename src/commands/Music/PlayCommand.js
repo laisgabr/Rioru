@@ -84,12 +84,12 @@ module.exports = class PlayCommand extends Command {
     }
     setTimeout(async function () {
     const setI = await setInterval(function() {
-      if(!player) return; 
+      if(player) {
       if(!player.playing) {
       lavalink.players.destroy(guild.id)
-      channel.send(':sleeping: | Saindo do canal.....')
       return clearInterval(setI)
      }
+    }
    }, 60 * 1000 * 2)
   }, 10000)
   }).catch(err => {
