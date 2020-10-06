@@ -5,17 +5,15 @@ module.exports = class ShuffleCommand extends Command {
     super(client, {
       name: 'shuffle',
       aliases: ['embaralhar'],
-      category: 'Music'
+      category: 'Music',
+      voiceChannelOnly: true,
+      playerOnly: true,
+      playingOnly: true
     });
   }
-  run ({ channel, lavalink, guild, member }) {
-    const voiceChannel = member.voice.channel;
-    if(!voiceChannel) return channel.send('| Você não está em um canal de voz!')
-
+  run ({ channel, lavalink, guild }) {
     const player = lavalink.players.get(guild.id)
-    if(!player) {
-      return channel.send(' | Não tem nada tocando nesse Servidor')
-    }
+    
     player.queue.shuffle()
     return channel.send('Embaralhando a Lista de Reprodução!')
   }

@@ -5,7 +5,8 @@ module.exports = class LeaveCommand extends Command {
         super(client, {
             name: 'leave',
             aliases: ['disconnect'],
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true
         })
     }
     run ({ lavalink, guild, channel, member }) {

@@ -17,7 +17,6 @@ module.exports = class PlayCommand extends Command {
   async run ({ channel, args, member, guild, author, lavalink, client }) {
 
     const voiceChannel = member.voice.channel;
-  //  if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
     if (!guild.me.permissions.has("CONNECT")) return channel.send("<:xSweet:756989900661850182> | Eu não tenho a Permissão `Conectar` para fazer isso");
     if (!guild.me.permissions.has("SPEAK")) return channel.send("<:xSweet:756989900661850182> | Eu não tenho a Permissão `Falar` para fazer isso");
 

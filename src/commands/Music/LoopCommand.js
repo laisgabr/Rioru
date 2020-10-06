@@ -5,21 +5,17 @@ module.exports = class LoopCommand extends Command {
         super(client, {
             name: 'loop',
             aliases: [],
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true, 
+            playingOnly: true
         })
     }
     run ({ channel, guild, lavalink, member, args }) {
-        const { MessageEmbed } = require('discord.js')
+    const { MessageEmbed } = require('discord.js')
 
-        const player = lavalink.players.get(guild.id);
-    if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor");
-
-    const  canal  = member.voice.channel;
-
-    if(!player.playing) return channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
-
-    if (!canal) return channel.send("<:xSweet:756989900661850182> | Você precisa estar num canal de voz para executar essa ação!");
-
+    const player = lavalink.players.get(guild.id);
+   
     if (args.length && /queue/i.test(args[0])) {
       player.setQueueRepeat(!player.queueRepeat);
       const queueRepeat = player.queueRepeat ? "Ativando Loop da Lista de Reprodução" : "Desativando Loop da Lista de Reprodução";
@@ -34,6 +30,7 @@ module.exports = class LoopCommand extends Command {
     const embed = new MessageEmbed()
 
     .setAuthor(`${trackRepeat} na Música ${title} de ${author}`)
+    .setColor('RANDOM')
     channel.send(embed)
     }
 }

@@ -5,17 +5,14 @@ module.exports = class ResumeCommand extends Command {
         super(client, {
             name: 'resume',
             aliases: [],
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true
         })
     }
-    run ({ channel, lavalink, member, guild }) {
-        const voiceChannel = member.voice.channel;
-        if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você não está em um canal de voz ou no mesmo que eu!')
-
+    run ({ channel, lavalink, guild }) {
         const player = lavalink.players.get(guild.id)
-        if(!player) return channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
-        if(player.playing) return channel.send('<:xSweet:756989900661850182> | O player desse Servidor não está pausado')
-
+        if(!player) return channel.send('Não está pausado')
         player.pause(false);
     }
 }

@@ -5,16 +5,16 @@ module.exports = class NowPlayingCommand extends Command {
     super(client, {
       name: 'nowplaying',
       aliases: ['np'],
-      category: 'Music'
+      category: 'Music',
+      voiceChannelOnly: true,
+      playingOnly: true,
+      playerOnly: true
       })
     }
   run ({ channel, guild, lavalink }) {
-    const { Utils } = require("erela.js")
-    const { MessageEmbed } = require("discord.js")
-
-    const player = lavalink.players.get(guild.id);
-    if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!");
-    if(!player.playing) return channel.send("<:xSweet:756989900661850182> | Não tem nada tocando!")
+    const { Utils } = require("erela.js"),
+    { MessageEmbed } = require("discord.js"),
+    player = lavalink.players.get(guild.id)
 
     if (player.position > 5000){
       getnowplaying()

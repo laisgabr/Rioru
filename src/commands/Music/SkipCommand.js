@@ -7,19 +7,16 @@ module.exports = class SkipCommand extends Command {
             aliases: ['pular'],
             usage: '<prefix>skip',
             description: 'Cansou da música ? Pule ela!',
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            PlayingOnly: true
         })
     }
    async run ({ channel, guild, lavalink, member }) {
-    const voiceChannel = member.voice.channel;
-    if (!voiceChannel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
-
-     const player = lavalink.players.get(guild.id);
-     if(!player) return channel.send('<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!')
-
-     if(!player.playing) return channel.send('<:xSweet:756989900661850182> | Não tem nenhuma música tocando nesse Servidor!')
-
-     if(player.trackRepeat === true) {
+    const player = lavalink.players.get(guild.id);
+    
+     if(player.trackRepeat) {
        player.setTrackRepeat(false)
        
        player.stop()

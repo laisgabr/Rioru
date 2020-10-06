@@ -5,19 +5,15 @@ module.exports = class extends Command {
         super(client, {
             name: 'bassboost',
             aliases: [],
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            playingOnly: true
         })
     }
-    run ({ lavalink, channel, member, guild, args }) {
-
-      const canal  = member.voice.channel;
-      if (!canal) return channel.send("<:xSweet:756989900661850182> | Você não está em um canal de voz ou no mesmo que eu!");
-
+    run ({ lavalink, channel, guild, args }) {
       const player = lavalink.players.get(guild.id);
-      if (!player) return channel.send("<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!");
-
-      if(!player.playing) return channel.send("<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor")
-
+     
       const off = args[0]
       if(!off) return  channel.send("<:xSweet:756989900661850182> | Diga [on/off] para continuar")
 
