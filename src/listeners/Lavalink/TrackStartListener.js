@@ -10,7 +10,7 @@ module.exports = class TrackStartListener extends Listener {
   run({ textChannel }, { title, duration, author, uri, identifier }) {
     const { MessageEmbed } = require('discord.js')
 
-    const urlThumb = `http://i.ytimg.com/vi/${identifier}/maxresdefault.jpg`
+    const urlThumb = `http://i.ytimg.com/vi/${identifier}/hq720.jpg`
 
     const embed = new MessageEmbed()
       .setColor('#66dbff')

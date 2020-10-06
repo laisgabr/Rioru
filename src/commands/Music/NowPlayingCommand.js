@@ -26,11 +26,12 @@ module.exports = class NowPlayingCommand extends Command {
           }
 
           function getnowplaying(){
-          let { title, duration, requester } = player.queue[0];
+          let { title, duration, requester, identifier } = player.queue[0];
           let amount = `00:${Utils.formatTime(player.position, true)}`
           const part = Math.floor((player.position / duration) * 10);
           const giveEmbed = new MessageEmbed()
             .setColor("AQUA")
+            .setThumbnail(`http://i.ytimg.com/vi/${identifier}/hq720.jpg`)
             .setDescription(`${player.playing ? "▶️" : "⏸️"} Tocando Agora: ${title}\n${"▬".repeat(part) + "🔘" + "▬".repeat(10 - part)}[${amount} / ${Utils.formatTime(duration, true)}]\n Pedido por: ${requester.tag}`)
 
         channel.send({embed: giveEmbed}).then(m => {
