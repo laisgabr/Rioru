@@ -87,7 +87,7 @@ module.exports = class PlayCommand extends Command {
      if(!player.playing) {
        lavalink.players.destroy(guild.id)
        channel.send(':sleeping: | Saindo por inatividade.....')
-       clearInterval()
+      return clearInterval(setI)
      }
    }, 7000)
   }, 10000)
