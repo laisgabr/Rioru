@@ -23,8 +23,6 @@ module.exports = class GuildCreateListener extends Listener {
             SaidaStatus: false,
             SaidaID: "undefined",
             SaidaMensagem: `{member} saiu do Servidor :(`,
-            LogsStatus: false,
-            LogsID: "undefined",
             LevelSystem: false,
             LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
           })

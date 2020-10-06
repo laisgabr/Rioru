@@ -25,8 +25,6 @@ module.exports = class MessageListener extends Listener {
           SaidaStatus: dbbb.val().SaidaStatus,
           SaidaID: dbbb.val().SaidaID,
           SaidaMensagem: dbbb.val().SaidaMensagem,
-          LogsStatus: dbbb.val().LogsStatus,
-          LogsID: dbbb.val().LogsID,
           LevelSystem: false,
           LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
         })

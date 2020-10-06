@@ -30,8 +30,6 @@ module.exports = class extends Command {
           SaidaStatus: db.val().SaidaStatus,
           SaidaID: db.val().SaidaID,
           SaidaMensagem: db.val().SaidaMensagem,
-          LogsStatus: db.val().LogsStatus,
-          LogsID: db.val().LogsID,
           LevelSystem: db.val().LevelSystem,
           LevelUpMessage: db.val().LevelUpMessage
         })
