@@ -83,8 +83,9 @@ module.exports = class PlayCommand extends Command {
 
     }
  try {
-    setInterval(async function() {
-      const player2 = lavalink.players.get(guild.id)
+   const player2 = lavalink.players.get(guild.id) 
+   
+   setInterval(async function() {
       if(!player2) return;
       
      const sizeMembers = await lavalink.players.get(guild.id).voiceChannel.members.size
@@ -95,16 +96,18 @@ module.exports = class PlayCommand extends Command {
         
         client.channels.cache.get(idText).send(':sleeping: | Sai do canal pois não tinha ninguém nele!')
         }
-
-      const setI = await setInterval(function() {
-        if(player2) {
-        if(!player2.playing) {
-        lavalink.players.destroy(guild.id)
-        return clearInterval(setI)
-       }
-      }
-    }, 1000 * 60 * 3)
     }, 1000 * 60 * 2)
+    
+    const setI = await setInterval(function() {
+      if(player2) {
+      if(!player2.playing) {
+      lavalink.players.destroy(guild.id)
+      return clearInterval(setI)
+     }
+    }
+  }, 1000 * 60 * 3)
+
+  
 } catch (e) {
 
 }
