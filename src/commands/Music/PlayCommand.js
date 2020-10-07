@@ -89,10 +89,10 @@ module.exports = class PlayCommand extends Command {
      const sizeMembers = await lavalink.players.get(guild.id).voiceChannel.members.size
         if(sizeMembers < 2) {
         lavalink.players.destroy(guild.id)
-        
+         clearInterval()
         const idText = await lavalink.players.get(guild.id).textChannel.id
         
-        this.channels.cache.get(idText).send(':sleeping: | Sai do canal pois não tinha ninguém nele!')
+        client.channels.cache.get(idText).send(':sleeping: | Sai do canal pois não tinha ninguém nele!')
         }
 
       const setI = await setInterval(function() {
