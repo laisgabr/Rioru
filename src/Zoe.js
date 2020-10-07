@@ -26,10 +26,11 @@ module.exports = class ZoeClient extends Client {
       measurementId: this.config.dbConfig
     }
     firebase.initializeApp(firebaseConfig)
-
+   (async function() {
     this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
     new LavalinkLoader(this.lavalink).load(this)
-
+   })
+    
     this.database = firebase.database()
     this.commands = new Collection()
   }
