@@ -82,9 +82,10 @@ module.exports = class PlayCommand extends Command {
         break;
 
     }
-
+ try {
     setInterval(async function() {
-      if(!player) return;
+      const player2 = lavalink.players.get(guild.id)
+      if(!player2) return;
       
      const sizeMembers = await lavalink.players.get(guild.id).voiceChannel.members.size
         if(sizeMembers < 2) {
@@ -96,15 +97,17 @@ module.exports = class PlayCommand extends Command {
         }
 
       const setI = await setInterval(function() {
-        if(player) {
-        if(!player.playing) {
+        if(player2) {
+        if(!player2.playing) {
         lavalink.players.destroy(guild.id)
         return clearInterval(setI)
        }
       }
     }, 1000 * 60 * 3)
     }, 1000 * 60 * 2)
+} catch (e) {
 
+}
   }).catch(err => {
     channel.send(err)
   })
