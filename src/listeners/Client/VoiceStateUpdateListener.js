@@ -8,6 +8,8 @@ module.exports = class VoiceStateUpdateListener extends Listener {
     }
     run (oldState, newState) {
         setTimeout(async function() {
+        const player = await this.client.lavalink.players.get(oldState.guild.id)
+        if(!player) return;
        const sizeMembers = await this.client.lavalink.players.get(oldState.guild.id).voiceChannel.members.size
 
        if(sizeMembers < 2) {
