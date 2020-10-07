@@ -5,14 +5,14 @@ module.exports = class extends Command {
         super(client, {
             name: 'yaoi',
             aliases: [],
-            category: 'NSFW +18'
+            category: 'NSFW +18',
+            nsfwChannelOnly: true
         })
     }
     run ({ channel, author }) {
-        if (channel.nsfw === true) {
         const { MessageEmbed } = require('discord.js')
         const superagent = require('superagent')
-        superagent.get('http://tnai.herokuapp.com/h/yaoi')
+        superagent.get('http://tnai.herokuapp.com/hentai/yaoi')
         .end((err, response) => {
             const embed = new MessageEmbed()
             .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
@@ -22,8 +22,5 @@ module.exports = class extends Command {
               .setFooter(`Solicitado por ${author.username}`)
             channel.send(embed)
         })
-    } else {
-        channel.send(`Por favor, Faça os passos do Gif caso queira usar esse comando!`,{ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
-    }
     }
 }

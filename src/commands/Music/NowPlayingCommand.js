@@ -7,8 +7,8 @@ module.exports = class NowPlayingCommand extends Command {
       aliases: ['np'],
       category: 'Music',
       voiceChannelOnly: true,
-      playingOnly: true,
-      playerOnly: true
+      playerOnly: true,
+      playingOnly: true
       })
     }
   run ({ channel, guild, lavalink }) {

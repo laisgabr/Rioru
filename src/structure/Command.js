@@ -35,7 +35,7 @@ module.exports = class Command {
     }
 
     if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
-      return ctx.channel.send('aaa')
+      return ctx.channel.send(`:underage: | Esse canal não tem a função Canal Nsfw ativada!`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
     }
     
     try {

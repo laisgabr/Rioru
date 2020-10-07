@@ -11,6 +11,7 @@ module.exports = class EvalCommand extends Command {
     }
     run ({ channel, args, guild, member, msg, mentions, author, lavalink, client, config }) {
         const { inspect } = require('util')
+        const { MessageEmbed } = require('discord.js')
 
         const input = args.join(' ')
         if(!input) return channel.send('Diga algo!')

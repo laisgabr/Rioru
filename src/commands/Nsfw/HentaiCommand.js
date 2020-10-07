@@ -5,14 +5,15 @@ module.exports = class extends Command {
         super(client, {
             name: 'hentai',
             aliases: [],
-            category: 'NSFW +18'
+            category: 'NSFW +18',
+            nsfwChannelOnly: true
         })
     }
     run ({ channel, author }) {
         const superagent = require('superagent')
 		const Discord = require('discord.js')
 
-		if (channel.nsfw === true) {
+		
 			superagent.get('https://nekobot.xyz/api/image')
 			.query({ type: 'hentai' })
 			// eslint-disable-next-line handle-callback-err
@@ -25,8 +26,5 @@ module.exports = class extends Command {
 				.setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 				channel.send(embed)
 			})
-		  } else {
-      channel.send(`Por favor, Faça os passos do Gif caso queira usar esse comando!`,{ files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
-		  }
-    }
+	}
 }

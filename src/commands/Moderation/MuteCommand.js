@@ -51,7 +51,7 @@ module.exports = class extends Command {
        tempo = await tempoD * 60 * 1000
      }
 
-     await (mutado.roles.add(Mutado))
+     await (mutado.roles.add(cargomute))
 
      channel.send(`<@${mutado.user.id}> foi mutado por ${time}`)
      setTimeout(function () {

@@ -6,8 +6,8 @@ module.exports = class QueueCommand extends Command {
             name: 'queue',
             aliases: ['q'],
             category: 'Music',
-            playerOnly: true,
             voiceChannelOnly: true,
+            playerOnly: true,
             playingOnly: true
         })
     }

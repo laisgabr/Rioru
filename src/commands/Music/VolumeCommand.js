@@ -6,9 +6,9 @@ module.exports = class VolumeCommand extends Command {
             name: 'volume',
             aliases: [],
             category: 'Music',
+            voiceChannelOnly: true,
             playerOnly: true,
-            playingOnly: true,
-            voiceChannelOnly: true
+            playingOnly: true
         })
     }
     run ({ channel, args, lavalink, guild, member }) {

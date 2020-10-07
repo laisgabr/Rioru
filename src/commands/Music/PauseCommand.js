@@ -6,9 +6,9 @@ module.exports = class StopCommand extends Command {
             name: 'stop',
             aliases: ['pausar', 'pause'],
             category: 'Music',
-            playingOnly: true,
             voiceChannelOnly: true,
-            playerOnly: true
+            playerOnly: true,
+            playingOnly: true
         })
     }
     run ({ channel, guild, lavalink }) {
