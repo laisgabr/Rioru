@@ -28,7 +28,7 @@ module.exports = class ZoeClient extends Client {
     firebase.initializeApp(firebaseConfig)
 
     this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
-    await new LavalinkLoader(this.lavalink).load(this)
+    new LavalinkLoader(this.lavalink).load(this)
 
     this.database = firebase.database()
     this.commands = new Collection()
