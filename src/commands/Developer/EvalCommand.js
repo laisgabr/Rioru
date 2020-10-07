@@ -16,6 +16,10 @@ module.exports = class EvalCommand extends Command {
         const input = args.join(' ')
         if(!input) return channel.send('Diga algo!')
         try {
+            if(input === 'client.token') {
+                return channel.send(":thumbsup:")
+            }
+
             if (input === 'this.client.token') {
                return channel.send(':thumbsup:')
             }

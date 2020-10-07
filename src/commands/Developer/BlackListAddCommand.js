@@ -37,13 +37,7 @@ module.exports = class extends Command {
             }
 
             if (!db.val() == null) {
-                channel.send('Sabia que esse usuário já foi Banido ?! Parece que não aprendeu a lição!')
-                database.ref(`Global/Blacklist/${uuser.id}`).update({
-                    blacklisted: true,
-                    Motivo: motivoBl,
-                    QuemPuniu: author.tag,
-                    IdStaff: author.id
-                })
+              return channel.send(`O(a) usuário(a) <@${uuser.id}> está banido(a) por ${db.val().Motivo} e foi punido(a) por <@${db.val().IdStaff}>`)
             }
 
         channel.send(`<:checkSweet:757016162633646211> | ${author}, Usuário banido com sucesso, Quem mandou quebrar as regras!`)
