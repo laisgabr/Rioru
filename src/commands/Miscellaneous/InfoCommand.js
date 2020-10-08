@@ -16,9 +16,6 @@ module.exports = class extends Command {
         Olá, Meu nome é Zoe e sou um Simples bot com Dezenas de Funcionalidades para você não ter que adicionar 10 bots em seu Servidor.
 
 
-Estou hospedada num Linux Server da Digital Ocean que é 20 USD com 1 cpu e 2 de RAM, O valor é alto pois eu preciso de duas vps pra ficar viva, Me ajude.....
-
-
 <:firebaseSweet:760198846285611079> [Firebase](https://firebase.google.com) | <:githubSweet:759108651339350046> [GitHub](https://github.com/MrGamingBR/Zoe) | <:NodeJs:723531306679533639> [Node](https://nodejs.org/pt-br)
 
 Linguagem: <:JavascriptSweet:759108618305536051> JavaScript with <:NodeJs:723531306679533639> Node.js
