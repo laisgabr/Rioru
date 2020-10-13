@@ -11,7 +11,7 @@ module.exports = class LoopCommand extends Command {
             playingOnly: true
         })
     }
-    run ({ channel, guild, lavalink, member, args }) {
+    run ({ channel, guild, lavalink, args }) {
     const { MessageEmbed } = require('discord.js')
 
     const player = lavalink.players.get(guild.id);
@@ -25,11 +25,11 @@ module.exports = class LoopCommand extends Command {
     player.setTrackRepeat(!player.trackRepeat);
     const trackRepeat = player.trackRepeat ? "Ativando Loop" : "Desativando Loop";
 
-    const { title, author } = player.queue[0]
+    const { title } = player.queue[0]
 
     const embed = new MessageEmbed()
 
-    .setAuthor(`${trackRepeat} na Música ${title} de ${author}`)
+    .setAuthor(`${trackRepeat} na Música ${title}`)
     .setColor('RANDOM')
     channel.send(embed)
     }

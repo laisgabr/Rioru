@@ -12,7 +12,7 @@ module.exports = class LaranjoCommand extends Command {
         const jimp = require('jimp')
 
         var img = jimp.read("https://cdn.discordapp.com/attachments/554048737648050179/610011657632219147/laranjo-meme-cke.jpg")
-        if (!args[0]) return channel.send("Indique o que laranjo deve falar.")
+        if (!args[0]) return channel.send(" | Indique o que laranjo deve falar.")
         img.then(image => {
             jimp.loadFont(jimp.FONT_SANS_32_BLACK).then(font => {
                 image.resize(685, 494)

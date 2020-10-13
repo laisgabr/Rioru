@@ -10,12 +10,12 @@ module.exports = class extends Command {
         })
     }
     run ({ channel, author }) {
-        const Discord = require('discord.js')
+        const { MessageEmbed } = require('discord.js')
             const superagent = require('superagent')
            
             superagent.get('http://tnai.herokuapp.com/real/traps')
             .end((err, response) => {
-                const embed = new Discord.MessageEmbed()
+                const embed = new MessageEmbed()
                 .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
                 .setImage(response.body.url)
                   .setColor('RANDOM')

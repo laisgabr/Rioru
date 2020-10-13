@@ -11,15 +11,15 @@ module.exports = class QueueCommand extends Command {
             playingOnly: true
         })
     }
-   async run ({ channel, guild, lavalink, member }) {
+   async run ({ channel, guild, lavalink }) {
     const { MessageEmbed } = require('discord.js')
     let index = 1;
     let string = "";
 
     const player = lavalink.players.get(guild.id);
 
-    if(player.queue[0]) string += `__**Tocando Agora: **__\n ${player.queue[0].title} - **Música pedida por ${player.queue[0].requester.username}**. \n`;
-    if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 10).map(x => `**${index++})** [${x.title}](${x.uri}) - **Música pedida por ${x.requester.username}**.`).join("\n")}`;
+    if(player.queue[0]) string += `__**Tocando Agora: **__\n ${player.queue[0].title} - Música pedida por <@${player.queue[0].requester.id}> .\n`;
+    if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 8).map(x => `**${index++})** [${x.title}](${x.uri}) - Música pedida por <@${x.requester.id}>.`).join("\n")}`;
 
     const embed = new MessageEmbed()
     .setColor("#66dbff")

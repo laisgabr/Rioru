@@ -9,7 +9,7 @@ module.exports = class extends Command {
         })
     }
    async run ({ channel, msg, member, guild, mentions, args, author }) {
-    const Discord = require('discord.js')
+    const { MessageEmbed } = require('discord.js')
     if(!member.permissions.has("BAN_MEMBERS")) {
     return channel.send("<:xSweet:756989900661850182> | Você não tem a Permissão `Banir Membros`")
   }
@@ -21,13 +21,13 @@ module.exports = class extends Command {
   var membro = mentions.members.first() || guild.members.cache.get(args[0])
   if(!membro) return channel.send("<:xSweet:756989900661850182> | Você precisa mencionar alguem!")
   if(membro.user.id === author.id) {
-    return msg.reply("<:xSweet:756989900661850182> | Você não pode se banir :v")
+    return channel.send("<:xSweet:756989900661850182> | Você não pode se banir :v")
   }
   if(membro.user.id === this.client.user.id) {
-    return msg.reply("<:xSweet:756989900661850182> | Por que você quer me banir?")
+    return channel.send("<:xSweet:756989900661850182> | Por que você quer me banir?")
   }
   if(!membro.bannable) {
-    return msg.reply("<:xSweet:756989900661850182> | Eu não posso banir este membro, Ele(a) pode ter um cargo maior que o meu ou eu tenho permissão para banir !")
+    return channel.send("<:xSweet:756989900661850182> | Eu não posso banir este membro, Ele(a) pode ter um cargo maior que o meu ou eu tenho permissão para banir !")
   }
 
   let motivo = args.slice(1).join(" ")
@@ -43,7 +43,7 @@ module.exports = class extends Command {
    const collectorNo = msge.createReactionCollector(no)
 
    collectorDaMsg.on('collect', async r => {
-    const embedPv = new Discord.MessageEmbed()
+    const embedPv = new MessageEmbed()
     .setTitle(`:no_entry_sign: Você foi Banido de ${guild.name}(${guild.id})`)
     .setColor("RED")
     .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
@@ -55,8 +55,8 @@ module.exports = class extends Command {
     })
 
     membro.ban({ reason: motivo })
-    msge.delete()
-    const embed = new Discord.MessageEmbed()
+    msge.delete({ timeout: 3000 })
+    const embed = new MessageEmbed()
     .setTitle(":fire: Membro(a) Banido(a)! :fire:")
     .setColor("RED")
     .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))

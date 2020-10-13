@@ -1,0 +1,11 @@
+{
+    "Clear": {
+        "clear1": "Você precisa da Permissão `Gerenciar Mensagens` para usar esse comando",
+        "clear2": "Não tenho a permissão `Gerenciar Mensagens` para continuar",
+        "clear3": "Forneça até **99 mensagens** para serem excluídas",
+        "clear4": "Mensagens foram apagadas por",
+        "clear5": "Não foi possível deletar mensagens devido a:"
+    },
+    
+    "Lock": {}
+}

@@ -27,7 +27,7 @@ module.exports = class extends Command {
             await guild.fetchBan(args[0])
         } catch (e) {
             channel.send('<:xSweet:756989900661850182> | **Esse usuario não está Banido**')
-            return
+            return;
         }
 
     let reason = args.slice(1).join(" ")

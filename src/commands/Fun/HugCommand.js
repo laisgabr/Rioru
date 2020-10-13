@@ -19,7 +19,7 @@ module.exports = class extends Command {
     superagent.get('https://nekos.life/api/v2/img/hug')
     .end((err, response) => {
     const embed = new Discord.MessageEmbed()
-    .setDescription(`${author} Abraçou ${uuser} :3 | Own X3`)
+    .setDescription(`${author} deu um abraço em ${uuser}`)
       .setColor('RANDOM')
     .setImage(response.body.url)
     .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))

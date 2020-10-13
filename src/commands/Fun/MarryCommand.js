@@ -32,7 +32,7 @@ module.exports = class MarryCommand extends Command {
             return channel.send(`Vocês já são casados(as)!`)
         }
         if (db.val() === null && dbb.val() === null) {
-            channel.send(`${uuser}, O (A) Usuário(a) <@${author.id}> lhe pediu em casamento, Clique em ✅ para aceitar ou Clique em ❌ para Recusar.`).then(async msg => {
+            channel.send(`${uuser},<@${author.id}> lhe pediu em casamento, Clique em ✅ para aceitar ou Clique em ❌ para Recusar.`).then(async msg => {
             msg.react('✅')
             msg.react('❌')
 
@@ -51,7 +51,7 @@ module.exports = class MarryCommand extends Command {
                 ParID: uuser.id,
                 Dia: moment(Date.now()).format('LLL')
             })
-            channel.send(`${author} e ${uuser}, Vocês estão casados(as) :heart: .`)
+            channel.send(`Agora vocês estão casados(as) :heart: .`)
         })
 
         collectorNo('collect', async r => {
@@ -61,13 +61,12 @@ module.exports = class MarryCommand extends Command {
     })
         }
         if (!dbb.val() === null) {
-           return channel.send(`O(A) usuário(a) mencionado(a) está casado(a) com <@${dbb.val().ParID}> desde ${dbb.val().Dia - moment(Date.now()).format('LLL')}`)
+           return channel.send(`O(A) usuário(a) mencionado(a) já está casado(a)`)
         }
 
         if (!db.val() === null) {
-            return channel.send(`Você já é casado(a) com outra pessoa. Peça Divorcio á <@${db.val().ParID}> para poder se casar com ${uuser}`)
+            return channel.send(`Você já é casado(a) com outra pessoa.`)
         }
 
-       
   }
 }

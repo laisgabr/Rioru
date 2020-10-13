@@ -13,10 +13,10 @@ module.exports = class SkipCommand extends Command {
             PlayingOnly: true
         })
     }
-   async run ({ channel, guild, lavalink, member }) {
+   async run ({ channel, guild, lavalink }) {
     const player = lavalink.players.get(guild.id);
     
-     if(player.trackRepeat) {
+     if(player.trackRepeat === true) {
        player.setTrackRepeat(false)
        
        player.stop()

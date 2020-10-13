@@ -9,7 +9,7 @@ module.exports = class extends Command {
         })
     }
    async run ({ channel, member, msg, guild, mentions, args, author }) {
-    const Discord = require('discord.js')
+     const { MessageEmbed } = require('discord.js')
     if(!member.permissions.has("KICK_MEMBERS")) {
             return channel.send("<:xSweet:756989900661850182> | Você não tem a permissão Expulsar Membros")
           }
@@ -44,11 +44,10 @@ module.exports = class extends Command {
 
            collectorDaMsg.on('collect', async r => {
             msge.delete()
-            const embedPv = new Discord.MessageEmbed()
-            .setTitle(":thumbsup: Membro(a) Expulso(a)!")
+            const embedPv = new MessageEmbed()
+            .setTitle("Você foi expulso(a)!")
             .setColor("RED")
             .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))
-            .addField("👤 Expulso(a) :", membro.user.tag, false)
             .addField("👮‍♂️ Quem Puniu:", author.tag, false)
             .addField("📜 Motivo:", motivo, false)
             .setTimestamp()
@@ -59,7 +58,7 @@ module.exports = class extends Command {
 
             membro.kick({ reason: motivo })
 
-            const embed = new Discord.MessageEmbed()
+            const embed = new MessageEmbed()
             .setTitle(":thumbsup: Membro(a) Expulso(a)!")
             .setColor("RED")
             .setThumbnail(author.displayAvatarURL({ dynamic: true, size: 2048 }))

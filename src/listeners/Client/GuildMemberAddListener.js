@@ -27,11 +27,17 @@ module.exports = class GuildMemberAddListener extends Listener {
        LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
       })
   }
+  
+  const aDb = await this.database.ref(`Servidores/${message.guild.id}/Locale`).once('value')
+  if(aDb.val() === null) {
+    this.database.ref(`Servidores/${message.guild.id}/Locale`).set({ Language: "pt-BR" })
+  }
+  
   if(db.val().BemVindoStatus === false) return;
   if (db.val().BemVindoID === "undefined") return;
 
    let mensagem = db.val().MensagemBemVindo
-   const msg = await  mensagem.replace('{member}', `<@${member.user.id}>`).replace('{guild.name}', `${member.guild.name}`)
+   const msg = await  mensagem.replace('{member}', `<@${member.user.id}>`).replace('{guild.name}', `${member.guild.name}`).replace('{memberCount}', `${member.guild.memberCount}`)
 
   this.channels.cache.get(`${db.val().BemVindoID}`).send(`${msg}`).catch(async err => {
     console.log(err)

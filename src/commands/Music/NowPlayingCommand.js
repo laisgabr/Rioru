@@ -27,7 +27,7 @@ module.exports = class NowPlayingCommand extends Command {
 
           function getnowplaying(){
           let { title, duration, requester, identifier } = player.queue[0];
-          let amount = `00:${Utils.formatTime(player.position, true)}`
+          let amount = `${Utils.formatTime(player.position, true)}`
           const part = Math.floor((player.position / duration) * 10);
           const giveEmbed = new MessageEmbed()
             .setColor("AQUA")

@@ -22,7 +22,7 @@ module.exports = class NightcoreCommand extends Command {
       return channel.send(`Filtro Nightcore foi ativado!`);
     } else if(off === 'off') {
       player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 0.0 })));
-      return channel.send(`Filto Nightcore foi desativado!`);
+      return channel.send(`Filtro Nightcore foi desativado!`);
     } else {
       return  channel.send("<:xSweet:756989900661850182> | Diga [on/off] para continuar")
     }

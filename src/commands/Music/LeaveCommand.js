@@ -9,8 +9,7 @@ module.exports = class LeaveCommand extends Command {
             voiceChannelOnly: true
         })
     }
-    run ({ lavalink, guild, channel, member }) {
-    if (!member.voice.channel) return channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    run ({ lavalink, guild, channel }) {
     lavalink.players.destroy(guild.id);
     channel.send(':sleeping: | Bye bye...').then(msg => msg.react('👋'))
     }

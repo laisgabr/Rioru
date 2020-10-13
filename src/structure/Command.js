@@ -16,12 +16,17 @@ module.exports = class Command {
     this.nsfwChannelOnly = options.nsfwChannelOnly || false
   }
 
-  preLoad (ctx) {   
-    if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
+ async preLoad (ctx) {   
+    const db = await require('firebase').database().ref(`Servidores/${ctx.guild.id}/Locale`).once('value')
+
+    const player = this.client.lavalink.players.get(ctx.guild.id)
+   db.val().Locale = db.val().Language
+    if(db.val().Locale === 'pt-BR') {
+    
+      if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
       return ctx.channel.send('<:xSweet:756989900661850182> | Este comando se encontra disponível apenas para meus donos.')
     }
 
-    const player = this.client.lavalink.players.get(ctx.guild.id)
     if(this.playerOnly && !player) {
        return ctx.channel.send('<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!')
     } 
@@ -37,6 +42,27 @@ module.exports = class Command {
     if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
       return ctx.channel.send(`:underage: | Esse canal não tem a função Canal Nsfw ativada!`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
     }
+  } else if(db.val().Locale === 'en-US') {
+    if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
+      return ctx.channel.send('<:xSweet:756989900661850182> | This command is only available for my owners.')
+    }  
+
+    if(this.playerOnly && !player) {
+       return ctx.channel.send('<:xSweet:756989900661850182> | There is no Player on this Server!')
+    } 
+
+    if(this.playingOnly && !player.playing) {
+      return ctx.channel.send('<:xSweet:756989900661850182> | Not have nothing playing on this server')
+    }
+
+    if(this.voiceChannelOnly && !ctx.member.voice.channel) {
+     return ctx.channel.send('<:xSweet:756989900661850182> | You need to be on a voice channel or the same as me.')
+    }
+
+    if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
+      return ctx.channel.send(`:underage: | This channel does not have the NSFW option active.`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
+    }
+  }
     
     try {
       this.run(ctx)

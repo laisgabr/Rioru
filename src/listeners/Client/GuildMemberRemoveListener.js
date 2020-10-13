@@ -27,6 +27,12 @@ module.exports = class GuildMemberRemoveListener extends Listener {
            LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
           })
       }
+
+      const aDb = await this.database.ref(`Servidores/${message.guild.id}/Locale`).once('value')
+      if(aDb.val() === null) {
+        this.database.ref(`Servidores/${message.guild.id}/Locale`).set({ Language: "pt-BR" })
+      }
+
       if(db.val().SaidaStatus === false) return;
       if (db.val().SaidaID === "undefined") return;
 

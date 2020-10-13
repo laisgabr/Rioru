@@ -11,6 +11,12 @@ module.exports = class MessageListener extends Listener {
     try {
       if (message.channel.type !== 'text') return;
 
+      const aDb = await this.database.ref(`Servidores/${message.guild.id}/Locale`).once('value')
+      if(aDb.val() === null) {
+        this.database.ref(`Servidores/${message.guild.id}/Locale`).set({ Language: "pt-BR" })
+      }
+
+
       const dbbb = await this.database.ref(`Servidores/${message.guild.id}/Configs`).once('value')
       
       if(dbbb.val().LevelSystem === null || dbbb.val().LevelSystem === undefined) {

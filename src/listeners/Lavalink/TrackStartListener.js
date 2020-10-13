@@ -7,7 +7,7 @@ module.exports = class TrackStartListener extends Listener {
       name: 'trackStart'
     })
   }
-  run({ textChannel }, { title, duration, author, uri, identifier }) {
+ async run({ textChannel }, { title, duration, author, uri, identifier }) {
     const { MessageEmbed } = require('discord.js')
 
     const urlThumb = `http://i.ytimg.com/vi/${identifier}/hqdefault.jpg`
@@ -25,6 +25,10 @@ ${Utils.formatTime(duration, true)}
 <a:discoSweet:759199892169687061> → Artista/Canal:
 ${author}
 `)
-    textChannel.send(embed)
+  const msg = await textChannel.send(embed)
+
+  setTimeout(function() {
+    msg.delete({ timeout: 3000 })
+  }, parseInt(duration))
   }
 }

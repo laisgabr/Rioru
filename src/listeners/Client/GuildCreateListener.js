@@ -27,6 +27,12 @@ module.exports = class GuildCreateListener extends Listener {
             LevelUpMessage: "Parabéns {author}, Você subiu para o Level {level}!"
           })
        }
+       
+      const aDb = await database.ref(`Servidores/${guild.id}/Locale`).once('value')
+      if(aDb.val() === null) {
+       database.ref(`Servidores/${guild.id}/Locale`).set({ Language: "pt-BR" })
+      }
+
        const { MessageEmbed } = require('discord.js')
 
        const embed = new MessageEmbed()

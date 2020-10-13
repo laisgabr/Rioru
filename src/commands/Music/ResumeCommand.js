@@ -12,7 +12,6 @@ module.exports = class ResumeCommand extends Command {
     }
     run ({ channel, lavalink, guild }) {
         const player = lavalink.players.get(guild.id)
-        if(!player) return channel.send('Não está pausado')
         player.pause(false);
     }
 }

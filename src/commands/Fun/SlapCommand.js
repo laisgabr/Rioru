@@ -11,7 +11,7 @@ module.exports = class extends Command {
         })
     }
     run ({ channel, author, guild, msg, args, mentions }) {
-        const Discord = require('discord.js')
+        const { MessageEmbed } = require('discord.js')
     const superagent = require('superagent')
 
    const uuser = mentions.users.first() || this.client.users.cache.get(args[0]) || guild.members.cache.find(mem => mem.user.username === args.join(" "))
@@ -21,18 +21,17 @@ module.exports = class extends Command {
    if (uuser.id === this.client.user.id) {
     superagent.get('https://nekos.life/api/v2/img/slap')
     .end((err, response) => {
-        const embedA = new Discord.MessageEmbed()
-        .setTitle(`Toma Otário(a)`)
+        const embedA = new MessageEmbed()
         .setDescription(`${this.client.user} Deu um tapa bem merecido em ${author}`)
           .setColor('RANDOM')
         .setImage(response.body.url)
-        .setFooter(`Solicitado pelo(a) idiota do ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
         return channel.send(embedA)
       })
    } else {
     superagent.get('https://nekos.life/api/v2/img/slap')
     .end((err, response) => {
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
         .setDescription(`${author} Deu um tapa em ${uuser}`)
         .setImage(response.body.url)
           .setColor('RANDOM')

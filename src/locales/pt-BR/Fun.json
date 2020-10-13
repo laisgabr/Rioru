@@ -1,0 +1,48 @@
+{
+    "solicitado": "Solicitado por",
+    
+    "Banido": {
+        "banido1": "Banido."
+    },
+
+    "HeadPat": {
+        "headpat1": "<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!",
+        "headpat2": "fez um Cafuné em"
+    },
+    
+    "Hug": {
+        "hug1": "<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!",
+        "hug2": "deu um abraço em"
+    },
+    
+    "Kiss": {
+        "kiss1": "<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!",
+        "kiss2": "Quero te beijar nah",
+        "kiss3": "Beijou"
+    },
+    
+    "Laranjo": {
+        "laranjo1": "<:xSweet:756989900661850182> | Indique o que laranjo deve falar."
+    },
+    
+    "Marry": {
+        "marry1": "Você não mencionou alguém",
+        "marry2": "Não dá pra se casar consigo mesmo(a)",
+        "marry3": "Vocês já são casados(as)!",
+        "marry4": "lhe pediu em casamento, Clique em ✅ para aceitar ou Clique em ❌ para Recusar",
+        "marry5": "Agora vocês estão casados(as) :heart: .",
+        "marry6": "Parece que você não encontrou a pessoa certa :sob:",
+        "marry7": "O(A) usuário(a) mencionado(a) já está casado(a)",
+        "marry8": "Você já é casado(a) com outra pessoa."
+    },
+
+    "PP": {
+        "pp1": "**Indique as Primeiras Palavras do Bebe.**"
+    },
+
+    "Slap": {
+        "slap1": "<:xSweet:756989900661850182> | Mencione alguém ou diga um id ou diga um username!",
+        "slap2": "Deu um tapa bem merecido em",
+        "slap3": "Deu um tapa em"
+    }
+}

@@ -9,19 +9,27 @@ module.exports = class extends Command {
             nsfwChannelOnly: true
         })
     }
-    run ({ channel, author }) {
+   async run ({ channel, author, guild }) {
+    const { MessageEmbed } = require('discord.js')
     const superagent = require('superagent')
-	const { MessageEmbed } = require('discord.js')
+
+    const database = require('firebase').database()
+
+    const db = await database.ref(`Servidores/${guild.id}/Locale`).once('value')
+
+    const lingua = db.val().Language
+
+    const lang = require(`../../locales/${lingua}/Nsfw.json`)
 
 	superagent.get('https://nekobot.xyz/api/image')
 	.query({ type: '4k' })
 	.end((err, response) => {
 		const embed = new MessageEmbed()
-		.setDescription(`Não consegue ver? [Clique aqui](${response.body.message})`)
+		.setDescription(`[${lang.ver}](${response.body.message})`)
         .setColor('RANDOM')
         .setThumbnail(author.displayAvatarURL({ dynamic: true }))
         .setImage(response.body.message)
-        .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
+        .setFooter(lang.solicitado + ` ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
 		channel.send(embed)
 	})
     }

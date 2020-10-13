@@ -9,7 +9,7 @@ module.exports = class extends Command {
         })
     }
    async run ({ channel, member, mentions, guild, args }) {
-        if(!member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return channel.send("<:xSweet:756989900661850182> | Você não tem as permissões Gerenciar Mensagens e Administrador")
+        if(!member.permissions.has(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return channel.send("<:xSweet:756989900661850182> | Você não tem as permissões Gerenciar Mensagens e Administrador")
 
         let mutado = mentions.users.first() || guild.members.cache.get(args[0])
         if(!mutado) return channel.send("Por favor mencione ou diga o id alguém!")

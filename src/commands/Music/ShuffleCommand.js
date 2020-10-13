@@ -15,6 +15,6 @@ module.exports = class ShuffleCommand extends Command {
     const player = lavalink.players.get(guild.id)
     
     player.queue.shuffle()
-    return channel.send('Embaralhando a Lista de Reprodução!')
+    return channel.send(' | ')
   }
 }

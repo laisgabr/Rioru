@@ -10,11 +10,11 @@ module.exports = class extends Command {
             category: 'Fun'
         })
     }
-    run ({ channel, args, msg }) {
+    run ({ channel, args }) {
     const jimp = require("jimp")
 
     const img = jimp.read("https://cdn.discordapp.com/attachments/672188275963854879/709074434283143208/PrimeirasPalavras2.png")
-    if (!args[0]) return msg.reply("**Indique as Primeiras Palavras do Bebe.**")
+    if (!args[0]) return channel.send("**Indique as Primeiras Palavras do Bebe.**")
     img.then(image => {
     jimp.loadFont(jimp.FONT_SANS_32_BLACK).then(font => {
     image.resize(485, 450)

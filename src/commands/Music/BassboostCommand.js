@@ -22,7 +22,7 @@ module.exports = class extends Command {
         return channel.send(`Filtro Bassbost foi ativado!`);
       } else if(off === 'off') {
         player.setEQ(Array(6).fill(0).map((n, i) => ({ band: i, gain: 0.0 })));
-        return channel.send(`Filto Bassbost foi desativado!`);
+        return channel.send(`Filtro Bassbost foi desativado!`);
       } else {
         return  channel.send("<:xSweet:756989900661850182> | Diga [on/off] para continuar")
       }
