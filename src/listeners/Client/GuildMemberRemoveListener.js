@@ -28,9 +28,9 @@ module.exports = class GuildMemberRemoveListener extends Listener {
           })
       }
 
-      const aDb = await this.database.ref(`Servidores/${message.guild.id}/Locale`).once('value')
+      const aDb = await database.ref(`Servidores/${member.guild.id}/Locale`).once('value')
       if(aDb.val() === null) {
-        this.database.ref(`Servidores/${message.guild.id}/Locale`).set({ Language: "pt-BR" })
+        database.ref(`Servidores/${member.guild.id}/Locale`).set({ Language: "pt-BR" })
       }
 
       if(db.val().SaidaStatus === false) return;
