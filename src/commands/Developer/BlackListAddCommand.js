@@ -18,7 +18,7 @@ module.exports = class extends Command {
            return channel.send('<:xSweet:756989900661850182> | Diga um id')
         }
 
-        if(uuser.id === this.client.config.owners.includes(author.id)) {
+        if(uuser.id === this.client.config.owners.includes(uuser.id)) {
           return channel.send('Ta com problema? Vai arrumar outra coisa pra fazer')
         }
 

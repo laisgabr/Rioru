@@ -18,31 +18,13 @@ module.exports = class Command {
 
  async preLoad (ctx) {   
     const db = await require('firebase').database().ref(`Servidores/${ctx.guild.id}/Locale`).once('value')
+    if(db.val() === null) {
+     await require('firebase').database().ref(`Servidores/${ctx.guild.id}/Locale`).set({ Language: "pt-BR" })
+    }
 
     const player = this.client.lavalink.players.get(ctx.guild.id)
-   db.val().Locale = db.val().Language
-    if(db.val().Locale === 'pt-BR') {
-    
-      if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
-      return ctx.channel.send('<:xSweet:756989900661850182> | Este comando se encontra disponível apenas para meus donos.')
-    }
-
-    if(this.playerOnly && !player) {
-       return ctx.channel.send('<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!')
-    } 
-
-    if(this.playingOnly && !player.playing) {
-      return ctx.channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
-    }
-
-    if(this.voiceChannelOnly && !ctx.member.voice.channel) {
-     return ctx.channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
-    }
-
-    if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
-      return ctx.channel.send(`:underage: | Esse canal não tem a função Canal Nsfw ativada!`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
-    }
-  } else if(db.val().Locale === 'en-US') {
+   
+   if(db.val().Language === 'en-US') {
     if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
       return ctx.channel.send('<:xSweet:756989900661850182> | This command is only available for my owners.')
     }  
@@ -62,8 +44,28 @@ module.exports = class Command {
     if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
       return ctx.channel.send(`:underage: | This channel does not have the NSFW option active.`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
     }
-  }
-    
+   } else {
+  
+      if (this.devOnly && !this.client.config.owners.includes(ctx.author.id)) {
+      return ctx.channel.send('<:xSweet:756989900661850182> | Este comando se encontra disponível apenas para meus donos.')
+    }
+
+    if(this.playerOnly && !player) {
+       return ctx.channel.send('<:xSweet:756989900661850182> | Não tem nenhum player nesse Servidor!')
+    } 
+
+    if(this.playingOnly && !player.playing) {
+      return ctx.channel.send('<:xSweet:756989900661850182> | Não tem nada tocando nesse Servidor')
+    }
+
+    if(this.voiceChannelOnly && !ctx.member.voice.channel) {
+     return ctx.channel.send('<:xSweet:756989900661850182> | Você precisa estar em um canal de voz ou no mesmo que eu.')
+    }
+
+    if(this.nsfwChannelOnly && ctx.channel.nsfw === false) {
+      return ctx.channel.send(`:underage: | Esse canal não tem a função Canal Nsfw ativada!`, { files: [{ attachment: './Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
+    }
+  }    
     try {
       this.run(ctx)
     } catch (error) {

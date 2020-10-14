@@ -129,7 +129,7 @@ module.exports = class MessageListener extends Listener {
 
       if (!message.content.toLowerCase().startsWith(prefix)) return;
       
-      if (aa.val()) {
+      if (!aa.val() === null) {
         return message.author.send(`Você, ${message.author.tag} (\`${message.author.id}\`) , foi Banido Permanentemente de Usar a **Zoe**.
 
         Se foi injusto o banimento (Duvido que foi injusto rs) ,Comunique os Staffs do Bot e espere a resposta deles. Se você foi banido do Servidor de Suporte, O problema não é meu
