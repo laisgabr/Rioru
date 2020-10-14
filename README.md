@@ -14,7 +14,6 @@ Meu nome é Zoe e sou uma Bot Discord feita em JavaScript
 # Integrantes do Time:
 ! み 'Lra#0001 (Divulgadora e Responsividade)<br><br>
 polar#0003 (Divulgador)<br><br>
-P.#0008 (Divulgador) <br><br>
 </ Fria e Calculista 😎 >#0001 (Não é Travequinho Amigo) (VPS, Programação, Design, Responsividade, Criador)<br><br>
 神 Thay7ム#3272 (Design, Responsividade, Divulgação)<br><br>
 Thiaguitos#1337 (Programação)
@@ -23,4 +22,4 @@ Thiaguitos#1337 (Programação)
 Independente da Situação,<b> Não iremos ajudar com código da Zoe então por favor, não insista.</b>
 
 # Créditos:
-Estou dando crédito para o [BoiterPlate](https://github.com/Gorillas-Team/boilerplate) por causa da <em><b>ESTRUTURA</b></em> da Zoe que é baseada no [BoiterPlate](https://github.com/Gorillas-Team/boilerplate).
+Estou dando crédito para o [Boilerplate](https://github.com/Gorillas-Team/boilerplate) por causa da <em><b>ESTRUTURA</b></em> da Zoe que é baseada no [Boilerplate](https://github.com/Gorillas-Team/boilerplate).
