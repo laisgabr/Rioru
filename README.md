@@ -23,4 +23,4 @@ Thiaguitos#1337 (Programação)
 Independente da Situação,<b> Não iremos ajudar com código da Zoe então por favor, não insista.</b>
 
 # Créditos:
-Estou dando crédito para o [BoiterPlate](https://github.com/Gorillas-Team/boilerplate) por causa da <em><b>ESTRUTURA</b></em> da Zoe que é baseada no [BoiterPlate](https://github.com/Gorillas-Team/boilerplate).
+Estou dando crédito para o [BoilerPlate](https://github.com/Gorillas-Team/boilerplate) por causa da <em><b>ESTRUTURA</b></em> da Zoe que é baseada no [BoilerPlate](https://github.com/Gorillas-Team/boilerplate).
