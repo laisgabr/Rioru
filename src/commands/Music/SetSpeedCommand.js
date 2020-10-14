@@ -17,6 +17,6 @@ module.exports = class VaporwaveCommand extends Command {
         const off = args[0]
       if(!off) return  channel.send("<:xSweet:756989900661850182> | Diga [on/off] para continuar")
 
-      if(off === 'on') {} else if(off === 'off') {} else { c }
+    //  if(off === 'on') {} else if(off === 'off') {} else { c }
     }
 }

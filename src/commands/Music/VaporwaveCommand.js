@@ -5,12 +5,15 @@ const customPlayer = new ZoePlayer()
 module.exports = class VaporwaveCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
+            name: 'vaporwave',
             aliases: [],
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            playingOnly: true
         })
     }
     run ({ channel }) {
-        
+        channel.send('Em construção.....')
     }
 }
