@@ -21,3 +21,6 @@ Thiaguitos#1337 (Programação)
 
 # Códigos:
 Independente da Situação,<b> Não iremos ajudar com código da Zoe então por favor, não insista.</b>
+
+# Credits:
+https://github.com/Gorillas-Team/, https://github.com/Gorillas-Team/boilerplate, https://github.com/Gorillas-Team/Codya
