@@ -1,8 +1,8 @@
 const { Player } = require('erela.js')
 
 module.exports = class ZoePlayer extends Player {
-    constructor(guild, options) {
-        super(guild, options)
+    constructor(...args) {
+        super(...args)
         
         this.speed = 1;
 		this.pitch = 1;
