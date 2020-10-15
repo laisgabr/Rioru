@@ -1,6 +1,7 @@
 const { Listener } = require('../../structure')
 const { LavalinkLoader } = require('../../loader')
 const { ErelaClient } = require('erela.js')
+const { ZoePlayer } = require('../../Music')
 
 module.exports = class ReadyListener extends Listener {
   constructor () {
@@ -11,7 +12,7 @@ module.exports = class ReadyListener extends Listener {
   }
 
  async run () {
-  this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true })
+  this.lavalink = new ErelaClient(this, this.config.nodes, { autoPlay: true, player: ZoePlayer })
   await new LavalinkLoader(this.lavalink).load(this)
 
     var status = [

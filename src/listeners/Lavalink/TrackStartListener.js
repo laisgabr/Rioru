@@ -28,7 +28,7 @@ ${author}
   const msg = await textChannel.send(embed)
 
   setTimeout(function() {
-    msg.delete({ timeout: 3000 })
+    msg.delete()
   }, parseInt(duration))
   }
 }
