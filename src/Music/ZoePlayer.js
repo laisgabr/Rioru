@@ -2,7 +2,6 @@ const { Player } = require('erela.js')
 
 module.exports = class ZoePlayer extends Player {
     constructor() {
-        super()
         
 		this.speed = 1;
 		this.pitch = 1;
@@ -67,7 +66,6 @@ module.exports = class ZoePlayer extends Player {
         this.speed = 1;
         this.pitch = 1;
         this.rate = 1;
-        this.bassboost = 'off';
         this.nightcore = false;
         this.vaporwave = false;
 
