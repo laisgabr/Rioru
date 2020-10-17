@@ -85,7 +85,7 @@ module.exports = class MessageListener extends Listener {
       this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`)
         .once('value').then(async db => {
         if (db.val() == null) {
-          if (message.content.length > 5) return;
+          if (message.content.length < 5) return;
           this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`).set({
             xp: 0,
             level: 1,
@@ -93,7 +93,7 @@ module.exports = class MessageListener extends Listener {
             Enviadas: 1
           })
         } else {
-          if (message.content.length > 5) return;
+          if (message.content.length < 5) return;
           const xpGanho = Math.floor(Math.random() * 10) + 1
 
           if (db.val().xp < db.val().level * 100) {
@@ -113,7 +113,7 @@ module.exports = class MessageListener extends Listener {
               message.channel.send(`Parabéns ${message.author}! Você upou para o Level ${db.val().level} .`)
             }
           } else {
-            if (message.content.length > 5) return;
+            if (message.content.length < 5) return;
             this.database.ref(`Servidores/${message.guild.id}/Levels/${message.author.id}`).update({
               xp: db.val().xp + xpGanho,
               level: db.val().level + 1,
@@ -149,7 +149,7 @@ module.exports = class MessageListener extends Listener {
       const args = message.content.slice(prefix.length).trim().split(/ +/g)
       const cmd = args.shift().toLowerCase()
 
-      const command = this.commands.find(({name, aliases}) => name === cmd || aliases.includes(cmd))
+      const command = this.commands.find(({ name, aliases }) => name === cmd || aliases.includes(cmd))
 
       const context = new CommandContext(message, args, cmd, prefix)
 

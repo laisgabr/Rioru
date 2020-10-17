@@ -1,8 +1,6 @@
 const { Client, Collection } = require('discord.js')
 const Loaders = require('./loader')
 const firebase = require('firebase')
-const { ErelaClient } = require('erela.js')
-const { LavalinkLoader } = require('./loader')
 
 module.exports = class ZoeClient extends Client {
   constructor (options = {}) {
@@ -28,7 +26,7 @@ module.exports = class ZoeClient extends Client {
     firebase.initializeApp(firebaseConfig);
     
     this.database = firebase.database()
-    this.commands = new Collection()
+    this.commands = new Collection()    
   }
 
   async initLoaders () {

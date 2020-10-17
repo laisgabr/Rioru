@@ -18,7 +18,7 @@ module.exports = class QueueCommand extends Command {
 
     const player = lavalink.players.get(guild.id);
 
-    if(player.queue[0]) string += `__**Tocando Agora: **__\n ${player.queue[0].title} - Música pedida por <@${player.queue[0].requester.id}> .\n`;
+    if(player.queue[0]) string += `__**Tocando Agora: **__\n [${player.queue[0].title}](${player.queue[0].uri}) - Música pedida por <@${player.queue[0].requester.id}> .\n`;
     if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 8).map(x => `**${index++})** [${x.title}](${x.uri}) - Música pedida por <@${x.requester.id}>.`).join("\n")}`;
 
     const embed = new MessageEmbed()
