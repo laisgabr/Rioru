@@ -1,7 +1,0 @@
-{
-  "execMap": {
-    "js": "node -r dotenv/config"
-  },
-  "watch": "index.js",
-  "ext": "js"
-}
