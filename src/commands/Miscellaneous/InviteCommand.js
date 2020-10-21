@@ -1,24 +1,22 @@
-
-const { Command } = require("../../structure")
+const Command = require('../../Util/Command')
 
 module.exports = class InviteCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
             name: 'invite',
             aliases: ['convite'],
-            description: 'Mostra o meu convite :D',
-            usage: '<prefix>invite',
+            description: 'Mostra o meu convite',
             category: 'Miscellaneous'
         })
     }
-    run ({ channel, client, author }) {
-        const Discord = require('discord.js')
+    run(message, args, t) {
+        const { MessageEmbed } = require('discord.js')
 
-        const EmbedI = new Discord.MessageEmbed()
-        .setDescription(`[Clique Aqui](https://discord.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot) para me Adicionar em seu Servidor`)
+        const EmbedI = new MessageEmbed()
+        .setDescription(`[Clique Aqui](https://discord.com/api/oauth2/authorize?client_id=${this.client.user.id}&permissions=0&scope=bot) para me Adicionar em seu Lindo Servidor`)
         .setColor("RED")
-        .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ size: 2048, dynamic: true }))
+        .setFooter(`Solicitado por ${message.author.username}`, message.author.displayAvatarURL({ size: 2048, dynamic: true }))
 
-        channel.send(EmbedI)
+        message.channel.send(EmbedI)
     }
 }

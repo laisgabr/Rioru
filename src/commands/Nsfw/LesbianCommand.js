@@ -1,28 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'lesbian',
+            name: '',
             aliases: [],
-            category: 'NSFW +18',
-            nsfwChannelOnly: true
+            description: '',
+            category: ''
         })
     }
-    run ({ channel, author }) {
-        const Discord = require('discord.js')
-    const superagent = require('superagent')
-    
-    superagent.get('http://tnai.herokuapp.com/real/lesbian')
-    .end((err, response) => {
-        const embed = new Discord.MessageEmbed()
-        .setDescription(`Não consegue ver? [Clique aqui](${response.body.url})`)
-        .setImage(response.body.url)
-          .setColor('RANDOM')
-          .setThumbnail(author.displayAvatarURL({ dynamic: true }))
-        .setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-        channel.send(embed)
-       })
-    
+    run(message, args, t) {
+        
     }
 }

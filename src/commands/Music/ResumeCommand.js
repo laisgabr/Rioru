@@ -1,17 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class ResumeCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'resume',
+            name: '',
             aliases: [],
-            category: 'Music',
-            voiceChannelOnly: true,
-            playerOnly: true
+            description: '',
+            category: ''
         })
     }
-    run ({ channel, lavalink, guild }) {
-        const player = lavalink.players.get(guild.id)
-        player.pause(false);
+    run(message, args, t) {
+        
     }
 }

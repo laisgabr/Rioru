@@ -1,18 +1,15 @@
-/* eslint-disable lines-between-class-members */
-/* eslint-disable indent */
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class DonateCommand extends Command {
     constructor (client) {
         super(client, {
             name: 'donate',
             aliases: ['doar'],
-            description: 'Doe para o Desenvolvimento do bot',
-            usage: '<prefix>donate',
+            description: 'Doe para o Desenvolvimento da Zoe',
             category: 'Miscellaneous'
         })
     }
-    run ({ channel }) {
-        channel.send("Pague a host pra me ajudar então..")
+    run(message, args, t) {
+        message.channel.send(t('commands:Donate.message'))
     }
 }

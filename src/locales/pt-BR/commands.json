@@ -1,0 +1,28 @@
+{
+    "solicitado": "Solicitado por",
+
+    "Help": {
+        "embedTitle": "Olá meu nome é Zoe™ e sou feita para lhe ajudar nas suas atividades!",
+        "embedDescriptionAdmin": "Administração",
+        "embedDescriptionFun": "Diversão",
+        "embedDescriptionMod": "Moderação",
+        "embedDescriptionMusic": "Música",
+        "embedDescriptionNsfw": "Nsfw",
+        "embedDescriptionUtils": "Utilitários"
+    },
+
+    "Donate": {
+        "message": "Você pode ir a dm do MrGamingBR#0001 para saber as formas de pagamento"
+    },
+
+    "Ping": {
+       "sucess": "Latência da API é de {{ping}}ms!"
+    }, 
+
+
+
+
+    "FirstWords": {
+        "notHasArguments": "Você não disse algo para ele dizer"
+    }
+}

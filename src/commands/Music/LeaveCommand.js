@@ -1,16 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class LeaveCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'leave',
-            aliases: ['disconnect'],
-            category: 'Music',
-            voiceChannelOnly: true
+            name: '',
+            aliases: [],
+            description: '',
+            category: ''
         })
     }
-    run ({ lavalink, guild, channel }) {
-    lavalink.players.destroy(guild.id);
-    channel.send(':sleeping: | Bye bye...').then(msg => msg.react('👋'))
+    run(message, args, t) {
+        
     }
 }

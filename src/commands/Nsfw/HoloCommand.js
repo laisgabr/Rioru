@@ -1,30 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'holo',
+            name: '',
             aliases: [],
-            category: 'NSFW +18',
-            nsfwChannelOnly: true
+            description: '',
+            category: ''
         })
     }
-    run ({ channel, author }) {
-        const superagent = require('superagent')
-		const Discord = require('discord.js')
-
-	
-			superagent.get('https://nekobot.xyz/api/image')
-			.query({ type: 'holo' })
-			.end((err, response) => {
-				const embed = new Discord.MessageEmbed()
-				.setDescription(`Não consegue ver? [Clique aqui](${response.body.message})`)
-				.setImage(response.body.message)
-          .setColor('RANDOM')
-          .setThumbnail(author.displayAvatarURL({ dynamic: true }))
-				.setFooter(`Solicitado por ${author.username}`, author.displayAvatarURL({ dynamic: true, size: 2048 }))
-				channel.send(embed)
-			})
-		 
+    run(message, args, t) {
+        
     }
 }

@@ -1,14 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class DailyCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
             name: 'daily',
-            aliases: [],
+            aliases: ['deily'],
+            description: 'Resgate seus sonhos diários',
             category: 'Economy'
         })
     }
-    run ({ channel }) {
-        channel.send('Em breve.......')
+    run(message, args, t) {
+        message.channel.send('Em produção....')
     }
 }

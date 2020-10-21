@@ -1,32 +1,38 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class QueueCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
             name: 'queue',
             aliases: ['q'],
-            category: 'Music',
-            voiceChannelOnly: true,
-            playerOnly: true,
-            playingOnly: true
+            description: 'Mostra a atual Lista de Reprodução no Servidor',
+            category: 'Music'
         })
     }
-   async run ({ channel, guild, lavalink }) {
-    const { MessageEmbed } = require('discord.js')
-    let index = 1;
-    let string = "";
+    run(message, args, t) {
+        const { MessageEmbed } = require('discord.js')
+        const player = this.client.music.players.get(message.guild.id);
+    if (!player) return message.reply("Não tem nenhum Player aqui");
 
-    const player = lavalink.players.get(guild.id);
+    const queue = player.queue;
+    const embed = new MessageEmbed().setAuthor(`Lista de Reprodução de ${message.guild.name}`);
 
-    if(player.queue[0]) string += `__**Tocando Agora: **__\n [${player.queue[0].title}](${player.queue[0].uri}) - Música pedida por <@${player.queue[0].requester.id}> .\n`;
-    if(player.queue[1]) string += `__**Lista de Reprodução:**__\n ${player.queue.slice(1, 8).map(x => `**${index++})** [${x.title}](${x.uri}) - Música pedida por <@${x.requester.id}>.`).join("\n")}`;
+    const multiple = 10;
+    const page = args.length && Number(args[0]) ? Number(args[0]) : 1;
 
-    const embed = new MessageEmbed()
-    .setColor("#66dbff")
-    .setAuthor(`Lista de Reprodução de ${guild.name}`, guild.iconURL({ dynamic: true, size: 2048 }))
-    .setThumbnail(`http://i.ytimg.com/vi/${player.queue[0].identifier}/hqdefault.jpg`)
-    .setDescription(string);
+    const end = page * multiple;
+    const start = end - multiple;
 
-    return channel.send(embed)
+    const tracks = queue.slice(start, end);
+
+    if (queue.current) embed.addField("Tocando Agora:", `[${queue.current.title}](${queue.current.uri})`);
+
+    else embed.setDescription(tracks.map((track, i) => `${start + (++i)} - [${track.title}](${track.uri})`).join("\n"));
+
+    const maxPages = Math.ceil(queue.length / multiple);
+
+    embed.setFooter(`Página ${page > maxPages ? maxPages : page} de ${maxPages}`);
+
+    return message.reply(embed);
     }
 }

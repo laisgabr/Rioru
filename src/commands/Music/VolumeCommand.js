@@ -1,23 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class VolumeCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'volume',
+            name: '',
             aliases: [],
-            category: 'Music',
-            voiceChannelOnly: true,
-            playerOnly: true,
-            playingOnly: true
+            description: '',
+            category: ''
         })
     }
-    run ({ channel, args, lavalink, guild, member }) {
-      const player = lavalink.players.get(guild.id);
-      
-      if (!args[0]) return channel.send(`Volume Atual é de ${player.volume}%`);
-      if (Number(args[0]) <= 0 || Number(args[0]) > 100) return channel.send("<:xSweet:756989900661850182> | Diga um volume que seja de 1 até 100!");
-
-      player.setVolume(Number(args[0]));
-      return channel.send(`Agora o volume é de ${args[0]}%`)
+    run(message, args, t) {
+        
     }
 }

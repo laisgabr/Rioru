@@ -1,20 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class ShuffleCommand extends Command {
-  constructor(client) {
-    super(client, {
-      name: 'shuffle',
-      aliases: ['embaralhar'],
-      category: 'Music',
-      voiceChannelOnly: true,
-      playerOnly: true,
-      playingOnly: true
-    });
-  }
-  run ({ channel, lavalink, guild }) {
-    const player = lavalink.players.get(guild.id)
-    
-    player.queue.shuffle()
-    return channel.send(' | ')
-  }
+    constructor(client) {
+        super(client, {
+            name: '',
+            aliases: [],
+            description: '',
+            category: ''
+        })
+    }
+    run(message, args, t) {
+        
+    }
 }

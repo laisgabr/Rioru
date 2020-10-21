@@ -1,14 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class PayCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
             name: 'pay',
-            aliases: [],
+            aliases: ['pagar'],
+            description: 'Lembra daquele amigo que te pagou seu chiclete ? Retribua ele',
             category: 'Economy'
         })
     }
-    run ({ channel }) {
-        channel.send('Em breve.......')
+    run(message, args, t) {
+        message.channel.send('Em produção....')
     }
 }

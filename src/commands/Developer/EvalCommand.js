@@ -1,42 +1,14 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class EvalCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
             name: 'eval',
-            aliases: ['ev'],
-            category: 'Developer',
-            devOnly: true
+            aliases: ['eval', 'e'],
+            category: 'Developer'
         })
     }
-    run ({ channel, args, guild, member, msg, mentions, author, lavalink, client, config }) {
-        const { inspect } = require('util')
-        const { MessageEmbed } = require('discord.js')
-
-        const input = args.join(' ')
-        if(!input) return channel.send('Diga algo!')
-        try {
-            if(input === 'client.token') {
-                return channel.send(":thumbsup:")
-            }
-
-            if (input === 'this.client.token') {
-               return channel.send(':thumbsup:')
-            }
-
-            if(input === 'process.env.TOKEN') {
-                return channel.send(':thumbsup:')
-            }
-
-            let output = eval(input)
-
-            if (typeof output !== "string") output = inspect(output)
-
-            if (output.size > 1950) output = output.substr(0, 1950)
-
-            channel.send(`**Saida:**\n\`\`\`js\n${output}\n\`\`\``)
-        } catch (error) {
-            channel.send(`<:xSweet:756989900661850182> **Erro:**\n\`${error}\``)
-        }
+    run(message, args, t) {
+        console.log('a')
     }
 }

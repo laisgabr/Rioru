@@ -1,36 +1,15 @@
-const { Command } = require('../../structure')
+const Command = require('../../Util/Command')
 
 module.exports = class LoopCommand extends Command {
-    constructor (client) {
+    constructor(client) {
         super(client, {
-            name: 'loop',
+            name: '',
             aliases: [],
-            category: 'Music',
-            voiceChannelOnly: true,
-            playerOnly: true, 
-            playingOnly: true
+            description: '',
+            category: ''
         })
     }
-    run ({ channel, guild, lavalink, args }) {
-    const { MessageEmbed } = require('discord.js')
-
-    const player = lavalink.players.get(guild.id);
-   
-    if (args.length && /queue/i.test(args[0])) {
-      player.setQueueRepeat(!player.queueRepeat);
-      const queueRepeat = player.queueRepeat ? "Ativando Loop da Lista de Reprodução" : "Desativando Loop da Lista de Reprodução";
-      return channel.send(`${queueRepeat}`)
-    }
-
-    player.setTrackRepeat(!player.trackRepeat);
-    const trackRepeat = player.trackRepeat ? "Ativando Loop" : "Desativando Loop";
-
-    const { title } = player.queue[0]
-
-    const embed = new MessageEmbed()
-
-    .setAuthor(`${trackRepeat} na Música ${title}`)
-    .setColor('RANDOM')
-    channel.send(embed)
+    run(message, args, t) {
+        
     }
 }

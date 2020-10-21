@@ -1,0 +1,6 @@
+{
+    "botNotHasPermission": "Eu não tenho a permissão {{perm}} para fazer isso.",
+    "userNotHasPermission": "Você não tem a permissão {{perm}} para continuar",
+
+    "userIsNotAOwner": "Esse comando está disponivel apenas para os meus donos"
+}

@@ -1,0 +1,22 @@
+Avatar
+Docs
+Donate
+Help
+Ping
+--------
+
+Cmds traduzidos pra pt-BR:
+Docs
+Donate
+Help
+Ping
+
+
+
+
+
+
+const { MessageEmbed } = require("discord.js")
+const request = require("request")
+const moment = require("moment")
+require("moment-duration-format")
