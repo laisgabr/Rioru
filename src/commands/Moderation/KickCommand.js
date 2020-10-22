@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class KickCommand extends Command {
     constructor(client) {

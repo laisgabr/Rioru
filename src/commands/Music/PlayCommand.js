@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
@@ -32,7 +33,7 @@ module.exports = class PlayCommand extends Command {
                         .setAuthor(t('commands:MusicCommand.PlayCommand.SelectionMusic'), message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
                         .setDescription(tracks.map(video => `**${index++} -** \`${video.title}\`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                      `))
-                        .setFooter(t('errors:MusicCommand.PlayCommand.TempDefined'))
+                        .setFooter(t('errors:MusicCommand.PlayCommand.TempDefined', { error: emj.error }))
     
                     const deleteEmbed = await message.channel.send(embed)
     
@@ -53,7 +54,7 @@ module.exports = class PlayCommand extends Command {
               player.connect();
               player.queue.add(track)
     
-              message.channel.send(t('commands:MusicCommand.PlayCommand.AddedFileMusic', { trackTitle: track.title })).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
+              message.channel.send(t('commands:MusicCommand.PlayCommand.AddedFileMusic', { trackTitle: track.title, sucess: emj.sucess })).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
               
           if (!player.playing && !player.paused && !player.queue.length)
           player.play();
@@ -70,7 +71,7 @@ module.exports = class PlayCommand extends Command {
           });
     
           collector.on("end", (_, reason) => {
-            if (["time", "canceled"].includes(reason)) return message.channel.send(t('commands:MusicCommand.PlayCommand.CancelSelect'))
+            if (["time", "canceled"].includes(reason)) return message.channel.send(t('commands:MusicCommand.PlayCommand.CancelSelect', { sucess: emj.sucess }))
           });
           break;
               }

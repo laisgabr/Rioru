@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class SkipCommand extends Command {
     constructor(client) {

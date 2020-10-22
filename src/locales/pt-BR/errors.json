@@ -1,8 +1,8 @@
 {
-    "botNotHasThisCommand": "Eu não tenho nenhum comando com ` {{cmd}} `",
-    "haveAnyError": "Aconteceu algum erro",
+    "botNotHasThisCommand": "{{error}} Eu não tenho nenhum comando com ` {{cmd}} `",
+    "haveAnyError": "{{error}} Aconteceu algum erro",
     "FirstWords": {
-        "notHasArguments": "Você não disse algo para ele dizer"
+        "notHasArguments": "{{error}} Você não disse algo para ele dizer"
     },
 
     "MusicCommand": {
@@ -10,16 +10,16 @@
             "TempDefined" : "Seu tempo acaba daqui 1 minuto. Digite \"cancel\" ou \"cancelar\" no Chat."
         },
         "QueueCommand": {
-            "NotPlayer": "Não possui __nenhum__ Player aqui."
+            "NotPlayer": "{{error}} Não possui __nenhum__ Player aqui."
         }
     },
 
     "DocsCommand": {
-        "ErrorResponse": ":x: Não funcionou!"
+        "ErrorResponse": "{{error}} Não funcionou!"
     },
 
     "RemindCommand": {
-        "ErrorTimeNotDefined": ":x: Informe um __Tempo__. Use: `<s/m/h/d>`",
-        "ErrorRememberNotDefined": ":x: Informe oque __desejá__ ser **lembrando**."
+        "ErrorTimeNotDefined": "{{error}} Informe um __Tempo__. Use: `<s/m/h/d>`",
+        "ErrorRememberNotDefined": "{{error}} Informe oque __desejá__ ser **lembrando**."
     }
 }

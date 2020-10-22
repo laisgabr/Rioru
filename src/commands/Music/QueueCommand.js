@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class QueueCommand extends Command {
     constructor(client) {
@@ -12,7 +13,7 @@ module.exports = class QueueCommand extends Command {
     run(message, args, t) {
         const { MessageEmbed } = require('discord.js')
         const player = this.client.music.players.get(message.guild.id);
-    if (!player) return message.reply(t('errors:MusicCommand.QueueCommand.NotPlayer'));
+    if (!player) return message.reply(t('errors:MusicCommand.QueueCommand.NotPlayer', { error: emj.error }));
 
     const queue = player.queue;
     const embed = new MessageEmbed().setAuthor(t('commands:MusicCommand.PlayCommand.ListReprodution', { guildName: message.guild.name }), message.guild.iconURL({dynamic:true}));
@@ -25,7 +26,7 @@ module.exports = class QueueCommand extends Command {
 
     const tracks = queue.slice(start, end);
 
-    if (queue.current) embed.addField(t('commands:MusicCommand.PlayCommand.CurrentMusic', { MusicTitle: queue.current.title, MusicURL: queue.current.uri }));
+    if (queue.current) embed.addField(t('commands:MusicCommand.PlayCommand.CurrentMusic', { MusicTitle: queue.current.title, MusicURL: queue.current.uri, sucess: emj.sucess }));
 
     else embed.setDescription(tracks.map((track, i) => `${start + (++i)} - [${track.title}](${track.uri})`).join("\n"));
 

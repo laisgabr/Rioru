@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class RemindMeCommand extends Command {
     constructor(client) {
@@ -13,8 +14,8 @@ module.exports = class RemindMeCommand extends Command {
         var time = args[0]
         var lembrete = args.slice(1).join(' ')
 
-        if (!time) return message.channel.send(t('errors:RemindCommand.ErrorTimeNotDefined'))
-        if (!lembrete) return message.channel.send(t('errors:RemindCommand.ErrorRememberNotDefined'))
+        if (!time) return message.channel.send(t('errors:RemindCommand.ErrorTimeNotDefined', { error: emj.error }))
+        if (!lembrete) return message.channel.send(t('errors:RemindCommand.ErrorRememberNotDefined', { error: emj.error }))
 
         time = await time.toString()
 
@@ -31,7 +32,7 @@ module.exports = class RemindMeCommand extends Command {
             var tempoD = await time.replace(/d.*/, '')
             tempo = await tempoD * 60 * 1000
         }
-        message.channel.send(t('commands:RemindCommand.ResponseMessage', { lembrete: lembrete, time: time }))
+        message.channel.send(t('commands:RemindCommand.ResponseMessage', { lembrete: lembrete, time: time, sucess: emj.sucess }))
 
         setTimeout(function () {
             message.channel.send(`${lembrete}`)

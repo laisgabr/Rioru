@@ -1,4 +1,5 @@
-const Command = require('../../Util/Command')
+const Command = require('../../Util/Command');
+const emj = require('../../API/connectEmoji');
 
 module.exports = class DocsCommand extends Command { 
     constructor(client) {
@@ -18,7 +19,7 @@ module.exports = class DocsCommand extends Command {
         if (!query) return message.channel.send("https://discord.js.org")
     
         const embed = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src || "stable"}&q=${query.replace(/#/g, ".")}`)).json()
-        if (!embed || embed.error) return message.channel.send(t('errors:DocsCommand.ErrorResponse'))
+        if (!embed || embed.error) return message.channel.send(t('errors:DocsCommand.ErrorResponse', { error: emj.error }))
     
         const docEmbed = new MessageEmbed(embed)
         .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))

@@ -22,9 +22,9 @@
     "MusicCommand" : {
         "PlayCommand": {
             "SelectionMusic": "Choose a Song.",
-            "AddedFileMusic": "The song ||{{trackTitle}}|| has been __added to the **Playlist** successfully.",
-            "CancelSelect": "😦 The **Selection** of __**Music***, was __cancelled* successfully.",
-            "CurrentMusic": "Playing Now: ||[{{MusicTitle}}]]({{MusicURL}})||",
+            "AddedFileMusic": "{{sucess}} The song ||{{trackTitle}}|| has been __added to the **Playlist** successfully.",
+            "CancelSelect": "{{sucess}}  The **Selection** of __**Music***, was __cancelled* successfully.",
+            "CurrentMusic": "{{sucess}} Playing Now: ||[{{MusicTitle}}]]({{MusicURL}})||",
             "ListReprodution": "{{guildName}} - Reproductions"
         }
     },
@@ -34,6 +34,6 @@
     },
 
     "RemindCommand": {
-        "ResponseMessage": ":x: I'll remind you about **{{reminder}}**, from here **{{time}}**"
+        "ResponseMessage": "{{sucess}} I'll remind you about **{{reminder}}**, from here **{{time}}**"
     }
 }
