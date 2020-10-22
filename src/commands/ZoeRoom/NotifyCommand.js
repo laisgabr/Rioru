@@ -10,11 +10,11 @@ module.exports = class NotifyCommand extends Command {
         })
     }
     run(message, args, t) {
-        if(message.guild.id !== "746434115682828469") return message.channel.send('Esse comando está disponivel apenas para o meu Servidor de Suporte')
+        if(message.guild.id !== "746434115682828469") return message.channel.send(`:x: Este comando apenas funciona em meu Servidor de Suoporte! [Clique Aqui](https://discord.gg/pKP96uH)`)
 
-        if(message.member.roles.has('768171764147683394')) return message.member.roles.remove('768171764147683394') && message.channel.send(':sob: | Nunca mais confio em ninguém');
+        if(message.member.roles.has('768171764147683394')) return message.member.roles.remove('768171764147683394') && message.channel.send(`:x: Você não poderá ser mais Notificado de meu Status. 😦`)
 
         message.member.roles.add('768171764147683394')
-        return message.channel.send('Agora você vai ser Notificado(a) sobre todas as novidades :D')
+        return message.channel.send(':white_check_mark: Agora você sera __notificado__ sobre todas as **Novidades** que irão acontecer.')
     }
 }

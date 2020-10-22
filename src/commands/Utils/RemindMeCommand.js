@@ -13,8 +13,8 @@ module.exports = class RemindMeCommand extends Command {
         var time = args[0]
         var lembrete = args.slice(1).join(' ')
 
-        if (!time) return message.channel.send('<:xSweet:756989900661850182> | Diga um tempo [d/h/m/s]!')
-        if (!lembrete) return message.channel.send('<:xSweet:756989900661850182> | Diga o que eu devo lhe lembrar!')
+        if (!time) return message.channel.send(t('errors:RemindCommand.ErrorTimeNotDefined'))
+        if (!lembrete) return message.channel.send(t('errors:RemindCommand.ErrorRememberNotDefined'))
 
         time = await time.toString()
 
@@ -31,7 +31,7 @@ module.exports = class RemindMeCommand extends Command {
             var tempoD = await time.replace(/d.*/, '')
             tempo = await tempoD * 60 * 1000
         }
-        message.channel.send(`${message.author} Eu irei lhe lembrar sobre ${lembrete}, Daqui ${time}`)
+        message.channel.send(t('commands:RemindCommand.ResponseMessage', { lembrete: lembrete, time: time }))
 
         setTimeout(function () {
             message.channel.send(`${lembrete}`)

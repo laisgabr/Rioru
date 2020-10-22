@@ -18,10 +18,10 @@ module.exports = class AvatarCommand extends Command {
     if(!user.avatar.startsWith('a_')) avatar = avatar.replace('.webp', '.png')
 
     const embed = new MessageEmbed()
-    .setDescription(`:frame_photo: | Avatar de [${user.username}](${avatar})`)
+    .setDescription(t('commands:AvatarCommand.Response', { UserName: user.username, UserAvatar: avatar }))
     .setImage(avatar)
     .setColor("RANDOM")
-    .setFooter(`• | Solicitado por ${message.author.username}`)
+    .setFooter(message.author.username, message.author.displayAvatarURL({dynamic:true}))
     message.channel.send(embed)
     }
 }

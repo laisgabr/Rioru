@@ -12,17 +12,28 @@
     },
 
     "Donate": {
-        "message": "Você pode ir a dm do MrGamingBR#0001 para saber as formas de pagamento"
+        "message": "Você pode ir a dm do **MrGamingBR#0001** para saber as formas de pagamento"
     },
 
     "Ping": {
        "sucess": "Latência da API é de {{ping}}ms!"
-    }, 
+    },
 
+    "MusicCommand" : {
+        "PlayCommand": {
+            "SelectionMusic": "Escolha uma Música.",
+            "AddedFileMusic": "A música ||{{trackTitle}}|| foi __Adicionada__ na **Lista de Reprodução** com sucesso.",
+            "CancelSelect": "😦 A **Seleção** de __**Música**__, foi __cancelada__ com sucesso.",
+            "CurrentMusic": "Tocando Agora: ||[{{MusicTitle}}]({{MusicURL}})||",
+            "ListReprodution": "{{guildName}} - Reproduções"
+        }
+    },
 
+    "AvatarCommand": {
+        "Resposne": ":frame_photo: Avatar de **[{{UserName}}]({{UserAvatar}})**"
+    },
 
-
-    "FirstWords": {
-        "notHasArguments": "Você não disse algo para ele dizer"
+    "RemindCommand": {
+        "ResponseMessage": ":x: Irei te lembrar sobre **{{lembrete}}**, daqui **{{time}}**"
     }
 }

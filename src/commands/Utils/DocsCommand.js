@@ -18,7 +18,7 @@ module.exports = class DocsCommand extends Command {
         if (!query) return message.channel.send("https://discord.js.org")
     
         const embed = await (await fetch(`https://djsdocs.sorta.moe/v2/embed?src=${src || "stable"}&q=${query.replace(/#/g, ".")}`)).json()
-        if (!embed || embed.error) return message.channel.send("<:xSweet:756989900661850182> | Não funcionou")
+        if (!embed || embed.error) return message.channel.send(t('errors:DocsCommand.ErrorResponse'))
     
         const docEmbed = new MessageEmbed(embed)
         .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))

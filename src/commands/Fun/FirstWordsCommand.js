@@ -14,7 +14,7 @@ module.exports = class FirstWordsCommand extends Command {
 
     const img = jimp.read("https://cdn.discordapp.com/attachments/672188275963854879/709074434283143208/PrimeirasPalavras2.png")
     
-    if (!args.join(' ')) return message.channel.send(t('commands:FirstWord.notHasArguments'))
+    if (!args.join(' ')) return message.channel.send(t('errors:FirstWord.notHasArguments'))
     
     img.then(image => {
     jimp.loadFont(jimp.FONT_SANS_32_BLACK).then(font => {

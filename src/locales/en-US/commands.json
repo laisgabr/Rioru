@@ -1,0 +1,39 @@
+{
+    "solicitado": "Requested by",
+
+    "Help": {
+        "embedTitle": "Hello my name is Zoe™ and I am made to help you in your activities!",
+        "embedDescriptionAdmin": "Administration",
+        "embedDescriptionFun": "Fun",
+        "embedDescriptionMod": "Moderation",
+        "embedDescriptionMusic": "Music",
+        "embedDescriptionNsfw": "Nsfw",
+        "embedDescriptionUtils": "Utilities"
+    },
+
+    "Donate": {
+        "message": "You can go to dm of **MrGamingBR#0001** to know the forms of payment."
+    },
+
+    "Ping": {
+       "sucess": "API latency is {{ping}}ms!"
+    },
+
+    "MusicCommand" : {
+        "PlayCommand": {
+            "SelectionMusic": "Choose a Song.",
+            "AddedFileMusic": "The song ||{{trackTitle}}|| has been __added to the **Playlist** successfully.",
+            "CancelSelect": "😦 The **Selection** of __**Music***, was __cancelled* successfully.",
+            "CurrentMusic": "Playing Now: ||[{{MusicTitle}}]]({{MusicURL}})||",
+            "ListReprodution": "{{guildName}} - Reproductions"
+        }
+    },
+
+    "AvatarCommand": {
+        "Resposne": ":frame_photo: Avatar of **[{{UserName}}]({{UserAvatar}})**"
+    },
+
+    "RemindCommand": {
+        "ResponseMessage": ":x: I'll remind you about **{{reminder}}**, from here **{{time}}**"
+    }
+}

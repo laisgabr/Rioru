@@ -28,11 +28,11 @@ module.exports = class PlayCommand extends Command {
                     let index = 1;
                     const tracks = res.tracks.slice(0, 10);
                     const embed = new MessageEmbed()
-                        .setColor('#66dbff')
-                        .setAuthor("Selecione a Música", message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+                        .setColor('RANDOM')
+                        .setAuthor(t('commands:MusicCommand.PlayCommand.SelectionMusic'), message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
                         .setDescription(tracks.map(video => `**${index++} -** \`${video.title}\`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                      `))
-                        .setFooter("Seu tempo vai acabar daqui 1 minuto. Use cancel/cancelar para cancelar a ação.")
+                        .setFooter(t('errors:MusicCommand.PlayCommand.TempDefined'))
     
                     const deleteEmbed = await message.channel.send(embed)
     
@@ -53,7 +53,7 @@ module.exports = class PlayCommand extends Command {
               player.connect();
               player.queue.add(track)
     
-              message.channel.send(`Adicionando \`${track.title}\` na Lista de Reprodução`).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
+              message.channel.send(t('commands:MusicCommand.PlayCommand.AddedFileMusic', { trackTitle: track.title })).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
               
           if (!player.playing && !player.paused && !player.queue.length)
           player.play();
@@ -70,7 +70,7 @@ module.exports = class PlayCommand extends Command {
           });
     
           collector.on("end", (_, reason) => {
-            if (["time", "canceled"].includes(reason)) return message.channel.send("Seleção de Música cancelada!")
+            if (["time", "canceled"].includes(reason)) return message.channel.send(t('commands:MusicCommand.PlayCommand.CancelSelect'))
           });
           break;
               }

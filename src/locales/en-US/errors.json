@@ -1,0 +1,25 @@
+{
+    "botNotHasThisCommand": "I don't have any commands with ` {{cmd}} `",
+    "haveAnyError": "Some mistake happened",
+    "FirstWords": {
+        "notHasArguments": "You didn't say something to him to say"
+    },
+
+    "MusicCommand": {
+        "PlayCommand" : {
+            "TempDefined" : "Your time is up in 1 minute. Type \"cancel\" or \"cancelar\" of Chat."
+        },
+        "QueueCommand": {
+            "NotPlayer": "You do not have __none__ Player here."
+        }
+    },
+
+    "DocsCommand": {
+        "ErrorResponse": ":x: It didn't work!"
+    },
+
+    "RemindCommand": {
+        "ErrorTimeNotDefined": ":x: Enter a __Time. Use: `<s/m/h/d>`",
+        "ErrorRememberNotDefined": ":x: Inform what __ you want to be **remembering**."
+    }
+}

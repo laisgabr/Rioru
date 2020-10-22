@@ -11,7 +11,6 @@ module.exports = class MessageEvent {
         if(message.channel.type !== 'text') return;
         if(message.author.bot) return;
 
-
         const user = await this.client.database.XPSchema.findOne({ '_id': message.author.id, 'guild': message.guild.id })
         if(!user) {
             await this.client.database.XPSchema.create({ '_id': message.author.id, 'guild': message.guild.id })
