@@ -40,7 +40,9 @@ module.exports = class ZoeClient extends Client {
               const guild = this.guilds.cache.get(id);
               if (guild) guild.shard.send(payload);
             } 
-          })
+        })
+
+        this.emojis = require('./API/connectEmoji')
 
         this.database = connect(this.settings.database, { useNewUrlParser: true, useUnifiedTopology: true }, e => {
           if(e) return console.log(' | ' + chalk.red.bold('[ MONGOOSE ]  ') + `Um erro ocorreu!, ${e}`)

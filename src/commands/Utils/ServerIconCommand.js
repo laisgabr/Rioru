@@ -1,5 +1,4 @@
 const Command = require('../../Util/Command');
-const emj = require('../../API/connectEmoji');
 
 module.exports = class ServerIconCommand extends Command {
     constructor(client) {
@@ -10,7 +9,7 @@ module.exports = class ServerIconCommand extends Command {
             category: 'Utils'
         })
     }
-    run(message, args, t) {
+    async run(message, args, t) {
         
     }
 }

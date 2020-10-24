@@ -1,5 +1,4 @@
 const Command = require('../../Util/Command');
-const emj = require('../../API/connectEmoji');
 
 module.exports = class HelpCommand extends Command {
     constructor(client) {

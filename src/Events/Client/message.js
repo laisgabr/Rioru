@@ -27,7 +27,7 @@ module.exports = class MessageEvent {
         var t;
         const setFixedT = function(translate){
            t = translate
-          };
+        };
         
         const language = guild.locale || "pt-BR"
         setFixedT(i18next.getFixedT(language))
@@ -76,7 +76,7 @@ module.exports = class MessageEvent {
                     return;
                 }
             }
-            cmd.run(message, args, t)
+            cmd.run(message, args, t, getEmoji)
         })
     }
 }    

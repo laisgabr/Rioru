@@ -1,5 +1,4 @@
 const Command = require('../../Util/Command');
-const emj = require('../../API/connectEmoji');
 
 module.exports = class DocsCommand extends Command { 
     constructor(client) {
@@ -11,7 +10,7 @@ module.exports = class DocsCommand extends Command {
         })
     }
 
-   async run(message, args, t) {
+    async run(message, args, t) {
         const { MessageEmbed } = require("discord.js")
         const fetch = require("node-fetch")
     
