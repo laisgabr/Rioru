@@ -1,5 +1,9 @@
 const Command = require('../../Util/Command');
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 70819bee2f88bbc170efbcc4b2204e2a80a43972
 module.exports = class PlayCommand extends Command {
     constructor(client) {
         super(client, {
@@ -17,7 +21,7 @@ module.exports = class PlayCommand extends Command {
         voiceChannel: message.member.voice.channel.id,
         textChannel: message.channel.id,
         selfDeafen: true
-      });    
+    });    
 
         this.client.music.search(
             args.join(' '),

@@ -8,5 +8,6 @@ module.exports = new Schema({
     lastDaily: { type: String, default: "0" },
     marryStats: { type: Boolean, default: false },
     marryWith: { type: String },
-    aboutMe: { type: String, default: "Zoe é minha amiga, altere esse texto com <prefix>aboutme" }
+    aboutMe: { type: String, default: "Zoe é minha amiga, altere esse texto com <prefix>aboutme" },
+    premiumStats: { type: Boolean, default: false }
 })

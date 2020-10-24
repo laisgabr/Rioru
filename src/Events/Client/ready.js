@@ -26,5 +26,10 @@ module.exports = class ReadyEvent {
       ${chalk.rgb(0, 255, 255).bold(this.client.users.cache.size)} ${chalk.rgb(0, 26, 255).bold('Users')},
       ${chalk.rgb(0, 255, 255).bold(this.client.guilds.cache.size)} ${chalk.rgb(0, 26, 255).bold('Servers and')}
       ${chalk.rgb(0, 255, 255).bold(this.client.commands.size)} ${chalk.rgb(0, 26, 255).bold('Commands')}.`)
+      
+      setInterval(() => {
+          this.client.channels.cache.get('767596655628779520').setName(`Guilds: ${this.client.guilds.cache.size}`)
+          this.client.channels.cache.get('767596719331737610').setName(`Users: ${this.client.users.cache.size}`)
+      }, 1000 * 60 * 10)
     }
 }
