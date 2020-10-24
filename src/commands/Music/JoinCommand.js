@@ -1,16 +1,20 @@
 const Command = require('../../Util/Command');
-const emj = require('../../API/connectEmoji');
 
 module.exports = class JoinCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
+            name: 'join',
             aliases: [],
             description: '',
-            category: ''
+            category: 'Music'
         })
     }
     run(message, args, t) {
-        
+        const player = this.client.music.create({
+            guild: message.guild.id,
+            voiceChannel: message.member.voice.channel.id,
+            textChannel: message.channel.id,
+            selfDeafen: true
+        });
     }
 }

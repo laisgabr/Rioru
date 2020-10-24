@@ -1,6 +1,5 @@
 const Command = require('../../Util/Command');
-const emj = require('../../API/connectEmoji');
-
+ 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
         super(client, {
@@ -18,7 +17,7 @@ module.exports = class PlayCommand extends Command {
         voiceChannel: message.member.voice.channel.id,
         textChannel: message.channel.id,
         selfDeafen: true
-      });    
+    });    
 
         this.client.music.search(
             args.join(' '),

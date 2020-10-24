@@ -6,7 +6,6 @@ const chalk = require('chalk')
 
 const { connect, model } = require('mongoose')
 const { Manager } = require('erela.js')
-const Spotify = require('erela.js-spotify')
 
 require('./Util/Music/ZoePlayer')
 
@@ -29,18 +28,16 @@ module.exports = class ZoeClient extends Client {
 
         const nodes = this.settings.nodes
 
-        const clientID = this.settings.spotifyClientId
-        const clientSecret = this.settings.spotifyClientSecret
-
         this.music = new Manager({
             nodes,
-         //   plugins: [ new Spotify({ clientID, clientSecret }) ],
-             autoPlay: true,
+            autoPlay: true,
             send: (id, payload) => {
               const guild = this.guilds.cache.get(id);
               if (guild) guild.shard.send(payload);
             } 
           })
+
+          this.emojis = require('./API/connectEmoji')
 
         this.database = connect(this.settings.database, { useNewUrlParser: true, useUnifiedTopology: true }, e => {
           if(e) return console.log(' | ' + chalk.red.bold('[ MONGOOSE ]  ') + `Um erro ocorreu!, ${e}`)
@@ -52,8 +49,8 @@ module.exports = class ZoeClient extends Client {
             XPSchema: model("XPSchema", require('./Models/XPSchema'))
         }
         return this
-        
-    } 
+    };
+ 
 
     start() {
         super.login(this.token)

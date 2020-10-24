@@ -1,3 +1,8 @@
+const { config } = require('dotenv')
+config({
+   path: __dirname + "/.env"
+});
+
 module.exports = {
     disableEveryone: true,
     fetchAllMembers: true,

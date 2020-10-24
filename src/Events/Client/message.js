@@ -11,6 +11,7 @@ module.exports = class MessageEvent {
         if(message.channel.type !== 'text') return;
         if(message.author.bot) return;
 
+
         const user = await this.client.database.XPSchema.findOne({ '_id': message.author.id, 'guild': message.guild.id })
         if(!user) {
             await this.client.database.XPSchema.create({ '_id': message.author.id, 'guild': message.guild.id })
@@ -20,7 +21,8 @@ module.exports = class MessageEvent {
         if(!guild) {
             await this.client.database.GuildSchema.create({ '_id': message.guild.id })
         }
-        const prefix = /*guild.prefix ||*/ "z!"
+
+        const prefix = guild.prefix || "z!"
         if (!message.content.startsWith(prefix)) return;
         let args = message.content.slice(prefix.length).trim().split(" ")
 
@@ -52,7 +54,7 @@ module.exports = class MessageEvent {
             if (userPermission !== null) {
                 if (!message.member.permissions.has(userPermission)) { 
                     let perm = userPermission.map(value => value).join(", ")
-                    return message.reply(`você não pode executar este comando, pois não tem permissão para \`${perm}\``)
+                    return message.reply(`Você não tem a permissão \`${perm}\` para continuar`)
                 }
             
             }
@@ -67,16 +69,16 @@ module.exports = class MessageEvent {
 
             if(cmd.config.voiceChannelOnly === true) {
                 if(!message.member.voice.channel) {
-                    return message.channel.send('q')
+                    return message.channel.send('Você precisa estar num canal de voz')
                 }
             }
-
+            
             if(cmd.config.queueOnly === true) {
-                if(player.queue.length === 0) {
+                if(player.queue.size === 0) {
                     return;
                 }
             }
             cmd.run(message, args, t)
         })
     }
-}    
+}

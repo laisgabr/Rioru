@@ -83,8 +83,8 @@ module.exports = Structure.extend('Player', Player => {
                 this.nightcore = false;
                 this.vaporwave = false;
                 this.tremolo = false;
-                this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.5 })));
-            } else this.setEQ(...new Array(6).fill(null).map((_, i) => ({ band: i, gain: 0.0 })));
+                this.setTimescale(2.3910394853931930, 2.482830201830293, 1)
+            } else this.setTimescale(1, 1, 1)
             return this;
         }
 
