@@ -20,6 +20,3 @@ Thiaguitos#1337 (Programação)
 
 # Códigos:
 Independente da Situação,<b> Não iremos ajudar com código da Zoe então por favor, não insista.</b>
-
-# Open-Source:
-Estou deixando open-source novamente e continuo com a estrutura do boilerplate. Depois eu retiro esse lixo de estrutura e refaço 
