@@ -31,7 +31,7 @@ module.exports = class RemindMeCommand extends Command {
             var tempoD = await time.replace(/d.*/, '')
             tempo = await tempoD * 60 * 1000
         }
-        message.channel.send(t('commands:RemindCommand.ResponseMessage', { lembrete: lembrete, time: time, sucess: emj.sucess }))
+        message.channel.send(t('commands:RemindCommand.ResponseMessage', { lembrete: lembrete, time: time, sucess: this.client.emojis.sucess }))
 
         setTimeout(function () {
             message.channel.send(message.author + ` **${lembrete}**`)
