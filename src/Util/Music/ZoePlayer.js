@@ -119,6 +119,10 @@ module.exports = Structure.extend('Player', Player => {
             });
             return this;
         }
+        clearEffects() {
+            this.clearEQ()
+            this.setTimescale(1, 1, 1)
+        }
     }
     return ZoePlayer;
 });

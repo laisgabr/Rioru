@@ -5,5 +5,6 @@ module.exports = class TrackEndEvent {
 
     run(player) {
         player.setTimescale(1, 1, 1)
+        player.clearEQ()
     }
 }

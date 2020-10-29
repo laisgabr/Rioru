@@ -6,10 +6,15 @@ module.exports = class BassBoostCommand extends Command {
             name: '',
             aliases: [],
             description: '',
-            category: ''
+            category: '',
+            voiceChannelOnly: true, 
+            playerOnly: true,
+            queueOnly: true
         })
     }
     run(message, args, t) {
-        
+        const player = this.client.music.players.get(message.guild.id)
+
+        player.setBassboost(!player.setBassboost())
     }
 }

@@ -3,10 +3,10 @@ const Command = require('../../Util/Command');
 module.exports = class LanguageCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
-            aliases: [],
+            name: 'locale',
+            aliases: ['language'],
             description: '',
-            category: ''
+            category: 'Utils'
         })
     }
     async run(message, args, t) {

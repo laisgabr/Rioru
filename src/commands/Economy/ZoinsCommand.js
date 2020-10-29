@@ -9,7 +9,15 @@ module.exports = class ZoinsCommand extends Command {
             category: 'Economy'
         })
     }
-    run(message, args, t) {
-        message.channel.send('Em produção....')
+   async run(message, args, t) {
+       const user = message.mentions.users.first() || this.client.users.cache.get(args[0]) || message.author
+        
+       const db = await this.client.database.UserSchema.findOne({ '_id': user.id })
+       
+       const zoins = db.zoins
+       
+    if(user.id === message.author.id) {
+        message.channel.send(t())
     }
+ }
 }

@@ -10,6 +10,7 @@ module.exports = class ClearAllEffectsCommand extends Command {
         })
     }
     run(message, args, t) {
-        
+        const player = this.client.music.players.get(message.guild.id)
+        player.clearEffects()
     }
 }

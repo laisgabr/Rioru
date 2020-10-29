@@ -21,5 +21,6 @@ module.exports = new Schema({
     logsChannelId: { type: String, default: "null" },
 
     levelSystemStats: { type: Boolean, default: false },
-    levelUpText: { type: String, default: "Parabéns {user}, Você subiu para o Level {level}!" }
+    levelUpText: { type: String, default: "Parabéns {user}, Você subiu para o Level {level}!" },
+    levelUpChat: { type: String, default: 'null' }
 })

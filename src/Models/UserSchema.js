@@ -4,7 +4,7 @@ module.exports = new Schema({
     _id: { type: String },
     blacklisted: { type: Boolean, default: false },
     afk: { type: Boolean, default: false },
-    zoeins: { type: Number, default: 0 },
+    zoins: { type: Number, default: 0 },
     lastDaily: { type: String, default: "0" },
     marryStats: { type: Boolean, default: false },
     marryWith: { type: String },

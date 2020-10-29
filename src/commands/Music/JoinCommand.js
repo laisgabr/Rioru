@@ -6,7 +6,8 @@ module.exports = class JoinCommand extends Command {
             name: 'join',
             aliases: [],
             description: '',
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true
         })
     }
     run(message, args, t) {
@@ -16,5 +17,7 @@ module.exports = class JoinCommand extends Command {
             textChannel: message.channel.id,
             selfDeafen: true
         });
+        
+        player.connect()
     }
 }
