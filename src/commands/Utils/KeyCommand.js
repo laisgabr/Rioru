@@ -4,7 +4,9 @@ module.exports = class KeyCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'key',
-            aliases: []
+            aliases: [],
+            description: '',
+            category: ''
         })
     }
    async run (message, args, t) {
@@ -17,5 +19,11 @@ module.exports = class KeyCommand extends Command {
         if(!db) {
             return message.channel.send('Essa Key não existe!')
         }
+        
+        const dbb = await this.client.database.UserSchema.findOne({ '_id': message.author.id })
+        dbb.premiumStats = true
+        dbb.save()
+
+        message.channel.send('Premium ativado com sucesso')
     }
 }

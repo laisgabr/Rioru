@@ -10,6 +10,6 @@ module.exports = class LeaveCommand extends Command {
         })
     }
     run(message, args, t) {
-        
+        message.react('')
     }
 }

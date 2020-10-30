@@ -6,7 +6,7 @@ module.exports = class LoopCommand extends Command {
             name: '',
             aliases: [],
             description: '',
-            category: ''
+            category: 'Music'
         })
     }
     run(message, args, t) {

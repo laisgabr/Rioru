@@ -37,8 +37,6 @@ module.exports = class ZoeClient extends Client {
             } 
         })
 
-        this.emojis = require('./API/connectEmoji')
-
         this.database = connect(this.settings.database, { useNewUrlParser: true, useUnifiedTopology: true }, e => {
           if(e) return console.log(' | ' + chalk.red.bold('[ MONGOOSE ]  ') + `Um erro ocorreu!, ${e}`)
           console.log(" | " + `${chalk.rgb(94, 209, 113).bold('[ MONGOOSE ] ')} - Conexão com o MongoDB feita com sucesso`)
