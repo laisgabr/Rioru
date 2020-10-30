@@ -5,8 +5,6 @@ const request = require("request")
 const moment = require("moment")
 require("moment-duration-format")
 
-const Command = require('../../Util/Command')
-
 module.exports = class McServerCommand extends Command {
     constructor(client) {
         super(client, {
