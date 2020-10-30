@@ -44,7 +44,6 @@ module.exports = class ZoeClient extends Client {
         this.database = {
             UserSchema: model("UserSchema", require('./Models/UserSchema')),
             GuildSchema: model("GuildSchema", require(`./Models/GuildSchema`)),
-            XPSchema: model("XPSchema", require('./Models/XPSchema')),
             KeySchema: model("KeySchema", require('./Models/KeySchema'))
         }
         return this
