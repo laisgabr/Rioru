@@ -72,7 +72,7 @@ module.exports = class MessageEvent {
                     return;
                 }
             }
-            cmd.run(message, args, t, getEmoji)
+            cmd.run(message, args, t)
         })
     }
 }
