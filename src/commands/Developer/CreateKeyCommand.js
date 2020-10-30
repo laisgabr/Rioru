@@ -22,7 +22,7 @@ module.exports = class CreateKeyCommand extends Command {
 
     let key;
 
-    for(let i = 0; i < 4; i++) key += array[Math.floor(Math.random() * array.length)]
+    for(let i = 0; i < 16; i++) key += array[Math.floor(Math.random() * array.length)]
     key.replace('undefined', '')
         
         this.client.database.KeySchema.create({ '_id': key })

@@ -21,7 +21,8 @@ module.exports = class KeyCommand extends Command {
         }
         
         const dbb = await this.client.database.UserSchema.findOne({ '_id': message.author.id })
-        dbb.premiumStats = true
+        
+        dbb.premiumStats = true;
         dbb.save()
 
         message.channel.send('Premium ativado com sucesso')
