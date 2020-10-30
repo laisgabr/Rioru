@@ -3,7 +3,7 @@ const config = require('./config')
 
 const Zoe = new ZoeFileStart(config, { disableEveryone: true, fetchAllMembers: true })
 
-Zoe.loadCommands('./src/Commands')
+Zoe.loadCommands('./src/commands')
 
 setTimeout(() => {
 Zoe.loadEvents('./src/Events/Client')
