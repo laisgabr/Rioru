@@ -15,18 +15,18 @@ module.exports = class ZoeClient extends Client {
         
         this.token = options.token
 
-        this.emojis = {
-            sucess: options.sucess,
-            error: options.error
-        }
-
         this.settings = {
             owners: options.owners,
             nodes: options.nodes,
             database: options.database,
             fortniteKey: options.fortniteKey,
             spotifyClientId: options.spotifyClientId,
-            spotifyClientSecret: options.spotifyClientSecret
+            spotifyClientSecret: options.spotifyClientSecret,
+            
+            emojis = {
+                sucess: options.sucess,
+                error: options.error
+            }
         }
 
         this.commands = new Collection()
