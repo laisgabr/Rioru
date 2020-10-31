@@ -16,8 +16,8 @@ module.exports = class ZoeClient extends Client {
         this.token = options.token
 
         this.emojis = {
-            sucess: options.emojis.sucess,
-            error: options.emojis.error
+            sucess: options.sucess,
+            error: options.error
         }
 
         this.settings = {
