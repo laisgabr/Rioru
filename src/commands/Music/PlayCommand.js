@@ -6,7 +6,7 @@ module.exports = class PlayCommand extends Command {
             name: 'play',
             aliases: ['p'],
             description: '',
-            category: ''
+            category: 'Music'
         })
     }
    async run(message, args, t) {
@@ -53,7 +53,7 @@ module.exports = class PlayCommand extends Command {
               player.connect();
               player.queue.add(track)
     
-              message.channel.send(t('commands:MusicCommand.PlayCommand.AddedFileMusic', { trackTitle: track.title, sucess: emj.sucess })).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
+              message.channel.send(t('commands:MusicCommand.PlayCommand.AddedFileMusic', { trackTitle: track.title, sucess: this.client.settings.emojis.sucess })).then(msg => { if (msg.deletable) msg.delete({ timeout: 7000 }) });
               
           if (!player.playing && !player.paused && !player.queue.length)
           player.play();
@@ -66,14 +66,13 @@ module.exports = class PlayCommand extends Command {
           player.play();
             }
     
-                
           });
     
           collector.on("end", (_, reason) => {
             if (["time", "canceled"].includes(reason)) return message.channel.send(t('commands:MusicCommand.PlayCommand.CancelSelect', { sucess: emj.sucess }))
           });
           break;
-              }
+            }
            
          })
     }
