@@ -10,8 +10,8 @@ module.exports = class JoinCommand extends Command {
             voiceChannelOnly: true
         })
     }
-    run(message, args, t) {
-        const player = this.client.music.create({
+   async run(message, args, t) {
+        const player = await this.client.music.create({
             guild: message.guild.id,
             voiceChannel: message.member.voice.channel.id,
             textChannel: message.channel.id,

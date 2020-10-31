@@ -12,12 +12,13 @@ module.exports = class PlayCommand extends Command {
    async run(message, args, t) {
     const { MessageEmbed } = require('discord.js')
 
-    const player = this.client.music.create({
+    const player = await this.client.music.create({
         guild: message.guild.id,
         voiceChannel: message.member.voice.channel.id,
         textChannel: message.channel.id,
         selfDeafen: true
-    });    
+    });  
+    player.connect()  
 
         this.client.music.search(
             args.join(' '),
