@@ -12,11 +12,14 @@ module.exports = class MessageEvent {
         if(message.author.bot) return;
 
         const guild = await this.client.database.GuildSchema.findOne({ '_id': message.guild.id})
+        
+        let prefix = guild.prefix 
+
         if(!guild) {
+            prefix = "z!"
             await this.client.database.GuildSchema.create({ '_id': message.guild.id })
         }
-
-        const prefix = guild.prefix || "z!"
+        
         if (!message.content.startsWith(prefix)) return;
         let args = message.content.slice(prefix.length).trim().split(" ")
 
@@ -69,7 +72,7 @@ module.exports = class MessageEvent {
             
             if(cmd.config.queueOnly === true) {
                 if(player.queue.size === 0) {
-                    return;
+                    return message.channel.send('Eu não tenho nada na Lista de Reprodução desse Servidor')
                 }
             }
             cmd.run(message, args, t)

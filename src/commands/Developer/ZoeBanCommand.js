@@ -9,6 +9,6 @@ module.exports = class ZoeBanCommand extends Command {
         })
     }
     run(message, args, t) {
-        console.log('a')
+        
     }
 }

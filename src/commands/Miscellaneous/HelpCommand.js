@@ -10,10 +10,9 @@ module.exports = class HelpCommand extends Command {
         })
     }
     run(message, args, t) {
-        const { MessageEmbed } = require('discord.js');
+    const { MessageEmbed } = require('discord.js');
 
-    const commands = this.client.commands.filter(({ hide, Developer }) => !hide && !Developer)
-    const commandPerCategory = (category) => commands.filter(cmd => cmd.category === category)
+    const commandPerCategory = (category) => this.client.commands.filter(cmd => cmd.category === category)
     const mapCommand = (command) => `\`${command.name}\``
 
 
@@ -40,7 +39,7 @@ module.exports = class HelpCommand extends Command {
   🛠️ | ${t('commands:Help.embedDescriptionUtils')} [${commandPerCategory('Miscellaneous').size}]
   ${commandPerCategory('Miscellaneous').map(mapCommand).join(', ')}
 `)
-      .setFooter(`${t('commands:solicitado')} ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
+      .setFooter(`${message.author.username}`, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
       message.channel.send(EmbedAjuda)
     }
 }

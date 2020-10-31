@@ -11,6 +11,7 @@ module.exports = class NightcoreCommand extends Command {
     }
     run(message, args, t) {
         const player = this.client.music.players.get(message.guild.id)
-        player.setNightcore()
+        
+        player.setNightcore(!player.setNightcore())
     }
 }

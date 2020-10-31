@@ -14,6 +14,12 @@ module.exports = class ZoeClient extends Client {
         super(options)
         
         this.token = options.token
+
+        this.emojis = {
+            sucess: options.emojis.sucess,
+            error: options.emojis.error
+        }
+
         this.settings = {
             owners: options.owners,
             nodes: options.nodes,
@@ -29,6 +35,7 @@ module.exports = class ZoeClient extends Client {
         const nodes = this.settings.nodes
 
         this.music = new Manager({
+            plugins: [],
             nodes,
             autoPlay: true,
             send: (id, payload) => {

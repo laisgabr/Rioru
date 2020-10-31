@@ -32,7 +32,7 @@ module.exports = class PlayCommand extends Command {
                         .setAuthor(t('commands:MusicCommand.PlayCommand.SelectionMusic'), message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
                         .setDescription(tracks.map(video => `**${index++} -** \`${video.title}\`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                      `))
-                        .setFooter(t('errors:MusicCommand.PlayCommand.TempDefined', { error: emj.error }))
+                        .setFooter(t('errors:MusicCommand.PlayCommand.TempDefined', { error: this.client.emojis.error }))
     
                     const deleteEmbed = await message.channel.send(embed)
     

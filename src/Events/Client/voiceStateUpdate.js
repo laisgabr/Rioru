@@ -2,9 +2,14 @@ module.exports = class VoiceStateUpdateEvent {
   constructor (client) {
       this.client = client
   }
-  run(oldState, newState) {
+ async run(oldState, newState) {
       const guild = oldState.guild || newState.guild;
       if(!guild) return;
+
+      const mongo = await this.client.database.GuildSchema.findOne({ '_id': guild.id })
+      if(!mongo) {
+        this.client.database.GuildSchema.create({ '_id': guild.id })
+      }
 
       const player = this.client.music.players.get((oldState || newState).guild.id)
       
