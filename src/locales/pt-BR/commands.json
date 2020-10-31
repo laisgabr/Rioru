@@ -22,15 +22,15 @@
     "MusicCommand" : {
         "PlayCommand": {
             "SelectionMusic": "Escolha uma Música.",
-            "AddedFileMusic": "{{sucess}} A música ||{{trackTitle}}|| foi __Adicionada__ na **Lista de Reprodução** com sucesso.",
-            "CancelSelect": "{{sucess}}  A **Seleção** de __**Música**__, foi __cancelada__ com sucesso.",
-            "CurrentMusic": "{{sucess}} Tocando Agora: ||[{{MusicTitle}}]({{MusicURL}})||",
+            "AddedFileMusic": "{{sucess}} | A música {{trackTitle}} foi __Adicionada__ na **Lista de Reprodução** com sucesso.",
+            "CancelSelect": "{{sucess}} |  A **Seleção** de __**Música**__, foi __cancelada__ com sucesso.",
+            "CurrentMusic": "{{sucess}} | Tocando Agora: [{{MusicTitle}}]({{MusicURL}})",
             "ListReprodution": "{{guildName}} - Reproduções"
         }
     },
 
     "AvatarCommand": {
-        "Resposne": ":frame_photo: Avatar de **[{{UserName}}]({{UserAvatar}})**"
+        "Response": ":frame_photo: Avatar de **[{{UserName}}]({{UserAvatar}})**"
     },
 
     "RemindCommand": {
