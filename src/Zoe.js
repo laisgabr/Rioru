@@ -22,8 +22,8 @@ module.exports = class ZoeClient extends Client {
             fortniteKey: options.fortniteKey,
             spotifyClientId: options.spotifyClientId,
             spotifyClientSecret: options.spotifyClientSecret,
-            
-            emojis = {
+
+            emojis: {
                 sucess: options.sucess,
                 error: options.error
             }
