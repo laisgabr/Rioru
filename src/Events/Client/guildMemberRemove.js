@@ -3,7 +3,7 @@ module.exports = class GuildMemberRemoveEvent {
         this.client = client
     }
 
-    run(member) {
+   async run(member) {
         const db = await this.client.database.GuildSchema.findOne({ '_id': member.guild.id })
 
         if(!db) {
