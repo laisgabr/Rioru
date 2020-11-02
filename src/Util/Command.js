@@ -20,4 +20,28 @@ module.exports = class Command {
             nsfwChannelOnly: options.nsfwChannelOnly || false
         }
     }
+
+    getResponseURL(endpoint) {
+        if(typeof endpoint !== 'string') throw new RangeError('Command#getResponseURL() can only String')
+        const superagent = require('superagent')
+
+        superagent.get(endpoint)
+        .end((err, response) => {
+            if(err) return err;
+            return response.body.url
+        })
+    }
+
+    getResponseMessageURL(url, typeQuery) {
+        if(typeof url !== 'string') throw new RangeError('Command#getResponseMessageURL() url can only String')
+        if(typeof typeQuery !== 'string') throw new RangeError('Command#getResponseMessageURL() typeQuery can only String')
+
+        const superagent = require('superagent')
+        superagent.get(url)
+        .query({ type: typeQuery })
+        .end((err, response) => {
+            if(err) return err;
+            return response.body.message
+        })
+    }
 }

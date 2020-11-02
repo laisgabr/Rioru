@@ -1,0 +1,49 @@
+loadCommands (path) {
+       console.log(' | [ COMMANDS ]  Start load Commands, Wait...')  
+        readdir(path, (err, f) => {
+            if (err) return console.error(chalk.red.bold(' | [ COMMANDS ]  ' + err))
+            f.forEach(category => {
+                readdir(`./${path}/${category}`, (err, cmd) => {
+                    cmd.forEach(cmd => {
+                       if(err) return console.error(chalk.red.bold(' | [ COMMANDS ]  ' + err))
+                        const Command = require(`.${path}/${category}/${cmd}`)
+                        delete require.cache[require.resolve(`.${path}/${category}/${cmd}`)]
+                        const command = new Command(this)
+                        this.commands.set(command.config.name, command)
+                        command.config.aliases.forEach(aliases => this.aliases.set(aliases, command.config.name))
+                        console.log(' | ' + chalk.rgb(94, 209, 113).bold('[ COMMANDS ]  ') + cmd.replace('.js', '') + ' - Command Loaded with Sucess')
+                    })
+                })
+            })
+        })
+    }
+
+    loadEvents (path) {
+        readdir(path, (err, f) => {
+            if (err) return console.error(chalk.red.bold(' | [ CLIENT EVENTS ]  ' + err))
+            f.forEach(events => {
+                const Event = require(`../${path}/${events}`)
+                delete require.cache[require.resolve(`../${path}/${events}`)]
+                const event = new Event(this)
+                super.on(events.split(".")[0], (...args) => event.run(...args))
+                console.log(' | ' + chalk.rgb(94, 209, 113).bold('[ CLIENT EVENTS ]  ') + events.replace('.js', '') + ' | Discord Event Loaded with Sucess')
+            })
+        })
+
+        return this
+    }
+
+    loadLavalinkEvents (path) {
+        readdir(path, (err, f) => {
+            if (err) return console.error(chalk.red.bold(' | [ LAVALINK EVENTS ]  ' + err))
+            f.forEach(events => {
+                const Event = require(`../${path}/${events}`)
+                delete require.cache[require.resolve(`../${path}/${events}`)]
+                const event = new Event(this)
+                this.music.on(events.split(".")[0], (...args) => event.run(...args))
+                console.log(' | ' + chalk.rgb(94, 209, 113).bold('[ LAVALINK EVENTS ]  ') + events.replace('.js', '') + ' | Lavalink Event Loaded with Sucess')
+            })
+        })
+
+        return this
+    }
