@@ -1,10 +1,11 @@
 const { Client, Collection } = require("discord.js")
+const { ZoeManager } = require('./Music')
+
 const Database = require('./Database/MongoDB')
 const Emojis = require('./Util/Emojis')
-const { ZoeManager } = require('./Util')
-
 const Loaders = require('./Loaders')
-require('./Util/Music/ZoePlayer')
+
+require('./Music/ZoePlayer')
 
 module.exports = class ZoeClient extends Client {
     constructor(options = {}) {

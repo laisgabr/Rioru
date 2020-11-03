@@ -56,25 +56,26 @@ module.exports = class MessageEvent {
             
             }
     
-            if (cmd.config.onlyDevs === true) {
-               if(!this.client.settings.owners.includes(message.author.id)) {
-                   return message.channel.send('Sem permissão')
-               }
+            if (cmd.config.onlyDevs === true && !this.client.settings.owners.includes(message.author.id)) {
+                return message.channel.send('Sem permissão')
             }
 
             const player = this.client.music.players.get(message.guild.id)
 
             if(cmd.config.voiceChannelOnly === true) {
-                if(!message.member.voice.channel) {
-                    return message.channel.send('Você precisa estar num canal de voz')
-                }
+                if(!message.member.voice.channel) return message.channel.send('Você precisa estar num canal de voz');
+                if(message.member.voice.channel.id !== player.voiceChannel) return message.channel.send('Você precisa estar no mesmo canal que eu')
             }
             
-            if(cmd.config.queueOnly === true) {
-                if(player.queue.size === 0) {
-                    return message.channel.send('Eu não tenho nada na Lista de Reprodução desse Servidor')
-                }
+            if(cmd.config.queueOnly === true && player.queue.size === 0) {
+                return message.channel.send('Eu não tenho nada na Lista de Reprodução desse Servidor')    
             }
+
+            if(cmd.config.nsfwChannelOnly === true && message.channel.nsfw === false) {
+                return message.channel.send(':underage: | Permitido apenas em NSFW Channel',  { files: [{ attachment: './src/Assets/NSFW.gif', name: 'NotSafeForWork.gif' }] })
+            }
+
+
             cmd.run(message, args, t)
         })
     }

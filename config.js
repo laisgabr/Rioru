@@ -24,9 +24,5 @@ module.exports = {
     
     database: process.env.MONGO_URI,
     
-    fortniteKey: process.env.FORTNITE_KEY,
-    
-    spotifyClientId: process.env.CLIENT_ID_SPOTIFY,
-    
-    spotifyClientSecret: process.env.CLIENT_SECRET_SPOTIFY
+    fortniteKey: process.env.FORTNITE_KEY
 }
