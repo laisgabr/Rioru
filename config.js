@@ -1,16 +1,17 @@
 const { config } = require('dotenv')
+
 config({
    path: __dirname + "/.env"
-});
+})
 
-// const { Intents } = require('discord.js')
+const { Intents } = require('discord.js')
 
 module.exports = {
     disableEveryone: true,
     
     fetchAllMembers: true,
    
-    // ws: { intents: Intents.ALL },
+    ws: { intents: Intents.ALL },
     
     sucess: '<:checkSweet:757016162633646211>',
     

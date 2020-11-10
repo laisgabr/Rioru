@@ -10,6 +10,8 @@ module.exports = class LeaveCommand extends Command {
         })
     }
     run(message, args, t) {
-        message.react('')
+        message.react('👋')
+        
+        this.client.players.get(message.guild.id).destroy()
     }
 }

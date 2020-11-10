@@ -10,7 +10,7 @@ module.exports = class Emojis {
             playing: 'null'
         }
 
-        const emoji = emojis.find(name)
+        const emoji = emojis[name]
         if(!emoji) throw new RangeError('Not exists any emoji with name: ' + name)
 
         return emoji

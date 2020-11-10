@@ -5,7 +5,6 @@ module.exports = class ZoeStatusCommand extends Command {
         super(client, {
             name: 'zoestatus',
             aliases: ['status'],
-            description: 'q',
             category: 'ZoeRoom'
         })
     }

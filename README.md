@@ -1,8 +1,8 @@
 # Zoe Repository
-![IMAGE](https://cdn.discordapp.com/avatars/711341613930250330/98746a40f59eae76391a5a4ba9691588.png?size=2048)
+<!-- ![IMAGE](url) --> 
 <br><br>
 
-Meu nome é Zoe e sou uma Bot Discord feita em JavaScript
+Meu nome é Zoe e sou uma Bot Discord feita em JavaScript.
 <br><br>Fui criada na intenção de você não ter que adicionar dezenas de bots para ter dezenas de funcionalidades.
 <br>
 

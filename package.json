@@ -1,6 +1,6 @@
 {
   "name": "zoe",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "An a simple discord bot for help you on a day a day",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "common-tags": "^1.8.0",
     "discord.js": "^12.4.1",
     "dotenv": "^8.2.0",
-    "erela.js": "^2.0.1",
+    "erela.js": "^2.2.0",
     "erela.js-spotify": "^1.0.2",
     "fortnite.js": "^2.1.4",
     "i18next": "^19.8.2",

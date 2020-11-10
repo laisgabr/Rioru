@@ -19,6 +19,7 @@ module.exports = class AddZoeinsCommand extends Command {
 
         const db = await this.client.database.UserSchema.findOne({ '_id': user.id })
 
-        
+        db.zoins = db.zoins + Number(args[0])
+        db.save()
     }
 }

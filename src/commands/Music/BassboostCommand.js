@@ -14,7 +14,16 @@ module.exports = class BassBoostCommand extends Command {
     }
     run(message, args, t) {
         const player = this.client.music.players.get(message.guild.id)
+        let msg = ''
 
-        player.setBassboost(!player.setBassboost())  
+        if(player.setBassboost() === true) {
+            player.setBassboost(false) 
+            msg = "Desativando o Bassboost" 
+        } else {
+            player.setBassboost(true)
+            msg = "Ativando o Bassboost"
+        }
+
+        message.channel.send(msg)
     }
 }

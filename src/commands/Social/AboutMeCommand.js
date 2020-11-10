@@ -3,9 +3,9 @@ const Command = require('../../Util/Command');
 module.exports = class AboutMeCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
-            aliases: [],
-            description: '',
+            name: 'aboutme',
+            aliases: ['sobremim'],
+            description: 'Muda o sobremim do seu Profile',
             category: ''
         })
     }

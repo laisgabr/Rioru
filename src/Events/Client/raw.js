@@ -3,7 +3,7 @@ module.exports = class RawEvent {
         this.client = client
     }
 
-    async run(d) {
+    run(d) {
         this.client.music.updateVoiceState(d)
     }
 }

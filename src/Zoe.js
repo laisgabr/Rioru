@@ -1,8 +1,9 @@
 const { Client, Collection } = require("discord.js")
 const { ZoeManager } = require('./Music')
+const { Emojis } = require('./Util')
+const { Nsfw } = require('./APIs')
 
 const Database = require('./Database/MongoDB')
-const Emojis = require('./Util/Emojis')
 const Loaders = require('./Loaders')
 
 require('./Music/ZoePlayer')
@@ -42,8 +43,9 @@ module.exports = class ZoeClient extends Client {
               if (guild) guild.shard.send(payload);
             } 
         })
-
         this.database = new Database(this)
+
+        this.nsfw = new Nsfw(this)
     }
  
    async initialize() {
@@ -61,4 +63,9 @@ module.exports = class ZoeClient extends Client {
         return this
         }, 2000)
     }
+
+   startDashboard() {
+    require('./Dashboard/app')
+    console.log(' | ' + '[ DASHBOARD/SITE ] Está ligando ....')
+   } 
 }
