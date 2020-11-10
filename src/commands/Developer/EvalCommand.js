@@ -17,11 +17,11 @@ module.exports = class EvalCommand extends Command {
         try {
             let output = eval(input)
 
-            if(this.client.token.includes(output)) return message.channel.send(':thumbsup:')
-
             if (typeof output !== "string") output = inspect(output)
 
             if (output.size > 1950) output = output.substr(0, 1950)
+
+            if(this.client.token.includes(output)) return message.channel.send(':thumbsup:')
 
             message.channel.send(`**Saida:**\n\`\`\`js\n${output}\n\`\`\``)
         } catch (error) {

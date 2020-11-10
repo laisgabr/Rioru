@@ -33,10 +33,10 @@ module.exports = class MessageEvent {
         
         i18next.use(translationBackend).init({
             ns: ['commands', 'errors', 'permissions'],
-            preload: await readdirSync('./src/Locales'),
+            preload: await readdirSync('./src/locales'),
             fallbackLng: 'pt-BR',
             backend: {
-                loadPath: `./src/Locales/{{lng}}/{{ns}}.json`
+                loadPath: `./src/locales/{{lng}}/{{ns}}.json`
             },
             interpolation: {
                 escapeValue: false

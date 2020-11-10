@@ -20,12 +20,12 @@ module.exports = class CommandLoader extends Loader {
             if (err) return console.error(chalk.red.bold(' | [ COMMANDS ]  ' + err))
             
             f.forEach(category => {
-                readdir(`./src/Commands/${category}`, (err, cmd) => {
+                readdir(`./src/commands/${category}`, (err, cmd) => {
                     cmd.forEach(cmd => {
                         if(err) return console.error(chalk.red.bold(' | [ COMMANDS ]  ' + err))
                         
-                        const Command = require(`../Commands/${category}/${cmd}`)
-                        delete require.cache[require.resolve(`../Commands/${category}/${cmd}`)]
+                        const Command = require(`../commands/${category}/${cmd}`)
+                        delete require.cache[require.resolve(`../commands/${category}/${cmd}`)]
                         
                         const command = new Command(this)
                         this.client.commands.set(command.config.name, command)

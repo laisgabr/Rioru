@@ -18,8 +18,7 @@ module.exports = class HelpCommand extends Command {
 
     const EmbedAjuda = new MessageEmbed()
       .setTitle(t('commands:Help.embedTitle'))
-      .setColor("PINK")
-      .setThumbnail(this.client.user.displayAvatarURL({ format: "png", dynamic: true }))
+      .setThumbnail(this.client.user.displayAvatarURL({ format: "png" }))
       .setDescription(`
    👥 | ${t('commands:Help.embedDescriptionAdmin')} [${commandPerCategory('Admin').size}]
    ${commandPerCategory('Admin').map(mapCommand).join(', ')}

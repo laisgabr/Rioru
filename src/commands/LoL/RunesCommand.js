@@ -1,12 +1,12 @@
 const Command = require('../../Util/Command');
 
-module.exports = class NomeDoCmdCommand extends Command {
+module.exports = class RunesCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
-            aliases: [],
-            description: '',
-            category: ''
+            name: 'runes',
+            aliases: ['runas'],
+            description: 'Mostra as Runas do LoL',
+            category: 'Lol'
         })
     }
     run(message, args, t) {

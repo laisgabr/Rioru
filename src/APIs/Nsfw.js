@@ -22,6 +22,8 @@ module.exports = class Nsfw {
 
         const number = addZerosEsquerda(valor)
         const string = `www.porngif.top/gif/zadky/${number}.gif`
+
+        return string
     }
 
     getPussy() {

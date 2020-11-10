@@ -10,7 +10,7 @@ module.exports = class HeadPatCommand extends Command {
         })
     }
     run(message, args, t) {
-        const Discord = require('discord.js')
+    const { ZoeEmbed } = require('../../Util')
     const superagent = require('superagent')
 
    const uuser = message.mentions.users.first() || this.client.users.cache.get(args[0]) || message.guild.members.cache.find(mem => mem.user.username === args.join(' '))
@@ -19,11 +19,9 @@ module.exports = class HeadPatCommand extends Command {
 
     superagent.get('https://nekos.life/api/v2/img/pat')
     .end((err, response) => {
-        const embed = new Discord.MessageEmbed()
+        const embed = new ZoeEmbed()
         .setDescription(`${message.author} fez um cafuné em ${uuser}`)
         .setImage(response.body.url)
-        .setColor('RANDOM')
-        .setFooter(message.author.username, message.author.displayAvatarURL({ dynamic: true, size: 2048 }))
         message.channel.send(embed)
     })
     }

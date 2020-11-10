@@ -7,7 +7,7 @@ module.exports = class GuildDeleteEvent {
         const guildDb = await this.client.database.GuildSchema.findOne({ '_id': guild.id })
         
         if(guildDb) {
-            await this.client.database.GuildSchema.delete({ '_id': guild.id })
+            await this.client.database.GuildSchema.remove({ '_id': guild.id })
         } else {
             return;
         }
