@@ -64,8 +64,4 @@ module.exports = class ZoeClient extends Client {
         }, 2000)
     }
 
-   startDashboard() {
-    require('./Dashboard/app')
-    console.log(' | ' + '[ DASHBOARD/SITE ] Está ligando ....')
-   } 
 }

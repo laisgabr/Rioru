@@ -64,8 +64,11 @@ module.exports = class MessageEvent {
 
             if(cmd.config.voiceChannelOnly === true) {
                 if(!message.member.voice.channel) return message.channel.send('Você precisa estar num canal de voz');
-                if(message.member.voice.channel.id !== player.voiceChannel) return message.channel.send('Você precisa estar no mesmo canal que eu')
+                
+                if(player && message.member.voice.channel.id !== player.voiceChannel) return message.channel.send('Você precisa estar no mesmo canal que eu')
             }
+
+            if(cmd.config.playerOnly === true && !player) return message.channel.send('Não estou em um canal de voz')
             
             if(cmd.config.queueOnly === true && player.queue.size === 0) {
                 return message.channel.send('Eu não tenho nada na Lista de Reprodução desse Servidor')    

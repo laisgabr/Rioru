@@ -4,8 +4,8 @@ module.exports = class JoinCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'join',
-            aliases: [],
-            description: '',
+            aliases: ['entrar'],
+            description: 'Quer que eu entre no canal de voz ? Use isso',
             category: 'Music',
             voiceChannelOnly: true
         })

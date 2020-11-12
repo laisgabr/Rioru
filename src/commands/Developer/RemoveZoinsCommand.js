@@ -5,10 +5,11 @@ module.exports = class RemoveZoeinsCommand extends Command {
         super(client, {
             name: 'removezoins',
             aliases: ['removerzoins'],
-            category: 'Developer'
+            category: 'Developer',
+            onlyDevs: true
         })
     }
-    run(message, args, t) {
+   async run(message, args, t) {
         const user = message.mentions.users.first() || this.client.users.cache.get(args[0])
 
         const numberCoins = args[1]

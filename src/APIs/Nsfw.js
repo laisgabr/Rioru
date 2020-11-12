@@ -37,6 +37,6 @@ module.exports = class Nsfw {
          
        const string = "www.porngif.top/gif/kundicky/" + number + ".gif"
 
-       return string
+       return string 
     }
 }

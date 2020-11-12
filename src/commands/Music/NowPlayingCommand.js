@@ -5,10 +5,13 @@ moment.locale('pt-BR')
 module.exports = class NowPlayingCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
-            aliases: [],
-            description: '',
-            category: ''
+            name: 'nowplaying',
+            aliases: ['np'],
+            description: 'Veja a música que está tocando agora',
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            queueOnly: true
         })
     }
    async run(message, args, t) {

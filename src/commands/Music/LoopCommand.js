@@ -4,9 +4,12 @@ module.exports = class LoopCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'loop',
-            aliases: [],
-            description: '',
-            category: 'Music'
+            aliases: ['lp'],
+            description: 'Loopa a Lista de Reprodução/Música',
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            queueOnly: true
         })
     }
     run(message, args, t) {

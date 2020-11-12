@@ -3,10 +3,13 @@ const Command = require('../../Util/Command');
 module.exports = class NightcoreCommand extends Command {
     constructor(client) {
         super(client, {
-            name: '',
-            aliases: [],
-            description: '',
-            category: ''
+            name: 'nightcore',
+            aliases: ['nc'],
+            description: 'Deixa a música estilo Nightcore',
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            queueOnly: true
         })
     }
     run(message, args, t) {

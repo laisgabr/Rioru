@@ -6,7 +6,10 @@ module.exports = class QueueCommand extends Command {
             name: 'queue',
             aliases: ['q'],
             description: 'Mostra a atual Lista de Reprodução no Servidor',
-            category: 'Music'
+            category: 'Music',
+            voiceChannelOnly: true,
+            playerOnly: true,
+            queueOnly: true
         })
     }
     run(message, args, t) {

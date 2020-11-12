@@ -10,9 +10,10 @@ module.exports = class BoobsCommand extends Command {
     }
     run(message, args, t) {
         const { ZoeEmbed } = require('../../Util')
-        message.channel.send(this.client.nsfw.getBoobs())
+        const gif = this.client.nsfw.getBoobs()
+
         const embed = new ZoeEmbed()
-        .setTitle('AAAAA')
-        message.channel.send(embed)
+
+        message.channel.send(gif)
     }
 }

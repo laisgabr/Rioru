@@ -5,8 +5,9 @@ module.exports = class PlayCommand extends Command {
         super(client, {
             name: 'play',
             aliases: ['p'],
-            description: '',
-            category: 'Music'
+            description: 'Toque uma música em seu servidor',
+            category: 'Music',
+            voiceChannelOnly: true
         })
     }
    async run(message, args, t) {
