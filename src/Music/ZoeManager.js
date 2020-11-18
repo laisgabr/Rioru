@@ -1,7 +1,13 @@
-const { Manager } = require('erela.js')
+const { GorilinkManager } = require('gorilink')
+const { ZoePlayer } = require('../')
 
-module.exports = class ZoeManager extends Manager {
-    constructor(options = {}) {
-        super(options)
+/*
+   Thanks for Gorillas Team for the creation the Gorilink :D
+*/
+
+module.exports = class ZoeManager extends GorilinkManager {
+    constructor(client, nodes, options = {}) {
+        this.Player = ZoePlayer;
+        super(client, nodes, options)
     }
 }

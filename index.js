@@ -1,6 +1,6 @@
-const ZoeFileStart = require('./src/Zoe')
+const ZoeMainFile = require('./src/Zoe')
 const config = require('./config')
+const Zoe = new ZoeMainFile(config)
 
-const Zoe = new ZoeFileStart(config)
-
-Zoe.initialize()
+Zoe.initLoaders()
+Zoe.connect()

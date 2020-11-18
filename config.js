@@ -1,29 +1,23 @@
 const { config } = require('dotenv')
 
 config({
-   path: __dirname + "/.env"
+    path: __dirname + '/.env'
 })
 
-const { Intents } = require('discord.js')
-
 module.exports = {
-    disableEveryone: true,
+    allowedMentions: { everyone: false },
     
-    fetchAllMembers: true,
-   
-    ws: { intents: Intents.ALL },
+    getAllUsers: true, 
     
-    sucess: '<:checkSweet:757016162633646211>',
-    
-    error: '<:xSweet:756989900661850182>',
-    
+    intents: ["guilds", "guildMessages"], 
+
     token: process.env.BOT_TOKEN,
-    
+
     owners: JSON.parse(process.env.OWNERS),
-    
+
     nodes: JSON.parse(process.env.LAVALINK_NODES),
-    
-    database: process.env.MONGO_URI,
-    
-    fortniteKey: process.env.FORTNITE_KEY
+
+    mongo: process.env.MONGO_URI,
+
+    fortnitekey: process.env.FORTNITE_KEY
 }

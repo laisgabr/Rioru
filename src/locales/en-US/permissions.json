@@ -1,6 +1,0 @@
-{
-    "botNotHasPermission": "{{error}} I do not have the permission {{perm}} to do this.",
-    "userNotHasPermission": "{{error}} You do not have the permission {{perm}} to continue",
-
-    "userIsNotAOwner": "{{error}} This command is only available to my owners"
-}
