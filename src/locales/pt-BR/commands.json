@@ -1,3 +1,5 @@
 {
-    "kkk": "kkkkkkk"
+    "PingCmd": {
+        "Sucess": "Latência da API é de {{ping}} ms"
+    }
 }
