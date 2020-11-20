@@ -14,7 +14,7 @@ module.exports = class ZoeEmojis {
         }
         
         const emoji = emojis[name]
-        if(emoji === 'null') throw new Error('This emoji is Null')
+        if(emoji === 'null') throw new RangeError('This emoji is Null')
         if(!emoji) throw new RangeError('Not exists any emoji with name: ' + name)
         
         return emoji

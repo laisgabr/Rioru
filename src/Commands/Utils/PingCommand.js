@@ -13,6 +13,6 @@ module.exports = class PingCommand extends Command {
     }
 
     run(client, msg, args, t) {
-        client.createMessage(msg.channel.id, t('commands:PingCmd.Sucess', { ping: client.shards.get(0).latency }))
+        msg.channel.createMessage(t('Utils:PingCommand.Sucess', { ping: client.shards.get(0).latency }))
     }
 }

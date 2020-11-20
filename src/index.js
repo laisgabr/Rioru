@@ -17,5 +17,7 @@ module.exports = {
     
     CommandLoader: require('./Loaders/CommandLoader'),
     
-    EventsLoader: require('./Loaders/EventLoader')
+    EventsLoader: require('./Loaders/EventLoader'),
+
+    SetServerLocale: require('./Structures/i18n/SetServerLocale')
 }

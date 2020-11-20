@@ -1,4 +1,4 @@
-const { i18, Listener } = require('../../')
+const { i18, Listener, SetServerLocale } = require('../../')
 
 module.exports = class MessageCreateListener extends Listener {
     constructor(client) {
@@ -20,6 +20,10 @@ module.exports = class MessageCreateListener extends Listener {
             prefix = guild.prefix;
         }
         
+        new SetServerLocale(this, msg.channel.guild)
+        
+        if(msg.content === (`<@${this.client.user.id}>` || `<@!${this.client.user.id}>`)) return;
+
         if(!msg.content.startsWith(prefix)) return;
         if(msg.content === prefix) return;
         let args = msg.content.slice(prefix.length).trim().split(" ")
@@ -28,12 +32,12 @@ module.exports = class MessageCreateListener extends Listener {
         let cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command))
         
         const cooldown = this.client.cooldown
-        if (!cmd) return this.client.createMessage(msg.channel.id, `${this.client.clientEmojis.getEmoji('think')} | Não existe nenhum comando com \`${command}\``).then(msg => setTimeout(() => { msg.delete() }, 8500))
+        if (!cmd) return msg.channel.createMessage(`${this.client.clientEmojis.getEmoji('think')} | Não existe nenhum comando com \`${command}\``).then(msg => setTimeout(() => { msg.delete() }, 8500))
         
         if(cooldown.has(msg.author.id)) {
-            return this.client.createMessage(msg.channel.id, 'O tempo de Cooldown desse comando é de ' + cmd.commandSettings.cooldown + ' segundos').then(msg => setTimeout(() => { msg.delete() }, 7500))
+            return msg.channel.createMessage('O tempo de Cooldown desse comando é de ' + cmd.commandSettings.cooldown + ' segundos').then(msg => setTimeout(() => { msg.delete() }, 7500))
         }
-
+        
         new i18(this, guild.locale)
         
         const t = require('../../Structures/i18n/t')

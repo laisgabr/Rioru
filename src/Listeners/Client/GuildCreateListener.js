@@ -8,9 +8,8 @@ module.exports = class GuildCreateListener extends Listener {
     }
     
     async run(guild) {
-        const db = await this.client.database.GuildSchema.findOne({ '_id': guild.id })
-        if(db) {
-            return; 
-        } else this.client.database.GuildSchema.create({ '_id': guild.id })
+        this.client.createMessage('779432421149900830', {
+            
+        })
     }
 }

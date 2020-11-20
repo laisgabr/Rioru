@@ -1,5 +1,0 @@
-{
-    "PingCmd": {
-        "Sucess": "API Latency is {{ping}} ms"
-    }
-}
