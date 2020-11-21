@@ -22,16 +22,9 @@ module.exports = class ZoeClient extends Client {
     this.commands = new Collection()
     this.aliases = new Collection()
     this.cooldown = new Collection()
-    
+    // soon erela.js
     /*
-    this.music = new ZoeManager(this, this.settings.nodes, {
-      sendWS: (data) => {
-        const guild = this.guilds.get(data.d.guild_id)
-        if (!guild) return;
-        
-        return guild.shard.sendWS(data.op, data.d)
-      }
-    })
+    this.music = new ZoeManager(this, this.settings.nodes)
     */
   }
   
