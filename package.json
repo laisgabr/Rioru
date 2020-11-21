@@ -20,6 +20,7 @@
     "@discordjs/collection": "^0.1.6",
     "discord-canvas": "^1.4.1",
     "dotenv": "^8.2.0",
+    "erela.js": "^2.2.0",
     "eris": "^0.14.0",
     "i18next": "^19.8.3",
     "i18next-node-fs-backend": "^2.1.3",

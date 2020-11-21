@@ -1,7 +1,5 @@
 module.exports = {
     Command: require('./Structures/Util/Command'),
-    
-    Loader: require('./Structures/Util/Loader'),
 
     Listener: require('./Structures/Util/Listener'),
     
@@ -14,10 +12,6 @@ module.exports = {
     ZoeManager: require('./Music/ZoeManager'),
 
     ZoePlayer: require('./Music/ZoePlayer'),
-    
-    CommandLoader: require('./Loaders/CommandLoader'),
-    
-    EventsLoader: require('./Loaders/EventLoader'),
 
     SetServerLocale: require('./Structures/i18n/SetServerLocale')
 }

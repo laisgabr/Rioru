@@ -1,4 +1,5 @@
 module.exports = {
     CommandLoader: require('./CommandLoader'),
-    EventsLoader: require('./EventLoader')
+    EventsLoader: require('./EventLoader'),
+    LavalinkLoader: require('./LavalinkLoader')
 }

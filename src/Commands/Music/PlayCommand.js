@@ -17,13 +17,6 @@ module.exports = class PlayCommand extends Command {
 
     if(!memberChannel) return msg.channel.createMessage('precisa estar num canal de voz')
 
-    
-    const player = await client.music.join({
-      guild: msg.guildID,
-      voiceChannel: memberChannel,
-      textChannel: msg.channel
-    })
-
     const { tracks, loadType } = await client.music.fetchTracks(args.join(' '))
 
     switch (loadType) {
@@ -42,6 +35,7 @@ module.exports = class PlayCommand extends Command {
 
         case "NO_MATCHES":
             msg.channel.createMessage(t('Music:PlayCommand.NoMatches'))
+        break;
     }
     }
 }
