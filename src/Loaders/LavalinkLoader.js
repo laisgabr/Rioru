@@ -26,9 +26,10 @@ module.exports = class LavalinkLoader {
                 const listener = new ListenerClass(this.client)
                 
                 console.log(' | [ ' + listener.name + ' ] ' + 'Loaded with sucess')
-                this.client.music.on(listener.name, (...args) => {
+            /*  this.client.music.on(listener.name, (...args) => {
                     listener.run(...args)
                 })
+            */
             })
         });
     }

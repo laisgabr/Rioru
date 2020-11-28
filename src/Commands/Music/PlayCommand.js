@@ -12,30 +12,7 @@ module.exports = class PlayCommand extends Command {
         })
     }
 
-    run(client, msg, args, t) {
-    const memberChannel = msg.member.voiceState.channelID
-
-    if(!memberChannel) return msg.channel.createMessage('precisa estar num canal de voz')
-
-    const { tracks, loadType } = await client.music.fetchTracks(args.join(' '))
-
-    switch (loadType) {
+    execute(client, msg, zoe, args, t) {
     
-        case "SEARCH_RESULT":
-        player.queue.add(tracks[0])
-
-        msg.channel.createMessage('Adicionado na queue ' + tracks[0].title)
-
-        if (!player.playing) return player.play()
-        break;
-
-        case "LOAD_FAILED":
-            msg.channel.createMessage(t('Music:PlayCommand.LoadFailed', {  }))
-        break;
-
-        case "NO_MATCHES":
-            msg.channel.createMessage(t('Music:PlayCommand.NoMatches'))
-        break;
-    }
     }
 }

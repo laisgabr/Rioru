@@ -1,4 +1,4 @@
-const { Command } = require('../../')
+const { Command, ZoeEmbedBuilder } = require('../../')
 
 module.exports = class PingCommand extends Command {
     constructor(client) {
@@ -12,7 +12,11 @@ module.exports = class PingCommand extends Command {
         })
     }
 
-    run(client, msg, args, t) {
-        msg.channel.createMessage(t('Utils:PingCommand.Sucess', { ping: client.shards.get(0).latency }))
+    execute(client, msg, zoe, args, t) {
+        const embed = new ZoeEmbedBuilder(msg.author)
+        embed.setTitle(`aa`)
+        
+        msg.channel.createMessage({ embed: embed })
+     // msg.channel.createMessage(t('Utils:PingCommand.Sucess', { ping: client.shards.get(msg.channel.guild.shard.id).latency }))
     }
 }

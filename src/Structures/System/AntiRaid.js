@@ -1,5 +1,12 @@
 module.exports = class AntiRaid {
-    constructor(user) {
-        
+    constructor(msg, user) {
+    
+        try {
+            msg.channel.guild.roles.get(msg.channel.guild.id)
+        } catch (e) {
+            
+        }
     }
+
+
 }

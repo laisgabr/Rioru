@@ -7,22 +7,18 @@ config({
 module.exports = {
     allowedMentions: { everyone: false },
     
-    getAllUsers: true, 
-    
     intents: [
         "guilds",
         "guildMembers", 
         "guildBans", 
-        "guildEmojis", 
-        "guildIntegrations", 
+        "guildEmojis",  
         "guildWebhooks",  
-        "guildInvites" ,
         "guildVoiceStates", 
         "guildPresences", 
         "guildMessages", 
         "guildMessageReactions",
-        "guildMessageTyping"  ,
-        "directMessages" ,
+        "guildMessageTyping",
+        "directMessages",
         "directMessageReactions",
         "directMessageTyping"
     ], 

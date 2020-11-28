@@ -1,6 +1,6 @@
 {
   "name": "zoe",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "An Simple Discord bot in Eris",
   "main": "index.js",
   "scripts": {

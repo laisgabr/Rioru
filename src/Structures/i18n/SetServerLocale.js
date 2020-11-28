@@ -23,7 +23,7 @@ module.exports = class SetServerLocale {
             
             if(region[guild.region] === 'Brasil') {
                 this.client.database.GuildSchema.findOne({ '_id': guild.id }).then(async function(db) {
-                    if(!db) return this.client.database.GuildSchema.create({ '_id': guild.id })
+                    if(!db) this.client.database.GuildSchema.create({ '_id': guild.id })
                     if(db.locale === 'pt-BR') return;
                     
                     db.locale = 'pt-BR'
@@ -33,7 +33,7 @@ module.exports = class SetServerLocale {
             
             if(!region[guild.region] === 'Brasil') {            
                 this.client.database.GuildSchema.findOne({ '_id': guild.id }).then(async function(db) {
-                    if(!db) return this.client.database.GuildSchema.create({ '_id': guild.id })
+                    if(!db) this.client.database.GuildSchema.create({ '_id': guild.id })
                     
                     if(db.locale === 'en-US') return;
                     

@@ -22,9 +22,11 @@ module.exports = class ZoeClient extends Client {
     this.commands = new Collection()
     this.aliases = new Collection()
     this.cooldown = new Collection()
-    // soon erela.js
+    
     /*
-    this.music = new ZoeManager(this, this.settings.nodes)
+    this.music = new ZoeManager(this, this.settings.nodes, { 
+      
+     })
     */
   }
   

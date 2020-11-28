@@ -8,7 +8,6 @@ module.exports = class extends Listener {
     }
 
     run(packet) {
-       // this.client.music.packetUpdate(packet)
-       
+       // this.client.music.updateVoiceState(packet)
     }
 }

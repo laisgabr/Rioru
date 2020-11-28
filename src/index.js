@@ -1,4 +1,6 @@
 module.exports = {
+    AntiLinks: require('./Structures/System/AntiLinks'),
+
     Command: require('./Structures/Util/Command'),
 
     Listener: require('./Structures/Util/Listener'),
@@ -12,6 +14,10 @@ module.exports = {
     ZoeManager: require('./Music/ZoeManager'),
 
     ZoePlayer: require('./Music/ZoePlayer'),
+
+    ZoeUtils: require('./Structures/Util/ZoeUtils'),
+
+    ZoeEmbedBuilder: require('./Structures/Util/ZoeEmbedBuilder'),
 
     SetServerLocale: require('./Structures/i18n/SetServerLocale')
 }

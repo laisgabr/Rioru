@@ -1,4 +1,4 @@
-const { i18, Listener, SetServerLocale } = require('../../')
+const { i18, Listener, SetServerLocale, ZoeUtils } = require('../../')
 
 module.exports = class MessageCreateListener extends Listener {
     constructor(client) {
@@ -20,7 +20,7 @@ module.exports = class MessageCreateListener extends Listener {
             prefix = guild.prefix;
         }
         
-        new SetServerLocale(this, msg.channel.guild)
+        new SetServerLocale(this.client, msg.channel.guild)
         
         if(msg.content === (`<@${this.client.user.id}>` || `<@!${this.client.user.id}>`)) return;
 
@@ -45,9 +45,11 @@ module.exports = class MessageCreateListener extends Listener {
         const client = this.client
         
         if(!cooldown.has(msg.author.id)) {
-            cmd.run(client, msg, args, t)
-            cooldown.set(msg.author.id)   
+            const zoe = new ZoeUtils(this.client, msg)
+            cmd.execute(client, msg, zoe, args, t) 
             
+            cooldown.set(msg.author.id) 
+              
             setTimeout(() => {
                 cooldown.delete(msg.author.id)
             }, cmd.commandSettings.cooldown * 1000)
