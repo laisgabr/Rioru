@@ -19,5 +19,18 @@ module.exports = {
 
     ZoeEmbedBuilder: require('./Structures/Util/ZoeEmbedBuilder'),
 
-    SetServerLocale: require('./Structures/i18n/SetServerLocale')
+    SetServerLocale: require('./Structures/i18n/SetServerLocale'),
+
+
+
+
+    Utils: require('./Structures/Command/Utils/Utils')
+
+    CommandContext: require('./Structures/Command/CommandContext'),
+
+    CommandRunner: require('./Structures/Command/CommandRunner'),
+
+    CommandOptions: require('./Structures/Command/CommandsOptions'),
+
+    BlacklistChecker: require('./Structures/Command/Utils/BlacklistChecker')
 }

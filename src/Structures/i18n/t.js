@@ -6,13 +6,6 @@ module.exports =  class i18 {
         const translationBackend = require('i18next-node-fs-backend')
         const { readdirSync } = require('fs')
         
-        const e = 'Errors'
-        const m = 'Music'
-        const f = 'Fun'
-        const ev = 'Events'
-        const u = 'Utils'
-        const so = 'Social'
-        
         var t;
         const setFixedT = function(translate) {
             t = translate
@@ -22,7 +15,7 @@ module.exports =  class i18 {
         setFixedT(i18next.getFixedT(language))
         
         i18next.use(translationBackend).init({
-            ns: [e, m, f, ev, u, so],
+            ns: ['commands', 'errors', 'events', 'permissions'],
             preload: readdirSync('./src/Structures/i18n/Locales'),
             fallbackLng: 'pt-BR',
             backend: {

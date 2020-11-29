@@ -6,7 +6,8 @@ module.exports = new Schema({
     blacklist: {
         blacklisted: { type: Boolean, default: false },
         reason: { type: String },
-        time: { type: String }
+        time: { type: String },
+        staff: { type: String }
     },
     
     afk: { type: Boolean, default: false },

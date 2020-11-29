@@ -16,6 +16,6 @@ module.exports = class EvalCommand extends Command {
         if (!this.client.settings.owners.includes(msg.author.id)) return;
 
         let code = args.join(" ");
-        if (!code) return msg.channel.createMessage(this.client.clientEmojis.getEmoji('error') + ` | ${msg.author.mention}, `)
+        if (!code) return msg.channel.createMessage(this.client.clientEmojis.getEmoji('error') + ` | ${msg.author.mention},  `)
     }
 }

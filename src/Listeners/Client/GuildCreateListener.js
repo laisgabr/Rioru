@@ -8,6 +8,7 @@ module.exports = class GuildCreateListener extends Listener {
     }
     
     async run(guild) {
-        this.client.createMessage('779432421149900830', embed)
+
+        this.client.createMessage('779432421149900830')
     }
 }
