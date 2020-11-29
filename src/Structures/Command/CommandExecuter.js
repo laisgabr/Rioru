@@ -3,7 +3,7 @@ module.exports = class CommandExecuter {
         this.client = client;
         this.msg = msg;
 
-        const { Utils, BlacklistChecker, ZoeXP, CommandContext, CommandOptions } = require('../../')
+        const { Utils, BlacklistChecker, CommandContext, CommandOptions } = require('../../')
         
         const ZoeUtils = new Utils()
         

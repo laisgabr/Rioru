@@ -1,13 +1,15 @@
 module.exports = class CommandOptions {
-    constructor(zoe, cmd, msg, guild) {
-        this.zoe = zoe;
+    constructor(client, cmd, msg, t) {
+        this.client = client;
         this.cmd = cmd;
         this.msg = msg;
+        this.t = t;
     }
 
-    contextOptionsLoad() {
-        if(this.cmd.onlyDevs && !this.zoe.settings.owners.includes(this.msg.author.id)) {
-
+    contextLoad() {
+        if(this.cmd.onlyDevs && !this.client.settings.owners.includes(this.msg.author.id)) {
+            return this.msg.channel.createMessage(t())
         }
+
     }
 }

@@ -15,7 +15,7 @@ module.exports =  class i18 {
         setFixedT(i18next.getFixedT(language))
         
         i18next.use(translationBackend).init({
-            ns: ['commands', 'errors', 'events', 'permissions'],
+            ns: ['commands', 'errors', 'events', 'permissions', 'commandoptions'],
             preload: readdirSync('./src/Structures/i18n/Locales'),
             fallbackLng: 'pt-BR',
             backend: {
