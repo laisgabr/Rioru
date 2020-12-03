@@ -8,13 +8,12 @@ module.exports = class EvalCommand extends Command {
             description: 'Executa códigos.',
             usage: '<prefix>eval <code>',
             category: 'developer',
-            cooldown: 5
+            cooldown: 5,
+            onlyDevs: true
         })
     }
 
-    async execute(client, msg, zoe, args, t) {
-        if (!this.client.settings.owners.includes(msg.author.id)) return;
-
+    async execute(client, msg, args, translate) {
         let code = args.join(" ");
         if (!code) return msg.channel.createMessage(this.client.clientEmojis.getEmoji('error') + ` | ${msg.author.mention},  `)
     }

@@ -4,7 +4,9 @@
   "description": "An Simple Discord bot in Eris",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node -r dotenv/config index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "yarn dev"
   },
   "repository": {
     "type": "git",

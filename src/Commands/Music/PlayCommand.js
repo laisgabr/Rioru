@@ -8,11 +8,12 @@ module.exports = class PlayCommand extends Command {
             description: 'Toca a música de sua escolha no canal de voz',
             usage: '<prefix>play <args>',
             category: 'Music',
-            cooldown: 8
+            cooldown: 8,
+            onlyPremium: true
         })
     }
-
-    execute(client, msg, zoe, args, t) {
     
+    execute(client, msg, args, translate) {
+        
     }
 }

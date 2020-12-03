@@ -13,7 +13,7 @@ module.exports = class AntiBots {
         try {
             this.guild.members.filter(c => c.bot).forEach(f => f.kick("AntiBots"))
         } catch (e) {
-
+            
         }
     }
 }

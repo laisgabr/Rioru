@@ -15,11 +15,7 @@ module.exports = class Command {
             voiceChannelOnly: options.voiceChannelOnly || false,
             playerOnly: options.playerOnly || false,
             queueOnly: options.queueOnly || false,
-            playingOnly: options.playingOnly || false,
-            notPlayingOnly: options.notPlayingOnly || false,
-            
-            nsfwChannelOnly: options.nsfwChannelOnly || false
-            
+            playingOnly: options.playingOnly || false
         }
     }
     

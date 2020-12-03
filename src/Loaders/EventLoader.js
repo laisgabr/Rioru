@@ -13,7 +13,7 @@ module.exports = class EventsLoader {
             return false
         }
     }
-
+    
     StartLoadDiscordEvents(dir = resolve(__dirname, '..', 'Listeners', 'Client')) {
         readdir(dir, (err, files) => {
             if(err) console.error(err)

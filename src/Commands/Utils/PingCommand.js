@@ -11,12 +11,12 @@ module.exports = class PingCommand extends Command {
             cooldown: 5
         })
     }
-
-    execute(client, msg, zoe, args, t) {
+    
+    execute(client, msg, args, translate) {
         const embed = new ZoeEmbedBuilder(msg.author)
         embed.setTitle(`aa`)
         
         msg.channel.createMessage({ embed: embed })
-     // msg.channel.createMessage(t('Utils:PingCommand.Sucess', { ping: client.shards.get(msg.channel.guild.shard.id).latency }))
+        // msg.channel.createMessage(t('Utils:PingCommand.Sucess', { ping: client.shards.get(msg.channel.guild.shard.id).latency }))
     }
 }

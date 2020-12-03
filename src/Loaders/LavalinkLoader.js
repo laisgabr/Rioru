@@ -4,7 +4,7 @@ const { resolve } = require('path')
 module.exports = class LavalinkLoader {
     constructor(client) {
         this.client = client;
-
+        
         try {
             this.loadEvents()
             return true
@@ -13,7 +13,7 @@ module.exports = class LavalinkLoader {
             return false
         }
     }
-
+    
     loadEvents(dir = resolve(__dirname, '..', 'Listeners', 'Lavalink')) {
         readdir(dir, (err, files) => {
             if(err) console.error(err)
@@ -26,10 +26,10 @@ module.exports = class LavalinkLoader {
                 const listener = new ListenerClass(this.client)
                 
                 console.log(' | [ ' + listener.name + ' ] ' + 'Loaded with sucess')
-            /*  this.client.music.on(listener.name, (...args) => {
+                /*  this.client.music.on(listener.name, (...args) => {
                     listener.run(...args)
                 })
-            */
+                */
             })
         });
     }

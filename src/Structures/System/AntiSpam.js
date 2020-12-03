@@ -1,7 +1,7 @@
 module.exports = class AntiSpam {
     constructor(client, message) {
         this.client = client;
-    
+        
         const AntiSpam = require('discord-anti-spam');
         
         const antiSpam = new AntiSpam({
