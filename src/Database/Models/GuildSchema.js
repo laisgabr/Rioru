@@ -6,13 +6,6 @@ module.exports = new Schema({
     locale: { type: String, default: "pt-BR" },
     premiumStats: { type: Boolean, default: false },
 
-    blacklist: { 
-        blacklisted: { type: Boolean, default: false },
-        reason: { type: String },
-        time: { type: String },
-        staff: { type: String }
-    },
-
     security: {
         antiInviteStats: { type: Boolean, default: false },
         antiLinkStats: { type: Boolean, default: false },

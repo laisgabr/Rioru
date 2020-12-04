@@ -9,7 +9,7 @@ module.exports = class AntiSpam {
             kickThreshold: 7,
             banThreshold: 7,
             maxInterval: 2000, 
-            warnMessage: '{@user}, Please stop spamming.', 
+            warnMessage: translate('{@user}, Please stop spamming.'), 
             kickMessage: '**{user_tag}** has been kicked for spamming.', 
             banMessage: '**{user_tag}** has been banned for spamming.',
             maxDuplicatesWarning: 7,

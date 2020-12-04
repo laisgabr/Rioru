@@ -27,6 +27,7 @@ module.exports = class ShellCommand extends Command {
         if(stderr) {
         const embederror = new ZoeEmbedBuilder(msg.author)
         embederror.setDescription(`\n${this.client.clientEmojis.getEmoji('error')} Ocorreu um erro ao executar isso!\n\nErro:\n${stderr}`)
+        return msg.reply(...args ,...args)
         }
 
         const embedSucess = new ZoeEmbedBuilder(msg.author)
