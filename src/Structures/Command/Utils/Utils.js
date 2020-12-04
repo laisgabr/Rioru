@@ -43,4 +43,37 @@ module.exports = class Utils {
 		
 		return t;
 	}
+	
+	reply(content) {
+		let body = {
+			content: {
+				embed: content
+			},
+			message_reference: {
+				message_id: this.msg.id,
+				channel_id: this.msg.channel.id,
+				guild_id: this.msg.channel.guild.id
+			}
+		}
+		
+		if(typeof content === 'string') {
+			body = {
+				content: `${content}`,
+				message_reference: {
+					message_id: this.msg.id,
+					channel_id: this.msg.channel.id,
+					guild_id: this.msg.channel.guild.id
+				}
+			}
+		}
+
+		require('node-fetch')(`https://discord.com/api/v8/channels/${this.msg.channel.id}/messages`, {
+			method: 'post',
+			body: JSON.stringify(body),
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bot ${this.client.token}`
+			}
+		})
+	}
 }

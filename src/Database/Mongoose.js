@@ -14,7 +14,7 @@ module.exports = class Mongoose {
       ...this,
       UserSchema: model("UserSchema", require('./Models/UserSchema')),
       GuildSchema: model("GuildSchema", require('./Models/GuildSchema')),
-      KeySchema: model("KeySchema", require('./Models/KeySchema')) 
+      KeySchema: model("KeySchema", require('./Models/KeySchema'))
     }
   }
 }

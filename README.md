@@ -1,4 +1,7 @@
-# Zoe
-Hi, This is My Repository. My name is Zoe and i am a Discord Bot in JavaScript with Eris to help you on your server with Moderation, Music, Fun, Economy and More.... . I am created by Zoe Corporation :D
+# Repository
+![IMAGE](https://i.imgur.com/1mUaURa.png)
 
-# Utils
+
+
+# Self Hosting
+We do not offer support for Zoe's Self Hosting for logical reasons, <b> If you want to use these codes </b>, use the Zoe instance itself.

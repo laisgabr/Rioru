@@ -12,7 +12,7 @@ module.exports = class CommandOptions {
         }
         
         if(this.cmd.userPermissionNeeded !== null && !this.msg.member.permissions.has(this.cmd.userPermissionNeeded)) {
-            const permission = this.cmd.userPermissionNeeded.map(value => value)
+            const permission = this.cmd.userPermissionNeededPT.map(value => value)
             if(this.client.database.GuildSchema.findOne({ '_id': this.msg.channel.guild.id }).locale === 'pt-BR') {
                 const permissions = {
                     createInstantInvite:  "Criar Convites Instantaneos",

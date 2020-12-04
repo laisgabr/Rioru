@@ -30,6 +30,8 @@ module.exports = {
     nodes: JSON.parse(process.env.LAVALINK_NODES),
     
     mongo: process.env.MONGO_URI,
-    
-    fortnitekey: process.env.FORTNITE_KEY
+
+    clientSecret: process.env.CLIENT_SECRET,
+
+    clientId: process.env.CLIENT_ID
 }

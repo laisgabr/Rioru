@@ -5,9 +5,7 @@ module.exports = class EvalCommand extends Command {
         super(client, {
             name: 'eval',
             aliases: ['ev'],
-            description: 'Executa códigos.',
-            usage: '<prefix>eval <code>',
-            category: 'developer',
+            category: 'Developer',
             cooldown: 5,
             onlyDevs: true
         })

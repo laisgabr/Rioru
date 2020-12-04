@@ -1,19 +1,10 @@
 module.exports = class AntiBots {
-    constructor(client, guild, user) {
+    constructor(client, msg) {
         this.client = client;
-        this.guild = guild;
-        this.user = user;
+        this.msg = msg;
     }
     
-    removeBotGuild() {
-        this.client.guilds.get(this.guild.id).members.get(this.user.id).kick("AntiBots")
-    }
-    
-    findBotsAndTryKick() {
-        try {
-            this.guild.members.filter(c => c.bot).forEach(f => f.kick("AntiBots"))
-        } catch (e) {
-            
-        }
+    removeBotGuild(user) {
+        this.msg.channel.guild.members.get(user.id).kick("AntiBots On")
     }
 }

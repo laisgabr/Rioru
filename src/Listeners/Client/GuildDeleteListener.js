@@ -9,11 +9,10 @@ module.exports = class GuildDeleteListener extends Listener {
     
     async run(guild) {
         const db = await this.client.database.GuildSchema.findOne({ '_id': guild.id })
+        if(!db) return;
         
         if(db) {
             return this.client.database.GuildSchema.remove({ '_id': guild.id })
         } 
-        
-        if(!db) return;
     }
 }

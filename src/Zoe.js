@@ -15,22 +15,20 @@ module.exports = class ZoeClient extends Client {
     this.settings = {
       owners: options.owners,
       nodes: options.nodes,
-      mongo: options.mongo,
-      fortnitekey: options.fortnitekey
+      mongo: options.mongo
     }
     
     this.commands = new Collection()
     this.aliases = new Collection()
     this.cooldown = new Collection()
-    
     /*
     this.music = new ZoeManager(this, { 
-       autoPlay: true,
-       send: (id, payload) => {
-       const guild = client.guilds.get(id);
-       if (guild) guild.shard.sendWS(payload.op, payload.d)
+      autoPlay: true,
+      send: (id, payload) => {
+        const guild = this.guilds.get(id);
+        if (guild) guild.shard.sendWS(payload.op, payload.d)
       }
-     })
+    })
     */
   }
   
