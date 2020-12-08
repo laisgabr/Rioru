@@ -1,9 +1,10 @@
 export default class ZoeEmojis {
     constructor() {
-    this.getEmoji('error')
+        console.log(this.getEmoji('error'))
     }
 
     getEmoji(name: string) {
+        if(!name) throw new RangeError('Emojis#getEmoji you need pass a argument')
         if(typeof name !== 'string') throw new RangeError('Emojis#getEmoji() accept only String')
 
         const emojis: object = {
@@ -12,7 +13,7 @@ export default class ZoeEmojis {
             think: '<:zoethink:779836493111099392>',
             disc: '<a:discoZoe:759199892169687061>',
             rage: '<:zoerage:779836095843794945>',
-            sad: '<:zoesad:779835477988605992>',
+            sad: '<:zoesad:x779835477988605992>',
             money: '<:zoemoney:779836402757664798>',
             policeAngry: '<:zoepolice2:779835619089842206>',
             police: '<:zoepolice:779835552681558016>',
@@ -20,10 +21,9 @@ export default class ZoeEmojis {
             flushed: '<:zoeflushed:779835362864136192>'
         }
 
-        const emoji: string = emojis[name]
-        if(emoji === 'null') throw new RangeError('This emoji is Null')
+        const emoji = emojis[name]
         if(!emoji) throw new RangeError('Not exists any emoji with name: ' + name)
-
+        console.log(emoji)
         return emoji
     }
 }
