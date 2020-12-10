@@ -1,6 +1,6 @@
 export default class ZoeEmojis {
     constructor() {
-        console.log(this.getEmoji('error'))
+
     }
 
     getEmoji(name: string) {
@@ -21,9 +21,10 @@ export default class ZoeEmojis {
             flushed: '<:zoeflushed:779835362864136192>'
         }
 
+        // @ts-ignore
         const emoji = emojis[name]
         if(!emoji) throw new RangeError('Not exists any emoji with name: ' + name)
-        console.log(emoji)
+
         return emoji
     }
 }
