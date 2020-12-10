@@ -12,9 +12,13 @@ export default class CommandsLoader {
             files.forEach(category => {
                 readdir(`./src/Commands/${category}`, (err, cmd) => {
                     if(err) return console.error(err)
+
+
                     cmd.forEach(cmd => {
-                        const valueDir = `./Commands/${category}/${cmd}`
-                        import Command from `${valueDir}`
+                        let value = 'js'
+                        if(['ts'].includes(cmd)) value = 'ts'
+
+                        import Command from '../Commands/category/cmd.extension'.replace('category', category).replace('cmd', cmd).replace('extension', value)
                         const command = new Command(this.client)
 
                         this.client.commands.set(command.commandSettings.name, command)
