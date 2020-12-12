@@ -1,15 +1,28 @@
-import { Client } from "https://raw.githubusercontent.com/ayntee/dencord/main/mod.ts"
-import { Collection } from "https://deno.land/x/discordeno@9.4.0/mod.ts"
+// @ts-ignore
+import { Client, Collection } from "eris";
 import * as Loaders from "./Loaders";
 import MySQLServer from './Database/MySQL.ts'
-
+import config from '../config.ts';
+import { ZoeEmojis } from './'
 
 export default class ZoeClient extends Client {
-    constructor(token, options = {}, settings = {}) {
+    public commands: Collection<string>;
+    public settings: object;
+    public database: MySQLServer;
+    public aliases: Collection<string>;
+    public zoeEmojis: ZoeEmojis;
+    public cooldown: Collection<string>;
+
+    constructor(token: string, options = {}, settings = {
+        database: config.database.database,
+        host: config.database.host,
+        username: config.database.username,
+        password: config.database.password,
+        port: config.database.port
+    }) {
         super(token, options)
-        
-        if(!token) throw new Error('You need pass the token')
-        
+
+
         this.settings = {
             database: {
                 database: settings.database,
@@ -19,16 +32,23 @@ export default class ZoeClient extends Client {
                 port: settings.port
             },
         }
-        
+
         this.commands = new Collection()
         this.aliases = new Collection()
         this.cooldown = new Collection()
-        
+
         this.database = new MySQLServer(this)
-        this.zoeEmojis = new ZoeEmojis
+        this.zoeEmojis = new ZoeEmojis()
     }
-    
+
     start() {
+        this.initLoaders()
+
+        super.connect().then(() => {})
+        return this
+    }
+
+    initLoaders() {
         for(const Loader of Object.values(Loaders)) {
             try {
                 new Loader(this)
@@ -36,7 +56,5 @@ export default class ZoeClient extends Client {
                 return console.error(e)
             }
         }
-        super.start()
-        return this
     }
 }

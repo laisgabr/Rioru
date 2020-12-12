@@ -1,6 +1,6 @@
-import ZoeClient from "./src/Zoe.js";
-import settings from "./config.js";
+import ZoeClient from "./src/Zoe.ts";
+import config from "./config.ts";
 
-const Zoe = new ZoeClient(settings.token);
+const Zoe = new ZoeClient(config.token, { });
 
 Zoe.start();

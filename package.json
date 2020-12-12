@@ -1,0 +1,24 @@
+{
+  "name": "zoebot",
+  "version": "1.9.0",
+  "description": "A Simple Bot in TypeScript",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zoe-Corporation/Zoe.git"
+  },
+  "author": "MrGamingBR",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Zoe-Corporation/Zoe/issues"
+  },
+  "homepage": "https://github.com/Zoe-Corporation/Zoe#readme",
+  "dependencies": {
+    "@types/node": "^14.14.13",
+    "eris": "^0.14.0",
+    "mysql": "^2.18.1"
+  }
+}

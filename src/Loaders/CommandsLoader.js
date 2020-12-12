@@ -1,8 +1,9 @@
-import { readdir } from "https://deno.land/std@0.78.0/fs/mod.ts"
+import readdir from "https://deno.land/std@0.78.0/fs/mod.ts"
 
 export default class CommandsLoader {
     constructor(client) {
         this.client = client;
+        this.load()
     }
 
     load() {
@@ -11,21 +12,24 @@ export default class CommandsLoader {
 
             files.forEach(category => {
                 readdir(`./src/Commands/${category}`, (err, cmd) => {
-                    if(err) return console.error(err)
+                    if (err) return console.error(err)
 
-
-                    cmd.forEach(cmd => {
+                    console.log(cmd)
+                    /*cmd.forEach(cmd => {
                         let value = 'js'
                         if(['ts'].includes(cmd)) value = 'ts'
+                        const string = "../Commands/${category}/${cmd}.ts".replace('${cmd}', cmd).replace('${category}', category)
 
-                        import Command from '../Commands/category/cmd.extension'
-                        .replace('category', category).replace('cmd', cmd).replace('extension', value)
+                        import * as Command from string;
                         const command = new Command(this.client)
 
                         this.client.commands.set(command.commandSettings.name, command)
 
                         command.commandSettings.aliases.forEach(aliases => this.client.aliases.set(aliases, command.commandSettings.name))
                     })
+                })
+                */
+
                 })
             })
         })
