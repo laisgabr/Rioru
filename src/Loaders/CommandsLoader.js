@@ -18,7 +18,8 @@ export default class CommandsLoader {
                         let value = 'js'
                         if(['ts'].includes(cmd)) value = 'ts'
 
-                        import Command from '../Commands/category/cmd.extension'.replace('category', category).replace('cmd', cmd).replace('extension', value)
+                        import Command from '../Commands/category/cmd.extension'
+                        .replace('category', category).replace('cmd', cmd).replace('extension', value)
                         const command = new Command(this.client)
 
                         this.client.commands.set(command.commandSettings.name, command)
