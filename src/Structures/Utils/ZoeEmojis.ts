@@ -7,7 +7,7 @@ export default class ZoeEmojis {
         if(!name) throw new RangeError('Emojis#getEmoji you need pass a argument')
         if(typeof name !== 'string') throw new RangeError('Emojis#getEmoji() accept only String')
 
-        const emojis: object = {
+        const emojis: any = {
             sucess: '<:OkEmoji:761053245572644875>',
             error: '<a:error:734268814954332291>',
             think: '<:zoethink:779836493111099392>',
@@ -21,7 +21,6 @@ export default class ZoeEmojis {
             flushed: '<:zoeflushed:779835362864136192>'
         }
 
-        // @ts-ignore
         const emoji = emojis[name]
         if(!emoji) throw new RangeError('Not exists any emoji with name: ' + name)
 

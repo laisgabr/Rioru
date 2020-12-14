@@ -1,5 +1,4 @@
 export default {
-    // @ts-ignore
     token: process.env.TOKEN,
     owners: ['701888386910126102', '468817505318862882'],
     database: {
@@ -8,5 +7,7 @@ export default {
         username: process.env.USERNAMESQL,
         password: process.env.PASSWORD,
         port: process.env.PORT
-    }
+    },
+
+    nodes: JSON.parse(process.env.LAVALINK_NODES)
 }

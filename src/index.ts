@@ -1,6 +1,6 @@
-import ZoeEmojis from './Structures/ZoeEmojis.ts'
-import MySQLServer from './Database/MySQL.ts'
-import ZoeEmbedBuilder from './Structures/Utils/ZoeEmbedBuilder.ts'
+import ZoeEmojis from './Structures/Utils/ZoeEmojis'
+import MySQLServer from './Structures/Utils/ZoeMySQL'
+import ZoeEmbedBuilder from './Structures/Utils/ZoeEmbedBuilder'
 
 export default {
     ZoeEmojis,

@@ -1,6 +1,17 @@
-import ZoeClient from "./src/Zoe.ts";
-import config from "./config.ts";
+import ZoeClient from "./src/Zoe";
+import config from "./config";
 
-const Zoe = new ZoeClient(config.token, { });
+const Zoe = new ZoeClient(config.token, { 
+    allowedMentions: {
+        everyone: false    
+    },
+
+    intents: [
+        "guilds",
+        "guildMembers",
+        "guildBans",
+
+    ]
+});
 
 Zoe.start();

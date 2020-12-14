@@ -1,60 +1,41 @@
-// @ts-ignore
-import { Client, Collection } from "eris";
-import * as Loaders from "./Loaders";
-import MySQLServer from './Database/MySQL.ts'
-import config from '../config.ts';
-import { ZoeEmojis } from './'
+import { Client } from 'eris'
+import config from "../config"
+import MySQLServer from './Structures/Utils/ZoeMySQL';
+import LoadersIniter from './Loaders/LoadersIniter';
+import ZoeEmojis from './Structures/Utils/ZoeEmojis';
 
 export default class ZoeClient extends Client {
-    public commands: Collection<string>;
-    public settings: object;
+    public token: string;
+    public settings: any;
+    public commands: any;
+    public aliases: any;
+    public cooldown: any;
     public database: MySQLServer;
-    public aliases: Collection<string>;
     public zoeEmojis: ZoeEmojis;
-    public cooldown: Collection<string>;
-
-    constructor(token: string, options = {}, settings = {
-        database: config.database.database,
-        host: config.database.host,
-        username: config.database.username,
-        password: config.database.password,
-        port: config.database.port
-    }) {
+    constructor(token: string, options = {}) {
         super(token, options)
-
-
+        this.token = token;    
+        
         this.settings = {
-            database: {
-                database: settings.database,
-                host: settings.host,
-                username: settings.username,
-                password: settings.password,
-                port: settings.port
-            },
+            database: config.database.database,
+            host: config.database.host,
+            username: config.database.username,
+            password: config.database.password,
+            port: config.database.port
         }
-
-        this.commands = new Collection()
-        this.aliases = new Collection()
-        this.cooldown = new Collection()
-
+        
+        this.commands = new Map()
+        this.aliases = new Map()
+        this.cooldown = new Map()
+        
         this.database = new MySQLServer(this)
         this.zoeEmojis = new ZoeEmojis()
     }
-
-    start() {
-        this.initLoaders()
-
+    
+    public start() {
+        new LoadersIniter(this)
+        
         super.connect().then(() => {})
         return this
-    }
-
-    initLoaders() {
-        for(const Loader of Object.values(Loaders)) {
-            try {
-                new Loader(this)
-            } catch (e) {
-                return console.error(e)
-            }
-        }
     }
 }

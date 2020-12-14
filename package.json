@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Zoe-Corporation/Zoe#readme",
   "dependencies": {
-    "@types/node": "^14.14.13",
     "eris": "^0.14.0",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.13"
   }
 }
