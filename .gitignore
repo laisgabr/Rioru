@@ -1,4 +1,4 @@
-.env
-.vs/
 .idea/
-node_modules/
+.gradle/
+app/build/
+.env
