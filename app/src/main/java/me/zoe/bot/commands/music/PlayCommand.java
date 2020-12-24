@@ -1,7 +1,14 @@
 package me.zoe.bot.commands.music;
 
-public class PlayCommand {
-    public static void main(String[] args) {
+import me.zoe.bot.Zoe;
+import me.zoe.bot.commons.utils.Command;
+
+public class PlayCommand extends Command {
+    PlayCommand(Zoe client) {
+        super();
+    }
+
+    public void execute() {
 
     }
 }
