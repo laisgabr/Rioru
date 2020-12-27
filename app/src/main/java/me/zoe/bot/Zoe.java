@@ -12,23 +12,19 @@ import javax.security.auth.login.LoginException;
 public class Zoe {
     Zoe(String token, String TranslateEndpoint) {
         this.token = token;
-
         this.commands = new Map();
-        this.apis = new Set();
     }
     
     public void load() throws LoginException {
-        initLoaders("./commands", "./listeners/client", "./listeners/lavaplayer");
+        initLoaders();
         var zoe = JDABuilder.createDefault(this.token);
         zoe.setActivity(Activity.streaming("Agora sou feita em JDA 😎", "https://twitch.tv/mrgamingbr0001"));
         zoe.enableIntents();
         zoe.build();
     }
     
-    public void initLoaders(
-    String CommandsDirectory,
-    String JDAEventsDirectory, 
-    String LavaplayerEventsDirectory) {
+    public void initLoaders() {
         new CommandLoader(this);
+        new EventsLoader(this);
     }
 }

@@ -13,12 +13,11 @@ public class EventLoader extends ListenerAdapter {
 
     @Override
     public void onReady() {
-        
+        System.out.println("To on pae ");
     }
 
     @Override
     public void onMessageReceived​(MessageReceivedEvent message) {
         message.getMessage();
     }
-
 }

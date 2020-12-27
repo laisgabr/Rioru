@@ -2,20 +2,61 @@ package me.zoe.bot.commons.utils;
 
 import me.zoe.bot.Zoe;
 
-public class Command {
-    Command(Zoe client, Object options) {
-        if(client == null || options == null) return;
-        this.client = client;
-        this.options = options;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.Permission;
 
-        this.cmdSettings = new Object();
-        this.cmdSettings.name = options.name;
-        this.cmdSettings.aliases = options.aliases;
-        this.cmdSettings.description = options.description;
-        this.cmdSettings.usage = options.usage;
-        this.cmdSettings.category = options.usage;
-        this.cmdSettings.cooldown = options.cooldown;
-        this.cmdSettings.userPermissions = options.userPermissions;
-        this.cmdSettings.zoePermissions = options.zoePermissions;
+public abstract class Command extends ListenerAdapter {
+    public final Zoe bot;
+    protected String name;
+    protected List<String> aliases;
+    protected String description;
+    protected String usage;
+    protected String category;
+    protected Integer cooldown;
+    protected boolean enabled = true;
+    protected boolean onlyDevs = false;
+    protected Permission[] userPermissions;
+    protected Permission[] zoePermissions;
+
+    public abstract void execute(CommandContext ctx);
+
+    public String getName() {
+        return name;
+    }
+
+    public List<String> getAliases() {
+        return aliases;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public String getUsage() {
+        return usage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getCooldown() {
+        return cooldown;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public boolean isOnlyDevs() {
+        return onlyDevs;
+    }
+
+    public Permission[] getUserPermissionsNeeded() {
+        return userPermissions;
+    }
+
+    public Permission[] getZoePermissionsNeeded() {
+        return zoePermissions;
     }
 }
