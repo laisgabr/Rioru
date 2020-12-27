@@ -6,7 +6,7 @@ import me.zoe.bot.commons.utils.Command;
 import me.zoe.bot.commons.utils.CommandContext;
 
 public class PingCommand extends Command {
-    PingCommand() {
+    public PingCommand() {
         this.name = "ping";
         this.aliases = Arrays.asList("latencia", "pingpong");
         this.description = "Mostra meu ping atual";
