@@ -5,12 +5,10 @@ import me.zoe.bot.Zoe;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.Permission;
 
-import java.util.List;
-
 public abstract class Command extends ListenerAdapter {
     public Zoe bot;
     protected String name;
-    protected List<String> aliases;
+    protected String[] aliases;
     protected String description;
     protected String usage;
     protected String category;
@@ -26,7 +24,7 @@ public abstract class Command extends ListenerAdapter {
         return name;
     }
 
-    public List<String> getAliases() {
+    public String[] getAliases() {
         return aliases;
     }
     

@@ -2,13 +2,15 @@ package me.zoe.bot;
 
 import me.zoe.bot.loaders.CommandLoader;
 import me.zoe.bot.loaders.EventsLoader;
+
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 
-public class Zoe {
+public class Zoe extends ListenerAdapter {
 
     public void main(String[] args) throws LoginException {
         initLoaders();

@@ -1,13 +1,12 @@
 package me.zoe.bot.loaders;
 
-import me.zoe.bot.commands.utils.PingCommand;
-import me.zoe.bot.commons.utils.CommandUtils;
+import com.jagrosh.jdautilities.command.CommandClientBuilder;
 
 public class CommandLoader {
     public CommandLoader() {
-        CommandUtils commands = new CommandUtils();
-        commands.registerCommands(
-            new PingCommand()
-        );
+        CommandClientBuilder builder = new CommandClientBuilder();
+        var CommandBuilded = builder.setOwnerId("468817505318862882")
+                .setCoOwnerIds("219469905358094336").addCommands()
+                .setPrefix("z!!").build();
     }
 }
