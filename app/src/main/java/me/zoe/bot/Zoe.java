@@ -1,18 +1,26 @@
 package me.zoe.bot;
 
+import me.zoe.bot.listeners.client.OnMessageReceivedListener;
+import me.zoe.bot.listeners.client.OnReadyListener;
 import me.zoe.bot.loaders.CommandLoader;
 import me.zoe.bot.loaders.EventsLoader;
 
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 
 public class Zoe extends ListenerAdapter {
+    Zoe() throws LoginException, InterruptedException {
+        super();
+        load();
+    }
 
-    public void main(String[] args) throws LoginException {
+    public void load() throws LoginException, InterruptedException {
         initLoaders();
         JDABuilder.createDefault(Config.token)
         .setActivity(
@@ -30,11 +38,14 @@ public class Zoe extends ListenerAdapter {
                 GatewayIntent.GUILD_BANS,
                 GatewayIntent.DIRECT_MESSAGES,
                 GatewayIntent.DIRECT_MESSAGE_TYPING
-        ).build();
+        ).build().addEventListener(
+                new OnReadyListener(),
+                new OnMessageReceivedListener()
+        );
     }
     
     public void initLoaders() {
         new CommandLoader();
-        new EventsLoader(this);
+        new EventsLoader();
     }
 }
