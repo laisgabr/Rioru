@@ -2,4 +2,3 @@
 .gradle/
 app/build/
 .env
-app/src/main/java/me/zoe/bot/Config.java

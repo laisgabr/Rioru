@@ -8,5 +8,4 @@ public class OnReadyListener extends ListenerAdapter {
     public void onReady(ReadyEvent event) {
         System.out.println("Eu estou pronta para trabalhar :D");
     }
-
 }

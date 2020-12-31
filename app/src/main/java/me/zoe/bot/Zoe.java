@@ -3,28 +3,25 @@ package me.zoe.bot;
 import me.zoe.bot.listeners.client.OnMessageReceivedListener;
 import me.zoe.bot.listeners.client.OnReadyListener;
 import me.zoe.bot.loaders.CommandLoader;
-import me.zoe.bot.loaders.EventsLoader;
 
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.events.ReadyEvent;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 import javax.security.auth.login.LoginException;
 
 public class Zoe extends ListenerAdapter {
-    Zoe() throws LoginException, InterruptedException {
+    Zoe() throws LoginException {
         super();
         load();
     }
 
-    public void load() throws LoginException, InterruptedException {
+    public void load() throws LoginException {
         initLoaders();
         JDABuilder.createDefault(Config.token)
         .setActivity(
-                Activity.streaming("Agora sou feita em JDA 😎", "https://twitch.tv/mrgamingbr0001")
+                Activity.streaming("Oiiiii, Agora sou feita em Java Discord Api 😎", "https://twitch.tv/mrgamingbr0001")
         )
                 .enableIntents(
                 GatewayIntent.GUILD_WEBHOOKS,
@@ -46,6 +43,5 @@ public class Zoe extends ListenerAdapter {
     
     public void initLoaders() {
         new CommandLoader();
-        new EventsLoader();
     }
 }
