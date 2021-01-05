@@ -1,11 +1,11 @@
 # Welcome, This is a Zoe Repository :D
 <p align="center">
 <a href="https://jetbrains.com/?from=ZoeBot">
-    <img src="https://img.shields.io/badge/Powered_by_Intellij-purple.svg?logo=IntelliJ%20IDEA&style=for-the-badge">
+    <img src="https://img.shields.io/badge/Powered_by_Intellij-pink.svg?logo=IntelliJ%20IDEA&style=for-the-badge">
 </a>
 
 <a href="https://crowdin.com/">
-    <img src="https://img.shields.io/badge/Powered_by_Crowdin-purple.svg?logo=crowdin&style=for-the-badge">
+    <img src="https://img.shields.io/badge/Powered_by_Crowdin-pink.svg?logo=crowdin&style=for-the-badge">
 </a>
 </p>
 

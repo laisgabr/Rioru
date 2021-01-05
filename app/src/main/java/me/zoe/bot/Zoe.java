@@ -18,7 +18,6 @@ public class Zoe extends ListenerAdapter {
     }
 
     public void load() throws LoginException {
-        initLoaders();
         JDABuilder.createDefault(Config.token)
         .setActivity(
                 Activity.streaming("Oiiiii, Agora sou feita em Java Discord Api 😎", "https://twitch.tv/mrgamingbr0001")
@@ -41,7 +40,4 @@ public class Zoe extends ListenerAdapter {
         );
     }
     
-    public void initLoaders() {
-        new CommandLoader();
-    }
 }

@@ -8,6 +8,6 @@ public abstract class Config {
     public static final String token = env.get("TOKEN");
     public static final String defaultPrefix = env.get("PREFIX");
     public static final String owner = env.get("OWNER");
-    public static final String SQLUsername = env.get("SQL_USERNAME");
-
+   
+    // public static final String SQLUsername = env.get("SQL_USERNAME");
 }
