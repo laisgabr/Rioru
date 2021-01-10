@@ -1,3 +1,4 @@
-rootProject.name = 'App'
+
+
+rootProject.name = 'zoe'
 include('app')
- 
