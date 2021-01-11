@@ -17,16 +17,26 @@ public class GithubUser {
     public String dateCreation;
     public GithubUser(String search) throws IOException {
         Object infos = HttpClientStarter.createHttpClientAndGetAPI("https://api.github.com/users" + "/" + search.toLowerCase());
+        boolean existBool = exists(infos);
+        if(!existBool) {
+            name = "This user not exist";
+            return;
+        }
+
+        if(infos.company == null) company = "Não faz parte de nenhuma organização";  else company = infos.company;
+        if(infos.bio == null) description = "Não tem nenhuma descrição"; else description = infos.bio;
+
         name = infos.login;
         id = infos.id;
         avatar = infos.avatar_url;
-        description = infos.bio;
         url = infos.html_url;
-        company = infos.company;
         numberPublicRepos = infos.public_repos;
+        followers = infos.followers;
+        following = infos.following;
+        dateCreation = infos.created_at;
     }
 
-    public static boolean exists() {
-        return true;
+    public boolean exists(Object Infos) {
+        return Infos.message != null;
     }
 }

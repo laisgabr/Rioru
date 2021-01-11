@@ -1,5 +1,4 @@
 .gradle
 build
 .env
-.idea
 app/build
