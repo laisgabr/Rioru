@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HttpClientStarter {
-
     public static Object createHttpClientAndGetAPI(String url) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
