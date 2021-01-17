@@ -10,30 +10,16 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import com.mercadopago.exceptions.MPConfException;
 import com.mercadopago.exceptions.MPException;
 
-import net.zoe.corporation.database.MyZoeSQL;
 import net.zoe.corporation.website.ZoeDashboard;
-import net.zoe.corporation.zoebot.structures.utils.ExecuteShellScript;
-import net.zoe.corporation.api.wrappers.*;
 import net.zoe.corporation.api.payments.*;
 
 import javax.security.auth.login.LoginException;
 
 import java.io.IOException;
-import java.io.File;
 
 public class Zoe extends ListenerAdapter {
     public static String token = getEnv("ZOE_TOKEN");
     public static String[] owners = new String[2];
-    public static String MySQLDataName = getEnv("DATABASE_NAME");
-    public static String MySQLHost = getEnv("DATABASE_HOST");
-    public static String MySQLUsername = getEnv("DATABASE_USERNAME");
-    public static String MySQLPassword = getEnv("DATABASE_PASSWORD");
-    public static MyZoeSQL database = new MyZoeSQL(
-    MySQLDataName,
-    MySQLHost,
-    MySQLUsername,
-    MySQLPassword,
-    3306);
     public static String MPApiKey = getEnv("MP_APIKEY");
     public static String PayPalApiKey = getEnv("PAYPAL_APIKEY");
     public static String PicPayApiKey = getEnv("PICPAY_APIKEY");
