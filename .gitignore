@@ -2,3 +2,4 @@
 build
 .env
 app/build
+.idea/

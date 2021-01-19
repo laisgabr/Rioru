@@ -1,5 +1,19 @@
-# Welcome, This is a Zoe Repository :D
-<p align="center">
+<img src="https://i.imgur.com/1mUaURa.png" width=300 weigth=200> 
+
+<style>
+    .texts {
+        align: center;
+        align-itens: center;
+    }
+
+    .icons {
+        align-itens: center;
+        align: center;
+    }
+</style>
+### Zoe Repository
+
+<div class="icons">
 <a href="https://jetbrains.com/?from=ZoeBot">
     <img src="https://img.shields.io/badge/Powered_by_Intellij-pink.svg?logo=IntelliJ%20IDEA&style=for-the-badge">
 </a>
@@ -7,12 +21,14 @@
 <a href="https://crowdin.com/">
     <img src="https://img.shields.io/badge/Powered_by_Crowdin-pink.svg?logo=crowdin&style=for-the-badge">
 </a>
-</p>
+</div>
 
-# Description
-Zoe is a Simple Bot for Discord in Java with JDA to help you in your server and execute all tasks for you :D 
+<div class="texts">
 
-# Self Hosting
+## Description
+<em>Zoe is a Simple Bot for Discord in Java with JDA to help you in your server and execute all tasks for you :D</em> 
+
+## Self Hosting
 We do not offer support for Zoe's Self Hosting for logical reasons, <b> If you want to use these codes </b>, use the Zoe instance itself.
 
-![IMAGE](https://i.imgur.com/1mUaURa.png)
+</div>
