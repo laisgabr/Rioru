@@ -1,4 +1,4 @@
 package net.zoe.corporation.utilities;
 
-public class ZoeActions {
+public class RequestSender {
 }

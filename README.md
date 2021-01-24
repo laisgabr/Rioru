@@ -1,16 +1,5 @@
-<img src="https://i.imgur.com/1mUaURa.png" width=300 weigth=200> 
+<img src="https://i.imgur.com/1mUaURa.png" width=100 weigth=200> 
 
-<style>
-    .texts {
-        align: center;
-        align-itens: center;
-    }
-
-    .icons {
-        align-itens: center;
-        align: center;
-    }
-</style>
 ### Zoe Repository
 
 <div class="icons">
