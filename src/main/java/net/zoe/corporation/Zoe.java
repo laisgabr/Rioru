@@ -42,7 +42,7 @@ public class Zoe extends ListenerAdapter {
         ).build();
     }
     
-    private static String getEnv(String name) {
+    public static String getEnv(String name) {
         final Dotenv env = Dotenv.configure().directory("./").filename(".env").load();
         return env.get(name);
     }
