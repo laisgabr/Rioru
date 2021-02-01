@@ -3,3 +3,6 @@ build
 .env
 app/build
 .idea/
+.metadata/
+.project
+.settings/

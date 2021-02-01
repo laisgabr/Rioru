@@ -4,6 +4,4 @@ public class GiveawayClient {
     public GiveawayClient(String ServerID, String MessageID, Long Time) {
 
     }
-
-
 }

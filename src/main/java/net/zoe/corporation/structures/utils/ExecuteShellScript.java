@@ -1,10 +1,11 @@
 package net.zoe.corporation.structures.utils;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.logging.Logger;
+//import java.io.*;
+//import java.util.ArrayList;
+//import java.util.logging.Logger;
 
 public class ExecuteShellScript {
+    /*
     private static final Logger log = Logger.getLogger(ExecuteShellScript.class.getName());
 
     public void executeCommand(final String command) throws IOException {
@@ -25,7 +26,7 @@ public class ExecuteShellScript {
 
             String line;
             while((line = br.readLine()) != null) {
-                System.out.println("Retorno do comando = [" + line + "]");
+                return line;
             }
         } catch (IOException ioe) {
             log.severe("Erro ao executar comando shell" + ioe.getMessage());
@@ -44,4 +45,5 @@ public class ExecuteShellScript {
             log.severe("Erro = " + ex.getMessage());
         }
     }
+    */
 }
