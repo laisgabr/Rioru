@@ -16,9 +16,9 @@ public class Zoe extends ListenerAdapter {
     public Zoe() throws LoginException {
         start();
     }
-
-    public static final ZoeAPIPort = getEnvStatic("ZOEAPI_PORT");
-    public static final ZoeAPIIP = getEnvStatic("ZOEAPI_IP");
+ 
+    public static final String ZoeAPIPort = getEnvStatic("ZOEAPI_PORT");
+    public static final String ZoeAPIIP = getEnvStatic("ZOEAPI_IP");
     public final String token = getEnv("ZOE_TOKEN");
     public static String[] owners = new String[2];
     public static final Dotenv env = Dotenv.load();
