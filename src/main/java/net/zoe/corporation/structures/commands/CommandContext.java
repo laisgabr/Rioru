@@ -5,9 +5,6 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
-import net.zoe.corporation.utilities.Database;
-import net.zoe.corporation.utilities.api.ZoeAPIGetter;
-
 import java.util.List;
 
 public class CommandContext  {
@@ -23,20 +20,12 @@ public class CommandContext  {
         return this.getEvent().getGuild();
     }
 
-    public Database getDatabase() {
-        return Database;
-    }
-
     public GuildMessageReceivedEvent getEvent() {
         return this.event;
     }
 
     public List<String> getArgs() {
         return this.args;
-    }
-
-    public Guild getGuild() {
-        return this.getEvent().getGuild();
     }
 
     public TextChannel getChannel() {

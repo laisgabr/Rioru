@@ -9,12 +9,7 @@ import okhttp3.MediaType;
 import java.io.IOException;
 import java.util.Objects;
 
-import javax.annotation.Nullable;
-
-import net.zoe.corporation.Zoe;
-
 public class RequestSender {   
-    @Nullable
     public static Object sendGET(String url) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
@@ -25,14 +20,13 @@ public class RequestSender {
         try (Response response = client.newCall(request).execute()) {    
             return Objects.requireNonNull(response.body());
         } catch(NullPointerException e) {
-            if(e) throw new RuntimeError("RequestSender#sendGET() received a response null");
-            return null;
+            throw new RuntimeException("RequestSender#sendGET() received a response null");
         }
     }
     
-    @Nullable
     public static Object sendPOST(String url, String PostContent) throws IOException {
         // "{\"id\": 4219321300,\"dailyTimestamp\":\"9322128391\"}"; PostContent Example
+        OkHttpClient client = new OkHttpClient();
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8;"), PostContent);
 
        Request request = new Request.Builder()
@@ -45,8 +39,7 @@ public class RequestSender {
             Response response = call.execute();
             return Objects.requireNonNull(response.body());
        } catch(NullPointerException e) {
-            if(e) throw new RuntimeError("RequestSender#sendPOST() received a response null");
-            return null;
+           throw new RuntimeException("RequestSender#sendPOST() received a response null");
        }
     }
 }

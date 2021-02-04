@@ -20,5 +20,5 @@ dependencies {
 }
 
 application {
-    mainClass = 'net.zoe.corporation.zoebot.Zoe'
+    mainClass = 'net.zoe.corporation.ZoeLauncher'
 }

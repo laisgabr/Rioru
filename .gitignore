@@ -6,3 +6,6 @@ app/build
 .metadata/
 .project
 .settings/
+bin/
+.vscode
+.classpath
