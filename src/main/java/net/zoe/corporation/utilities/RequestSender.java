@@ -6,10 +6,13 @@ import okhttp3.Response;
 import okhttp3.RequestBody;
 import okhttp3.MediaType;
 
+import javax.annotation.Nullable;
+
 import java.io.IOException;
 import java.util.Objects;
 
 public class RequestSender {   
+    @Nullable
     public static Object sendGET(String url) throws IOException {
         OkHttpClient client = new OkHttpClient();
 
@@ -20,10 +23,11 @@ public class RequestSender {
         try (Response response = client.newCall(request).execute()) {    
             return Objects.requireNonNull(response.body());
         } catch(NullPointerException e) {
-            throw new RuntimeException("RequestSender#sendGET() received a response null");
+            return null;
         }
     }
     
+    @Nullable
     public static Object sendPOST(String url, String PostContent) throws IOException {
         // "{\"id\": 4219321300,\"dailyTimestamp\":\"9322128391\"}"; PostContent Example
         OkHttpClient client = new OkHttpClient();
@@ -34,12 +38,10 @@ public class RequestSender {
        .post(body)
        .build();
        
-       try {
-            var call = client.newCall(request);
-            Response response = call.execute();
+       try (Response response = client.newCall(request).execute()) {
             return Objects.requireNonNull(response.body());
        } catch(NullPointerException e) {
-           throw new RuntimeException("RequestSender#sendPOST() received a response null");
+            return null;
        }
     }
 }
