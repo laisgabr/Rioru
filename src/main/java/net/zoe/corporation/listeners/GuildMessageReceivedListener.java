@@ -29,7 +29,7 @@ public class GuildMessageReceivedListener extends ListenerAdapter {
         .replaceFirst("(?i)" + Pattern.quote("prefix"), "")
         .split("\\s+");
         
-        Command cmd = CommandManager.getCommand(command[0].toLowerCase());
+       /* Command cmd = CommandManager.getCommand(command[0].toLowerCase());
         
         if (cmd != null) {
             event.getChannel().sendTyping().queue();
@@ -45,5 +45,6 @@ public class GuildMessageReceivedListener extends ListenerAdapter {
         } else {
               
         }
+        */
     }
 }

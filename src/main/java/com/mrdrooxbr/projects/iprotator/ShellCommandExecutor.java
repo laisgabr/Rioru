@@ -1,4 +1,4 @@
-package net.zoe.corporation.structures.utils;
+package com.mrdrooxbr.projects.iprotator;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -7,15 +7,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class ExecuteShellScript {
-    
-    public String executeCommand(final String command) throws IOException {
-        
+public class ShellCommandExecutor {
+    public static String executeCommand(String command) {
         final ArrayList<String> commands = new ArrayList<String>();
         commands.add("/bin/bash");
         commands.add("-c");
         commands.add(command);
-        
+
         BufferedReader br = null;
         String line;
         try {
@@ -24,8 +22,8 @@ public class ExecuteShellScript {
             final InputStream is = process.getInputStream();
             final InputStreamReader isr = new InputStreamReader(is);
             br = new BufferedReader(isr);
-            
-            
+
+
             while((line = br.readLine()) != null) {
                 return line;
             }
@@ -34,11 +32,11 @@ public class ExecuteShellScript {
         } finally {
             secureClose(br);
         }
-        
+
         return line;
     }
-    
-    private String secureClose(final Closeable resource) {
+
+    private static String secureClose(final Closeable resource) {
         try {
             if (resource != null) {
                 resource.close();
