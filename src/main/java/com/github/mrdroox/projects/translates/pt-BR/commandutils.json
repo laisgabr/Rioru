@@ -1,0 +1,4 @@
+{
+  "ping:afterEdited": "Ping ?",
+  "ping:editText": "⭐ | Shard `{{shardNumber}}`(`Cluster {{clusterNumber}}` **{{clusterName}}**)\n📡 | Ping da API:{{apiPing}} ms\nPing:{{ping}} ms"
+}

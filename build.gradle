@@ -1,4 +1,5 @@
 plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.20'
     id 'application'
 }
 
@@ -11,15 +12,24 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     implementation "com.sedmelluq:lavaplayer-ext-youtube-rotator:0.2.1"
+    implementation platform('org.jetbrains.kotlin:kotlin-bom')
     implementation 'com.google.guava:guava:29.0-jre'
-    implementation 'com.sedmelluq:lavaplayer:1.3.66'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'io.github.cdimascio:dotenv-java:2.2.0'
-    implementation 'net.dv8tion:JDA:4.2.0_227'
+    implementation 'net.dv8tion:JDA:4.2.0_228'
+    implementation 'io.github.cdimascio:dotenv-kotlin:6.2.2'
     implementation 'org.postgresql:postgresql:42.2.16'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.yaml:snakeyaml:1.27'
 }
 
 application {
-    mainClass = 'net.zoe.corporation.ZoeLauncher'
+    mainClass = 'com.github.mrdroox.projects.zoe.ZoeLauncherKt'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
