@@ -1,65 +1,40 @@
 package com.github.mrdroox.projects.zoe.structures
 
-import com.github.mrdroox.projects.translates.ZoeTranslates
-import net.dv8tion.jda.api.sharding.ShardManager
-import net.dv8tion.jda.api.JDA
-import net.dv8tion.jda.api.entities.*
+import com.github.mrdroox.projects.utils.ZoeTranslates
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class CommandContext {
+class CommandContext(event: GuildMessageReceivedEvent?, args: List<List<String>>) {
     private var event: GuildMessageReceivedEvent? = null
-    private var args: List<List<String>?>? = null
+    private var args:  List<List<String>?>? = null
 
-    constructor(event: GuildMessageReceivedEvent?, args: List<List<String>>) {
+    var guild = getEvent()?.guild
+    var selfGuildMember = guild?.selfMember
+    var textChannel = getEvent()?.channel
+    var message = getEvent()?.message
+    var author = getEvent()?.author
+    var member = getEvent()?.member
+    var instance = getEvent()?.jda
+    var shardManager = getEvent()?.jda?.shardManager
+    var selfUser = getEvent()?.jda?.selfUser
+    var translates = ZoeTranslates()
+
+
+    init {
         this.event = event
         this.args = args
     }
 
-    fun getGuild(): Guild {
-        return getEvent()!!.guild
-    }
-
-    fun getTranslate(): ZoeTranslates {
-        return ZoeTranslates()
-    }
-
-    fun getEvent(): GuildMessageReceivedEvent? {
+    private fun getEvent(): GuildMessageReceivedEvent? {
         return event
     }
 
-    fun getArgs(): List<List<String>?>? {
+    fun getArgs():  List<List<String>?>? {
         return args
     }
 
-    fun getChannel(): TextChannel? {
-        return getEvent()!!.channel
+    fun getLocale() {
+
     }
 
-    fun getMessage(): Message? {
-        return getEvent()!!.message
-    }
 
-    fun getAuthor(): User? {
-        return getEvent()!!.author
-    }
-
-    fun getMember(): Member? {
-        return getEvent()!!.member
-    }
-
-    fun getJDA(): JDA {
-        return getEvent()!!.jda
-    }
-
-    fun getShardManager(): ShardManager? {
-        return getJDA().shardManager
-    }
-
-    fun getSelfUser(): User? {
-        return getJDA().selfUser
-    }
-
-    fun getSelfMember(): Member? {
-        return getGuild().selfMember
-    }
 }

@@ -1,4 +1,7 @@
 package com.github.mrdroox.projects.zoe.controllers.defenses.protections
 
-class AntiSpamProtection {
+class AntiSpamProtection(GuildID: String) {
+    init {
+
+    }
 }
