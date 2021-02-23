@@ -1,7 +1,6 @@
 package com.github.mrdroox.projects
 
 import com.github.mrdroox.projects.utils.LoggerActivities
-import com.github.mrdroox.projects.zoe.ZoeClient
 import java.io.File
 import kotlin.system.exitProcess
 

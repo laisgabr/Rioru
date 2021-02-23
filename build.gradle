@@ -7,7 +7,7 @@ repositories {
     maven {
         url 'https://dl.bintray.com/sedmelluq/com.sedmelluq'
     }
-
+    mavenCentral()
     jcenter()
 }
 
@@ -26,11 +26,15 @@ dependencies {
 
     implementation "com.sedmelluq:lavaplayer-ext-youtube-rotator:0.2.1"
 
-    implementation 'org.postgresql:postgresql:42.2.16'
-
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+    implementation "io.ktor:ktor-client-core:1.5.1"
+    implementation "io.ktor:ktor-client-cio:1.5.1"
+    implementation "io.ktor:ktor-server-servlet:1.5.1"
+    implementation "io.ktor:ktor-html-builder:1.5.1"
+    implementation "io.ktor:ktor-gson:1.5.1"
 }
 
 application {
