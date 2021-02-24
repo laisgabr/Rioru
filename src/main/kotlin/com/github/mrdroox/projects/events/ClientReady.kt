@@ -1,6 +1,6 @@
 package com.github.mrdroox.projects.events
 
-import com.github.mrdroox.projects.utils.LoggerActivities
+import com.github.mrdroox.projects.utilities.others.LoggerActivities
 
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter

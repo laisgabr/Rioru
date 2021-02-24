@@ -1,4 +1,4 @@
-package com.github.mrdroox.projects.utils
+package com.github.mrdroox.projects.utilities.others
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

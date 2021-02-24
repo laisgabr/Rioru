@@ -1,10 +1,9 @@
 package com.github.mrdroox.projects
 
-import com.github.mrdroox.projects.utils.LoggerActivities
+import com.github.mrdroox.projects.utilities.others.LoggerActivities
 import com.github.mrdroox.projects.controllers.CommandManager
-import com.github.mrdroox.projects.events.MessageCreateEvent
-import com.github.mrdroox.projects.events.ClientReady
-import com.github.mrdroox.projects.utils.Config
+import com.github.mrdroox.projects.events.*
+import com.github.mrdroox.projects.utilities.Config
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -37,8 +36,10 @@ class ZoeClient {
                 .setActivity(Activity.streaming("Sou feita em Kotlin e Java 😎", "twitch.tv/zoe"))
                 .addEventListeners(
                     MessageCreateEvent(),
-                    ClientReady()
-                )//.setShardsTotal(Integer.parseInt(Config.get("shards")))
+                    ClientReady(),
+                    ShutdownEvent()
+                )
+                //.setShardsTotal(Integer.parseInt(Config.get("shards")))
                 .build()
         }
     }

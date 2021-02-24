@@ -35,6 +35,7 @@ dependencies {
     implementation "io.ktor:ktor-server-servlet:1.5.1"
     implementation "io.ktor:ktor-html-builder:1.5.1"
     implementation "io.ktor:ktor-gson:1.5.1"
+    implementation 'io.ktor:ktor:1.5.1'
 }
 
 application {

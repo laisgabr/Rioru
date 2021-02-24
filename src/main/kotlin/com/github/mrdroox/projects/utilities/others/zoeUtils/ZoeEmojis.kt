@@ -1,4 +1,4 @@
-package com.github.mrdroox.projects.utilities
+package com.github.mrdroox.projects.utilities.others.zoeUtils
 
 import org.json.simple.JSONObject
 

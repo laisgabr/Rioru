@@ -1,5 +1,7 @@
-package com.github.mrdroox.projects.utils
+package com.github.mrdroox.projects.utilities.others.zoeUtils
 
+import com.github.mrdroox.projects.utilities.others.LoggerActivities
+import com.github.mrdroox.projects.utilities.others.ClientRequests
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 

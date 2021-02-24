@@ -1,4 +1,4 @@
-package com.github.mrdroox.projects.utils
+package com.github.mrdroox.projects.utilities.others
 
 /**
  * @author MysteryMS

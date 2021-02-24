@@ -1,8 +1,10 @@
-package com.github.mrdroox.projects.utilities
+package com.github.mrdroox.projects.utilities.others.zoeUtils
 
+import com.github.mrdroox.projects.utilities.others.zoeUtils.EmbedColor
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.User
 import java.awt.Color
+import java.time.OffsetDateTime
 
 class ZoeEmbed(user: User?, color: EmbedColor): EmbedBuilder() {
     init {
@@ -23,7 +25,8 @@ class ZoeEmbed(user: User?, color: EmbedColor): EmbedBuilder() {
 
         setFooter(user?.asTag, user?.avatarUrl)
         setColor(colorToSet)
+        setTimestamp(OffsetDateTime.now())
     }
 
-    constructor(user: User?): this(user, EmbedColor.DEFAULT) {}
+    constructor(user: User?): this(user, EmbedColor.DEFAULT)
 }
