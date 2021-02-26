@@ -1,6 +1,5 @@
 package com.github.mrdroox.projects.utilities.others.zoeUtils
 
-import com.github.mrdroox.projects.utilities.others.zoeUtils.EmbedColor
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.User
 import java.awt.Color
@@ -8,7 +7,7 @@ import java.time.OffsetDateTime
 
 class ZoeEmbed(user: User?, color: EmbedColor): EmbedBuilder() {
     init {
-        lateinit var colorToSet: Color;
+        lateinit var colorToSet: Color
         when {
             color === EmbedColor.DEFAULT -> colorToSet = Color(255, 10, 247)
             color === EmbedColor.MINECRAFT -> colorToSet = Color(34, 173, 31)

@@ -18,13 +18,12 @@ class MessageCreateEvent: ListenerAdapter() {
 
             if (cmd !== null)
                 try {
-                    cmd[0].execute(CommandContext(event, args.subList(1, args.size)))
+                    cmd[0].execute(CommandContext(event, args.subList(1, args.size), "pt-BR"))
                 } catch(e: Exception) {
                     event.channel.sendMessage("Have any error, `${e.message}`").queue()
                 }
             else
                 event.channel.sendMessage(":x: | O comando `" + args[0].replace(prefix, "") + "` não existe").queue()
-
         }
     }
 }

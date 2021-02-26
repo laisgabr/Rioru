@@ -1,12 +1,16 @@
 package com.github.mrdroox.projects.utilities.commands
 
+import com.github.mrdroox.projects.utilities.others.zoeUtils.ZoeEmojis
+import com.github.mrdroox.projects.utilities.others.zoeUtils.ZoeTranslates
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.sharding.ShardManager
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.*
 import java.lang.NumberFormatException
 
-class CommandContext(private var event: GuildMessageReceivedEvent, private var args: List<String>) {
+class CommandContext(private var event: GuildMessageReceivedEvent, private var args: List<String>, val locale: String) {
+    private val translates = ZoeTranslates()
+    val emojis = ZoeEmojis()
     fun getGuild(): Guild { return getEvent().guild }
     fun getEvent(): GuildMessageReceivedEvent { return event }
     fun getArgs(): List<String> { return args }
@@ -35,5 +39,14 @@ class CommandContext(private var event: GuildMessageReceivedEvent, private var a
         when { getArgs().isEmpty() && getMessage().mentionedMembers.isEmpty() -> return false }
         return true
     }
-}
 
+    fun translate(emoji: String, uri: String): String {
+        val array = uri.split(":")
+        return "$emoji | ${getAuthor().asMention} " + translates.get(locale, array[0], array[1])?.get(array[2]) as String
+    }
+
+    fun translate(uri: String): String {
+        val array = uri.split(":")
+        return "${getAuthor().asMention}, " + translates.get(locale, array[0], array[1])?.get(array[2]) as String
+    }
+}

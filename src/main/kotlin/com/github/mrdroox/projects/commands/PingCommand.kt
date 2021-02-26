@@ -14,6 +14,7 @@ class PingCommand: Command() {
     override fun execute(ctx: CommandContext) {
         val time = System.currentTimeMillis()
         val embed = ZoeEmbed(ctx.getAuthor())
+        embed.setThumbnail(ctx.getJDA().selfUser.effectiveAvatarUrl)
         embed.setDescription("Ping: ${System.currentTimeMillis() - time} ms\nGateway Ping: ${ctx.getJDA().gatewayPing} ms")
         ctx.getChannel().sendMessage(embed.build()).queue()
     }

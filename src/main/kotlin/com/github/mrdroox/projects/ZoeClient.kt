@@ -5,7 +5,7 @@ import com.github.mrdroox.projects.controllers.CommandManager
 import com.github.mrdroox.projects.events.*
 import com.github.mrdroox.projects.utilities.Config
 import net.dv8tion.jda.api.JDABuilder
-import net.dv8tion.jda.api.entities.Activity
+import net.dv8tion.jda.api.entities.Activity.streaming
 import net.dv8tion.jda.api.requests.GatewayIntent
 
 class ZoeClient {
@@ -14,6 +14,7 @@ class ZoeClient {
     }
 
     companion object {
+        val cooldown: Map<String, Int> = HashMap()
         private fun createZoeInstance() {
             LoggerActivities.info("Starting load commands")
             CommandManager()
@@ -33,12 +34,11 @@ class ZoeClient {
                 GatewayIntent.GUILD_MESSAGES,
                 GatewayIntent.GUILD_VOICE_STATES
             )
-                .setActivity(Activity.streaming("Sou feita em Kotlin e Java 😎", "twitch.tv/zoe"))
                 .addEventListeners(
                     MessageCreateEvent(),
                     ClientReady(),
                     ShutdownEvent()
-                )
+                ).setActivity(streaming("Sou feita em Kotlin 😎", "twitch.tv/mrgamingbr0001"))
                 //.setShardsTotal(Integer.parseInt(Config.get("shards")))
                 .build()
         }

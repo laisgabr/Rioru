@@ -10,6 +10,7 @@ class CommandManager {
     init {
         // Fun
         addCommand(SlapCommand())
+        addCommand(KissCommand())
         // /Fun
         // Utils
         addCommand(PingCommand())
