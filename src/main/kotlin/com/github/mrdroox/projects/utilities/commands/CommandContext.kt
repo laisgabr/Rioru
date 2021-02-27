@@ -1,7 +1,7 @@
 package com.github.mrdroox.projects.utilities.commands
 
-import com.github.mrdroox.projects.utilities.others.zoeUtils.ZoeEmojis
-import com.github.mrdroox.projects.utilities.others.zoeUtils.ZoeTranslates
+import com.github.mrdroox.projects.utilities.others.rioruUtils.RioruEmojis
+import com.github.mrdroox.projects.utilities.others.rioruUtils.RioruTranslates
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.sharding.ShardManager
 import net.dv8tion.jda.api.JDA
@@ -9,8 +9,8 @@ import net.dv8tion.jda.api.entities.*
 import java.lang.NumberFormatException
 
 class CommandContext(private var event: GuildMessageReceivedEvent, private var args: List<String>, val locale: String) {
-    private val translates = ZoeTranslates()
-    val emojis = ZoeEmojis()
+    private val translates = RioruTranslates()
+    val emojis = RioruEmojis()
     fun getGuild(): Guild { return getEvent().guild }
     fun getEvent(): GuildMessageReceivedEvent { return event }
     fun getArgs(): List<String> { return args }

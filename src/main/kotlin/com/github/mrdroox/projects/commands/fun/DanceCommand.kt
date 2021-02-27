@@ -1,17 +1,16 @@
 package com.github.mrdroox.projects.commands.`fun`
 
 import com.github.mrdroox.projects.utilities.commands.Command
-import com.github.mrdroox.projects.utilities.commands.enumerator.CommandCategory
 import com.github.mrdroox.projects.utilities.commands.CommandContext
+import com.github.mrdroox.projects.utilities.commands.enumerator.CommandCategory
 import com.github.mrdroox.projects.utilities.others.apis.UsagiAPI
 import com.github.mrdroox.projects.utilities.others.rioruUtils.EmbedColor
 import com.github.mrdroox.projects.utilities.others.rioruUtils.RioruEmbed
 
-class SlapCommand: Command() {
-    override var name: String? = "slap"
-    override var aliases = listOf("tapa")
+class DanceCommand: Command() {
+    override var name: String? = "dance"
+    override var aliases: List<String> = listOf("dançar", "dancar")
     override var category = CommandCategory.FUN
-
     override fun execute(ctx: CommandContext) {
         if(!ctx.hasArgsOrMention()) {
             ctx.getChannel().sendMessage("Você precisa mencionar um membro, me passar um ID ou me passar um Nickname")
@@ -25,14 +24,8 @@ class SlapCommand: Command() {
         }
 
         val embed = RioruEmbed(ctx.getAuthor(), EmbedColor.FUN)
-
-        if(ctx.user()!!.user.name === ctx.getJDA().selfUser.name) {
-            embed.setDescription("Nossa :c, porque você me bateu?. ${ctx.getAuthor().asMention} me bateu ")
-        } else {
-            embed.setDescription("${ctx.getAuthor().asMention} deu um tapa em ${ctx.user()!!.user.asMention}")
-        }
-
-        embed.setImage(UsagiAPI().slap())
+        embed.setDescription("${ctx.getAuthor().asMention} dançou com ${ctx.user()!!.user.asMention}")
+        embed.setImage(UsagiAPI().dance())
         ctx.getChannel().sendMessage(embed.build()).queue()
     }
 }

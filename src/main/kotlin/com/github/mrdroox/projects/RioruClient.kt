@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity.streaming
 import net.dv8tion.jda.api.requests.GatewayIntent
 
-class ZoeClient {
+class RioruClient {
     init {
         createZoeInstance()
     }

@@ -1,11 +1,11 @@
-package com.github.mrdroox.projects.utilities.others.zoeUtils
+package com.github.mrdroox.projects.utilities.others.rioruUtils
 
 import com.github.mrdroox.projects.utilities.others.LoggerActivities
 import com.github.mrdroox.projects.utilities.others.ClientRequests
 import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 
-class ZoeTranslates {
+class RioruTranslates {
     fun get(Locale: String, FileName: String, ObjectName: String?): JSONObject? {
         val request =
             ClientRequests().build(

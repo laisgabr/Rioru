@@ -11,5 +11,10 @@ fun main() {
         exitProcess(1)
     }
 
-    ZoeClient()
+    try {
+        RioruClient()
+    } catch (e: Exception) {
+        LoggerActivities.error("Rioru Client Error: ${e.message}")
+        exitProcess(1)
+    }
 }

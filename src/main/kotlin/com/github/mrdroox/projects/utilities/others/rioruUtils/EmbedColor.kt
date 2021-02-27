@@ -1,4 +1,4 @@
-package com.github.mrdroox.projects.utilities.others.zoeUtils
+package com.github.mrdroox.projects.utilities.others.rioruUtils
 
 enum class EmbedColor {
     DEFAULT,
