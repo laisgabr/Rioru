@@ -17,13 +17,13 @@ class KissCommand: Command() {
 
         val user = ctx.user()
         if(user === null) {
-            ctx.getChannel().sendMessage(ctx.translate(ctx.emojis.zoeRage,"FunCommands:utils:notFoundAnyUser")
+            ctx.getChannel().sendMessage(ctx.translate("FunCommands:utils:notFoundAnyUser")
                     .replace("<<ARGS>>", ctx.getArgs()[0])).queue()
             return
         }
 
         if(user.id === user.jda.selfUser.id) {
-            ctx.getChannel().sendMessage("").queue()
+            ctx.getChannel().sendMessage("rs").queue()
         }
     }
 }
