@@ -11,19 +11,21 @@ class KissCommand: Command() {
 
     override fun execute(ctx: CommandContext) {
         if(!ctx.hasArgsOrMention()) {
-            ctx.getChannel().sendMessage(ctx.translate(":x:","FunCommands:utils:needArgsOrMention")).queue()
+            ctx.sendMessage("FunCommands:utils:needArgsOrMention")
             return
         }
 
         val user = ctx.user()
         if(user === null) {
-            ctx.getChannel().sendMessage(ctx.translate("FunCommands:utils:notFoundAnyUser")
-                    .replace("<<ARGS>>", ctx.getArgs()[0])).queue()
+            var map = HashMap<String, String>()
+            map["<<ARGS>>"] = ctx.getArgs()[0]
+            ctx.sendMessage("FunCommands:utils:notFoundAnyUser", map)
             return
         }
 
         if(user.id === user.jda.selfUser.id) {
-            ctx.getChannel().sendMessage("rs").queue()
+            ctx.sendMessage("FunCommands:kiss:tryKissBot")
+            return
         }
     }
 }

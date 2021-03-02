@@ -1,5 +1,5 @@
 package com.github.mrdroox.projects.utilities.others
 
-class Database {
+class Database(private var uri: String) {
 
 }

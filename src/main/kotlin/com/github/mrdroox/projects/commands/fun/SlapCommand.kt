@@ -26,7 +26,7 @@ class SlapCommand: Command() {
 
         val embed = RioruEmbed(ctx.getAuthor(), EmbedColor.FUN)
 
-        if(ctx.user()!!.user.name === ctx.getJDA().selfUser.name) {
+        if(ctx.user()!!.user.id === ctx.getJDA().selfUser.id) {
             embed.setDescription("Nossa :c, porque você me bateu?. ${ctx.getAuthor().asMention} me bateu ")
         } else {
             embed.setDescription("${ctx.getAuthor().asMention} deu um tapa em ${ctx.user()!!.user.asMention}")

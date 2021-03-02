@@ -1,11 +1,12 @@
 package com.github.mrdroox.projects.utilities.others.rioruUtils
 
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.User
 import java.awt.Color
 import java.time.OffsetDateTime
 
-class RioruEmbed(user: User?, color: EmbedColor): EmbedBuilder() {
+class RioruEmbed(user: User?, color: EmbedColor, Locale: String): EmbedBuilder() {
     init {
         lateinit var colorToSet: Color
         when {
@@ -27,5 +28,10 @@ class RioruEmbed(user: User?, color: EmbedColor): EmbedBuilder() {
         setTimestamp(OffsetDateTime.now())
     }
 
-    constructor(user: User?): this(user, EmbedColor.DEFAULT)
+    constructor(user: User?, locale: String): this(user, EmbedColor.DEFAULT, locale)
+    constructor(user: User?): this(user, EmbedColor.DEFAULT, "en-US")
+
+    /*
+    Vou adicionar as Translates dps :sunglasses:
+    */
 }

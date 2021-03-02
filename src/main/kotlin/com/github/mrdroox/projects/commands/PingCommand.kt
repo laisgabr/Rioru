@@ -13,9 +13,16 @@ class PingCommand: Command() {
 
     override fun execute(ctx: CommandContext) {
         val time = System.currentTimeMillis()
-        val embed = RioruEmbed(ctx.getAuthor())
-        embed.setThumbnail(ctx.getJDA().selfUser.effectiveAvatarUrl)
-        embed.setDescription("Ping: ${System.currentTimeMillis() - time} ms\nGateway Ping: ${ctx.getJDA().gatewayPing} ms")
-        ctx.getChannel().sendMessage(embed.build()).queue()
+        ctx.getChannel().sendMessage("Ping?").queue { response ->
+            run {
+                response.editMessage(
+                    RioruEmbed(ctx.getAuthor())
+                        .setThumbnail(ctx.getJDA().selfUser.effectiveAvatarUrl)
+                        .setDescription("Ping: ${System.currentTimeMillis() - time} ms\n" +
+                                "Gateway Ping: ${ctx.getJDA().gatewayPing} ms")
+                    .build()
+                ).queue()
+            }
+        }
     }
 }

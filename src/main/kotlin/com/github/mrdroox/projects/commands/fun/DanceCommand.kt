@@ -11,13 +11,8 @@ class DanceCommand: Command() {
     override var name: String? = "dance"
     override var aliases: List<String> = listOf("dançar", "dancar")
     override var category = CommandCategory.FUN
+    override var argsSize: Int? = 1
     override fun execute(ctx: CommandContext) {
-        if(!ctx.hasArgsOrMention()) {
-            ctx.getChannel().sendMessage("Você precisa mencionar um membro, me passar um ID ou me passar um Nickname")
-                .queue()
-            return
-        }
-
         if(ctx.user() === null) {
             ctx.getChannel().sendMessage("Não encontrei ninguém que tenha o ID/Username `${ctx.getArgs()[0]}`").queue()
             return

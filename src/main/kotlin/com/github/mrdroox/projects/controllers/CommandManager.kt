@@ -2,6 +2,7 @@ package com.github.mrdroox.projects.controllers
 
 import com.github.mrdroox.projects.commands.*
 import com.github.mrdroox.projects.commands.`fun`.*
+import com.github.mrdroox.projects.commands.miscellaneous.*
 import com.github.mrdroox.projects.utilities.others.LoggerActivities
 import com.github.mrdroox.projects.utilities.commands.Command
 import kotlin.collections.ArrayList
@@ -13,6 +14,8 @@ class CommandManager {
             DanceCommand(),
             KissCommand(),
             SlapCommand(),
+            // Miscellaneous
+            AvatarCommand(),
             // Utils
             PingCommand()
         )

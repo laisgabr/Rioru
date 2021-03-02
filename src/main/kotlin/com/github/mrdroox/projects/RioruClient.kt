@@ -4,23 +4,23 @@ import com.github.mrdroox.projects.utilities.others.LoggerActivities
 import com.github.mrdroox.projects.controllers.CommandManager
 import com.github.mrdroox.projects.events.*
 import com.github.mrdroox.projects.utilities.Config
-import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity.streaming
 import net.dv8tion.jda.api.requests.GatewayIntent
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder
 
 class RioruClient {
     init {
-        createZoeInstance()
+        createInstance()
     }
 
     companion object {
-        val cooldown: Map<String, Int> = HashMap()
-        private fun createZoeInstance() {
+        val cooldown = HashMap<String, Int>()
+        private fun createInstance() {
             LoggerActivities.info("Starting load commands")
             CommandManager()
             LoggerActivities.success("All Commands Loaded with success")
 
-            JDABuilder.createDefault(
+            DefaultShardManagerBuilder.createDefault(
                 Config.get("token"),
                 GatewayIntent.GUILD_WEBHOOKS,
                 GatewayIntent.GUILD_MESSAGE_TYPING,
@@ -38,8 +38,7 @@ class RioruClient {
                     MessageCreateEvent(),
                     ClientReady(),
                     ShutdownEvent()
-                ).setActivity(streaming("Sou feita em Kotlin 😎", "twitch.tv/mrgamingbr0001"))
-                //.setShardsTotal(Integer.parseInt(Config.get("shards")))
+                ).setActivity(streaming("Sou feito em Kotlin 😎", "twitch.tv/mrgamingbr0001"))
                 .build()
         }
     }

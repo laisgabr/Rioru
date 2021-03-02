@@ -6,6 +6,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class ShutdownEvent: ListenerAdapter() {
     override fun onShutdown(event: ShutdownEvent) {
-        LoggerActivities.info("[ Shutdown Event ]  Shutting down......")
+        LoggerActivities.info("[ Shutdown Event ]  Shutting down......\n Finish code: \"${event.code}\"")
     }
 }
