@@ -22,13 +22,11 @@ dependencies {
 
     implementation 'com.sedmelluq:lavaplayer:1.3.71'
 
-    implementation "com.sedmelluq:lavaplayer-ext-youtube-rotator:0.2.1"
-
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
-    implementation "org.litote.kmongo:kmongo:4.0.4"
+    implementation "org.litote.kmongo:kmongo:4.2.3"
 }
 
 application {
