@@ -18,7 +18,7 @@ class DanceCommand: Command() {
             return
         }
 
-        val embed = RioruEmbed(ctx.getAuthor(), EmbedColor.FUN)
+        val embed = RioruEmbed(ctx.getAuthor(), EmbedColor.FUN, "pt-BR")
         embed.setDescription("${ctx.getAuthor().asMention} dançou com ${ctx.user()!!.user.asMention}")
         embed.setImage(UsagiAPI().dance())
         ctx.getChannel().sendMessage(embed.build()).queue()
