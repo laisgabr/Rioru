@@ -26,8 +26,8 @@ class MessageCreateEvent: ListenerAdapter() {
 
             if (cmd !== null)
                 try {
-                    CommandOptions(cmd[0], event.author.id, event)
                     val ctx = CommandContext(event, args.subList(1, args.size), "pt-BR")
+                    CommandOptions(ctx, cmd[0], event.author.id, event)
                     cmd[0].execute(ctx)
                 } catch(e: Exception) {
                     event.channel.sendMessage("Have any error, `${e.message}`").queue()
