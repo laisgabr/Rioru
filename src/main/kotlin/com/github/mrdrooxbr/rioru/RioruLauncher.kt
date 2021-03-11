@@ -14,12 +14,12 @@ import kotlin.system.exitProcess
 open class RioruBotApplication
 
 fun main(args: Array<String>) {
-    if(!File("./bot.conf").exists()) { LoggerActivities.error("You need create a bot.conf file :c"); exitProcess(1) }
+   // if(!File("./bot.conf").exists()) { LoggerActivities.error("You need create a bot.conf file :c"); exitProcess(1) }
 
-    val config = Config().get()
-    Database(ConnectionString(config.getNode("configs").getNode("services").getNode("RioruDB").getString("uri")))
+   // val config = Config().get()
+   // Database(ConnectionString(config.getNode("configs").getNode("services").getNode("RioruDB").getString("uri")))
     runApplication<RioruBotApplication>(*args)
 
-    WatchdogsClient(config.getNode("configs").getNode("watchdogs").getString("token"))
-    RioruClient(config)
+   // WatchdogsClient(config.getNode("configs").getNode("watchdogs").getString("token"))
+   // RioruClient(config)
 }

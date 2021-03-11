@@ -7,7 +7,7 @@ import com.github.mrdrooxbr.rioru.bot.rioruUtils.RioruEmbed
 
 class PingCommand: Command() {
     override var name: String? = "ping"
-    override var aliases = listOf("latency", "apiping")
+    override var aliases = listOf("latency", "latencia")
     override var category = CommandCategory.UTILITIES
     override var canDisable = false
 

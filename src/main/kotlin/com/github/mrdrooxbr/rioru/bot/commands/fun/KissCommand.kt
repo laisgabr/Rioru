@@ -17,7 +17,7 @@ class KissCommand: Command() {
 
         val user = ctx.user()
         if(user === null) {
-            var map = HashMap<String, String>()
+            val map = HashMap<String, String>()
             map["<<ARGS>>"] = ctx.getArgs()[0]
             ctx.sendMessage("FunCommands:utils:notFoundAnyUser", map)
             return
