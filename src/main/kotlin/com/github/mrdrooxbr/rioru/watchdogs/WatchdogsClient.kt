@@ -16,7 +16,7 @@ class WatchdogsClient(token: String) {
             jda.getGuildById(config.getNode("guild-id").toString())
                 ?.getTextChannelById(config.getNode("status-channel-id").toString())
                 ?.sendMessage(""" 
-                    Shard ${ShardID} (`${ClusterName}` ${ClusterID}) caiu.
+                    Shard $ShardID (`${ClusterName}` ${ClusterID}) caiu.
                     Motivo: `${Reason}`
                 """.trimIndent())?.queue()
         }

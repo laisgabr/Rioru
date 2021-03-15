@@ -5,6 +5,5 @@ import ninja.leaping.configurate.hocon.HoconConfigurationLoader
 import java.nio.file.Path
 
 class Config {
-    fun get(): CommentedConfigurationNode {
-        return HoconConfigurationLoader.builder().setPath(Path.of("bot.conf")).build().load() }
+    fun get(): CommentedConfigurationNode = HoconConfigurationLoader.builder().setPath(Path.of("bot.conf")).build().load()
 }

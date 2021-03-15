@@ -1,7 +1,7 @@
-package com.github.mrdrooxbr.rioru.utils.database
+package com.github.mrdrooxbr.rioru.database
 
-import com.github.mrdrooxbr.rioru.utils.database.models.UserModel
-import com.github.mrdrooxbr.rioru.utils.database.models.utils.Blacklist
+import com.github.mrdrooxbr.rioru.database.models.UserModel
+import com.github.mrdrooxbr.rioru.database.models.utils.Blacklist
 import com.mongodb.ConnectionString
 import com.mongodb.MongoClientSettings
 import com.mongodb.client.MongoClient

@@ -11,6 +11,10 @@ configs {
         support-server-id: ""
     }
 
+    api {
+        secret: ""
+    }
+
     watchdogs {
         token: ""
         shards-alert-channel-id: ""

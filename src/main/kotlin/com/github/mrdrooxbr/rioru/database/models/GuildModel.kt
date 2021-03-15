@@ -1,7 +1,7 @@
-package com.github.mrdrooxbr.rioru.utils.database.models
+package com.github.mrdrooxbr.rioru.database.models
 
-import com.github.mrdrooxbr.rioru.utils.database.models.utils.Blacklist
-import com.github.mrdrooxbr.rioru.utils.database.models.utils.Defenses
+import com.github.mrdrooxbr.rioru.database.models.utils.Blacklist
+import com.github.mrdrooxbr.rioru.database.models.utils.Defenses
 
 data class GuildModel(
     val id: String,

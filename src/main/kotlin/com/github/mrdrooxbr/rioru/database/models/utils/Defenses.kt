@@ -1,4 +1,4 @@
-package com.github.mrdrooxbr.rioru.utils.database.models.utils
+package com.github.mrdrooxbr.rioru.database.models.utils
 
 data class Defenses(
     var antiAltAccountsEnabled: Boolean,

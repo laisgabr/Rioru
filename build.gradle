@@ -1,6 +1,4 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.3'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'org.jetbrains.kotlin.jvm' version '1.4.20'
     id 'application'
 }
@@ -17,31 +15,15 @@ repositories {
 
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
-
     implementation 'com.google.guava:guava:29.0-jre'
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-
     implementation group: 'ninja.leaping.configurate', name: 'configurate-hocon', version: '3.7.1'
-
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
     implementation 'net.dv8tion:JDA:4.2.0_229'
-
     implementation 'com.sedmelluq:lavaplayer:1.3.71'
-
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-
     implementation 'org.mongodb:mongodb-driver-sync:4.2.0'
-
     implementation 'org.litote.kmongo:kmongo:4.2.4'
-
 }
 
 application {
