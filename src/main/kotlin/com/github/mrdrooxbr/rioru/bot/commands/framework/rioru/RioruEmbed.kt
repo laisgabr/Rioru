@@ -1,18 +1,19 @@
-package com.github.mrdrooxbr.rioru.bot.rioruUtils
+package com.github.mrdrooxbr.rioru.bot.commands.framework.rioru
 
+import com.github.mrdrooxbr.rioru.bot.commands.framework.CommandContext
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.entities.User
 import java.time.OffsetDateTime
 
-class RioruEmbed(user: User?, color: EmbedColor, private val Locale: String): EmbedBuilder() {
+class RioruEmbed(private val ctx: CommandContext, color: EmbedColor): EmbedBuilder() {
     private val translates = RioruTranslates()
     init {
-        setFooter(user?.asTag, user?.avatarUrl)
+        val user = ctx.getAuthor()
+        setFooter(user.asTag, user.avatarUrl)
         setColor(color.color)
         setTimestamp(OffsetDateTime.now())
     }
 
-    constructor(user: User?, locale: String): this(user, EmbedColor.DEFAULT, locale)
+    constructor(ctx: CommandContext): this(ctx, EmbedColor.DEFAULT)
 
     fun setDescription(description: String, map: HashMap<String, String>? = null): EmbedBuilder {
          return if(map === null)
@@ -50,24 +51,20 @@ class RioruEmbed(user: User?, color: EmbedColor, private val Locale: String): Em
     }
 
     fun setTitle(name: String, url: String? = null, map: HashMap<String, String>? = null): EmbedBuilder {
-        return if(url === null) {
-            if(map === null) {
+        return if(url === null)
+            if(map === null)
                 super.setTitle(getTranslate(name))
-            } else {
+            else {
                 super.setTitle(placeholders(getTranslate(name), map))
-            }
-        } else {
-            if(map === null) {
-                super.setTitle(getTranslate(name), getTranslate(url))
-            } else {
-                super.setTitle(placeholders(getTranslate(name), map), placeholders(getTranslate(url), map))
-            }
+            } else
+                if(map === null) super.setTitle(getTranslate(name), getTranslate(url)) else {
+            super.setTitle(placeholders(getTranslate(name), map), placeholders(getTranslate(url), map))
         }
     }
 
     private fun getTranslate(translationUri: String): String {
         val array = translationUri.split(":")
-        return translates.get(Locale, array[0], array[1])?.get(array[2]) as String
+        return translates.get(ctx.locale, array[0]) as String
     }
 
     private fun placeholders(text: String, map: HashMap<String, String>? = null): String {

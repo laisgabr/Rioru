@@ -1,4 +1,4 @@
-package com.github.mrdrooxbr.rioru.bot.rioruUtils
+package com.github.mrdrooxbr.rioru.bot.commands.framework.rioru
 
 import java.awt.Color
 

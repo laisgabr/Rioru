@@ -1,8 +1,7 @@
 package com.github.mrdrooxbr.rioru.bot.events
 
 import com.github.mrdrooxbr.rioru.bot.managers.CommandManager
-import com.github.mrdrooxbr.rioru.bot.structures.commands.CommandContext
-import com.github.mrdrooxbr.rioru.bot.structures.commands.CommandOptions
+import com.github.mrdrooxbr.rioru.bot.commands.framework.CommandContext
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
@@ -29,7 +28,6 @@ class MessageCreateEvent: ListenerAdapter() {
             if (cmd !== null)
                 try {
                     val ctx = CommandContext(event, args.subList(1, args.size), "pt-BR")
-                    CommandOptions(ctx, cmd[0], event.author.id, event)
                     cmd[0].execute(ctx)
                 } catch(e: Exception) {
                     event.channel.sendMessage("Have any error, `${e.message}`").queue()

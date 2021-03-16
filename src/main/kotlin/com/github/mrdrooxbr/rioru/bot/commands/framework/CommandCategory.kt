@@ -1,4 +1,4 @@
-package com.github.mrdrooxbr.rioru.bot.structures.commands.enumerator
+package com.github.mrdrooxbr.rioru.bot.commands.framework
 
 enum class CommandCategory {
     DEVELOPER, ECONOMY, FORTNITE, FUN, GIVEAWAY, IMAGE,
