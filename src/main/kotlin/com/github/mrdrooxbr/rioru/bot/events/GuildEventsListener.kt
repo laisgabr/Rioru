@@ -18,7 +18,7 @@ class GuildEventsListener: ListenerAdapter() {
         event.channel.retrieveMessageById(event.messageId).queue { res ->
             kotlin.run {
                 if(!res.author.isBot) {
-                    // BANIR O SAFADO Q USA SELFBOT :)
+                    // BANIR O SAFADO Q USA SELFBOT DE USAR O RIORU :)
                    if(event.messageEmbeds.isNotEmpty()) {
 
                    }

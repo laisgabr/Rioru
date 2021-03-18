@@ -2,7 +2,7 @@ package com.github.mrdrooxbr.rioru.bot.commands.framework.rioru
 
 import java.awt.Color
 
-enum class EmbedColor(var color: Color) {
+enum class EmbedColor(val color: Color) {
     DEFAULT(Color(255, 10, 10)),
     MODERATION_ACTIONS(Color(255, 0, 0)),
     LOGS(Color(17, 65, 92)),

@@ -1,0 +1,53 @@
+{
+  "client": {
+    "id": "",
+    "token": "",
+    "owner": "",
+    "developers": [],
+    "development": true,
+    "shards-min": 0,
+    "shards-max": 1,
+    "prefix": "r!!"
+  },
+  "supportServer": {
+    "id": "",
+    "logs": {
+      "commandsID": "",
+      "shardsID": "",
+      "clustersID": "",
+      "paymentsID": "",
+      "commandsID": "",
+      "utilitiesID": "",
+      "guildsID": ""
+    }
+  },
+
+  "services": {
+    "dashboard": {
+      "port": 8080
+    },
+
+    "api": {
+      "port": 2333,
+      "secret": ""
+    },
+
+    "zoePainterStudio":{
+      "ip": "",
+      "port": 3434,
+      "secret": ""
+    },
+
+    "zoeDJ": {
+      "ip": "",
+      "port": 3030,
+      "secret": ""
+    },
+
+    "torment": {
+      "ip": "",
+      "port": 3033,
+      "secret": ""
+    }
+  }
+}

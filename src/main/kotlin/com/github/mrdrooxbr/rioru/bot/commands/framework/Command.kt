@@ -11,7 +11,7 @@ abstract class Command {
     open val rioruPermissionsNeeded = config.rioruPermissionsNeeded
     open val cooldown = config.cooldown
     open val disabled = config.disabled
-    val disabledReason = config.disabledReason
+    open val disabledReason = config.disabledReason
 
     abstract fun execute(ctx: CommandContext)
 }

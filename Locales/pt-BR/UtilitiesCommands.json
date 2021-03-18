@@ -1,0 +1,6 @@
+{
+  "ping": {
+    "firstMessage": "Ping ?",
+    "afterEdit": "Pong,\nO Ping da API é de %s ms, Meu ping é de %s ms :3"
+  }
+}

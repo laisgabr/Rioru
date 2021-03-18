@@ -19,10 +19,9 @@ class PingCommand: Command() {
             run {
                 response.editMessage(
                     RioruEmbed(ctx)
+                        .setDescription(ctx.translate("UtilitiesCommands:ping:afterEdit"), ctx.getJDA().gatewayPing.toString(), (System.currentTimeMillis() - time).toString())
                         .setThumbnail(ctx.getJDA().selfUser.effectiveAvatarUrl)
-                        .setDescription("Ping: ${System.currentTimeMillis() - time} ms\n" +
-                                "Gateway Ping: ${ctx.getJDA().gatewayPing} ms")
-                    .build()
+                        .build()
                 ).queue()
             }
         }

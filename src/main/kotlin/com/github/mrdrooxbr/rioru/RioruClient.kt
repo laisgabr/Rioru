@@ -6,9 +6,9 @@ import com.github.mrdrooxbr.rioru.bot.events.*
 import net.dv8tion.jda.api.entities.Activity.streaming
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder
-import ninja.leaping.configurate.commented.CommentedConfigurationNode
+import org.json.JSONObject
 
-class RioruClient(private val config: CommentedConfigurationNode) {
+class RioruClient(private val config: JSONObject) {
     init { createInstance() }
 
     private fun createInstance() {
@@ -17,7 +17,7 @@ class RioruClient(private val config: CommentedConfigurationNode) {
         LoggerActivities.success("All Commands Loaded with success")
 
         DefaultShardManagerBuilder.createDefault(
-        config.getNode("configs").getNode("client").getString("token"),
+            config.getJSONObject("client").getString("token"),
             GatewayIntent.GUILD_WEBHOOKS,
             GatewayIntent.GUILD_MESSAGE_TYPING,
             GatewayIntent.DIRECT_MESSAGE_TYPING,
@@ -34,7 +34,7 @@ class RioruClient(private val config: CommentedConfigurationNode) {
             MessageCreateEvent(),
             ClientReady(),
             ShutdownEvent()
-        ).setActivity(streaming("Sou feito em Kotlin 😎", null))
+        ).setActivity(streaming("OWO", null))
         .build()
     }
 }
