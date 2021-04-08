@@ -1,4 +1,5 @@
-.gradle
-build
+.gradle/
+discord.txt
+services.txt
+build/
 .idea/
-bot.conf
