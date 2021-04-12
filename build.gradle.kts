@@ -16,10 +16,15 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("com.google.guava:guava:29.0-jre")
-
+    implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
+    implementation("io.ktor:ktor-server-core:1.5.3")
+    implementation("io.ktor:ktor-server-netty:1.5.3")
+    implementation("io.ktor:ktor-html-builder:1.5.2")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.6")
+    implementation("org.json:json:20210307")
     implementation("net.dv8tion:JDA:4.2.1_255")
     implementation("com.github.ShadowB64:UsagiAPISimple:7724995560")
-
+    implementation("khttp:khttp:1.0.0")
 }
 
 application {
