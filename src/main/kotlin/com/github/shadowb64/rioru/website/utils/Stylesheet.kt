@@ -5,6 +5,6 @@ import io.ktor.routing.*
 
 fun Route.stylesheet() {
     route("/files/css") {
-        indexCss()
+        indexCss() // "/index.css"
     }
 }

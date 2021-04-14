@@ -5,6 +5,6 @@ import io.ktor.routing.*
 
 fun Route.html() {
     index() // "/"
-    notFound()
-    invite()
+    notFound() // "/*"
+    invite() // "/invite"
 }
