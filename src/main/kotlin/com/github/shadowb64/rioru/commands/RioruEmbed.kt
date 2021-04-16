@@ -1,43 +1,21 @@
 package com.github.shadowb64.rioru.commands
 
-import com.github.shadowb64.rioru.utilities.RioruUtilities
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
-import org.json.JSONObject
 import java.awt.Color
 import java.time.OffsetDateTime
 
-abstract class AbstractCommand(
-    val name: String,
-    val aliases: List<String> = listOf(),
-    val category: CommandCategory = CommandCategory.MISCELLANEOUS,
-    val cooldown: Int = 3,
-    val userPermissionsNeeded: List<Permission> = listOf(),
-    val botPermissionsNeeded: List<Permission> = listOf(),
-    val canDisable: Boolean = true
-) { abstract fun run(context: CommandContext) }
-
-enum class CommandCategory { UTILS, MISCELLANEOUS }
-
-class CommandContext(val messageEvent: GuildMessageReceivedEvent, val args: List<String>, private val locale: String) {
-    fun translate(translateUri: String, map: Map<String, String> = mapOf()): String {
-        val uri = translateUri.split("|")
-        val file = RioruUtilities.readFile("./src/main/kotlin/locales/$locale/${uri[0]}.json").json().getJSONObject(uri[1])
-
-        return when(uri.size) {
-            3 -> file.getString(uri[2]).replacePlaceholders(map)
-            4 -> file.getJSONObject(uri[2]).getString(uri[3]).replacePlaceholders(map)
-            5 -> file.getJSONObject(uri[2]).getJSONObject(uri[3]).getString(uri[4]).replacePlaceholders(map)
-            else -> ""
-        }
-    }
-
-    fun sendMessage(content: String) = messageEvent.channel.sendMessage(content).queue()
-}
-
 enum class RioruColor(val colorInstance: Color?) {
-    DEFAULT(Color(25, 25, 24))
+    DEFAULT(Color(255, 10, 10)),
+    MODERATION_ACTIONS(Color(255, 0, 0)),
+    LOGS(Color(17, 65, 92)),
+    ECONOMY(Color(43, 161, 16)),
+    FUN(Color(235, 227, 9)),
+    GIVEAWAY(Color(237, 120, 9)),
+    MINECRAFT(Color(34, 173, 31)),
+    MODERATION(Color(19, 116, 171)),
+    MUSIC(Color(84, 17, 92)),
+    ROBLOX(Color(209, 4, 21)),
+    SOCIAL(Color(18, 150, 224))
 }
 
 class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor): EmbedBuilder() {
@@ -98,16 +76,3 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor): Emb
         return this
     }
 }
-
-fun String.replacePlaceholders(map: Map<String, String>): String {
-    if(map.isEmpty()) return this
-    var e = this
-
-    for(c in map) {
-        e = e.replace("<<${c.key}>>", c.value)
-    }
-
-    return e
-}
-
-fun String.json() = JSONObject(this)

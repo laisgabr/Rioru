@@ -1,14 +1,13 @@
 package com.github.shadowb64.rioru
 
-import com.github.shadowb64.rioru.utilities.Config
-import com.github.shadowb64.rioru.utilities.RioruClient
-import com.github.shadowb64.rioru.website.WebsiteApplication
-import net.dv8tion.jda.api.requests.GatewayIntent
+import com.github.shadowb64.rioru.utilities.Logger
+import net.dv8tion.jda.api.requests.GatewayIntent as Intent
+import com.github.shadowb64.rioru.utilities.Config.Companion.check
 
 fun main() {
-    Config.check()
-    WebsiteApplication()
+    check()
+
     RioruClient(
-        GatewayIntent.GUILD_MESSAGES // Intents vararg
-    )
+        Intent.GUILD_MESSAGES /* Intents vararg */
+    ).createBotInstance()
 }

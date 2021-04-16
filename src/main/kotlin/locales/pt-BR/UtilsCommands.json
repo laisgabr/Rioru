@@ -3,7 +3,7 @@
     "description": "Mostra meu ping e do Gateway da API do Discord",
     "usage": "<prefix>ping [clusters/extended]",
     "embed": {
-      "description": "🏓 | Pong\n📡 | Ping da API: <<ApiPing>>ms\n📶 | Ping: <<Ping>>ms"
+      "description": "📡 | Ping da API: <<ApiPing>>ms\n📶 | Ping: <<Ping>>ms"
     }
   }
 }
