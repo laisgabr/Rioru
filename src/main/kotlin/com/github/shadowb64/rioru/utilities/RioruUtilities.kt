@@ -2,7 +2,10 @@ package com.github.shadowb64.rioru.utilities
 
 import net.dv8tion.jda.api.sharding.ShardManager
 import org.json.JSONObject
-import java.io.*
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.FileWriter
+import java.io.PrintWriter
 
 class RioruUtilities {
     companion object {
@@ -32,10 +35,10 @@ class RioruUtilities {
 }
 
 fun String.replacePlaceholders(map: Map<String, String>): String {
-    if(map.isEmpty()) return this
+    if (map.isEmpty()) return this
     var e = this
 
-    for(c in map) {
+    for (c in map) {
         e = e.replace("<<${c.key}>>", c.value)
     }
 

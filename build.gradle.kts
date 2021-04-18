@@ -24,6 +24,7 @@ dependencies {
     implementation("net.dv8tion:JDA:4.2.1_255")
     implementation("com.github.ShadowB64:UsagiAPISimple:7724995560")
     implementation("khttp:khttp:1.0.0")
+    implementation("com.sedmelluq:lavaplayer:1.3.75")
 }
 
 application {

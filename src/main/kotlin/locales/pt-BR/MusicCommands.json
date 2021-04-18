@@ -1,0 +1,11 @@
+{
+  "join": {
+    "usage": "<prefix>join",
+    "description": "Conecta no Canal de Voz conectado.",
+    "connectedInChannel": "✅ | Conectado no canal `#<<CHANNELNAME>>`"
+  },
+
+  "play": {
+    "argsIsEmpty": "Use dessa forma `<prefix>play <Link/Pesquisa>`."
+  }
+}

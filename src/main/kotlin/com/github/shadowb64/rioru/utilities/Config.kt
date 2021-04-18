@@ -11,11 +11,13 @@ class Config {
         fun check() {
             val botConfFile = File("./discord.json")
             val servicesConfFile = File("./services.json")
-            if(!botConfFile.exists() && !servicesConfFile.exists()) {
-                RioruUtilities.createFileAndWrite("./discord.json", """
+            if (!botConfFile.exists() && !servicesConfFile.exists()) {
+                RioruUtilities.createFileAndWrite(
+                    "./discord.json", """
             {
                 "token": "",
                 "id": "",
+                "developers": [],
                 "secret": "",
                 "logs": {
                     "guildsID": "",
@@ -23,8 +25,10 @@ class Config {
                     "logsID": ""
                 }
             }
-            """.trimIndent())
-                RioruUtilities.createFileAndWrite("./services.json", """
+            """.trimIndent()
+                )
+                RioruUtilities.createFileAndWrite(
+                    "./services.json", """
             {
                 "dashboard": {
                     "port": 8080,
@@ -34,7 +38,8 @@ class Config {
                     }
                 }
             }
-            """.trimIndent())
+            """.trimIndent()
+                )
                 println("Hi, My name is Rioru c:")
                 println("I want make the Discord a better place and the world too")
                 println("But first, I need you to open the files(\"services.json\", \"discord.json\") I created for you and configure me")

@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.github.shadowb64.rioru.commands
 
 import net.dv8tion.jda.api.EmbedBuilder
@@ -18,7 +20,7 @@ enum class RioruColor(val colorInstance: Color?) {
     SOCIAL(Color(18, 150, 224))
 }
 
-class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor): EmbedBuilder() {
+class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor) : EmbedBuilder() {
     init {
         setColor(color.colorInstance)
         setTimestamp(OffsetDateTime.now())
@@ -40,7 +42,12 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor): Emb
         return this
     }
 
-    fun setAuthor(name: String, url: String? = null, iconUrl: String? = null, map: Map<String, String> = mapOf()): RioruEmbedBuilder {
+    fun setAuthor(
+        name: String,
+        url: String? = null,
+        iconUrl: String? = null,
+        map: Map<String, String> = mapOf()
+    ): RioruEmbedBuilder {
         val n = ctx.translate(name, map)
         when {
             url === null && iconUrl === null -> {
@@ -69,7 +76,13 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor): Emb
         }
     }
 
-    fun addField(name: String, value: String, inline: Boolean = false, mapName: Map<String, String> = mapOf(), mapValue: Map<String, String> = mapOf()): RioruEmbedBuilder {
+    fun addField(
+        name: String,
+        value: String,
+        inline: Boolean = false,
+        mapName: Map<String, String> = mapOf(),
+        mapValue: Map<String, String> = mapOf()
+    ): RioruEmbedBuilder {
         val n = ctx.translate(name, mapName)
         val v = ctx.translate(value, mapValue)
         super.addField(n, v, inline)
