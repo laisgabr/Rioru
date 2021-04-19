@@ -4,6 +4,7 @@ import com.github.shadowb64.rioru.commands.AbstractCommand
 import com.github.shadowb64.rioru.commands.vanilla.music.*
 import com.github.shadowb64.rioru.commands.vanilla.utils.HelpCommand
 import com.github.shadowb64.rioru.commands.vanilla.utils.PingCommand
+import com.github.shadowb64.rioru.commands.vanilla.discord.*
 
 class CommandManager {
     init {
@@ -16,7 +17,9 @@ class CommandManager {
             DisconnectCommand(),
             PlayCommand(),
             JoinCommand(),
-            SkipCommand()
+            SkipCommand(),
+            // ///////////////Discord///////////////
+            ChannelinfoCommand()
         )
     }
 

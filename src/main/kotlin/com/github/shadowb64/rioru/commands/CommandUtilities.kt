@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 enum class CommandCategory {
-    UTILS, MISCELLANEOUS, DEVELOPER
+    UTILS, MISCELLANEOUS, DEVELOPER, DISCORD
 }
 
 abstract class AbstractCommand(
