@@ -18,9 +18,13 @@ class JDAEventsListener : ListenerAdapter() {
         val cmd = CommandManager.getCommand(args[0])
         args = args.subList(1, args.size)
         if (cmd !== null) {
-            val context = CommandContext(event, args, "pt-BR")
-            CommandOptions(context, cmd)
-            cmd.run(context)
+            try {
+                val context = CommandContext(event, args, "pt-BR")
+                CommandOptions(context, cmd)
+                cmd.run(context)
+            } catch (e: Exception) {
+                event.channel.sendMessage(":x: Aconteceu um erro `${e.message}`").queue()
+            }
         }
     }
 }

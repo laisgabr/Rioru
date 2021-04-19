@@ -2,8 +2,7 @@ package com.github.shadowb64.rioru.managers
 
 import com.github.shadowb64.rioru.commands.AbstractCommand
 import com.github.shadowb64.rioru.commands.vanilla.music.*
-import com.github.shadowb64.rioru.commands.vanilla.utils.HelpCommand
-import com.github.shadowb64.rioru.commands.vanilla.utils.PingCommand
+import com.github.shadowb64.rioru.commands.vanilla.utils.*
 import com.github.shadowb64.rioru.commands.vanilla.discord.*
 
 class CommandManager {
@@ -19,7 +18,8 @@ class CommandManager {
             JoinCommand(),
             SkipCommand(),
             // ///////////////Discord///////////////
-            ChannelinfoCommand()
+            ChannelinfoCommand(),
+            AvatarCommand()
         )
     }
 

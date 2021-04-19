@@ -6,14 +6,15 @@ import com.github.shadowb64.rioru.utilities.JDAEventsListener
 import com.github.shadowb64.rioru.utilities.RioruUtilities
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder
+import net.dv8tion.jda.api.utils.cache.CacheFlag
 
 class RioruClient(private vararg val intents: GatewayIntent) {
     fun createBotInstance() {
-        CommandManager()
+        val commandManager = CommandManager()
         RioruUtilities.botInstance = DefaultShardManagerBuilder.createDefault(
             Config.getBotConf().getString("token"),
             GatewayIntent.GUILD_MEMBERS,
             *intents
-        ).addEventListeners(JDAEventsListener()).build()
+        ).addEventListeners(JDAEventsListener()).disableCache(CacheFlag.MEMBER_OVERRIDES).build()
     }
 }
