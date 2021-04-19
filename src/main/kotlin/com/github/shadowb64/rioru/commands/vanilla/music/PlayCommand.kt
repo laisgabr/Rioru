@@ -12,15 +12,19 @@ class PlayCommand : AbstractCommand(
     verifySameChannel = true
 ) {
     override fun run(context: CommandContext) {
-        if(!context.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) context.messageEvent.guild.audioManager.openAudioConnection(
-            context.messageEvent.member!!.voiceState!!.channel!!)
+        if (!context.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) context.messageEvent.guild.audioManager.openAudioConnection(
+            context.messageEvent.member!!.voiceState!!.channel!!
+        )
 
         if (context.args.isEmpty()) {
             context.messageEvent.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
             return
         }
         var track = java.lang.String.join(" ", context.args)
-        if (!isUrl(track)) track = "ytsearch:$track"
+        if (!isUrl(track)) track = if (track.contains("soundcloud"))
+            "soundcloud:$track"
+        else "ytsearch:$track"
+
         PlayerManager.instance?.loadAndPlay(context, track)
     }
 

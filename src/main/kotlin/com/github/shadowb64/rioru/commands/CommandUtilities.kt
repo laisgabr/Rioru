@@ -8,6 +8,7 @@ import com.github.shadowb64.rioru.utilities.json
 import com.github.shadowb64.rioru.utilities.replacePlaceholders
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
+import java.time.OffsetDateTime
 
 enum class CommandCategory {
     UTILS, MISCELLANEOUS, DEVELOPER, DISCORD
@@ -48,6 +49,9 @@ class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<Stri
             translateUri
         }
     }
+
+    fun formatTime(time: OffsetDateTime): String =
+        "${time.dayOfMonth}/${time.monthValue}/${time.year} ${time.hour}:${time.minute}:${time.second}"
 
     fun sendMessage(content: String) = messageEvent.channel.sendMessage(content).queue()
 }
