@@ -1,5 +1,3 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
-
 package com.github.shadowb64.rioru.music
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
@@ -11,7 +9,7 @@ import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue
 
 class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
-    val queue: BlockingQueue<AudioTrack>
+    val queue: BlockingQueue<AudioTrack> = LinkedBlockingQueue()
     var repeatingTrack = false
     lateinit var channel: MessageChannel
     fun queue(track: AudioTrack) {
@@ -20,7 +18,7 @@ class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
         }
     }
 
-    fun nextTrack() = player.startTrack(queue.poll(), true)
+    fun nextTrack() = player.startTrack(queue.poll(), false)
 
     override fun onTrackEnd(player: AudioPlayer, track: AudioTrack, endReason: AudioTrackEndReason) {
         if (endReason.mayStartNext) {
@@ -35,9 +33,5 @@ class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
 
     override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
         channel.sendMessage("Tocando agora `${track?.info?.title}`").queue()
-    }
-
-    init {
-        queue = LinkedBlockingQueue()
     }
 }
