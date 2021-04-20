@@ -17,6 +17,7 @@ class CommandManager {
             PlayCommand(),
             JoinCommand(),
             SkipCommand(),
+            QueueCommand(),
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
             AvatarCommand()

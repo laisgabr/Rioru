@@ -7,6 +7,7 @@ import com.github.shadowb64.rioru.utilities.RioruUtilities
 import com.github.shadowb64.rioru.utilities.json
 import com.github.shadowb64.rioru.utilities.replacePlaceholders
 import net.dv8tion.jda.api.Permission
+import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.time.OffsetDateTime
 
@@ -54,6 +55,24 @@ class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<Stri
         "${time.dayOfMonth}/${time.monthValue}/${time.year} ${time.hour}:${time.minute}:${time.second}"
 
     fun sendMessage(content: String) = messageEvent.channel.sendMessage(content).queue()
+
+    fun getUser(context: CommandContext): User? {
+        return try {
+            val author = context.messageEvent.author
+            val mentionedUsersList = context.messageEvent.message.mentionedUsers
+            when {
+                mentionedUsersList.isEmpty() && context.args.isEmpty() -> author;
+                mentionedUsersList.isNotEmpty() -> mentionedUsersList[0]
+                mentionedUsersList.isEmpty() && context.args.isNotEmpty() -> {
+                    val user = context.messageEvent.jda.shardManager!!.getUserById(context.args[0])
+                    if (user === null) null else user
+                }
+                else -> author
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
 }
 
 class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractCommand) {

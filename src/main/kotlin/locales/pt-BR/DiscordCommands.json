@@ -1,0 +1,5 @@
+{
+  "comuns": {
+    "userNotFound": "Procurei até não conseguir mais... mesmo assim não achei nenhum usuário parecido com `<<ARG>>`! Nem mesmo buscando por nomes, menções ou IDs, nada!"
+  }
+}

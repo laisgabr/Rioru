@@ -1,7 +1,6 @@
 package com.github.shadowb64.rioru.commands.vanilla.discord
 
 import com.github.shadowb64.rioru.commands.*
-import net.dv8tion.jda.api.entities.User
 
 class AvatarCommand : AbstractCommand(
     name = "avatar",
@@ -9,28 +8,22 @@ class AvatarCommand : AbstractCommand(
     category = CommandCategory.DISCORD
 ) {
     override fun run(context: CommandContext) {
-        val user = getUser(context)
-        if(user === null) {
-            context.messageEvent.channel.sendMessage("Precisa me passar um user arrombado do caralho").queue()
+        val user = context.getUser(context)
+        if (user === null) {
+            val arg: String = if (context.args[0].length > 50) context.args[0].substring(0, 50)
+            else context.args[0]
+
+            context.messageEvent.channel.sendMessage(context.translate(
+                "DiscordCommands:comuns:userNotFound",
+                mapOf("ARG" to arg.replace(Regex("(`)"), ""))
+            )).queue()
             return
         }
 
         val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
-            .setImage(user.effectiveAvatarUrl)
+            .setTitle("Avatar de ${user.asTag}")
+            .setDescription("**Baixe clicando [aqui](${user.effectiveAvatarUrl})**")
+            .setImage("${user.effectiveAvatarUrl}?size=2048")
         context.messageEvent.channel.sendMessage(embed.build()).queue()
-    }
-
-    private fun getUser(context: CommandContext): User? {
-        val author = context.messageEvent.author
-        val mentionedUsersList = context.messageEvent.message.mentionedUsers
-        return when {
-            mentionedUsersList.isEmpty() && context.args.isEmpty() -> author
-            mentionedUsersList.isNotEmpty() -> mentionedUsersList[0]
-            mentionedUsersList.isEmpty() && context.args.isNotEmpty() -> {
-                val user = context.messageEvent.jda.shardManager!!.getUserById(context.args[0])
-                if(user === null) null else user
-            }
-            else -> author
-        }
     }
 }
