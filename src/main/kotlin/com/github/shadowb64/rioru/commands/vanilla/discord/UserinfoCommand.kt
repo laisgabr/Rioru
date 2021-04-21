@@ -1,6 +1,7 @@
 package com.github.shadowb64.rioru.commands.vanilla.discord
 
 import com.github.shadowb64.rioru.commands.*
+import net.dv8tion.jda.api.entities.User
 
 class UserinfoCommand : AbstractCommand(
     name = "userinfo",
@@ -20,7 +21,7 @@ class UserinfoCommand : AbstractCommand(
         }
 
         val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
-            .setTitle(context.translate(""))
+            .setTitle(context.translate("teste"))
         context.messageEvent.channel.sendMessage(embed.build()).queue()
     }
 }
