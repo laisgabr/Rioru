@@ -4,14 +4,13 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayer
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason
-import net.dv8tion.jda.api.entities.MessageChannel
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue
 
+
 class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
-    val queue: BlockingQueue<AudioTrack> = LinkedBlockingQueue()
-    var repeatingTrack = false
-    lateinit var channel: MessageChannel
+    val queue: BlockingQueue<AudioTrack>
+    var repeating = false
     fun queue(track: AudioTrack) {
         if (!player.startTrack(track, true)) {
             queue.offer(track)
@@ -22,16 +21,15 @@ class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
 
     override fun onTrackEnd(player: AudioPlayer, track: AudioTrack, endReason: AudioTrackEndReason) {
         if (endReason.mayStartNext) {
-            if (repeatingTrack) {
-                this.player.startTrack(track.makeClone(), true)
+            if (repeating) {
+                this.player.startTrack(track.makeClone(), false)
                 return
             }
-
             nextTrack()
         }
     }
 
-    override fun onTrackStart(player: AudioPlayer?, track: AudioTrack?) {
-        channel.sendMessage("Tocando agora `${track?.info?.title}`").queue()
+    init {
+        queue = LinkedBlockingQueue()
     }
 }

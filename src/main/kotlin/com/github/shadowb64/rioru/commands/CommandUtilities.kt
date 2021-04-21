@@ -2,6 +2,7 @@
 
 package com.github.shadowb64.rioru.commands
 
+import com.github.shadowb64.rioru.music.MusicManager
 import com.github.shadowb64.rioru.utilities.Config
 import com.github.shadowb64.rioru.utilities.RioruUtilities
 import com.github.shadowb64.rioru.utilities.json
@@ -34,44 +35,58 @@ abstract class AbstractCommand(
 }
 
 class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<String>, private val locale: String) {
-    fun translate(translateUri: String, map: Map<String, String> = mapOf()): String {
-        return try {
+    fun translate(translateUri: String, map: Map<String, String> = mapOf(), getAnyString: Boolean = false): String {
+        try {
             val uri = translateUri.split(":")
-            val file =
-                RioruUtilities.readFile("./src/main/kotlin/locales/$locale/${uri[0]}.json").json().getJSONObject(uri[1])
+            var file =
+                RioruUtilities.readFile("./src/main/kotlin/locales/$locale/${uri[0]}.json").json()
 
-            when (uri.size) {
+            if (getAnyString) {
+                return file.getString(uri[1])
+            } else {
+                file = file.getJSONObject(uri[1])
+            }
+
+            return when (uri.size) {
                 3 -> file.getString(uri[2]).replacePlaceholders(map)
                 4 -> file.getJSONObject(uri[2]).getString(uri[3]).replacePlaceholders(map)
                 5 -> file.getJSONObject(uri[2]).getJSONObject(uri[3]).getString(uri[4]).replacePlaceholders(map)
                 else -> ""
             }
         } catch (e: Exception) {
-            translateUri
+            return translateUri
         }
     }
 
     fun formatTime(time: OffsetDateTime): String =
-        "${time.dayOfMonth}/${time.monthValue}/${time.year} ${time.hour}:${time.minute}:${time.second}"
+        "${time.dayOfMonth}/${if (time.monthValue < 10) "0${time.monthValue}" else time.monthValue}/${time.year} ${time.hour}:${time.minute}:${time.second}"
 
     fun sendMessage(content: String) = messageEvent.channel.sendMessage(content).queue()
 
-    fun getUser(context: CommandContext): User? {
-        return try {
-            val author = context.messageEvent.author
-            val mentionedUsersList = context.messageEvent.message.mentionedUsers
+    fun getUser(): User? {
+        try {
+            val author = messageEvent.author
+            val mentionedMemberList = messageEvent.message.mentionedMembers
+            val mentionedUserList = messageEvent.message.mentionedUsers
             when {
-                mentionedUsersList.isEmpty() && context.args.isEmpty() -> author;
-                mentionedUsersList.isNotEmpty() -> mentionedUsersList[0]
-                mentionedUsersList.isEmpty() && context.args.isNotEmpty() -> {
-                    val user = context.messageEvent.jda.shardManager!!.getUserById(context.args[0])
-                    if (user === null) null else user
+                mentionedMemberList.isEmpty() && mentionedUserList.isEmpty() && args.isEmpty() -> return author
+                mentionedMemberList.isNotEmpty() -> return mentionedMemberList[0].user
+                mentionedMemberList.isEmpty() && args.isNotEmpty() -> {
+                    if (args[0].toLongOrNull() !== null) {
+                        messageEvent.jda.shardManager?.retrieveUserById(args[0]).also { user -> return user?.complete() }
+                    } else {
+                        val usersFilter = messageEvent.guild.getMembersByEffectiveName(args[0], true)
+                        usersFilter[0].user
+                    }
+
                 }
-                else -> author
+                else -> return author
             }
         } catch (e: Exception) {
-            null
+            return null
         }
+
+        return null
     }
 }
 
@@ -80,42 +95,38 @@ class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractC
     fun check() {
         val channel = ctx.messageEvent.channel
         with(cmd) {
-            when {
-                // Se o comando tiver esse atributo estando verdadeiro e o bot já estiver no canal de voz
-                verifyBotAlreadyInVoiceChannel && ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel() -> {
-                    channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel")).queue()
-                    return
-                }
+            // Se o comando tiver esse atributo estando verdadeiro e o bot já estiver no canal de voz
+            if (verifyBotAlreadyInVoiceChannel && ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) {
+                channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel", getAnyString = true))
+                    .queue()
+                return
+            }
 
-                // Se o Membro não tiver em canal de voz
-                verifyIfVoiceChannel && !ctx.messageEvent.member!!.voiceState!!.inVoiceChannel() -> {
-                    channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel")).queue()
-                    return
-                }
+            // Se o Membro não tiver em canal de voz
+            if (verifyIfVoiceChannel && !ctx.messageEvent.member!!.voiceState!!.inVoiceChannel()) {
+                channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel", getAnyString = true))
+                    .queue()
+                return
+            }
 
-                verifyIfBotVoiceChannel && !ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel() -> {
-                    channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel")).queue()
-                    return
-                }
+            if (verifyIfBotVoiceChannel && !ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) {
+                channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel", getAnyString = true)).queue()
+                return
+            }
 
-                // Verificando se o comando é pra desenvolvedor
-                category === CommandCategory.DEVELOPER && !Config.getBotConf().getJSONArray("developers")
-                    .contains(ctx.messageEvent.member?.id) -> {
-                    channel.sendMessage(ctx.translate("CommandOptions:isNotDeveloper")).queue()
-                    return
-                }
+            // Verificando se o comando é pra desenvolvedor
+            if (category === CommandCategory.DEVELOPER && !Config.getBotConf().getJSONArray("developers")
+                    .contains(ctx.messageEvent.member?.id)
+            ) {
+                channel.sendMessage(ctx.translate("CommandOptions:isNotDeveloper", getAnyString = true)).queue()
+                return
+            }
 
-                // Verificando se estão em canais diferentes
-                ctx.messageEvent.member!!.voiceState!!.channel!!.idLong !== ctx.messageEvent.guild.selfMember.voiceState!!.channel!!.idLong -> {
-                    channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame")).queue()
-                    return
-                }
-
-                else -> {
-                }
+            // Verificando se estão em canais diferentes
+            if (verifySameChannel && ctx.messageEvent.member?.voiceState !== null && ctx.messageEvent.guild.selfMember.voiceState !== null && ctx.messageEvent.member!!.voiceState!!.channel!!.idLong !== ctx.messageEvent.guild.selfMember.voiceState!!.channel!!.idLong) {
+                channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame", getAnyString = true)).queue()
+                return
             }
         }
-
-
     }
 }

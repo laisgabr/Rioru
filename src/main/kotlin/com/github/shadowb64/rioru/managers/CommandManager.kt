@@ -1,6 +1,7 @@
 package com.github.shadowb64.rioru.managers
 
 import com.github.shadowb64.rioru.commands.AbstractCommand
+import com.github.shadowb64.rioru.commands.vanilla.developer.EvalCommand
 import com.github.shadowb64.rioru.commands.vanilla.music.*
 import com.github.shadowb64.rioru.commands.vanilla.utils.*
 import com.github.shadowb64.rioru.commands.vanilla.discord.*
@@ -9,14 +10,12 @@ class CommandManager {
     init {
         @Suppress("unused")
         registerCommands(
+            EvalCommand(),
             // ///////////////Utils///////////////
             PingCommand(),
             HelpCommand(),
             // ///////////////Music///////////////
-            DisconnectCommand(),
             PlayCommand(),
-            JoinCommand(),
-            SkipCommand(),
             QueueCommand(),
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
