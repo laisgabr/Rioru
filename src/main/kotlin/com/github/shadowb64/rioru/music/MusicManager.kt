@@ -43,10 +43,12 @@ class MusicManager {
 
                 override fun playlistLoaded(playlist: AudioPlaylist) {
                     val tracks = playlist.tracks
+                    
                     for (track in tracks) {
                         channel.sendMessage("Adicionando`")
                             .append(track.info.title).append("` na Lista de Reprodução")
                             .queue()
+                        musicManager.scheduler.queue(track)
                         musicManager.scheduler.queue(track)
                         break
                     }
