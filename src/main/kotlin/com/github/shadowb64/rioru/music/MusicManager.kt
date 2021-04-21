@@ -31,6 +31,8 @@ class MusicManager {
             }
         }
 
+        fun guildHasAPlayer(id: Long) = musicManagers.containsKey(id)
+
         fun loadAndPlay(channel: TextChannel, trackUrl: String?) {
             val musicManager = getMusicManager(channel.guild)
             audioPlayerManager.loadItem(trackUrl, object : AudioLoadResultHandler {
@@ -39,11 +41,12 @@ class MusicManager {
                         .append(track.info.title).append("` na Lista de Reprodução")
                         .queue()
                     musicManager.scheduler.queue(track)
+                    musicManager.scheduler.queue(track)
                 }
 
                 override fun playlistLoaded(playlist: AudioPlaylist) {
                     val tracks = playlist.tracks
-                    
+
                     for (track in tracks) {
                         channel.sendMessage("Adicionando`")
                             .append(track.info.title).append("` na Lista de Reprodução")

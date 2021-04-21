@@ -25,6 +25,7 @@ dependencies {
     implementation("com.github.ShadowB64:UsagiAPISimple:7724995560")
     implementation("khttp:khttp:1.0.0")
     implementation("com.sedmelluq:lavaplayer:1.3.75")
+    implementation("org.openjdk.nashorn:nashorn-core:15.2")
 }
 
 application {

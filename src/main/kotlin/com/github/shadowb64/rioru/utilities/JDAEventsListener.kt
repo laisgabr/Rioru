@@ -3,7 +3,6 @@ package com.github.shadowb64.rioru.utilities
 import com.github.shadowb64.rioru.commands.CommandContext
 import com.github.shadowb64.rioru.commands.CommandOptions
 import com.github.shadowb64.rioru.managers.CommandManager
-import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.ChannelType
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
@@ -22,7 +21,8 @@ class JDAEventsListener : ListenerAdapter() {
             try {
                 args = args.subList(1, args.size)
                 val context = CommandContext(event, args, "pt-BR")
-                CommandOptions(context, cmd).check()
+
+                if (CommandOptions(context, cmd).check() === null) return;
                 cmd.run(context)
             } catch (e: Exception) {
                 if (e.message === null) return

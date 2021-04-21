@@ -2,8 +2,6 @@
 
 package com.github.shadowb64.rioru.commands
 
-import com.github.shadowb64.rioru.music.MusicManager
-import com.github.shadowb64.rioru.utilities.Config
 import com.github.shadowb64.rioru.utilities.RioruUtilities
 import com.github.shadowb64.rioru.utilities.json
 import com.github.shadowb64.rioru.utilities.replacePlaceholders
@@ -35,6 +33,22 @@ abstract class AbstractCommand(
 }
 
 class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<String>, private val locale: String) {
+    override fun toString(): String {
+        return "CommandContext($messageEvent, $args, $locale)"
+    }
+
+    fun formatMilliseconds(milliseconds: Long): String {
+        val seconds = (milliseconds / 1000).toInt() % 60
+        val minutes = (milliseconds / (1000 * 60) % 60)
+        val hours = (milliseconds / (1000 * 60 * 60) % 24)
+
+        return if (hours > 0) String.format("%02d:%02d:%02d", hours, minutes, seconds) else String.format(
+            "%02d:%02d",
+            minutes,
+            seconds
+        )
+    }
+
     fun translate(translateUri: String, map: Map<String, String> = mapOf(), getAnyString: Boolean = false): String {
         try {
             val uri = translateUri.split(":")
@@ -73,7 +87,8 @@ class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<Stri
                 mentionedMemberList.isNotEmpty() -> return mentionedMemberList[0].user
                 mentionedMemberList.isEmpty() && args.isNotEmpty() -> {
                     if (args[0].toLongOrNull() !== null) {
-                        messageEvent.jda.shardManager?.retrieveUserById(args[0]).also { user -> return user?.complete() }
+                        messageEvent.jda.shardManager?.retrieveUserById(args[0])
+                            .also { user -> return user?.complete() }
                     } else {
                         val usersFilter = messageEvent.guild.getMembersByEffectiveName(args[0], true)
                         usersFilter[0].user
@@ -91,42 +106,41 @@ class CommandContext(val messageEvent: MessageReceivedEvent, val args: List<Stri
 }
 
 class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractCommand) {
-    @Suppress("LiftReturnOrAssignment", "DEPRECATED_IDENTITY_EQUALS")
-    fun check() {
+    fun check(): Unit? {
         val channel = ctx.messageEvent.channel
         with(cmd) {
             // Se o comando tiver esse atributo estando verdadeiro e o bot já estiver no canal de voz
             if (verifyBotAlreadyInVoiceChannel && ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) {
                 channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel", getAnyString = true))
                     .queue()
-                return
+                return null
             }
 
             // Se o Membro não tiver em canal de voz
             if (verifyIfVoiceChannel && !ctx.messageEvent.member!!.voiceState!!.inVoiceChannel()) {
                 channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel", getAnyString = true))
                     .queue()
-                return
+                return null
             }
 
             if (verifyIfBotVoiceChannel && !ctx.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) {
                 channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel", getAnyString = true)).queue()
-                return
+                return null
             }
 
             // Verificando se o comando é pra desenvolvedor
-            if (category === CommandCategory.DEVELOPER && !Config.getBotConf().getJSONArray("developers")
-                    .contains(ctx.messageEvent.member?.id)
-            ) {
-                channel.sendMessage(ctx.translate("CommandOptions:isNotDeveloper", getAnyString = true)).queue()
-                return
+            val mapOwners = listOf("807305370480934923", "730425354870587473")
+            if (category === CommandCategory.DEVELOPER && !mapOwners.contains(ctx.messageEvent.member?.id)) {
+                channel.sendMessage("parado ai").queue()
+                return null
             }
 
             // Verificando se estão em canais diferentes
-            if (verifySameChannel && ctx.messageEvent.member?.voiceState !== null && ctx.messageEvent.guild.selfMember.voiceState !== null && ctx.messageEvent.member!!.voiceState!!.channel!!.idLong !== ctx.messageEvent.guild.selfMember.voiceState!!.channel!!.idLong) {
+            if (verifySameChannel && ctx.messageEvent.member?.voiceState !== null && ctx.messageEvent.guild.selfMember.voiceState !== null && ctx.messageEvent.member!!.voiceState!!.channel!!.idLong != ctx.messageEvent.guild.selfMember.voiceState!!.channel!!.idLong) {
                 channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame", getAnyString = true)).queue()
-                return
+                return null
             }
         }
+        return Unit
     }
 }

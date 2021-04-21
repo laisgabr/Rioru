@@ -1,31 +1,39 @@
 package com.github.shadowb64.rioru.commands.vanilla.developer
 
 import com.github.shadowb64.rioru.commands.AbstractCommand
+import com.github.shadowb64.rioru.commands.CommandCategory
 import com.github.shadowb64.rioru.commands.CommandContext
 import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 
 class EvalCommand : AbstractCommand(
-    name = "eval"
+    name = "eval",
+    category = CommandCategory.DEVELOPER
 ) {
-    private var engine: ScriptEngine? = null
-
-    init {
-        engine = ScriptEngineManager().getEngineByName("nashorn")
-    }
+    private val engine: ScriptEngine = ScriptEngineManager().getEngineByName("nashorn")
 
     override fun run(context: CommandContext) {
-        if(context.messageEvent.author.id != "807305370480934923") {
-            return
+        if(context.args.isEmpty()) {
+            return context.messageEvent.channel.sendMessage("Você precisa me dizer o que eu preciso fazer :pensive:").queue()
         }
 
-        engine?.put("context", context)
+
+        //Runtime.getRuntime().exec("")
+
         try {
-            val output = engine?.eval(java.lang.String.join(" ", context.args))
+            engine.put("context", context)
+            engine.put("jda", context.messageEvent.jda)
+            engine.put("usersSize", context.messageEvent.jda.users.size)
+            engine.put("guildsSize", context.messageEvent.jda.guilds.size)
+            engine.put("channel", context.messageEvent.channel)
+            engine.put("guild", context.messageEvent.guild)
+
+            val args = java.lang.String.join("", context.args)
+            val output = (engine.eval(args)).toString()
+
+            if(output.contains(context.messageEvent.jda.token)) return context.messageEvent.channel.sendMessage(":thumbsup:").queue()
             context.messageEvent.channel.sendMessage(
-                "```md\n${
-                    if (output.toString().length > 1970) output.toString().substring(0, 1970) else output
-                }\n```"
+                "```kt\n${if (output.length > 1970) output.substring(0, 1900) else output}\n```"
             ).queue()
             return
         } catch (e: Exception) {
