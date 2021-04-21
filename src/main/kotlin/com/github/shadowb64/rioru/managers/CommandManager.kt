@@ -19,7 +19,8 @@ class CommandManager {
             QueueCommand(),
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
-            AvatarCommand()
+            AvatarCommand(),
+            UserinfoCommand()
         )
     }
 

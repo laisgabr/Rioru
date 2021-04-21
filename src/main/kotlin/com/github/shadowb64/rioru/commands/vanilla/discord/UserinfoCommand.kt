@@ -2,9 +2,9 @@ package com.github.shadowb64.rioru.commands.vanilla.discord
 
 import com.github.shadowb64.rioru.commands.*
 
-class AvatarCommand : AbstractCommand(
-    name = "avatar",
-    aliases = listOf("user-icon", "av", "a"),
+class UserinfoCommand : AbstractCommand(
+    name = "userinfo",
+    aliases = listOf("ui"),
     category = CommandCategory.DISCORD
 ) {
     override fun run(context: CommandContext) {
@@ -20,15 +20,7 @@ class AvatarCommand : AbstractCommand(
         }
 
         val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
-            .setTitle(context.translate(
-                "DiscordCommands:avatar:embed:userAv",
-                mapOf("uTAG" to user.asTag)
-            ))
-            .setDescription(context.translate(
-                "DiscordCommands:avatar:embed:downloadNow",
-                mapOf("userAvURL" to user.effectiveAvatarUrl)
-            ))
-            .setImage("${user.effectiveAvatarUrl}?size=4096")
+            .setTitle(context.translate(""))
         context.messageEvent.channel.sendMessage(embed.build()).queue()
     }
 }

@@ -22,7 +22,8 @@ class Config {
                 "logs": {
                     "guildsID": "",
                     "paymentsID": "",
-                    "logsID": ""
+                    "logsID": "",
+                    "commands": ""
                 }
             }
             """.trimIndent()

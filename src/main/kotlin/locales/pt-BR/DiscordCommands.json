@@ -1,5 +1,26 @@
 {
   "comuns": {
     "userNotFound": "Procurei até não conseguir mais... mesmo assim não achei nenhum usuário parecido com `<<ARG>>`! Nem mesmo buscando por nomes, menções ou IDs, nada!"
+  },
+  "avatar": {
+    "embed": {
+      "userAv": "\uD83D\uDDBC Avatar de <<uTAG>>",
+      "downloadNow": "**Baixe clicando [aqui](<<userAvURL>>)** \uD83D\uDD17"
+    },
+    "userinfo": {
+      "embed": {
+        "uInfos": ""
+      }
+    },
+    "channelinfo": {
+      "embed": {
+        "chName": "\uD83D\uDCBB Nome",
+        "chID": "\uD83D\uDCBB ID",
+        "topic": "\uD83D\uDCD6 Tópico",
+        "createdAt": "\uD83D\uDCC5 Criado em",
+        "position": "\uD83C\uDFC5 Posição",
+        "userLimit": "\uD83D\uDC65 Limite de Usuários"
+      }
+    }
   }
 }

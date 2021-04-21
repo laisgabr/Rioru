@@ -16,20 +16,20 @@ class ChannelinfoCommand : AbstractCommand(
         context.messageEvent.channel.sendMessage(organize(context)).queue()
 
     private fun textChannelEmbed(context: CommandContext, embed: RioruEmbedBuilder, infos: TextChannel): MessageEmbed {
-        embed.addField("Nome", infos.name)
-        embed.addField("ID", infos.id)
-        embed.addField("Tópico", infos.topic ?: "Sem tópico definido")
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:topic"), infos.topic ?: "Sem tópico definido")
         embed.addField("NSFW", if (infos.isNSFW) "Sim" else "Não")
         embed.addField("News", if (infos.isNews) "Sim" else "Não")
-        embed.addField("Criado em", context.formatTime(infos.timeCreated))
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
         return embed.build()
     }
 
     private fun textChannelEmbed(context: CommandContext, embed: RioruEmbedBuilder, infos: StoreChannel): MessageEmbed {
-        embed.addField("Nome", infos.name)
-        embed.addField("ID", infos.id)
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
         embed.addField("Posição", infos.position.toString())
-        embed.addField("Criado em", context.formatTime(infos.timeCreated))
+        embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
         return embed.build()
     }
 
@@ -44,11 +44,11 @@ class ChannelinfoCommand : AbstractCommand(
                 textChannelEmbed(context, embed, if(context.args.isEmpty()) context.messageEvent.textChannel else context.messageEvent.guild.getTextChannelById(context.args[0])!!)
             VOICE -> {
                 val infos = context.messageEvent.guild.getVoiceChannelById(context.args[0])!!
-                embed.addField("Nome", infos.name)
-                embed.addField("ID", infos.id)
+                embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
+                embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
                 embed.addField("Bit Rate", infos.bitrate.toString())
                 embed.addField("Limite de Usuários", if(infos.userLimit == 0) "Indefinido" else infos.userLimit.toString())
-                embed.addField("Criado em", context.formatTime(infos.timeCreated))
+                embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
                 embed.build().also { embedBuilded = it }
             }
             STORE -> embedBuilded = textChannelEmbed(
