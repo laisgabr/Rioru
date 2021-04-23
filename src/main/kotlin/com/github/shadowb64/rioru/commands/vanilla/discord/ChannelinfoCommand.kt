@@ -9,11 +9,11 @@ import net.dv8tion.jda.api.entities.TextChannel
 
 class ChannelinfoCommand : AbstractCommand(
     name = "channelinfo",
-    aliases = listOf("infochannel"),
+    aliases = listOf("infochannel", "ci"),
     category = CommandCategory.DISCORD
 ) {
     override fun run(context: CommandContext) =
-        context.messageEvent.channel.sendMessage(organize(context)).queue()
+        context.channel.sendMessage(organize(context)).queue()
 
     private fun textChannelEmbed(context: CommandContext, embed: RioruEmbedBuilder, infos: TextChannel): MessageEmbed {
         embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
@@ -41,9 +41,9 @@ class ChannelinfoCommand : AbstractCommand(
         @Suppress("NON_EXHAUSTIVE_WHEN")
         when (channel.type) {
             TEXT -> embedBuilded =
-                textChannelEmbed(context, embed, if(context.args.isEmpty()) context.messageEvent.textChannel else context.messageEvent.guild.getTextChannelById(context.args[0])!!)
+                textChannelEmbed(context, embed, if(context.args.isEmpty()) context.messageEvent.textChannel else context.guild.getTextChannelById(context.args[0])!!)
             VOICE -> {
-                val infos = context.messageEvent.guild.getVoiceChannelById(context.args[0])!!
+                val infos = context.guild.getVoiceChannelById(context.args[0])!!
                 embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
                 embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
                 embed.addField("Bit Rate", infos.bitrate.toString())
@@ -54,7 +54,7 @@ class ChannelinfoCommand : AbstractCommand(
             STORE -> embedBuilded = textChannelEmbed(
                 context,
                 embed,
-                context.messageEvent.guild.getStoreChannelById(context.args[0])!!
+                context.guild.getStoreChannelById(context.args[0])!!
             )
         }
         return embedBuilded
@@ -63,14 +63,14 @@ class ChannelinfoCommand : AbstractCommand(
 
 private fun getChannel(context: CommandContext): GuildChannel {
     val defaultChannel = context.messageEvent.textChannel
-    val mentionedChannelsList = context.messageEvent.message.mentionedChannels
+    val mentionedChannelsList = context.message.mentionedChannels
     return when {
         mentionedChannelsList.isEmpty() && context.args.isEmpty() -> defaultChannel
         mentionedChannelsList.isNotEmpty() -> {
-            if (context.messageEvent.guild.getGuildChannelById(mentionedChannelsList[0].id) === null) defaultChannel
+            if (context.guild.getGuildChannelById(mentionedChannelsList[0].id) === null) defaultChannel
             else mentionedChannelsList[0]
         }
-        mentionedChannelsList.isEmpty() && context.args.isNotEmpty() -> context.messageEvent.guild.getGuildChannelById(
+        mentionedChannelsList.isEmpty() && context.args.isNotEmpty() -> context.guild.getGuildChannelById(
             context.args[0]
         ) ?: defaultChannel
         else -> defaultChannel

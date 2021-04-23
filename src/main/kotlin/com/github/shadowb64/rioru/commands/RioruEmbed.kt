@@ -24,7 +24,7 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor) : Em
     init {
         setColor(color.colorInstance)
         setTimestamp(OffsetDateTime.now())
-        setFooter(ctx.messageEvent.author.asTag, ctx.messageEvent.author.effectiveAvatarUrl)
+        setFooter(ctx.author.asTag, ctx.author.effectiveAvatarUrl)
     }
 
     fun setTitle(title: String, url: String? = null, map: Map<String, String> = mapOf()): RioruEmbedBuilder {

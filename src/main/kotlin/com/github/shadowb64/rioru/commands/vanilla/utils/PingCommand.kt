@@ -10,13 +10,13 @@ class PingCommand : AbstractCommand(
     override fun run(context: CommandContext) {
         val time = System.currentTimeMillis()
 
-        context.messageEvent.channel.sendMessage("\uD83C\uDFD3 | Pong").queue { res ->
+        context.channel.sendMessage("\uD83C\uDFD3 | Pong").queue { res ->
             kotlin.run {
                 val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
                 embed.setDescription(
                     "UtilsCommands:$name:embed:description",
                     mapOf(
-                        "ApiPing" to context.messageEvent.jda.gatewayPing.toString(),
+                        "ApiPing" to context.jda.gatewayPing.toString(),
                         "Ping" to (System.currentTimeMillis() - time).toString(),
                     )
                 )

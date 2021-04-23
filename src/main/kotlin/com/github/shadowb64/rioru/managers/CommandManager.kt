@@ -1,10 +1,11 @@
 package com.github.shadowb64.rioru.managers
 
 import com.github.shadowb64.rioru.commands.AbstractCommand
-import com.github.shadowb64.rioru.commands.vanilla.developer.EvalCommand
+import com.github.shadowb64.rioru.commands.vanilla.developer.*
 import com.github.shadowb64.rioru.commands.vanilla.music.*
 import com.github.shadowb64.rioru.commands.vanilla.utils.*
 import com.github.shadowb64.rioru.commands.vanilla.discord.*
+import com.github.shadowb64.rioru.utilities.Logger
 
 class CommandManager {
     init {
@@ -17,6 +18,7 @@ class CommandManager {
             // ///////////////Music///////////////
             PlayCommand(),
             QueueCommand(),
+            SkipCommand(),
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
             AvatarCommand(),
@@ -37,13 +39,10 @@ class CommandManager {
             }
 
         fun registerCommands(vararg cmds: AbstractCommand) {
-            println("[ MANAGERS ] [ Commands ] Just started loading the commands")
-            for (cmd in cmds) {
-                commands.add(cmd)
-                println("[ COMMANDS ] [ ${cmd.name} ] loaded with success")
-            }
+            Logger.info { "Loading commands" }
+            for (cmd in cmds) commands.add(cmd)
 
-            println("[ COMMANDS ] All commands loaded with success c:")
+            Logger.info {"All commands have been loaded"}
         }
     }
 }

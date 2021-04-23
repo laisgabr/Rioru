@@ -3,7 +3,7 @@ package com.github.shadowb64.rioru.utilities
 @Suppress("unused")
 class Logger {
     companion object {
-        private fun log(color: String = "", content: () -> String) = println("$color| ${content.invoke()}\u001B[0m ")
+        private fun log(color: String = "", content: () -> String) = println("$color${content.invoke()}\u001B[0m ")
         fun debug(content: () -> String) = log("\u001B[33m") { "[ DEBUG ] ${content.invoke()}" }
         fun warn(content: () -> String) = log("\u001B[36m") { "[ WARN ] ${content.invoke()}" }
         fun info(content: () -> String) = log("\u001B[37m") { "[ INFO ] ${content.invoke()}" }

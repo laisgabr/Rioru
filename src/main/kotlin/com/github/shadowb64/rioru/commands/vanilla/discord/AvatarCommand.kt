@@ -12,7 +12,7 @@ class AvatarCommand : AbstractCommand(
         if (user === null) {
             val arg: String = if (context.args[0].length > 50) context.args[0].substring(0, 50) + "..."
             else context.args[0]
-            context.messageEvent.channel.sendMessage(context.translate(
+            context.channel.sendMessage(context.translate(
                 "DiscordCommands:comuns:userNotFound",
                 mapOf("ARG" to arg.replace(Regex("(`)"), ""))
             )).queue()
@@ -29,6 +29,6 @@ class AvatarCommand : AbstractCommand(
                 mapOf("userAvURL" to user.effectiveAvatarUrl)
             ))
             .setImage("${user.effectiveAvatarUrl}?size=4096")
-        context.messageEvent.channel.sendMessage(embed.build()).queue()
+        context.channel.sendMessage(embed.build()).queue()
     }
 }

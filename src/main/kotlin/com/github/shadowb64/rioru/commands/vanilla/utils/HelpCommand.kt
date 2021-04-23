@@ -5,7 +5,7 @@ import com.github.shadowb64.rioru.managers.CommandManager
 
 class HelpCommand : AbstractCommand(
     name = "help",
-    aliases = listOf("ajuda"),
+    aliases = listOf("ajuda", "comandos", "commands"),
     category = CommandCategory.UTILS
 ) {
     override fun run(context: CommandContext) {
@@ -16,20 +16,20 @@ class HelpCommand : AbstractCommand(
             val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
                 .addField("Utils (${utils.size}) ","`${listUtils}`")
                 .build()
-            context.messageEvent.channel.sendMessage(embed).queue()
+            context.channel.sendMessage(embed).queue()
             return
         }
 
         val cmd = CommandManager.getCommand(context.args[0])
 
         if (cmd === null) {
-            context.messageEvent.channel.sendMessage("Não achei nenhum comando com o nome/sinônimo `${context.args[0]}`")
+            context.channel.sendMessage("Não achei nenhum comando com o nome/sinônimo `${context.args[0]}`")
                 .queue()
             return
         } else {
             val embedCmd = RioruEmbedBuilder(context, RioruColor.DEFAULT)
                 .setDescription("Nome `${cmd.name}`\nAliases ${cmd.aliases}\n Descrição\n ")
-            context.messageEvent.channel.sendMessage(embedCmd.build()).queue()
+            context.channel.sendMessage(embedCmd.build()).queue()
         }
 
     }

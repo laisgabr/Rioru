@@ -8,15 +8,15 @@ import java.net.URISyntaxException
 
 class PlayCommand : AbstractCommand(
     name = "play",
-    aliases = listOf("p")
+    aliases = listOf("p", "tocar")
 ) {
     override fun run(context: CommandContext) {
-        if (!context.messageEvent.guild.selfMember.voiceState!!.inVoiceChannel()) context.messageEvent.guild.audioManager.openAudioConnection(
-            context.messageEvent.member!!.voiceState!!.channel!!
+        if (!context.guild.selfMember.voiceState!!.inVoiceChannel()) context.guild.audioManager.openAudioConnection(
+            context.member!!.voiceState!!.channel!!
         )
 
         if (context.args.isEmpty()) {
-            context.messageEvent.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
+            context.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
             return
         }
 
