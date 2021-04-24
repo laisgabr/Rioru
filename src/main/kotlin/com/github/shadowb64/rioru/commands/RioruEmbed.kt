@@ -2,6 +2,7 @@
 
 package com.github.shadowb64.rioru.commands
 
+import com.github.shadowb64.rioru.managers.command.CommandContext
 import net.dv8tion.jda.api.EmbedBuilder
 import java.awt.Color
 import java.time.OffsetDateTime

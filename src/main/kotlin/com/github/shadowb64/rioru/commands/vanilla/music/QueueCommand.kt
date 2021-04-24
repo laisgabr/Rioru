@@ -1,6 +1,10 @@
 package com.github.shadowb64.rioru.commands.vanilla.music
 
-import com.github.shadowb64.rioru.commands.*
+import com.github.shadowb64.rioru.commands.RioruColor
+import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
+import com.github.shadowb64.rioru.managers.command.AbstractCommand
+import com.github.shadowb64.rioru.managers.command.CommandCategory
+import com.github.shadowb64.rioru.managers.command.CommandContext
 import com.github.shadowb64.rioru.music.MusicManager
 
 class QueueCommand : AbstractCommand(

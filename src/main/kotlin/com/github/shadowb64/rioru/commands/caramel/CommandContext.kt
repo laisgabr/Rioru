@@ -1,37 +1,10 @@
-@file:Suppress("unused")
+package com.github.shadowb64.rioru.commands.caramel
 
-package com.github.shadowb64.rioru.commands
-
-import com.github.shadowb64.rioru.utilities.RioruUtilities
-import com.github.shadowb64.rioru.utilities.json
-import com.github.shadowb64.rioru.utilities.replacePlaceholders
+import com.github.shadowb64.rioru.utilities.*
 import net.dv8tion.jda.api.JDA
-import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.*
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.time.OffsetDateTime
-
-enum class CommandCategory {
-    UTILS, MISCELLANEOUS, DEVELOPER, DISCORD, MUSIC
-}
-
-abstract class AbstractCommand(
-    val name: String,
-    val aliases: List<String> = listOf(),
-    val category: CommandCategory = CommandCategory.MISCELLANEOUS,
-    val cooldown: Int = 3,
-    val userPermissionsNeeded: List<Permission> = listOf(),
-    val botPermissionsNeeded: List<Permission> = listOf(),
-    val canDisable: Boolean = true,
-    val disableReason: String = "",
-    val disableTime: Long = System.currentTimeMillis(),
-    val verifyBotAlreadyInVoiceChannel: Boolean = false,
-    val verifyIfVoiceChannel: Boolean = false,
-    val verifySameChannel: Boolean = false,
-    val verifyIfBotVoiceChannel: Boolean = false,
-) {
-    abstract fun run(context: CommandContext)
-}
 
 class CommandContext(
     val messageEvent: MessageReceivedEvent,
@@ -112,47 +85,6 @@ class CommandContext(
         } catch (e: Exception) {
             return null
         }
-
         return null
-    }
-}
-
-class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractCommand) {
-    fun check(): Unit? {
-        val channel = ctx.channel
-        with(cmd) {
-            // Se o comando tiver esse atributo estando verdadeiro e o bot já estiver no canal de voz
-            if (verifyBotAlreadyInVoiceChannel && ctx.guild.selfMember.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel", getAnyString = true))
-                    .queue()
-                return null
-            }
-
-            // Se o Membro não tiver em canal de voz
-            if (verifyIfVoiceChannel && !ctx.member!!.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel", getAnyString = true))
-                    .queue()
-                return null
-            }
-
-            if (verifyIfBotVoiceChannel && !ctx.guild.selfMember.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel", getAnyString = true)).queue()
-                return null
-            }
-
-            // Verificando se o comando é pra desenvolvedor
-            val mapOwners = listOf("807305370480934923", "730425354870587473")
-            if (category === CommandCategory.DEVELOPER && !mapOwners.contains(ctx.member?.id)) {
-                channel.sendMessage("parado ai").queue()
-                return null
-            }
-
-            // Verificando se estão em canais diferentes
-            if (verifySameChannel && ctx.member?.voiceState !== null && ctx.guild.selfMember.voiceState !== null && ctx.member!!.voiceState!!.channel!!.idLong != ctx.guild.selfMember.voiceState!!.channel!!.idLong) {
-                channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame", getAnyString = true)).queue()
-                return null
-            }
-        }
-        return Unit
     }
 }

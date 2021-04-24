@@ -6,6 +6,10 @@ import net.dv8tion.jda.api.entities.GuildChannel
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.StoreChannel
 import net.dv8tion.jda.api.entities.TextChannel
+import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandCategory
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
+
 
 class ChannelinfoCommand : AbstractCommand(
     name = "channelinfo",

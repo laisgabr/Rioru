@@ -1,6 +1,5 @@
-package com.github.shadowb64.rioru.managers
+package com.github.shadowb64.rioru.managers.command
 
-import com.github.shadowb64.rioru.commands.AbstractCommand
 import com.github.shadowb64.rioru.commands.vanilla.developer.*
 import com.github.shadowb64.rioru.commands.vanilla.music.*
 import com.github.shadowb64.rioru.commands.vanilla.utils.*
@@ -22,7 +21,7 @@ class CommandManager {
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
             AvatarCommand(),
-            UserinfoCommand()
+            com.github.shadowb64.rioru.commands.vanilla.discord.UserinfoCommand()
         )
     }
 

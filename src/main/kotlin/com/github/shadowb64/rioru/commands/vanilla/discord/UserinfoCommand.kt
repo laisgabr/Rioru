@@ -1,6 +1,10 @@
 package com.github.shadowb64.rioru.commands.vanilla.discord
 
-import com.github.shadowb64.rioru.commands.*
+import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandCategory
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
+import com.github.shadowb64.rioru.commands.RioruColor
+import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
 
 class UserinfoCommand : AbstractCommand(
     name = "userinfo",
