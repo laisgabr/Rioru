@@ -7,7 +7,6 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue
 
-
 class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
     val queue: BlockingQueue<AudioTrack>
     var repeating = false
@@ -25,6 +24,7 @@ class TrackScheduler(val player: AudioPlayer) : AudioEventAdapter() {
                 this.player.startTrack(track.makeClone(), false)
                 return
             }
+
             nextTrack()
         }
     }

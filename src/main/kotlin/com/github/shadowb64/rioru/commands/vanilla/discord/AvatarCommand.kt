@@ -4,16 +4,18 @@ import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
 import com.github.shadowb64.rioru.commands.caramel.CommandCategory
 import com.github.shadowb64.rioru.commands.caramel.CommandContext
 import com.github.shadowb64.rioru.commands.*
+import com.github.shadowb64.rioru.commands.caramel.TypeGetter
 
 class AvatarCommand : AbstractCommand(
     name = "avatar",
     aliases = listOf("user-icon", "av", "a"),
     category = CommandCategory.DISCORD
 ) {
+
     override fun run(context: CommandContext) {
-        val user = context.getUser()
+        val user = TypeGetter.getUser(context)
         if (user === null) {
-            val arg: String = if (context.args[0].length > 50) context.args[0].substring(0, 50) + "..."
+            val arg: String = if (context.args[0].length > 50) "${context.args[0].substring(0, 50)}..."
             else context.args[0]
             context.channel.sendMessage(context.translate(
                 "DiscordCommands:comuns:userNotFound",

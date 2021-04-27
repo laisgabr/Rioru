@@ -14,12 +14,6 @@ class EvalCommand : AbstractCommand(
     private val engine: ScriptEngine = ScriptEngineManager().getEngineByName("nashorn")
 
     override fun run(context: CommandContext) {
-        if(context.args.isEmpty()) {
-            return context.channel.sendMessage("Você precisa me dizer o que eu preciso fazer :pensive:").queue()
-        }
-
-        //Runtime.getRuntime().exec("")
-
         try {
             engine.put("context", context)
             engine.put("jda", context.jda)
@@ -28,10 +22,9 @@ class EvalCommand : AbstractCommand(
             engine.put("channel", context.channel)
             engine.put("guild", context.guild)
 
-            val args = java.lang.String.join("", context.args)
-            val output = (engine.eval(args)).toString()
+            val output = (engine.eval(java.lang.String.join("", context.args))).toString()
 
-            if(output.contains(context.jda.token)) return context.channel.sendMessage(":thumbsup:").queue()
+            if (output.contains(context.jda.token)) return context.channel.sendMessage(":thumbsup:").queue()
             context.channel.sendMessage(
                 "```kt\n${if (output.length > 1970) output.substring(0, 1900) else output}\n```"
             ).queue()

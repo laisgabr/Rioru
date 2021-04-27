@@ -1,5 +1,6 @@
 package com.github.shadowb64.rioru.music
 
+import com.github.shadowb64.rioru.utilities.Logger
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager
@@ -13,7 +14,7 @@ import net.dv8tion.jda.api.entities.TextChannel
 class MusicManager {
     companion object {
         private val audioPlayerManager: AudioPlayerManager = DefaultAudioPlayerManager()
-        val musicManagers: HashMap<Long, GuildPlayerManager> = HashMap()
+        private val musicManagers: HashMap<Long, GuildPlayerManager> = HashMap()
 
         fun registerSources() {
             AudioSourceManagers.registerRemoteSources(audioPlayerManager)
@@ -37,8 +38,7 @@ class MusicManager {
             val musicManager = getMusicManager(channel.guild)
             audioPlayerManager.loadItem(trackUrl, object : AudioLoadResultHandler {
                 override fun trackLoaded(track: AudioTrack) {
-                    channel.sendMessage("Adicionando`")
-                        .append(track.info.title).append("` na Lista de Reprodução")
+                    channel.sendMessage("Adicionando `${track.info.title}` na Lista de Reprodução")
                         .queue()
                     musicManager.scheduler.queue(track)
                     musicManager.scheduler.queue(track)
@@ -48,8 +48,7 @@ class MusicManager {
                     val tracks = playlist.tracks
 
                     for (track in tracks) {
-                        channel.sendMessage("Adicionando`")
-                            .append(track.info.title).append("` na Lista de Reprodução")
+                        channel.sendMessage("Adicionando `${track.info.title}` na Lista de Reprodução")
                             .queue()
                         musicManager.scheduler.queue(track)
                         musicManager.scheduler.queue(track)
@@ -58,11 +57,11 @@ class MusicManager {
                 }
 
                 override fun noMatches() {
-                    //
+
                 }
 
                 override fun loadFailed(exception: FriendlyException) {
-                    //
+                    Logger.error { "[MUSIC] Error: ${exception.message}" }
                 }
             })
         }

@@ -1,9 +1,10 @@
 package com.github.shadowb64.rioru.utilities
 
-import com.github.shadowb64.rioru.managers.command.CommandOptions
-import com.github.shadowb64.rioru.managers.command.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.CommandOptions
 import com.github.shadowb64.rioru.managers.command.CommandManager
 import net.dv8tion.jda.api.entities.ChannelType
+import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
@@ -21,8 +22,7 @@ class JDAEventsListener : ListenerAdapter() {
             try {
                 args = args.subList(1, args.size)
                 val context = CommandContext(event, args, "pt-BR")
-
-                if (CommandOptions(context, cmd).check() === null) return;
+                CommandOptions(context, cmd).check() ?: return;
                 cmd.run(context)
             } catch (e: Exception) {
                 if (e.message === null) return
@@ -32,5 +32,9 @@ class JDAEventsListener : ListenerAdapter() {
         } else {
             event.channel.sendMessage(":x: Não tenho o comando `${args[0]}` disponivel").queue()
         }
+    }
+
+    override fun onReady(event: ReadyEvent) {
+        Logger.info { "Rioru online with success" }
     }
 }

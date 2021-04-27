@@ -2,7 +2,7 @@
 
 package com.github.shadowb64.rioru.commands
 
-import com.github.shadowb64.rioru.managers.command.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
 import net.dv8tion.jda.api.EmbedBuilder
 import java.awt.Color
 import java.time.OffsetDateTime
@@ -38,7 +38,7 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor) : Em
         return this
     }
 
-    fun setDescription(description: String, map: Map<String, String> = mapOf()): RioruEmbedBuilder {
+    fun setDescription(description: String, map: Map<String, Any> = mapOf()): RioruEmbedBuilder {
         super.setDescription(ctx.translate(description, map))
         return this
     }
@@ -78,14 +78,14 @@ class RioruEmbedBuilder(private val ctx: CommandContext, color: RioruColor) : Em
     }
 
     fun addField(
-        name: String,
-        value: String,
+        name: Any,
+        value: Any,
         inline: Boolean = false,
         mapName: Map<String, String> = mapOf(),
         mapValue: Map<String, String> = mapOf()
     ): RioruEmbedBuilder {
-        val n = ctx.translate(name, mapName)
-        val v = ctx.translate(value, mapValue)
+        val n = ctx.translate(name.toString(), mapName)
+        val v = ctx.translate(value.toString(), mapValue)
         super.addField(n, v, inline)
         return this
     }

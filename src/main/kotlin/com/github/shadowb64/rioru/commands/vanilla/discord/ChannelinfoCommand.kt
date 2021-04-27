@@ -1,15 +1,16 @@
 package com.github.shadowb64.rioru.commands.vanilla.discord
 
-import com.github.shadowb64.rioru.commands.*
-import net.dv8tion.jda.api.entities.ChannelType.*
-import net.dv8tion.jda.api.entities.GuildChannel
-import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.api.entities.StoreChannel
-import net.dv8tion.jda.api.entities.TextChannel
+import com.github.shadowb64.rioru.commands.RioruColor
+import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
 import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
 import com.github.shadowb64.rioru.commands.caramel.CommandCategory
 import com.github.shadowb64.rioru.commands.caramel.CommandContext
-
+import com.github.shadowb64.rioru.commands.caramel.TypeGetter
+import net.dv8tion.jda.api.entities.ChannelType.*
+import net.dv8tion.jda.api.entities.GuildChannel
+import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.VoiceChannel
 
 class ChannelinfoCommand : AbstractCommand(
     name = "channelinfo",
@@ -19,64 +20,73 @@ class ChannelinfoCommand : AbstractCommand(
     override fun run(context: CommandContext) =
         context.channel.sendMessage(organize(context)).queue()
 
-    private fun textChannelEmbed(context: CommandContext, embed: RioruEmbedBuilder, infos: TextChannel): MessageEmbed {
+    private fun embed(context: CommandContext, embed: RioruEmbedBuilder, infos: GuildChannel): MessageEmbed {
+        var channel = infos
         embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
         embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:topic"), infos.topic ?: "Sem tópico definido")
-        embed.addField("NSFW", if (infos.isNSFW) "Sim" else "Não")
-        embed.addField("News", if (infos.isNews) "Sim" else "Não")
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
-        return embed.build()
-    }
+        embed.addField(
+            context.translate("DiscordCommands:channelinfo:embed:createdAt"),
+            context.formatTime(infos.timeCreated)
+        )
+        when (channel.type) {
+            TEXT -> {
+                channel = infos as TextChannel
+                embed.addField(
+                    context.translate("DiscordCommands:channelinfo:embed:topic"),
+                    channel.topic ?: "Sem tópico definido"
+                )
+                embed.addField("NSFW", if (channel.isNSFW) "Sim" else "Não")
+                embed.addField("News", if (channel.isNews) "Sim" else "Não")
+                embed.addField("Posição", channel.position)
+            }
 
-    private fun textChannelEmbed(context: CommandContext, embed: RioruEmbedBuilder, infos: StoreChannel): MessageEmbed {
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
-        embed.addField("Posição", infos.position.toString())
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
+            VOICE -> {
+                channel = infos as VoiceChannel
+                embed.addField("Bit Rate", channel.bitrate)
+                embed.addField("Limite de Usuários", if (channel.userLimit == 0) "Indefinido" else channel.userLimit)
+            }
+            else -> {
+            }
+        }
+
         return embed.build()
     }
 
     private fun organize(context: CommandContext): MessageEmbed {
-        val channel = getChannel(context)
+        val channel = TypeGetter.getChannel(context)
         val embed = RioruEmbedBuilder(context, RioruColor.SOCIAL)
-        lateinit var embedBuilded: MessageEmbed
 
-        @Suppress("NON_EXHAUSTIVE_WHEN")
-        when (channel.type) {
-            TEXT -> embedBuilded =
-                textChannelEmbed(context, embed, if(context.args.isEmpty()) context.messageEvent.textChannel else context.guild.getTextChannelById(context.args[0])!!)
-            VOICE -> {
-                val infos = context.guild.getVoiceChannelById(context.args[0])!!
-                embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
-                embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
-                embed.addField("Bit Rate", infos.bitrate.toString())
-                embed.addField("Limite de Usuários", if(infos.userLimit == 0) "Indefinido" else infos.userLimit.toString())
-                embed.addField(context.translate("DiscordCommands:channelinfo:embed:createdAt"), context.formatTime(infos.timeCreated))
-                embed.build().also { embedBuilded = it }
-            }
-            STORE -> embedBuilded = textChannelEmbed(
+        return when (channel.type) {
+            TEXT ->
+                embed(
+                    context,
+                    embed,
+                    if (context.args.isNotEmpty())
+                        context.guild.getTextChannelById(context.args[0]) ?: context.textChannel
+                    else
+                        context.textChannel
+                )
+
+            VOICE ->
+                embed(
+                    context,
+                    embed,
+                    if (context.args.isNotEmpty())
+                        context.guild.getVoiceChannelById(context.args[0]) ?: context.textChannel
+                    else
+                        context.textChannel
+                )
+
+            STORE -> embed(
                 context,
                 embed,
-                context.guild.getStoreChannelById(context.args[0])!!
+                if (context.args.isNotEmpty())
+                    context.guild.getStoreChannelById(context.args[0]) ?: context.textChannel
+                else
+                    context.textChannel
             )
-        }
-        return embedBuilded
-    }
-}
 
-private fun getChannel(context: CommandContext): GuildChannel {
-    val defaultChannel = context.messageEvent.textChannel
-    val mentionedChannelsList = context.message.mentionedChannels
-    return when {
-        mentionedChannelsList.isEmpty() && context.args.isEmpty() -> defaultChannel
-        mentionedChannelsList.isNotEmpty() -> {
-            if (context.guild.getGuildChannelById(mentionedChannelsList[0].id) === null) defaultChannel
-            else mentionedChannelsList[0]
+            else -> embed(context, embed, context.textChannel)
         }
-        mentionedChannelsList.isEmpty() && context.args.isNotEmpty() -> context.guild.getGuildChannelById(
-            context.args[0]
-        ) ?: defaultChannel
-        else -> defaultChannel
     }
 }

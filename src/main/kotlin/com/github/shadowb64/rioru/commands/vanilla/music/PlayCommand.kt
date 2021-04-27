@@ -1,7 +1,7 @@
 package com.github.shadowb64.rioru.commands.vanilla.music
 
-import com.github.shadowb64.rioru.managers.command.AbstractCommand
-import com.github.shadowb64.rioru.managers.command.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
 import com.github.shadowb64.rioru.music.MusicManager
 import java.net.URI
 import java.net.URISyntaxException
@@ -26,7 +26,7 @@ class PlayCommand : AbstractCommand(
         else "ytsearch:$track"
 
         MusicManager.registerSources()
-        MusicManager.loadAndPlay(context.messageEvent.textChannel, track)
+        MusicManager.loadAndPlay(context.textChannel, track)
     }
 
     private fun isUrl(link: String) =

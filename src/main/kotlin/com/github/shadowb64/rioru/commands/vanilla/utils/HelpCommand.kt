@@ -2,10 +2,11 @@ package com.github.shadowb64.rioru.commands.vanilla.utils
 
 import com.github.shadowb64.rioru.commands.RioruColor
 import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
-import com.github.shadowb64.rioru.managers.command.AbstractCommand
-import com.github.shadowb64.rioru.managers.command.CommandCategory
-import com.github.shadowb64.rioru.managers.command.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandCategory
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
 import com.github.shadowb64.rioru.managers.command.CommandManager
+import com.github.shadowb64.rioru.utilities.RioruEmotes
 
 class HelpCommand : AbstractCommand(
     name = "help",
@@ -18,7 +19,7 @@ class HelpCommand : AbstractCommand(
             val listUtils = map(CommandCategory.UTILS)
 
             val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
-                .addField("Utils (${utils.size}) ","`${listUtils}`")
+                .addField("Utils (${utils.size}) ", "`${listUtils}`")
                 .build()
             context.channel.sendMessage(embed).queue()
             return
@@ -31,12 +32,19 @@ class HelpCommand : AbstractCommand(
                 .queue()
             return
         } else {
-            val embedCmd = RioruEmbedBuilder(context, RioruColor.DEFAULT)
-                .setDescription("Nome `${cmd.name}`\nAliases ${cmd.aliases}\n Descrição\n ")
-            context.channel.sendMessage(embedCmd.build()).queue()
+            with(cmd) {
+                val embedCmd = RioruEmbedBuilder(context, RioruColor.DEFAULT)
+                    .setTitle("Ajuda do comando $name ")
+                    .setDescription("$aliases\n Descrição\n ")
+
+                context.channel.sendMessage(embedCmd.build()).queue()
+            }
         }
 
     }
-    private fun map(category: CommandCategory) = getCategory(category).map { c -> c.name }.toString().replace(Regex("([\\[\\]])"), "")
+
+    private fun map(category: CommandCategory) =
+        getCategory(category).map { c -> c.name }.toString().replace(Regex("([\\[\\]])"), "")
+
     private fun getCategory(category: CommandCategory) = CommandManager.commands.filter { c -> c.category === category }
 }

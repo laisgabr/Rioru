@@ -2,9 +2,9 @@ package com.github.shadowb64.rioru.commands.vanilla.utils
 
 import com.github.shadowb64.rioru.commands.RioruColor
 import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
-import com.github.shadowb64.rioru.managers.command.AbstractCommand
-import com.github.shadowb64.rioru.managers.command.CommandCategory
-import com.github.shadowb64.rioru.managers.command.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandCategory
+import com.github.shadowb64.rioru.commands.caramel.CommandContext
 
 class PingCommand : AbstractCommand(
     name = "ping",
@@ -20,8 +20,8 @@ class PingCommand : AbstractCommand(
                 embed.setDescription(
                     "UtilsCommands:$name:embed:description",
                     mapOf(
-                        "ApiPing" to context.jda.gatewayPing.toString(),
-                        "Ping" to (System.currentTimeMillis() - time).toString(),
+                        "ApiPing" to context.jda.gatewayPing,
+                        "Ping" to System.currentTimeMillis() - time,
                     )
                 )
                 res.editMessage(embed.build()).queue()

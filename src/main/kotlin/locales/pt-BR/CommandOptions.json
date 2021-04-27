@@ -1,7 +1,0 @@
-{
-  "isNotDeveloper": "Você não é um Desenvolvedor",
-  "channelIsNotSame": "Você precisa estar no mesmo canal que eu.",
-  "memberIsNotInVoiceChannel": "Você precisa estar em um canal de voz.",
-  "botAlreadyInVoiceChannel": "Já estou em um canal de voz.",
-  "botIsNotInVoiceChannel": "Eu não tenho um Player nesse Servidor"
-}

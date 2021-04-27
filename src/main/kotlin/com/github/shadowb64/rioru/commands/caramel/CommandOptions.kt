@@ -6,20 +6,20 @@ class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractC
         with(cmd) {
             // Se o comando tiver esse atributo estando verdadeiro e o bot já estiver no canal de voz
             if (verifyBotAlreadyInVoiceChannel && ctx.guild.selfMember.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel", getAnyString = true))
+                channel.sendMessage(ctx.translate("CommandOptions:botAlreadyInVoiceChannel"))
                     .queue()
                 return null
             }
 
             // Se o Membro não tiver em canal de voz
             if (verifyIfVoiceChannel && !ctx.member!!.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel", getAnyString = true))
+                channel.sendMessage(ctx.translate("CommandOptions:memberIsNotInVoiceChannel"))
                     .queue()
                 return null
             }
 
             if (verifyIfBotVoiceChannel && !ctx.guild.selfMember.voiceState!!.inVoiceChannel()) {
-                channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel", getAnyString = true)).queue()
+                channel.sendMessage(ctx.translate("CommandOptions:botIsNotInVoiceChannel")).queue()
                 return null
             }
 
@@ -31,8 +31,8 @@ class CommandOptions(private val ctx: CommandContext, private val cmd: AbstractC
             }
 
             // Verificando se estão em canais diferentes
-            if (verifySameChannel && ctx.member?.voiceState !== null && ctx.guild.selfMember.voiceState !== null && ctx.member!!.voiceState!!.channel!!.idLong != ctx.guild.selfMember.voiceState!!.channel!!.idLong) {
-                channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame", getAnyString = true)).queue()
+            if (verifySameChannel && ctx.member?.voiceState !== null && ctx.guild.selfMember.voiceState !== null && ctx.member.voiceState!!.channel!!.idLong != ctx.guild.selfMember.voiceState!!.channel!!.idLong) {
+                channel.sendMessage(ctx.translate("CommandOptions:channelIsNotSame")).queue()
                 return null
             }
         }
