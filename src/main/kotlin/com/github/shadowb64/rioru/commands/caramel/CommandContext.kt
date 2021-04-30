@@ -33,7 +33,7 @@ class CommandContext(
         )
     }
 
-    fun translate(translateUri: String, map: Map<String, Any> = mapOf()): String {
+    fun translate(translateUri: String, map: Map<String, String?> = mapOf()): String {
         val port = Rioru.getServicesConf().getJSONObject("dashboard").getJSONObject("apiNodeJS").getInt("port")
         return khttp.get("localhost:$port/locales/$locale?q=$translateUri").text.replacePlaceholders(map)
     }

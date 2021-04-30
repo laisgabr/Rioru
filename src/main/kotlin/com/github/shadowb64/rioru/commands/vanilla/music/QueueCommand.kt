@@ -16,7 +16,7 @@ class QueueCommand : AbstractCommand(
         val queue = MusicManager.getMusicManager(context.guild).scheduler.queue
         val embed = RioruEmbedBuilder(context, RioruColor.MUSIC)
         if (queue.size < 10) {
-            embed.setTitle("Lista de Reprodução")
+            embed.setTitle(context.translate("MusicCommands:$name:embed:list"))
             embed.setDescription(queue.map { audioTrack ->
                 "**${audioTrack.info.title}** ${context.formatMilliseconds(audioTrack.duration)}"
             }.toString())

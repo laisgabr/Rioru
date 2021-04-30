@@ -22,28 +22,31 @@ class ChannelinfoCommand : AbstractCommand(
 
     private fun embed(context: CommandContext, embed: RioruEmbedBuilder, infos: GuildChannel): MessageEmbed {
         var channel = infos
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chName"), infos.name)
-        embed.addField(context.translate("DiscordCommands:channelinfo:embed:chID"), infos.id)
+        embed.addField(context.translate("DiscordCommands:$name:embed:chName"), infos.name)
+        embed.addField(context.translate("DiscordCommands:$name:embed:chID"), infos.id)
         embed.addField(
-            context.translate("DiscordCommands:channelinfo:embed:createdAt"),
+            context.translate("DiscordCommands:$name:embed:createdAt"),
             context.formatTime(infos.timeCreated)
         )
         when (channel.type) {
             TEXT -> {
                 channel = infos as TextChannel
                 embed.addField(
-                    context.translate("DiscordCommands:channelinfo:embed:topic"),
+                    context.translate("DiscordCommands:$name:embed:topic"),
                     channel.topic ?: "Sem tópico definido"
                 )
-                embed.addField("NSFW", if (channel.isNSFW) "Sim" else "Não")
-                embed.addField("News", if (channel.isNews) "Sim" else "Não")
-                embed.addField("Posição", channel.position)
+                embed.addField("NSFW",
+                    if (channel.isNSFW) context.translate("ClassicMessages:yes") else context.translate("ClassicMessages:no"))
+                embed.addField("News",
+                    if (channel.isNews) context.translate("ClassicMessages:yes") else context.translate("ClassicMessages:no"))
+                embed.addField(context.translate("DiscordCommands:$name:embed:position"), channel.position)
             }
 
             VOICE -> {
                 channel = infos as VoiceChannel
-                embed.addField("Bit Rate", channel.bitrate)
-                embed.addField("Limite de Usuários", if (channel.userLimit == 0) "Indefinido" else channel.userLimit)
+                embed.addField(context.translate("DiscordCommands:$name:embed:bitrate"), channel.bitrate)
+                embed.addField(context.translate("DiscordCommands:$name:embed:userLimit"),
+                    if (channel.userLimit == 0) context.translate("ClassicMessages:null") else channel.userLimit)
             }
             else -> {
             }

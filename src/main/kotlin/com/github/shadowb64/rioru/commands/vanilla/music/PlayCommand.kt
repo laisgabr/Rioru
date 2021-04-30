@@ -15,10 +15,9 @@ class PlayCommand : AbstractCommand(
             context.member!!.voiceState!!.channel!!
         )
 
-        if (context.args.isEmpty()) {
-            context.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
-            return
-        }
+        if (context.args.isEmpty())
+            return context.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
+
 
         var track = java.lang.String.join(" ", context.args)
         if (!isUrl(track)) track = if (track.contains("soundcloud"))

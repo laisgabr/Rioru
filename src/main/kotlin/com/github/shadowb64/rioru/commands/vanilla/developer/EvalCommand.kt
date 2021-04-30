@@ -30,9 +30,9 @@ class EvalCommand : AbstractCommand(
             ).queue()
             return
         } catch (e: Exception) {
-            context.channel.sendMessage("Saida: ${e.message}").queue()
+            context.channel.sendMessage(context.translate("DeveloperCommands:$name:errorMessage",
+                mapOf("err" to e.message))).queue()
             return
         }
-
     }
 }

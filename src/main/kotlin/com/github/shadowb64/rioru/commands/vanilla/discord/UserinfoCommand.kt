@@ -21,13 +21,12 @@ class UserinfoCommand : AbstractCommand(
             else context.args[0]
             context.channel.sendMessage(
                 context.translate(
-                    "DiscordCommands:comuns:userNotFound",
+                    "ClassicMessages:userNotFound",
                     mapOf("ARG" to arg.replace(Regex("(`)"), ""))
                 )
             ).queue()
             return
         }
-
 
         var flags = ""
         context.author.flags.forEach { c ->
@@ -50,9 +49,9 @@ class UserinfoCommand : AbstractCommand(
 
         val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
             .setTitle("$flags  ${user.asTag}")
-            .addField("Nome", "```${user.name}```", true, mapName = mapOf())
-            .addField("ID", "```${user.id}```", true, mapOf())
-            .addField("Conta criada em", context.formatTime(user.timeCreated))
+            .addField(context.translate("DiscordCommands:$name:embed:uName"), "```${user.name}```", true, mapName = mapOf())
+            .addField(context.translate("DiscordCommands:$name:embed:uID"), "```${user.id}```", true, mapOf())
+            .addField(context.translate("DiscordCommands:$name:embed:createdAt"), context.formatTime(user.timeCreated))
         context.channel.sendMessage(embed.build()).queue()
     }
 }

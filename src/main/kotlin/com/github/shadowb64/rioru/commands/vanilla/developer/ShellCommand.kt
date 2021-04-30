@@ -15,9 +15,10 @@ class ShellCommand : AbstractCommand(
         try {
             val output = Runtime.getRuntime().exec(input)
             context.channel.sendMessage(output.outputStream.toString()).queue()
-            if(!output.supportsNormalTermination()) output.destroyForcibly().destroy()
-        } catch(e: IOException) {
-            if(e.message != null) context.channel.sendMessage("Ocorreu um erro ao executar o comando `$input` no meu Bash `${e.message}`").queue()
+            if (!output.supportsNormalTermination()) output.destroyForcibly().destroy()
+        } catch (e: IOException) {
+            if (e.message != null) context.channel.sendMessage(context.translate("DeveloperCommands:$name:errorMessage",
+                mapOf("input" to input, "err" to e.message))).queue()
         }
     }
 }

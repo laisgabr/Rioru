@@ -5,6 +5,7 @@ import com.github.shadowb64.rioru.commands.vanilla.developer.EvalCommand
 import com.github.shadowb64.rioru.commands.vanilla.developer.ShellCommand
 import com.github.shadowb64.rioru.commands.vanilla.discord.AvatarCommand
 import com.github.shadowb64.rioru.commands.vanilla.discord.ChannelinfoCommand
+import com.github.shadowb64.rioru.commands.vanilla.discord.ServerinfoCommand
 import com.github.shadowb64.rioru.commands.vanilla.discord.UserinfoCommand
 import com.github.shadowb64.rioru.commands.vanilla.music.PlayCommand
 import com.github.shadowb64.rioru.commands.vanilla.music.QueueCommand
@@ -28,7 +29,8 @@ class CommandManager {
             // ///////////////Discord///////////////
             ChannelinfoCommand(),
             AvatarCommand(),
-            UserinfoCommand()
+            UserinfoCommand(),
+            ServerinfoCommand()
         )
     }
 

@@ -12,7 +12,7 @@ class SkipCommand : AbstractCommand(
 ) {
     override fun run(context: CommandContext) {
         if (!MusicManager.guildHasAPlayer(context.guild.idLong))
-            return context.channel.sendMessage("Não tem nada tocando nesse servidor").queue()
+            return context.channel.sendMessage(context.translate("MusciCommands:$name:nothing")).queue()
 
         MusicManager.getMusicManager(context.guild).scheduler.nextTrack()
     }
