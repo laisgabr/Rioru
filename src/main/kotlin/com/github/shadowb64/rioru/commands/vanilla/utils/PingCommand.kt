@@ -5,16 +5,17 @@ import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
 import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
 import com.github.shadowb64.rioru.commands.caramel.CommandCategory
 import com.github.shadowb64.rioru.commands.caramel.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.SlashCommandInfo
 
-class PingCommand : AbstractCommand(
+@SlashCommandInfo(
     name = "ping",
-    aliases = listOf("latency", "latencia"),
     category = CommandCategory.UTILS
-) {
+)
+class PingCommand : AbstractCommand() {
     override fun run(context: CommandContext) {
         val time = System.currentTimeMillis()
 
-        context.channel.sendMessage("\uD83C\uDFD3 | Pong").queue { res ->
+        context.sendMessage("\uD83C\uDFD3 | Pong").queue { res ->
             kotlin.run {
                 val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
                 embed.setDescription(
@@ -24,7 +25,8 @@ class PingCommand : AbstractCommand(
                         "Ping" to System.currentTimeMillis() - time,
                     )
                 )
-                res.editMessage(embed.build()).queue()
+
+                res.editOriginal(embed.build()).queue()
             }
         }
         return

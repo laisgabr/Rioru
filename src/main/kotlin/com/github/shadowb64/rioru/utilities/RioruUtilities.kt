@@ -31,7 +31,7 @@ class RioruUtilities {
     }
 }
 
-fun String.replacePlaceholders(map: Map<String, String?>): String {
+fun String.replacePlaceholders(map: Map<String, Any>): String {
     if (map.isEmpty()) return this
     var e = this
     for (c in map) {

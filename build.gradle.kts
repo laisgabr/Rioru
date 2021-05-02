@@ -21,11 +21,12 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:1.5.3")
     implementation("io.ktor:ktor-html-builder:1.5.2")
     implementation("org.json:json:20210307")
-    implementation("net.dv8tion:JDA:4.2.1_262")
+    implementation("com.github.DV8FromTheWorld:JDA:feature~slash-commands-v4.2.1-79-g4e02960")
     implementation("com.github.ShadowB64:UsagiAPISimple:7724995560")
     implementation("khttp:khttp:1.0.0")
     implementation("com.sedmelluq:lavaplayer:1.3.75")
     implementation("org.openjdk.nashorn:nashorn-core:15.2")
+    implementation("com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT")
 }
 
 application {

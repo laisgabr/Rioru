@@ -1,50 +1,42 @@
 package com.github.shadowb64.rioru.managers.command
 
+import com.github.shadowb64.rioru.Rioru
 import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
-import com.github.shadowb64.rioru.commands.vanilla.developer.EvalCommand
-import com.github.shadowb64.rioru.commands.vanilla.developer.ShellCommand
-import com.github.shadowb64.rioru.commands.vanilla.discord.AvatarCommand
-import com.github.shadowb64.rioru.commands.vanilla.discord.ChannelinfoCommand
-import com.github.shadowb64.rioru.commands.vanilla.discord.ServerinfoCommand
-import com.github.shadowb64.rioru.commands.vanilla.discord.UserinfoCommand
-import com.github.shadowb64.rioru.commands.vanilla.music.PlayCommand
-import com.github.shadowb64.rioru.commands.vanilla.music.QueueCommand
-import com.github.shadowb64.rioru.commands.vanilla.music.SkipCommand
-import com.github.shadowb64.rioru.commands.vanilla.utils.HelpCommand
 import com.github.shadowb64.rioru.commands.vanilla.utils.PingCommand
 import com.github.shadowb64.rioru.utilities.Logger
+import net.dv8tion.jda.api.entities.Command
+import net.dv8tion.jda.api.requests.restaction.CommandUpdateAction
 
 class CommandManager {
     init {
-        registerCommands(
-            EvalCommand(),
-            ShellCommand(),
-            // ///////////////Utils///////////////
+        registerCommand(
             PingCommand(),
-            HelpCommand(),
-            // ///////////////Music///////////////
-            PlayCommand(),
-            QueueCommand(),
-            SkipCommand(),
-            // ///////////////Discord///////////////
-            ChannelinfoCommand(),
-            AvatarCommand(),
-            UserinfoCommand(),
-            ServerinfoCommand()
+            CommandUpdateAction.OptionData(Command.OptionType.STRING, "option", "The Options")
         )
     }
 
     companion object {
-        var commands = ArrayList<AbstractCommand>()
+        val commands = ArrayList<AbstractCommand>()
+        fun registerCommand(command: AbstractCommand, vararg options: CommandUpdateAction.OptionData) {
+            with(command.config) {
 
-        fun getCommand(query: String): AbstractCommand? =
-            commands.find { c -> c.name == query.toLowerCase() || c.aliases.contains(query.toLowerCase()) }
+                var cmd = CommandUpdateAction.CommandData(name, if(description == "https://rioru.website/commands") {
+                    description += "/"
+                    description
+                }
+                  else "" )
 
-        fun registerCommands(vararg cmds: AbstractCommand) {
-            Logger.info { "Loading commands" }
-            for (cmd in cmds) commands.add(cmd)
+                for (option in options) {
+                    cmd = cmd.addOption(option)
+                }
 
-            Logger.info { "All commands have been loaded" }
+                Rioru.commands.addCommands(cmd)
+                commands.add(this)
+
+                Logger.managers { "[ SLASH COMMANDS ] [ $name ] loaded with success" }
+            }
         }
+
+        fun getCommandByName(name: String): AbstractCommand? = commands.find { c -> c.name == name }
     }
 }

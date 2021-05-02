@@ -1,25 +1,24 @@
 package com.github.shadowb64.rioru.commands.vanilla.music
 
 import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
+import com.github.shadowb64.rioru.commands.caramel.CommandCategory
 import com.github.shadowb64.rioru.commands.caramel.CommandContext
+import com.github.shadowb64.rioru.commands.caramel.SlashCommandInfo
 import com.github.shadowb64.rioru.music.MusicManager
 import java.net.URI
 import java.net.URISyntaxException
 
-class PlayCommand : AbstractCommand(
+@SlashCommandInfo(
     name = "play",
-    aliases = listOf("p", "tocar")
-) {
+    category = CommandCategory.MUSIC
+)
+class PlayCommand : AbstractCommand() {
     override fun run(context: CommandContext) {
-        if (!context.guild.selfMember.voiceState!!.inVoiceChannel()) context.guild.audioManager.openAudioConnection(
+        if (!context.guild?.selfMember?.voiceState!!.inVoiceChannel()) context.guild.audioManager.openAudioConnection(
             context.member!!.voiceState!!.channel!!
         )
 
-        if (context.args.isEmpty())
-            return context.channel.sendMessage(context.translate("MusicCommands:$name:argsIsEmpty")).queue()
-
-
-        var track = java.lang.String.join(" ", context.args)
+        var track = context.message.getOption("search")!!.asString
         if (!isUrl(track)) track = if (track.contains("soundcloud"))
             "soundcloud:$track"
         else "ytsearch:$track"

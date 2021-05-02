@@ -8,12 +8,10 @@ import com.github.shadowb64.rioru.commands.caramel.CommandContext
 
 class ServerinfoCommand : AbstractCommand(
     name = "serverinfo",
-    aliases = listOf("si"),
     category = CommandCategory.DISCORD
 ) {
     override fun run(context: CommandContext) {
         val server = context.guild
-
         val embed = RioruEmbedBuilder(context, RioruColor.DEFAULT)
             .setTitle(server.name)
             .addField(context.translate("DiscordCommands:$name:embed:owner"), "${server.owner?.user?.asTag} `(${server.ownerId})`")

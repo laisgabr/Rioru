@@ -5,12 +5,10 @@ import com.github.shadowb64.rioru.commands.RioruEmbedBuilder
 import com.github.shadowb64.rioru.commands.caramel.AbstractCommand
 import com.github.shadowb64.rioru.commands.caramel.CommandCategory
 import com.github.shadowb64.rioru.commands.caramel.CommandContext
-import com.github.shadowb64.rioru.commands.caramel.TypeGetter
 import com.github.shadowb64.rioru.utilities.RioruEmotes
 
 class UserinfoCommand : AbstractCommand(
     name = "userinfo",
-    aliases = listOf("ui"),
     category = CommandCategory.DISCORD
 ) {
     override fun run(context: CommandContext) {

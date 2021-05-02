@@ -1,25 +1,23 @@
 package com.github.shadowb64.rioru.commands.caramel
 
-import com.github.shadowb64.rioru.Rioru
+import com.github.shadowb64.rioru.utilities.RioruAPIRequester
 import com.github.shadowb64.rioru.utilities.replacePlaceholders
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.requests.restaction.CommandReplyAction
 import java.time.OffsetDateTime
 
 class CommandContext(
-    private val messageEvent: MessageReceivedEvent,
-    val args: List<String>,
+    private val messageEvent: SlashCommandEvent,
     private val locale: String,
 ) {
     val shardManager by lazy { messageEvent.jda.shardManager }
-    val guild = messageEvent.message.guild
-    val channel = messageEvent.message.channel
-    val member = messageEvent.message.member
-    val message = messageEvent.message
+    val guild = messageEvent.guild
+    val channel = messageEvent.channel
+    val member = messageEvent.member
+    val message = messageEvent
     val jda = messageEvent.jda
-    val author = messageEvent.author
+    val author = messageEvent.user
     val textChannel = messageEvent.textChannel
-
-    override fun toString() = "CommandContext($messageEvent, $args, $locale)"
 
     fun formatMilliseconds(milliseconds: Long): String {
         val seconds = (milliseconds / 1000).toInt() % 60
@@ -33,11 +31,13 @@ class CommandContext(
         )
     }
 
-    fun translate(translateUri: String, map: Map<String, String?> = mapOf()): String {
-        val port = Rioru.getServicesConf().getJSONObject("dashboard").getJSONObject("apiNodeJS").getInt("port")
-        return khttp.get("localhost:$port/locales/$locale?q=$translateUri").text.replacePlaceholders(map)
-    }
+    fun sendMessage(content: String, map: Map<String, Any> = mapOf()): CommandReplyAction =
+        message.reply(translate(content, map))
 
-    fun formatTime(time: OffsetDateTime): String =
+    fun translate(translateUri: String, map: Map<String, Any> = mapOf()) =
+        RioruAPIRequester.get("/translates", mapOf("locale" to locale, "query" to translateUri)).getString("response")
+            .replacePlaceholders(map)
+
+    fun formatTime(time: OffsetDateTime) =
         "${time.dayOfMonth}/${if (time.monthValue < 10) "0${time.monthValue}" else time.monthValue}/${time.year} ${time.hour}:${time.minute}:${time.second}"
 }

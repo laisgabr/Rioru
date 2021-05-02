@@ -4,20 +4,21 @@ import com.github.shadowb64.rioru.managers.command.CommandManager
 import com.github.shadowb64.rioru.utilities.JDAEventsListener
 import com.github.shadowb64.rioru.utilities.RioruUtilities
 import com.github.shadowb64.rioru.utilities.json
+import net.dv8tion.jda.api.JDA
+import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
-import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder
-import net.dv8tion.jda.api.sharding.ShardManager
+import net.dv8tion.jda.api.requests.restaction.CommandUpdateAction
 import net.dv8tion.jda.api.utils.ChunkingFilter
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 import java.io.File
 import kotlin.system.exitProcess
 
 object Rioru {
-    lateinit var me: ShardManager
+    lateinit var me: JDA
+    lateinit var commands: CommandUpdateAction
     fun createMyInstance(vararg intents: GatewayIntent) {
         checkConfig()
-        CommandManager()
-        me = DefaultShardManagerBuilder.createDefault(
+        me = JDABuilder.createDefault(
             getBotConf().getString("token"),
             GatewayIntent.GUILD_MEMBERS,
             *intents
@@ -28,6 +29,10 @@ object Rioru {
                 setMemberCachePolicy(MemberCachePolicy.ALL)
             }
         }.build()
+
+        commands = me.updateCommands()
+        CommandManager()
+        commands.queue()
     }
 
     private fun checkConfig() {
@@ -54,16 +59,18 @@ object Rioru {
                 "./services.json", """
             {
                 "dashboard": {
-                    "port": 8080,
-                    "apiNodeJS": {
-                       "port": 4040,
-                       "secret": ""
-                    },
+                    "port": 8080
+                },
+                
+                "apiJavaScript": {
+                    "hostname": "localhost",
+                    "port": 4040,
+                    "secret": ""
+                },
                     
-                    "apiKotlin": {
-                        "port": 2333,
-                        "secret": ""
-                    }
+                "apiKotlin": {
+                    "port": 2333,
+                    "secret": ""
                 }
             }
             """.trimIndent()
