@@ -1,5 +1,5 @@
 # Rioru
-My name is Rioru and I am a bot for Discord made with Kotlin and JDA.
+My name is Rioru and I am a bot for Discord built on top of Kotlin and JDA.
 
 # Self hosting
-We not offer the self hosting, <b>use the Rioru Instance</b>
+We do not offer the self hosting, <b>please use the Rioru Instance instead.</b>
