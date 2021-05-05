@@ -31,7 +31,8 @@ object Rioru {
         }.build()
 
         commands = me.updateCommands()
-        CommandManager()
+        CommandManager.Marshall()
+        CommandManager.Slash()
         commands.queue()
     }
 
@@ -39,7 +40,7 @@ object Rioru {
         val botConfFile = File("./discord.json")
         val servicesConfFile = File("./services.json")
         if (!botConfFile.exists() && !servicesConfFile.exists()) {
-            RioruUtilities.createFileAndWrite(
+            RioruUtilities.writeFile(
                 "./discord.json", """
             {
                 "token": "",
@@ -55,7 +56,7 @@ object Rioru {
             }
             """.trimIndent()
             )
-            RioruUtilities.createFileAndWrite(
+            RioruUtilities.writeFile(
                 "./services.json", """
             {
                 "dashboard": {

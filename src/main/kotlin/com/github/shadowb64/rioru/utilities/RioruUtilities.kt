@@ -5,6 +5,7 @@ import java.io.BufferedReader
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.PrintWriter
+import java.io.File
 
 class RioruUtilities {
     companion object {
@@ -22,7 +23,7 @@ class RioruUtilities {
             return value
         }
 
-        fun createFileAndWrite(file: String, content: String) {
+        fun writeFile(file: String, content: String) {
             val f = FileWriter(file)
             val writer = PrintWriter(file).printf(content)
             f.close()
