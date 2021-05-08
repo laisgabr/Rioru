@@ -1,5 +1,6 @@
 .gradle/
-services.json
-discord.json
 build/
 .idea/
+discord.json
+client.json
+services.json

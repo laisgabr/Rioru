@@ -1,38 +1,23 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.20"
+    id("org.jetbrains.kotlin.jvm") version "1.4.31"
     application
 }
 
 repositories {
-    jcenter()
     mavenCentral()
-    maven(url = "https://m2.dv8tion.net/releases") {
-        name = "m2-dv8tion"
-    }
-    maven(url = "https://jitpack.io")
+    maven(url = "https://jitpack.io/")
 }
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.google.guava:guava:29.0-jre")
-    implementation("org.jetbrains:kotlin-css-jvm:1.0.0-pre.129-kotlin-1.4.20")
-    implementation("io.ktor:ktor-server-core:1.5.3")
-    implementation("io.ktor:ktor-server-netty:1.5.3")
-    implementation("io.ktor:ktor-html-builder:1.5.2")
-    implementation("org.json:json:20210307")
-    implementation("com.github.DV8FromTheWorld:JDA:feature~slash-commands-v4.2.1-79-g4e02960")
-    implementation("com.github.ShadowB64:UsagiAPISimple:7724995560")
-    implementation("khttp:khttp:1.0.0")
-    implementation("com.sedmelluq:lavaplayer:1.3.75")
-    implementation("org.openjdk.nashorn:nashorn-core:15.2")
-    implementation("com.github.thelinmichael:spotify-web-api-java:master-SNAPSHOT")
+    implementation("com.google.guava:guava:30.0-jre")
+    implementation("com.github.Javacord", "Javacord", "development-SNAPSHOT")
+    implementation("org.json", "json", "20210307")
+    implementation("com.github.ascclemens", "khttp", "0.1.0")
 }
 
 application {
-    mainClass.set("com.github.shadowb64.rioru.RioruLauncherKt")
+    mainClass.set("com.riorucorp.projects.riorubot.Rioru")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_15
-}
