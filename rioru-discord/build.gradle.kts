@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":rioru-utilities"))
 }
 
 
