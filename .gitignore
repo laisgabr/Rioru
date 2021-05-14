@@ -1,6 +1,4 @@
 .gradle/
+buildSrc/.gradle/
 build/
-.idea/
-discord.json
-client.json
-services.json
+/**/build
