@@ -8,5 +8,5 @@ dependencies {
 
 
 application {
-    mainClass.set("com.riorucorp.projects.rioru.app.AppKt")
+    mainClass.set("com.riorucorp.projects.rioru.RioruLauncherKt")
 }

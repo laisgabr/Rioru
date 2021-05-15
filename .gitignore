@@ -2,3 +2,5 @@
 buildSrc/.gradle/
 build/
 /**/build
+.idea/
+configs/*.json
