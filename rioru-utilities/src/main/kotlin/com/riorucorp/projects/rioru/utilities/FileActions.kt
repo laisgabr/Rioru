@@ -18,9 +18,9 @@ object FileActions {
     }
 
     fun writeFile(path: String, content: String) {
-        val writer = FileWriter(File(path))
+        val writer = FileWriter(File(path.replace("/", "\\")))
         val printWriter = PrintWriter(writer)
-        printWriter.printf(content)
+        printWriter.printf(content).close()
         writer.close()
     }
 }
