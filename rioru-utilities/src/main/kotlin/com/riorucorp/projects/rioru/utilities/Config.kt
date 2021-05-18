@@ -8,7 +8,7 @@ object Config {
     private var configsVerified = false
     private fun verifyConfigFiles() {
         if(!verifyFile("rioru-discord")) {
-            FileActions.writeFile("./configs/rioru-discord.json", """
+            FileActions.writeFile("../configs/rioru-discord.json", """
             {
                 "token": ""
             }
@@ -22,7 +22,7 @@ object Config {
     }
 
     private fun verifyFile(filename: String) =
-        File("./configs/$filename.json").exists()
+        File("../configs/$filename.json").exists()
 
     fun getConfig(file: String): JSONObject {
         if(!configsVerified) {
@@ -30,6 +30,6 @@ object Config {
             verifyConfigFiles()
         }
 
-        return JSONObject(FileActions.readFile("./configs/$file.json"))
+        return JSONObject(FileActions.readFile("../configs/$file.json"))
     }
 }
