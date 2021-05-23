@@ -4,6 +4,6 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 object Formatter {
-    fun formatDate(pattern: String) =
+    fun formatDate(pattern: String): String =
         DateTimeFormatter.ofPattern(pattern).format(LocalDateTime.now())
 }
