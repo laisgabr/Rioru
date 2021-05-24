@@ -19,7 +19,11 @@ fun main() {
             Version: ${KotlinVersion.CURRENT}
         """
     }
-    Rioru.createMyInstance()
+    try {
+        Rioru.createMyInstance()
+    } catch (e: Exception) {
+        Logger.error { "${e.message}" }
+    }
 }
 
 fun getProp(property: String): String = System.getProperty(property)

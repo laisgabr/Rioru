@@ -16,6 +16,7 @@ class Listener : IRioruListenerManager {
                 val kotlinCode =
                     java.lang.String.join(" ", event.messageContent.split(" ")).replace("r!!eval", "")
                 val engine = ScriptEngineManager().getEngineByName("kotlin")
+                engine.put("event", event)
                 event.channel.sendMessage(MessageBuilder().append("${engine.eval(kotlinCode)}"))
             } catch (e: Exception) {
                 event.channel.sendMessage(MessageBuilder().appendCode("kt", "${e.message}"))

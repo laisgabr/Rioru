@@ -38,7 +38,7 @@ class CommandManager(private val api: DiscordApi) {
                         .build()
                 )
             }
-            slash.createGlobal(api).join()
+            slash.createGlobal(api).also { it.join() }
             slashCommands.add(cmd)
         }
     }

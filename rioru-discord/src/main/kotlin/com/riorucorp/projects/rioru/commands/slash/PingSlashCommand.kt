@@ -10,12 +10,7 @@ import org.javacord.api.command.ApplicationCommandOptionType.*
     name = "ping",
     isSlash = true
 )
-@SlashCommandArgument(
-    name = ["", ""],
-    description = [""],
-    isRequired = [true, false],
-    type = [STRING]
-)
+@SlashCommandArgument([], [], [], [])
 class PingSlashCommand: AbstractSlashCommand() {
     override fun execute(ctx: SlashCommandContext) {
 

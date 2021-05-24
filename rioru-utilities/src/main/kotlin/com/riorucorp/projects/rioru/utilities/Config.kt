@@ -7,10 +7,10 @@ import kotlin.system.exitProcess
 object Config {
     fun getConfig(file: String): JSONObject {
         try {
-            return JSONObject(FileActions.readFile("./configs/$file.json"))
+            return JSONObject(FileActions.readFile("../configs/$file.json"))
         } catch (e: FileNotFoundException) {
             FileActions.writeFile(
-                "configs/$file.json", """
+                "../configs/$file.json", """
             { 
                 "token": ""
             }""".trimIndent()
