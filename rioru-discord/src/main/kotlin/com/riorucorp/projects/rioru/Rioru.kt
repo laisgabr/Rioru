@@ -1,6 +1,7 @@
 package com.riorucorp.projects.rioru
 
 import com.riorucorp.projects.rioru.commands.CommandManager
+import com.riorucorp.projects.rioru.music.RioruPlayerManager
 import com.riorucorp.projects.rioru.utilities.Config
 import com.riorucorp.projects.rioru.utils.Listener
 import org.javacord.api.DiscordApi
@@ -10,6 +11,7 @@ import org.javacord.api.entity.intent.Intent.*
 object Rioru {
     lateinit var client: DiscordApi
     fun createMyInstance() {
+        RioruPlayerManager.register() // Registrando as formas de pesquisa do Player
         val listener = Listener()
 
         client = DiscordApiBuilder().also {

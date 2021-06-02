@@ -4,6 +4,7 @@ import com.riorucorp.projects.rioru.commands.marshall.PingCommand
 import com.riorucorp.projects.rioru.commands.slash.PingSlashCommand
 import com.riorucorp.projects.rioru.utilities.Logger
 import org.javacord.api.DiscordApi
+import org.javacord.api.command.ApplicationCommand
 import org.javacord.api.command.ApplicationCommandBuilder
 import org.javacord.api.command.ApplicationCommandOptionBuilder
 
@@ -25,11 +26,11 @@ class CommandManager(private val api: DiscordApi) {
 
     private fun registerCommands(vararg abstractCommands: AbstractSlashCommand) {
         for (cmd in abstractCommands) {
-            val slash = ApplicationCommandBuilder()
-            slash.setName(cmd.config.name)
-            slash.setDescription(cmd.config.description)
+            val slashBuilder = ApplicationCommandBuilder()
+            slashBuilder.setName(cmd.config.name)
+            slashBuilder.setDescription(cmd.config.description)
             for (i in cmd.arguments.name.indices) {
-                slash.addOption(
+                slashBuilder.addOption(
                     ApplicationCommandOptionBuilder()
                         .setName(cmd.arguments.name[i])
                         .setDescription(cmd.arguments.description[i])
@@ -38,7 +39,11 @@ class CommandManager(private val api: DiscordApi) {
                         .build()
                 )
             }
-            slash.createGlobal(api).also { it.join() }
+            var slash: ApplicationCommand
+            slashBuilder.createGlobal(api).also { slash = it.join() }.exceptionally { c ->
+                Logger.error { c.message }
+                slash
+            }
             slashCommands.add(cmd)
         }
     }

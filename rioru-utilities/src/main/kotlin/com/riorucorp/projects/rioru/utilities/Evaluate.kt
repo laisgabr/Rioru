@@ -6,22 +6,18 @@ import javax.script.ScriptEngineManager
 
 object Evaluate {
     val engine: ScriptEngine = ScriptEngineManager().getEngineByExtension("kts")
-    fun compile(parameters: Map<String, Any?>, str: String): Boolean {
-        for (param in parameters) engine.put(param.key, param.value)
-        return try {
+    fun compile(str: String): Boolean =
+        try {
             (engine as Compilable).compile(str)
             true
         } catch (e: Exception) {
             throw RioruEvalException("Error: ${e.message}")
         }
-    }
 
-    fun execute(parameters: Map<String, Any?>, str: String) {
-        for (parameter in parameters) engine.put(parameter.key, parameter.value)
+    fun execute(str: String): Any? =
         try {
             engine.eval(str)
         } catch (e: Exception) {
             throw RioruEvalException("Execution Error: ${e.message}")
         }
-    }
 }
