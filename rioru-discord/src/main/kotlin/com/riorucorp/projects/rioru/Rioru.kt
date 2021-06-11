@@ -1,28 +1,28 @@
 package com.riorucorp.projects.rioru
 
-import com.riorucorp.projects.rioru.commands.CommandManager
-import com.riorucorp.projects.rioru.music.RioruPlayerManager
 import com.riorucorp.projects.rioru.utilities.Config
 import com.riorucorp.projects.rioru.utils.Listener
-import org.javacord.api.DiscordApi
-import org.javacord.api.DiscordApiBuilder
-import org.javacord.api.entity.intent.Intent.*
+import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.requests.GatewayIntent
+import net.dv8tion.jda.api.requests.GatewayIntent.*
+import net.dv8tion.jda.api.utils.ChunkingFilter
+import net.dv8tion.jda.api.utils.MemberCachePolicy
 
 object Rioru {
-    lateinit var client: DiscordApi
     fun createMyInstance() {
-        RioruPlayerManager.register() // Registrando as formas de pesquisa do Player
-        val listener = Listener()
-
-        client = DiscordApiBuilder().also {
+        JDABuilder.createDefault(
+            Config.getConfig("rioru-discord").getString("token"),
+            GUILD_MEMBERS,
+            GUILD_MESSAGES,
+            GUILD_VOICE_STATES
+        ).also {
             with(it) {
-                setToken(Config.getConfig("rioru-discord").getString("token"))
-                setIntents(GUILD_VOICE_STATES, GUILDS, GUILD_INTEGRATIONS, GUILD_MESSAGES, GUILD_MEMBERS)
-                setRecommendedTotalShards()
+                addEventListeners(Listener())
+                setChunkingFilter(ChunkingFilter.ALL)
+                setMemberCachePolicy(MemberCachePolicy.ALL)
+                useSharding(0, Config.getConfig("rioru-discord").getInt("shards"))
+                setAutoReconnect(true)
             }
-        }.addListener(listener).login().join().also {
-            CommandManager(it)
-            listener.onReady(it)
-        }
+        }.build()
     }
 }

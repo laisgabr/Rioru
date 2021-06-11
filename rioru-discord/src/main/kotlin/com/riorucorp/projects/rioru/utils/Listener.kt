@@ -1,30 +1,13 @@
 package com.riorucorp.projects.rioru.utils
 
-import org.javacord.api.entity.channel.ChannelType
-import org.javacord.api.entity.channel.TextChannel
-import org.javacord.api.entity.message.MessageBuilder
-import org.javacord.api.event.message.MessageCreateEvent
-import javax.script.ScriptEngineManager
+import com.riorucorp.projects.rioru.utilities.Logger
+import net.dv8tion.jda.api.events.ReadyEvent
+import net.dv8tion.jda.api.hooks.ListenerAdapter
 
-class Listener : IRioruListenerManager {
-    override fun onMessageCreate(event: MessageCreateEvent?) {
-        if (event!!.channel.type != ChannelType.SERVER_TEXT_CHANNEL) return
-        val owners = listOf("730425354870587473", "807305370480934923")
-        if (!owners.contains(event.messageAuthor.idAsString)) return
-        if (event.messageContent.startsWith("r!!eval")) {
-            try {
-                val kotlinCode =
-                    java.lang.String.join(" ", event.messageContent.split(" ")).replace("r!!eval", "")
-                val engine = ScriptEngineManager().getEngineByName("kotlin")
-                engine.put("event", event)
-                event.channel.sendMessage(MessageBuilder().append("${engine.eval(kotlinCode)}"))
-            } catch (e: Exception) {
-                event.channel.sendMessage(MessageBuilder().appendCode("kt", "${e.message}"))
-            }
-        }
+class Listener : ListenerAdapter() {
+    override fun onReady(event: ReadyEvent) {
+        Logger.info { "Rioru is now ready with ${event.jda.shardManager?.shards?.size} Shards" }
+
     }
-}
 
-fun TextChannel.sendMessage(builder: MessageBuilder) {
-    builder.send(this)
 }

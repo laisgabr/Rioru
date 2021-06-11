@@ -1,6 +1,5 @@
 package com.riorucorp.projects.rioru
 
-import com.riorucorp.projects.caramel.EngineViewer
 import com.riorucorp.projects.rioru.utilities.Logger
 
 fun main() {
@@ -22,14 +21,11 @@ fun main() {
         """
     }
 
-    /*
     try {
         Rioru.createMyInstance()
     } catch (e: Exception) {
         Logger.error { "${e.message}" }
     }
-
-     */
 }
 
 fun getProp(property: String): String = System.getProperty(property)
