@@ -2,8 +2,7 @@ package com.riorucorp.projects.rioru
 
 import com.riorucorp.projects.rioru.utilities.Logger
 
-fun main() {
-    System.setProperty("idea.use.native.fs.for.win", "false") // Retirar mensagem de erro ao usar o eval no Windows
+suspend fun main() {
     Logger.info {
         """
     Specifications: 

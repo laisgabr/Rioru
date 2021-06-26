@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version("1.5.0")
+    id("org.jetbrains.kotlin.jvm") version("1.5.20")
     application
 }
 
@@ -12,11 +12,11 @@ repositories {
 
 dependencies {
     implementation(project(":rioru-utilities"))
-    implementation(project(":caramel"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
     api("com.google.guava:guava:30.0-jre")
     implementation("org.json", "json", "20210307")
     implementation("com.sedmelluq", "lavaplayer", "1.3.77")
-    implementation("com.github.DV8FromTheWorld", "JDA", "development-SNAPSHOT")
+    implementation("net.dv8tion", "JDA", "4.3.0_283")
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }

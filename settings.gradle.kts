@@ -1,2 +1,2 @@
 rootProject.name = "rioru"
-include("rioru-discord", "rioru-utilities", "caramel")
+include("rioru-discord", "rioru-utilities")
