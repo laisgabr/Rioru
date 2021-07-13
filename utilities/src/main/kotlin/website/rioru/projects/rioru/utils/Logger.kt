@@ -1,4 +1,4 @@
-package com.riorucorp.projects.rioru.utilities
+package website.rioru.projects.rioru.utils
 
 object Logger {
     private fun log(content: Any?) {

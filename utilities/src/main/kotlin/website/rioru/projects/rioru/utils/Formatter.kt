@@ -1,4 +1,4 @@
-package com.riorucorp.projects.rioru.utilities
+package website.rioru.projects.rioru.utils
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
