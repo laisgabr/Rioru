@@ -1,6 +1,7 @@
 package website.rioru.projects.rioru
 
 import website.rioru.projects.rioru.utils.FileAction
+import website.rioru.projects.rioru.utils.commands.CommandLoader
 import java.io.File
 
 suspend fun main() {
@@ -11,15 +12,18 @@ suspend fun main() {
 
     if (!File("../config.json").exists()) {
         println("Hi, my name is Rioru and i want to make the world a better place\nbut first, you need to put the settings in my config file \"config.json\".\nAfter doing that, run me again,\nsee you later :)")
-        FileAction.writeFile("../config.json", """
+        FileAction.writeFile(
+            "../config.json", """
         {
            "discord": {
                "token": ""
            }
         }
-        """.trimIndent())
+        """.trimIndent()
+        )
         kotlin.system.exitProcess(1)
     }
 
+    CommandLoader()
     Rioru.createClient()
 }

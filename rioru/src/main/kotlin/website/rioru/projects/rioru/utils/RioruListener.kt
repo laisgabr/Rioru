@@ -8,4 +8,8 @@ class RioruListener : IListener {
     override fun onReady(parameters: ReadyEvent) {
         println("${parameters.self.username} - Online")
     }
+
+    override suspend fun onMessageCreated(parameters: MessageCreateEvent) {
+
+    }
 }

@@ -5,5 +5,5 @@ import dev.kord.core.event.message.MessageCreateEvent
 
 interface IListener {
     fun onReady(parameters: ReadyEvent) {}
-    fun onMessageCreated(parameters: MessageCreateEvent) {}
+    suspend fun onMessageCreated(parameters: MessageCreateEvent) {}
 }
