@@ -3,8 +3,8 @@ package website.rioru.projects.rioru.utils.commands
 import website.rioru.projects.rioru.utils.Logger
 import java.io.File
 
-class CommandLoader {
-    private val PATH = "./src/main/kotlin/website/rioru/projects/rioru/commands/"
+class CommandLoader(private val type: String) {
+    private val PATH = "./src/main/kotlin/website/rioru/projects/rioru/commands/$type/"
     init {
         load()
     }
@@ -25,7 +25,7 @@ class CommandLoader {
             }
 
             for(cmd in commands) {
-                val command: AbstractCommand = Class.forName("website.rioru.projects.rioru.commands.$dir.${cmd.replace(".kt", "")}").constructors[0].newInstance() as AbstractCommand
+                val command: AbstractCommand = Class.forName("website.rioru.projects.rioru.commands.$type.$dir.${cmd.replace(".kt", "")}").constructors[0].newInstance() as AbstractCommand
                 CommandManager.addCommand(command)
             }
         }

@@ -1,5 +1,6 @@
 package website.rioru.projects.rioru
 
+import website.rioru.projects.rioru.client.database.RioruDatabase
 import website.rioru.projects.rioru.utils.FileAction
 import website.rioru.projects.rioru.utils.commands.CommandLoader
 import java.io.File
@@ -24,6 +25,8 @@ suspend fun main() {
         kotlin.system.exitProcess(1)
     }
 
-    CommandLoader()
+    RioruDatabase().create()
+
+    CommandLoader("caramel")
     Rioru.createClient()
 }

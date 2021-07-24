@@ -1,5 +1,5 @@
 rootProject.name = "rioru"
-include("rioru", "utilities")
+include("rioru", "utilities", "database")
 
 pluginManagement {
     repositories {
@@ -8,7 +8,7 @@ pluginManagement {
 
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.id.startsWith("org.jetbrains.kotlin.jvm")) useVersion("1.5.20")
+            if (requested.id.id.startsWith("org.jetbrains.kotlin.jvm")) useVersion("1.5.21")
         }
     }
 }

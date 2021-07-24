@@ -10,6 +10,7 @@ class RioruListener : IListener {
     }
 
     override suspend fun onMessageCreated(parameters: MessageCreateEvent) {
-
+        if(parameters.message.author!!.isBot) return
+        if(!parameters.message.content.contains("r!!")) return
     }
 }

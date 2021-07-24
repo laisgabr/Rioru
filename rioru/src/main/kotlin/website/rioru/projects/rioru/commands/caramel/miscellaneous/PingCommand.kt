@@ -1,4 +1,4 @@
-package website.rioru.projects.rioru.commands.miscellaneous
+package website.rioru.projects.rioru.commands.caramel.miscellaneous
 
 import website.rioru.projects.rioru.utils.commands.AbstractCommand
 import website.rioru.projects.rioru.utils.commands.CommandContext

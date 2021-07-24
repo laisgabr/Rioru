@@ -5,35 +5,11 @@ plugins {
     application
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
-
-    dependencies {
-        implementation(platform(kotlin("bom")))
-        implementation(kotlin("stdlib-jdk8"))
-        api("com.google.guava:guava:30.0-jre")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["coroutines.version"]}")
-        implementation("dev.kord:kord-core:${properties["kord.version"]}")
-    }
-}
-
-repositories {
-    mavenCentral()
-    google()
-}
-
 dependencies {
+
     implementation(project(":utilities"))
-    implementation(platform(kotlin("bom")))
-    implementation(kotlin("stdlib-jdk8"))
-    api("com.google.guava:guava:30.0-jre")
-    implementation("dev.kord:kord-core:${properties["kord.version"]}")
+    implementation(project(":database"))
     implementation("org.slf4j:slf4j-simple:1.7.30")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["coroutines.version"]}")
     implementation("dev.kord.x:emoji:0.5.0")
 }
 

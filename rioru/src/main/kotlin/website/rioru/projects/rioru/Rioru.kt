@@ -13,7 +13,6 @@ object Rioru {
 
     @OptIn(PrivilegedIntent::class)
     suspend fun createClient() {
-
         me = Kord(Config.string["discord", "token"]) {
             intents = Intents.all
         }
